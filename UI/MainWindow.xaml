@@ -1,0 +1,64 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="Main" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="75*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="main_contect" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Label" HorizontalAlignment="Left" Margin="126,29,0,0" VerticalAlignment="Top"/>
+            <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="120.2,29,0,0" VerticalAlignment="Top"/>
+            <Label Panel.ZIndex="1" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="112.4,29,0,0" VerticalAlignment="Top"/>
+
+            <ListBox Grid.Column="2"  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox Grid.Column="1"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Name="i_d" Text="{Binding Id}"  VerticalAlignment="Stretch" Background="{x:Null}" Foreground="#FF268651" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,7" />
+
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox Grid.Column="0"  x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" >
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Grid>
+        <Menu Height="30"  DockPanel.Dock="Top" VerticalAlignment="Top">
+            <MenuItem Header="registration" Click="MenuItem_Click"/>
+            <MenuItem Header="Login" Click="MenuItem_Click"/>
+            <MenuItem Header="Contact Us">
+                <MenuItem Header="Sending an email"/>
+                <MenuItem Header="Sending WhatsApp"/>
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>
