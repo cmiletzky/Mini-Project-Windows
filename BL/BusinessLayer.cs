@@ -14,7 +14,7 @@ namespace BL
         public IEnumerable<BO.Bus> presentAllBus()
         {
 
-            List<BO.Bus> allBuses = new List<BO.Bus>();// = dal.getAllBuses();//.Where(x => x == x) ; 
+            List<BO.Bus> allBuses = new List<BO.Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
             foreach (var item in dal.getAllBuses())
             {
                 allBuses.Add(new BO.Bus(item.Id,item.StartDate));
