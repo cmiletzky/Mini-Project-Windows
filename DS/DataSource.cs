@@ -10,10 +10,10 @@ namespace DS
     public class DataSource
     {
         public static List<Bus> buslist = new List<Bus>();// create the list to hold the buss in company
-        private Random gen = new Random();
+        private static Random gen = new Random();
         static Random r = new Random(DateTime.Now.Millisecond);
         
-        DateTime RandomDay()
+      static  DateTime RandomDay()
         {
 
             DateTime start = new DateTime(1995, 1, 1);
@@ -26,7 +26,7 @@ namespace DS
             for (int i = 0; i < 10; i++)
             {
                 //TODO לבדוק אתחול תאריך
-                buslist.Add(new Bus(r.Next(1000000, 99999999).ToString(), RandomDay()));
+                buslist.Add(new Bus(r.Next(1000000, 99999999).ToString(),RandomDay()));
                 buslist[i].Km = r.Next(20000, 40000);
                 buslist[i].LsaatTreastKm = r.Next(0, 10000);
                 buslist[i].Gas = 1200;

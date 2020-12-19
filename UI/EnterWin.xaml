@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PL"
+        xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
         Title="Login / Register" Height="450" Width="800" Background="White" ResizeMode="NoResize">
     <Window.Resources>
@@ -53,10 +53,10 @@
         <Label Content="   User login" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="121,4,138.4,0" Width="135"/>
         <TextBox Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="192,62,82.4,0"/>
         <Label Content="   Manager login" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="121.8,4,111.6,0" Width="161" Grid.Column="2"/>
-        <TextBox x:Name="pas_manager" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="137.8,86,136.6,0" Grid.Column="2"/>
+        <TextBox x:Name="pas_manager" Text="1" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="137.8,86,136.6,0" Grid.Column="2"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="68.8,68,0,0" Grid.Row="0" VerticalAlignment="Top" Grid.Column="2"/>
         <Label Content="Password " HorizontalAlignment="Left" Margin="68.8,92,0,0" Grid.Row="0" VerticalAlignment="Top" Grid.Column="2"/>
-        <TextBox x:Name="user_manager" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="137.8,62,136.6,0" Grid.Column="2"/>
+        <TextBox x:Name="user_manager" Text="1" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="137.8,62,136.6,0" Grid.Column="2"/>
 
     </Grid>
 </Window>

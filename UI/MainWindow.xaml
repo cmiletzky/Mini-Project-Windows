@@ -14,39 +14,48 @@
         <Grid x:Name="main_contect" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ListBox Grid.Column="2"  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
+            <TabControl Grid.Column="0">
+                <TabItem Header="Buss">
+                    <ListBox  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Id}">3333</TextBlock>
-                    </DataTemplate>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}"></TextBlock>
+                            </DataTemplate>
 
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox Grid.Column="1"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="משהו" >
+                    <ListBox   x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock x:Name="i_d" Text="{Binding Id}"  VerticalAlignment="Stretch" Background="{x:Null}" Foreground="#FF268651" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,7" />
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="i_d" Text="{Binding Id}"  VerticalAlignment="Stretch" Background="{x:Null}" Foreground="#FF268651" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,7" />
 
-                    </DataTemplate>
+                            </DataTemplate>
 
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox Grid.Column="0"  x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" >
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="משהו">
+                    <ListBox  x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" >
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
 
-                    </DataTemplate>
+                            </DataTemplate>
 
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
+                </TabItem>
+            </TabControl>
+           
+           
+        
         </Grid>
         <Menu Height="30"  DockPanel.Dock="Top" VerticalAlignment="Top">
             <MenuItem Header="registration" Click="MenuItem_Click"/>

@@ -17,7 +17,8 @@ namespace BL
             List<BO.Bus> allBuses = new List<BO.Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
             foreach (var item in dal.getAllBuses())
             {
-                allBuses.Add(new BO.Bus(item.Id,item.StartDate));
+                string a = item.Id.Replace("-","");
+                allBuses.Add(new BO.Bus(a,item.StartDate));
             }
             return allBuses;
         }

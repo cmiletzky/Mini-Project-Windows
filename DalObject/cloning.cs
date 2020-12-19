@@ -15,7 +15,8 @@ namespace Dal
             List<Bus> target = new List<Bus>();
             foreach (var item in original)
             {
-                target.Add(new Bus(item.Id, item.StartDate));
+                string a = item.Id.Replace("-","");
+                target.Add(new Bus(a, item.StartDate));
             }
             return (IEnumerable<Bus>)target;
         }
