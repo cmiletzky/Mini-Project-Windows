@@ -11,6 +11,9 @@ namespace BlApi
     public interface IBL
     {
         IEnumerable<BO.Bus> presentAllBus();
+        bool canDrive(BO.Bus bus, ref string mes);
+        bool canDrive(BO.Bus bus, ref string mes, string kM);
+        bool Refuell(BO.Bus bus, ref string mes);
     }
     public static class BlFactory
     {

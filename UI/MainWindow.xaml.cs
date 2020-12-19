@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using PIGui;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UI
+namespace PIGui
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        static IBL bl;
+        public static IBL bl;
+      public static  string arrMes = "";
+       public static bool canDrive = false;
         public static bool isManager = false;
         public MainWindow()
         {
@@ -49,39 +53,36 @@ namespace UI
         private void Start_driving(object sender, RoutedEventArgs e)
         {
             Button cmd = (Button)sender;
-            var p = cmd.Parent as Grid;
-            string id = p.Children[0].ToString();
-            //bool canDrive = bl.canDrive();
+            BO.Bus busToTrip = (BO.Bus)cmd.DataContext;
+            
+            
+            canDrive = bl.canDrive(busToTrip, ref arrMes);
+            if (canDrive)
+            {
+                StartTrip startTrip = new StartTrip(busToTrip, (Button)sender);
+                startTrip.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show(arrMes);
+            }
+        }
 
-            //Button cmd = (Button)sender;
-            //var p = cmd.Parent as Grid;
-            //if (cmd.DataContext is BO.Bus)
-            //{
+        private void Refueling(object sender, RoutedEventArgs e)
+        {
+            Button cmd = (Button)sender;
+            BO.Bus busToRrfuell = (BO.Bus)cmd.DataContext;
+            if (bl.Refuell(busToRrfuell, ref arrMes)==false)
+            {
+                MessageBox.Show(arrMes);
+            }  
+        }
 
-            //    BO.Bus deleteme = (BO.Bus)cmd.DataContext;
-            //    string bus_id = deleteme.Id.ToString();
-            //    // chck condition weather the bus can exit to driving
-            //    if (deleteme.InTreamant)
-            //    {
-            //        MessageBox.Show("bus " + bus_id + " busy in treatment");
-            //    }
-            //    else if (deleteme.InRefule)
-            //    {
-            //        MessageBox.Show("bus " + bus_id + " busy in refule");
-            //    }
-            //    else if (deleteme.InDriving)
-            //    {
-            //        MessageBox.Show("bus number " + deleteme.Id + " in driving now");
-            //    }
-            //    // if all conditon alow it, sanding the bus
-            //    else
-            //    {
-            //        InputKm inputDialog = new InputKm(deleteme, (Button)sender);
-
-            //        inputDialog.Show();
-            //    }
-
-            //}
+        private void bus_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BO.Bus busToDetail = (BO.Bus)bus_list.SelectedItem;
+            BusDetails detailDialog = new BusDetails(busToDetail);
+            detailDialog.Show();
         }
     }
 }

@@ -1,0 +1,48 @@
+﻿<Window x:Class="PIGui.BusDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="BusDetails" Height="450" Width="800">
+    <Grid>
+        <Border BorderBrush="#FF3DE54B" BorderThickness="5" UseLayoutRounding="False">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+                </Grid.ColumnDefinitions>
+                <Label Name="I_D" Grid.Column="1" Grid.Row="0" Content=""  Width="203" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontFamily="Tahoma"/>
+                <Label Name="start_date" Grid.Column="1" Grid.Row="1" Content="Label" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <Label Name="KM" Grid.Column="1" Grid.Row="2" Content="Label" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <Label Name="last_treat_km" Grid.Column="1" Grid.Row="3" Content="Label" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <Label Name="gas" Grid.Column="1" Grid.Row="4" Content="Label" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <Label Name="last_treat_date" Grid.Column="1" Grid.Row="5" Content="Label" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+
+                <Label Content="Lisence number:   " Grid.Column="0"  VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Right" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="start date:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="Kilometra'z:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="Last treat in KM:   " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="Gas state:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="4" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="Last treat date:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="5" FontSize="18" FontFamily="Tahoma"/>
+                <Button x:Name="treatment" Content="treatment" HorizontalAlignment="Right"  Grid.Row="6" Width="75" Click="treatment_Click" VerticalAlignment="Center" Margin="0,0,3,0"/>
+                <Button x:Name="refule" Content="refule" Grid.Column="1"  Grid.Row="6" VerticalAlignment="Center" Width="75" Click="refule_Click" HorizontalAlignment="Left" Margin="2,0,0,0"/>
+                <Label x:Name="timeTo" Content="{Binding Time}" Grid.Column="1" HorizontalAlignment="Left" Margin="123.667,10.333,0,0" Grid.Row="6" VerticalAlignment="Top" RenderTransformOrigin="-0.162,-0.493"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

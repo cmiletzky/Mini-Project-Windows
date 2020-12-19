@@ -1,10 +1,11 @@
-﻿<Window x:Class="UI.MainWindow"
+﻿<Window x:Class="PIGui.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
         Title="Main" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,14 +18,14 @@
             </Grid.ColumnDefinitions>
 
             <TabControl Grid.Column="0">
-                <TabItem Header="Buss">
-                    <ListBox  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
+                <TabItem Header="Buses    " FontSize="18">
+                    <ListBox  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" MouseDoubleClick="bus_list_MouseDoubleClick" >
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                <TextBlock x:Name="bus_id" Text="{Binding Id}"></TextBlock>
-                                    <Button  Click="Start_driving" Padding="5" Margin="100,7,7,7" Width="100" Content="Start driving" IsEnabled="true" Background="#FFE0F7BA" BorderBrush="#FF268651" Foreground="#FF268651" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="bus_id" Text="{Binding Id}" Background="{x:Null}"></TextBlock>
+                                    <Button  Click="Start_driving" FontSize="16" Padding="5" Margin="100,7,7,7" Width="100" Content="Start driving" IsEnabled="true" Background="#FFE0F7BA" BorderBrush="#FF268651" Foreground="#FF268651" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     <Button x:Name="refule"   Padding="5" Margin="210,7,7,7" Width="100" Content="refueling" IsEnabled="True" Click="Refueling" BorderBrush="#FF268651" Foreground="#FF268651" Background="#FFE0F7BA" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                 </Grid>
                             </DataTemplate>
@@ -32,7 +33,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </TabItem>
-                <TabItem Header="משהו" >
+                <TabItem Header="Lines    " FontSize="18" >
                     <ListBox   x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
 
                         <ListBox.ItemTemplate>
@@ -44,7 +45,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </TabItem>
-                <TabItem Header="משהו">
+                <TabItem Header="Stations    " FontSize="18">
                     <ListBox  x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" >
 
                         <ListBox.ItemTemplate>

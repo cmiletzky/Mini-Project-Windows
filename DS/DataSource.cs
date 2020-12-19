@@ -34,6 +34,7 @@ namespace DS
 
             }
             buslist[0].LastTreatDate = new DateTime(2019, 10, 10);
+            buslist[0].InDriving = true;
             buslist[1].LsaatTreastKm = 19990;
             buslist[2].Gas = 50;
 

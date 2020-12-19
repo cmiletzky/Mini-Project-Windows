@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace UI
+namespace PIGui
 {
     /// <summary>
     /// Interaction logic for EnterWin.xaml
