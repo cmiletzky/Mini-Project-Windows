@@ -37,13 +37,51 @@ namespace UI
 
             bl = BlFactory.GetBl();
 
-           bus_list.ItemsSource = bl.presentAllBus();
+            bus_list.ItemsSource = bl.presentAllBus();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             EnterWin enterWin = new EnterWin();
             enterWin.ShowDialog();
+        }
+
+        private void Start_driving(object sender, RoutedEventArgs e)
+        {
+            Button cmd = (Button)sender;
+            var p = cmd.Parent as Grid;
+            string id = p.Children[0].ToString();
+            //bool canDrive = bl.canDrive();
+
+            //Button cmd = (Button)sender;
+            //var p = cmd.Parent as Grid;
+            //if (cmd.DataContext is BO.Bus)
+            //{
+
+            //    BO.Bus deleteme = (BO.Bus)cmd.DataContext;
+            //    string bus_id = deleteme.Id.ToString();
+            //    // chck condition weather the bus can exit to driving
+            //    if (deleteme.InTreamant)
+            //    {
+            //        MessageBox.Show("bus " + bus_id + " busy in treatment");
+            //    }
+            //    else if (deleteme.InRefule)
+            //    {
+            //        MessageBox.Show("bus " + bus_id + " busy in refule");
+            //    }
+            //    else if (deleteme.InDriving)
+            //    {
+            //        MessageBox.Show("bus number " + deleteme.Id + " in driving now");
+            //    }
+            //    // if all conditon alow it, sanding the bus
+            //    else
+            //    {
+            //        InputKm inputDialog = new InputKm(deleteme, (Button)sender);
+
+            //        inputDialog.Show();
+            //    }
+
+            //}
         }
     }
 }

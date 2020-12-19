@@ -11,5 +11,9 @@ namespace DO
         string userName;
         string password;
         bool admin;
+
+        public string UserName { get => userName; set => userName = value; }
+        public string Password { get => password; set => password = value; }
+        public bool Admin { get => admin; set => admin = value; }
     }
 }

@@ -18,5 +18,6 @@ namespace DO
 
         public int Id { get => id; set => id = value; }
         public int Code { get => code; set => code = value; }
+        internal Areas Area { get => area; set => area = value; }
     }
 }

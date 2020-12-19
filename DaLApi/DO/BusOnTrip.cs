@@ -25,5 +25,6 @@ namespace DO
         public int PrevStation { get => prevStation; set => prevStation = value; }
         public TimeSpan PrevStasionAt { get => prevStationAt; set => prevStationAt = value; }
         public TimeSpan NextStationAt { get => nextStationAt; set => nextStationAt = value; }
+        public int LineId { get => lineId; set => lineId = value; }
     }
 }
