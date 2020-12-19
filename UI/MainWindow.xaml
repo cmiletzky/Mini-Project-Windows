@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PL"
+        xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
         Title="Main" Height="450" Width="800">
     <Grid>
@@ -17,15 +17,12 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="126,29,0,0" VerticalAlignment="Top"/>
-            <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="120.2,29,0,0" VerticalAlignment="Top"/>
-            <Label Panel.ZIndex="1" Content="Label" Grid.Column="2" HorizontalAlignment="Left" Margin="112.4,29,0,0" VerticalAlignment="Top"/>
 
             <ListBox Grid.Column="2"  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-
+                        <TextBlock Text="{Binding Id}">3333</TextBlock>
                     </DataTemplate>
 
                 </ListBox.ItemTemplate>
