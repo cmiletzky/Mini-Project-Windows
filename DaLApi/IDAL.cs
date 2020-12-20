@@ -21,6 +21,14 @@ namespace DaLApi
          void Delete(Bus bustoDelete);
          Bus isBus(Bus x);
         #endregion
+
+        #region User
+        bool dalIsUser(string userName, string password);
+        List<User> getUsers();
+        void addUser(User user);
+        void editUser(User user);
+        void deliteUser(string userName);
+        #endregion
     }
     static class DalConfig
     {

@@ -17,30 +17,31 @@ namespace Dal
         private DalObject() { }
         public static DalObject Instance { get { return instance; } }
 
+        #region
         void IDAL.addBus(Bus busToAdd)
         {
-            DataSource.buslist.Add(busToAdd);
+            DsBuses.buslist.Add(busToAdd);
         }
         Bus IDAL.getBus(string id)
         {
-            return DataSource.buslist[DataSource.buslist.FindIndex(x => x.Id == id)];
+            return DsBuses.buslist[DsBuses.buslist.FindIndex(x => x.Id == id)];
         }
         void IDAL.updateBus(Bus bustoUpdate)
         {
-            int busID = DataSource.buslist.FindIndex(x => x.Id == bustoUpdate.Id);
-            DataSource.buslist[busID] = bustoUpdate;
+            int busID = DsBuses.buslist.FindIndex(x => x.Id == bustoUpdate.Id);
+            DsBuses.buslist[busID] = bustoUpdate;
 
         }
         void IDAL.Delete(Bus bustoDelete)
         {
-            int busID = DataSource.buslist.FindIndex(x => x.Id == bustoDelete.Id);
-            DataSource.buslist[busID].IsActive = false;
+            int busID = DsBuses.buslist.FindIndex(x => x.Id == bustoDelete.Id);
+            DsBuses.buslist[busID].IsActive = false;
         }
 
         IEnumerable<Bus> IDAL.getAllBuses()
         {
-            DataSource.intialbus();
-            return DataSource.buslist.Clone();
+            DsBuses.intialbus();
+            return DsBuses.buslist.Clone();
         }
 
         Bus IDAL.isBus(Bus x)
@@ -50,5 +51,37 @@ namespace Dal
             return null;
 
         }
+        #endregion
+
+        #region User
+       public bool dalIsUser(string userName, string password)
+        {
+            int u = DsUsers.Users.FindIndex(x => x.UserName == userName && x.Password == password);
+            if (u == -1)
+            {
+                return false;
+            }
+            return true;
+        }
+        public List<User> getUsers()
+        {
+            return DsUsers.GetUsers();
+        }
+
+        public void addUser(User user)
+        {
+            DsUsers.Users.Add(user);
+        }
+
+        public void editUser(User user)
+        {
+            DsUsers.Users[DsUsers.Users.FindIndex(x => x.UserName == user.UserName)] = user;
+        }
+
+        public void deliteUser(string userName)
+        {
+            DsUsers.Users.RemoveAt(DsUsers.Users.FindIndex(x => x.UserName == userName));
+        }
+        #endregion
     }
 }

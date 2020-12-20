@@ -25,6 +25,7 @@ namespace PIGui
         }
         private void login_maneger_Click(object sender, RoutedEventArgs e)
         {
+            
             if (user_manager.Text == "1" && pas_manager.Text == "1")
             {
                 MainWindow.isManager = true;

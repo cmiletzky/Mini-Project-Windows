@@ -7,7 +7,7 @@ using DO;
 
 namespace DS
 {
-    public class DataSource
+    public class DsBuses
     {
         public static List<Bus> buslist = new List<Bus>();// create the list to hold the buss in company
         private static Random gen = new Random();

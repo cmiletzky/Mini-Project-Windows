@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BlApi;
 using DaLApi;
+using BO;
 
 
 namespace BL
@@ -142,5 +143,10 @@ namespace BL
                     return false;
                 return true;
             }
+
+       public static bool isUser(string userName, string password)
+        {
+           return  dal.dalIsUser( userName,  password);
         }
+    }
     }

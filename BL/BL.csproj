@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\Auth.cs" />
     <Compile Include="BO\Bus.cs" />
+    <Compile Include="BO\User.cs" />
     <Compile Include="BusinessLayer.cs" />
     <Compile Include="BlApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
