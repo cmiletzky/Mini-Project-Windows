@@ -14,11 +14,13 @@ namespace Dal
     {
         private static readonly DalObject instance = new DalObject();
         static DalObject() {
-            DsBuses.intialbus();
-            DsStations.initializedStation();
-            Dslines.intializeLines();
+         
         }
-        private DalObject() { }
+        private DalObject() {
+         
+           
+           
+        }
         public static DalObject Instance { get { return instance; } }
 
         #region Bus
@@ -44,7 +46,7 @@ namespace Dal
 
         IEnumerable<Bus> IDAL.getAllBuses()
         {
-            
+            DsBuses.intialbus();
             return DsBuses.buslist.Clone();
         }
 
@@ -89,21 +91,18 @@ namespace Dal
         }
         #endregion
 
-       public IEnumerable<int> getStations()
+       public IEnumerable<Station> getStations()
         {
-            
+            DsStations.initializedStation();
             return DsStations.stations.Clone();
         }
 
-        public static IEnumerable<Line> getLins()
+        public  IEnumerable<Line> getLins()
         {
-            
+            Dslines.intializeLines();
             return Dslines.lines.Clone();
         }
 
-       public static string[] NameStops()
-        {
-            return DsStations.stationListNames;
-        }
+      
     }
 }

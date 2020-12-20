@@ -19,7 +19,7 @@ namespace DO
         Areas area;
         int firstStation;
         int lastStation;
-        List<int> stationList = new List<int>();
+       List<int> stationList = new List<int>();
 
 
 

@@ -43,6 +43,7 @@ namespace PIGui
 
             bus_list.ItemsSource = bl.presentAllBus();
             stops_list.ItemsSource = bl.presentAllStation();
+            line_list.ItemsSource = bl.presentAllLines();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -88,7 +89,7 @@ namespace PIGui
 
         private void stops_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BO.station busToDetail = (BO.station)stops_list.Items[stops_list.SelectedIndex];
+            BO.Station busToDetail = (BO.Station)stops_list.Items[stops_list.SelectedIndex];
             code_stop.Text = busToDetail.Code.ToString();
         }
     }

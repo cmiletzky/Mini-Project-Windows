@@ -30,9 +30,9 @@ namespace Dal
             }
             return target;
         } 
-        internal static IEnumerable<int> Clone(this IEnumerable<int> original)
+        internal static List<Line> Clone(this List<Line> original)
         {
-            List<int> target = new List<int>();
+            List<Line> target = new List<Line>();
             foreach (var item in original)
             {
                 target.Add(item);

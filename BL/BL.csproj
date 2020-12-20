@@ -44,7 +44,7 @@
     <Compile Include="BO\Auth.cs" />
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\Line.cs" />
-    <Compile Include="BO\station.cs" />
+    <Compile Include="BO\Station.cs" />
     <Compile Include="BO\StopOfLine.cs" />
     <Compile Include="BO\User.cs" />
     <Compile Include="BusinessLayer.cs" />

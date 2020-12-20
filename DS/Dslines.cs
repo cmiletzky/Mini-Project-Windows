@@ -19,7 +19,7 @@ namespace DS
             for (int i = 0; i < 10; i++)
             {
                 List<int> list = initializeStops();
-                lines.Add(new Line(i + 2 * i, ran.Next(1,6), list[0], list[9], list));
+                lines.Add(new Line(ran.Next(1,300), ran.Next(1,6), list[0], list[9], list));
             }
         }
 
@@ -28,7 +28,13 @@ namespace DS
             List<int> list = new List<int>();
             for (int i = 0; i < 10; i++)
             {
-                list[i]= DsStations.stations[ran.Next(0, 50)];
+                int stop = DsStations.stations[ran.Next(0, 50)].Code;
+                while(list.FindIndex(x=>x==stop)!=-1)
+                 {
+                     stop = DsStations.stations[ran.Next(0, 50)].Code;
+                }
+                list.Add(stop);
+
             }
             return list;
         }

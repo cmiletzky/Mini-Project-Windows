@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class station
+    public class Station
     {
 
         int code;
@@ -19,7 +19,7 @@ namespace BO
         public string Name { get => name; set => name = value; }
         public int Code { get => code; set => code = value; }
 
-        public station(int code, string name, int longtitude, int latitude)
+        public Station(int code, string name, int longtitude, int latitude)
         {
             this.code = code;
             this.name = name;

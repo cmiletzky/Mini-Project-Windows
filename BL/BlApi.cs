@@ -11,7 +11,7 @@ namespace BlApi
     public interface IBL
     {
         IEnumerable<BO.Bus> presentAllBus();
-        IEnumerable<BO.station> presentAllStation();
+        IEnumerable<BO.Station> presentAllStation();
         IEnumerable<BO.Line> presentAllLines();
         bool canDrive(BO.Bus bus, ref string mes);
         bool canDrive(BO.Bus bus, ref string mes, string kM);
