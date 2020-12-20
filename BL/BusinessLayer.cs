@@ -13,25 +13,25 @@ namespace BL
 {
     class BusinessLayer : IBL
     {
-        IDAL dal = DalFactory.GetDal();
-        public IEnumerable<BO.Bus> presentAllBus()
+         IDAL dal = DalFactory.GetDal();
+        public IEnumerable<Bus> presentAllBus()
         {
 
-            List<BO.Bus> allBuses = new List<BO.Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
+            List<Bus> allBuses = new List<Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
             foreach (var item in dal.getAllBuses())
             {
-                string a = item.Id.Replace("-","");
-                allBuses.Add(new BO.Bus(a,item.StartDate));
+                string a = item.Id.Replace("-", "");
+                allBuses.Add(new Bus(a, item.StartDate));
             }
             allBuses[0].InDriving = true;
             return allBuses;
         }
 
-       public bool canDrive(BO.Bus bus, ref string mes)
+        public bool canDrive(Bus bus, ref string mes)
         {
             if (bus.InTreamant)
             {
-               mes="bus " + bus.Id + " busy in treatment";
+                mes = "bus " + bus.Id + " busy in treatment";
                 return false;
             }
             else if (bus.InRefule)
@@ -41,35 +41,35 @@ namespace BL
             }
             else if (bus.InDriving)
             {
-                mes="bus number " + bus.Id + " in driving now";
+                mes = "bus number " + bus.Id + " in driving now";
                 return false;
             }
             // if all conditon alow it, sanding the bus
             else
             {
                 return true;
-               
+
             }
         }
 
-        public bool canDrive(BO.Bus bus, ref string mes, string kM)
+        public bool canDrive(Bus bus, ref string mes, string kM)
         {
             if (bus.Gas - int.Parse(kM) <= 0)
             {
-                mes =("there is no enough gas fo driving");
+                mes = ("there is no enough gas fo driving");
                 return false;
             }
             else if (((bus.LsaatTreastKm) + int.Parse(kM)) > 20000)
             {
-                mes ="you need take the bus to treatment, over km treatment";
+                mes = "you need take the bus to treatment, over km treatment";
                 return false;
             }
             else if ((CheckingDate(bus.LastTreatDate.ToString())))
             {
-                mes ="over a year past since the last treatment";
+                mes = "over a year past since the last treatment";
                 return false;
             }
-             // if all the condition is ok take drive and update the right fildes
+            // if all the condition is ok take drive and update the right fildes
             else
             {
 
@@ -112,9 +112,9 @@ namespace BL
 
         }
 
-       public bool Refuell(BO.Bus bus, ref string mes)
+        public bool Refuell(Bus bus, ref string mes)
         {
-            if (bus.Gas==1200)
+            if (bus.Gas == 1200)
             {
                 mes = "The fuel is already full";
                 return false;
@@ -133,20 +133,20 @@ namespace BL
         /// <param name="strDate"></param>
         /// <returns></returns>
         bool CheckingDate(string strDate)
-            {
-                DateTime date1stDate = Convert.ToDateTime(strDate);
-                DateTime dateToday = DateTime.Now.Date;
-
-                TimeSpan ts = dateToday - date1stDate;
-                int days = ts.Days;
-                if (days < 365)
-                    return false;
-                return true;
-            }
-
-       public static bool isUser(string userName, string password)
         {
-           return  dal.dalIsUser( userName,  password);
+            DateTime date1stDate = Convert.ToDateTime(strDate);
+            DateTime dateToday = DateTime.Now.Date;
+
+            TimeSpan ts = dateToday - date1stDate;
+            int days = ts.Days;
+            if (days < 365)
+                return false;
+            return true;
+        }
+
+        public  bool isUser(string userName, string password)
+        {
+            return dal.dalIsUser(userName, password);
         }
     }
-    }
+}
