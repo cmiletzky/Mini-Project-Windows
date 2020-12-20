@@ -11,7 +11,7 @@ namespace DS
     {
         public static List<Bus> buslist = new List<Bus>();// create the list to hold the buss in company
         private static Random gen = new Random();
-        static Random r = new Random(DateTime.Now.Millisecond);
+        static public Random r = new Random(DateTime.Now.Millisecond);
         
       static  DateTime RandomDay()
         {

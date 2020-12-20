@@ -13,8 +13,11 @@ namespace DaLApi
 {
   public  interface IDAL
     {
+        #region station
+      IEnumerable<station> getStations();
+        #endregion
         #region Bus
-         void addBus(Bus busToAdd);
+        void addBus(Bus busToAdd);
          Bus getBus(string id);
          IEnumerable<Bus> getAllBuses();
          void updateBus(Bus bustoUpdate);

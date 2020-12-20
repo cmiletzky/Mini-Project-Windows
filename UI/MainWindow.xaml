@@ -40,7 +40,6 @@
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="i_d" Text="{Binding Id}"  VerticalAlignment="Stretch" Background="{x:Null}" Foreground="#FF268651" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,7" />
 
                             </DataTemplate>
 
@@ -48,16 +47,22 @@
                     </ListBox>
                 </TabItem>
                 <TabItem Header="Stations    " FontSize="18">
-                    <ListBox  x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    <ListBox Grid.Column="0"   x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stops_list_SelectionChanged" >
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-
-                            </DataTemplate>
+                                    <TextBlock x:Name="bus_id" Text="{Binding Code}" Background="{x:Null}"></TextBlock>
+                                </DataTemplate>
 
                         </ListBox.ItemTemplate>
                     </ListBox>
-
+                        <TextBlock x:Name="code_stop" Grid.Column="1"/>
+                    </Grid>
                 </TabItem>
             </TabControl>
 

@@ -8,12 +8,7 @@ namespace DaLApi.DO
 {
     public class configNum
     {
-        static int LineId = 0;
-        public configNum()
-        {
-
-        }
-
+        static int lineId = 0;
         public static int LineId { get => LineId; set => LineId = value; }
     }
 }

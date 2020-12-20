@@ -28,7 +28,7 @@ namespace PIGui
         private void login_maneger_Click(object sender, RoutedEventArgs e)
         {
             
-            if (user_manager.Text == "1" && pas_manager.Text == "1")
+            if (MainWindow.bl.isUser(user_manager.Text, pas_manager.Text))
             {
                 MainWindow.isManager = true;
                 ((MainWindow)Application.Current.MainWindow).main_contect.Visibility = Visibility.Visible;

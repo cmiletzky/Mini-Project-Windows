@@ -148,5 +148,15 @@ namespace BL
         {
             return dal.dalIsUser(userName, password);
         }
+
+       public IEnumerable<station> presentAllStation()
+        {
+            List<station> list = new List<station>();
+            foreach (var item in dal.getStations())
+            {
+                list.Add(new station(item.Code, item.Name, item.Longtitude, item.Latitude));
+            }
+            return list;
+        }
     }
 }

@@ -19,6 +19,16 @@ namespace Dal
                 target.Add(new Bus(a, item.StartDate));
             }
             return (IEnumerable<Bus>)target;
+        } 
+        
+        internal static IEnumerable<station> Clone(this IEnumerable<station> original)
+        {
+            List<station> target = new List<station>();
+            foreach (var item in original)
+            {
+                target.Add(item);
+            }
+            return target;
         }
     }
 }

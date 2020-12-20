@@ -56,6 +56,7 @@ namespace Dal
         #region User
        public bool dalIsUser(string userName, string password)
         {
+            DsUsers.GetUsers();
             int u = DsUsers.Users.FindIndex(x => x.UserName == userName && x.Password == password);
             if (u == -1)
             {
@@ -83,5 +84,11 @@ namespace Dal
             DsUsers.Users.RemoveAt(DsUsers.Users.FindIndex(x => x.UserName == userName));
         }
         #endregion
+
+       public IEnumerable<station> getStations()
+        {
+            DsStations.initializedStation();
+            return DsStations.stations.Clone();
+        }
     }
 }
