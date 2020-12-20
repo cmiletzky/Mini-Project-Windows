@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    class statision
+    public class station
     {
 
         int code;
@@ -18,5 +18,13 @@ namespace DO
         public int Longtitude { get => longtitude; set => longtitude = value; }
         public string Name { get => name; set => name = value; }
         public int Code { get => code; set => code = value; }
+
+        public station(int code, string name, int longtitude, int latitude)
+        {
+            code = code;
+            name = name;
+            longtitude = longtitude;
+            latitude = latitude;
+        }
     }
 }
