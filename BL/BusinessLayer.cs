@@ -13,7 +13,7 @@ namespace BL
 {
     class BusinessLayer : IBL
     {
-         IDAL dal = DalFactory.GetDal();
+        public static IDAL dal = DalFactory.GetDal();
         public IEnumerable<Bus> presentAllBus()
         {
 
@@ -144,7 +144,7 @@ namespace BL
             return true;
         }
 
-        public  bool isUser(string userName, string password)
+        public bool isUser(string userName, string password)
         {
             return dal.dalIsUser(userName, password);
         }

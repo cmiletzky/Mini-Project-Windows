@@ -12,15 +12,13 @@ namespace BL.BO
        public User user;
         public Auth(string userName, string password)
         {
-            if (checkUser(userName,password))
+            BusinessLayer businessLayer = new BusinessLayer();
+            if (businessLayer.isUser(userName, password))
             {
                 user = new User(userName, password);
             }
         }
 
-        public bool checkUser(string userName, string password)
-        {
-            return BL.BusinessLayer.isUser(userName,password);
-        }
+        
     }
 }
