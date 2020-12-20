@@ -13,11 +13,15 @@ namespace Dal
     public sealed class DalObject : IDAL
     {
         private static readonly DalObject instance = new DalObject();
-        static DalObject() { }
+        static DalObject() {
+            DsBuses.intialbus();
+            DsStations.initializedStation();
+            Dslines.intializeLines();
+        }
         private DalObject() { }
         public static DalObject Instance { get { return instance; } }
 
-        #region
+        #region Bus
         void IDAL.addBus(Bus busToAdd)
         {
             DsBuses.buslist.Add(busToAdd);
@@ -40,7 +44,7 @@ namespace Dal
 
         IEnumerable<Bus> IDAL.getAllBuses()
         {
-            DsBuses.intialbus();
+            
             return DsBuses.buslist.Clone();
         }
 
@@ -85,10 +89,21 @@ namespace Dal
         }
         #endregion
 
-       public IEnumerable<Station> getStations()
+       public IEnumerable<int> getStations()
         {
-            DsStations.initializedStation();
+            
             return DsStations.stations.Clone();
+        }
+
+        public static IEnumerable<Line> getLins()
+        {
+            
+            return Dslines.lines.Clone();
+        }
+
+       public static string[] NameStops()
+        {
+            return DsStations.stationListNames;
         }
     }
 }

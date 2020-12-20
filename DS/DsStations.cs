@@ -64,15 +64,15 @@ namespace DS
                                        "העצמאות/וייצמן",
                                        "העצמאות/וייצמן",
                                        "וייצמן/מרבד הקסמים"};
-       public static List<Station> stations = new List<Station>();
-        //Initialize the list of stations with 40 stations
+       public static List<int> stations = new List<int>();
+        //Initialize the list of stations with 50 stations
         public static void initializedStation()
         {
              Random r = new Random(DateTime.Now.Millisecond);
             for (int i = 1; i < 51; i++)
             {
-                Station newStop = new Station(r.Next(100000,999999), stationListNames[i], (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3));
-                stations.Add(newStop);
+                //Station newStop = new Station(r.Next(100000,999999), stationListNames[i], (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3));
+                stations.Add(r.Next(100000, 999999));
             }
         }
 

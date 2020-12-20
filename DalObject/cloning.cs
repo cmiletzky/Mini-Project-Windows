@@ -29,6 +29,15 @@ namespace Dal
                 target.Add(item);
             }
             return target;
+        } 
+        internal static IEnumerable<int> Clone(this IEnumerable<int> original)
+        {
+            List<int> target = new List<int>();
+            foreach (var item in original)
+            {
+                target.Add(item);
+            }
+            return target;
         }
     }
 }

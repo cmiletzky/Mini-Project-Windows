@@ -151,10 +151,33 @@ namespace BL
 
        public IEnumerable<station> presentAllStation()
         {
+            int i = 0;
+            Random r = new Random(DateTime.Now.Millisecond);
             List<station> list = new List<station>();
             foreach (var item in dal.getStations())
             {
-                list.Add(new station(item.Code, item.Name, item.Longtitude, item.Latitude));
+                list.Add(new station(item, dal.NameStops()[i], (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+                i++;
+            }
+            return list;
+        }
+        IEnumerable<Line> presentAllLines()
+        {
+            List<Line> lines = new List<Line>();
+            foreach (var item in dal.getLins())
+            {
+                lines.Add(new Line(item.Id,1, item.FirstStation, item.LastStation,initializeStops(item.StationList)));
+            }
+            return lines;
+        }
+
+         public static List<StopOfLine> initializeStops(List<int> j) 
+        {
+            List<StopOfLine> list = new List<StopOfLine>();
+            for (int i = 0; i < 10; i++)
+            {
+               // List<int> gg = from item in dal.getStations() where item.Code == j[i] select item.Code;
+                list.Add(new StopOfLine(i + 2 * i, from item in dal.getStations() where item == j[i] select item, i)); ;
             }
             return list;
         }

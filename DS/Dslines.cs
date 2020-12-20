@@ -8,28 +8,27 @@ using DO;
 
 namespace DS
 {
-    class Dslines
+   public class Dslines
     {
-        Random ran = new Random(DateTime.Now.Millisecond);
-        List<DO.Line> lines = new List<DO.Line>();
+       public static Random ran = new Random(DateTime.Now.Millisecond);
+      public static  List<DO.Line> lines = new List<DO.Line>();
 
 
-        void intializeLines()
+       public static void intializeLines()
         {
-            
             for (int i = 0; i < 10; i++)
             {
-                List<StopOfLine> list = initializeStops(i + 2 * i);
-                lines.Add(new Line(i + 2 * i, 1, list[0].Id, list[9].Id, list));
+                List<int> list = initializeStops();
+                lines.Add(new Line(i + 2 * i, ran.Next(1,6), list[0], list[9], list));
             }
         }
 
-        List<StopOfLine> initializeStops(int j) 
+       public static List<int> initializeStops() 
         {
-            List<StopOfLine> list = new List<StopOfLine>();
+            List<int> list = new List<int>();
             for (int i = 0; i < 10; i++)
             {
-                list.Add(new StopOfLine(j, DsStations.stations[ran.Next(0, 50)].Code, i));
+                list[i]= DsStations.stations[ran.Next(0, 50)];
             }
             return list;
         }

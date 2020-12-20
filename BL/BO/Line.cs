@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DaLApi.DO;
 using DO;
 
-namespace DO
+namespace BO
 {
     public enum Areas                                                  // definde enum for area value
     {
@@ -19,7 +19,7 @@ namespace DO
         Areas area;
         int firstStation;
         int lastStation;
-        List<int> stationList = new List<int>();
+        List<StopOfLine> stationList = new List<StopOfLine>();
 
 
 
@@ -28,9 +28,9 @@ namespace DO
         public int FirstStation { get => firstStation; set => firstStation = value; }
         public int LastStation { get => lastStation; set => lastStation = value; }
         internal Areas Area { get => area; set => area = value; }
-        public List<int> StationList { get => stationList; set => stationList = value; }
+        public List<StopOfLine> StationList { get => stationList; set => stationList = value; }
 
-        public Line(int lineNum, int area, int firstStation, int lastStation, List<int> stationList)
+        public Line(int lineNum, int area, int firstStation, int lastStation, List<StopOfLine> stationList)
         {
             this.id = configNum.LineId++;
             this.lineNum = lineNum;
