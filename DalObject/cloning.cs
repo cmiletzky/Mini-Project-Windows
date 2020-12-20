@@ -21,9 +21,9 @@ namespace Dal
             return (IEnumerable<Bus>)target;
         } 
         
-        internal static IEnumerable<station> Clone(this IEnumerable<station> original)
+        internal static IEnumerable<Station> Clone(this IEnumerable<Station> original)
         {
-            List<station> target = new List<station>();
+            List<Station> target = new List<Station>();
             foreach (var item in original)
             {
                 target.Add(item);

@@ -19,6 +19,8 @@ namespace DO
         Areas area;
         int firstStation;
         int lastStation;
+        List<StopOfLine> stationList = new List<StopOfLine>();
+
 
 
         public int Id { get => id; set => id = value; }
@@ -26,14 +28,16 @@ namespace DO
         public int FirstStation { get => firstStation; set => firstStation = value; }
         public int LastStation { get => lastStation; set => lastStation = value; }
         internal Areas Area { get => area; set => area = value; }
+        public List<StopOfLine> StationList { get => stationList; set => stationList = value; }
 
-        public Line(int id, int lineNum, Areas area, int firstStation, int lastStation)
+        public Line( int lineNum, Areas area, int firstStation, int lastStation, List<StopOfLine> stationList)
         {
-            id = configNum.LineId++ ;
-            lineNum = lineNum;
-            area = area;
-            firstStation = firstStation;
-            lastStation = lastStation;
+            this.id = configNum.LineId++ ;
+            this.lineNum = lineNum;
+            this.area = area;
+            this.firstStation = firstStation;
+            this.lastStation = lastStation;
+            this.stationList = stationList;
         }
     }
 }

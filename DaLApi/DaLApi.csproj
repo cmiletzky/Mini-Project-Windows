@@ -48,7 +48,8 @@
     <Compile Include="DO\Line.cs" />
     <Compile Include="DO\LineStatision.cs" />
     <Compile Include="DO\LineTrip.cs" />
-    <Compile Include="DO\station.cs" />
+    <Compile Include="DO\Station.cs" />
+    <Compile Include="DO\StopOfLine.cs" />
     <Compile Include="DO\Trip.cs" />
     <Compile Include="DO\User.cs" />
     <Compile Include="IDAL.cs" />

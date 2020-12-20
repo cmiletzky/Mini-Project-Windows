@@ -85,7 +85,7 @@ namespace Dal
         }
         #endregion
 
-       public IEnumerable<station> getStations()
+       public IEnumerable<Station> getStations()
         {
             DsStations.initializedStation();
             return DsStations.stations.Clone();
