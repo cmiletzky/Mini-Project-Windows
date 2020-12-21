@@ -60,10 +60,10 @@ namespace Dal
         #endregion
 
         #region User
-       public bool dalIsUser(string userName, string password)
+       public bool dalIsUser(string userName, string password, bool isMang)
         {
             DsUsers.GetUsers();
-            int u = DsUsers.Users.FindIndex(x => x.UserName == userName && x.Password == password);
+            int u = DsUsers.Users.FindIndex(x => x.UserName == userName && x.Password == password && x.Admin==isMang);
             if (u == -1)
             {
                 return false;

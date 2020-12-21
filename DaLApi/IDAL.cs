@@ -27,7 +27,7 @@ namespace DaLApi
         #endregion
 
         #region User
-        bool dalIsUser(string userName, string password);
+        bool dalIsUser(string userName, string password, bool isMang);
         List<User> getUsers();
         void addUser(User user);
         void editUser(User user);

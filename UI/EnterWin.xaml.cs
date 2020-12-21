@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BO;
 using BlApi;
+using BL.BO;
 
 namespace PIGui
 {
@@ -21,17 +22,21 @@ namespace PIGui
     /// </summary>
     public partial class EnterWin : Window
     {
+        public static IBL bl;
         public EnterWin()
         {
             InitializeComponent();
+            bl = BlFactory.GetBl();
         }
         private void login_maneger_Click(object sender, RoutedEventArgs e)
         {
             
-            if (MainWindow.bl.isUser(user_manager.Text, pas_manager.Text))
+            if (bl.isUserMang(user_manager.Text, pas_manager.Text,true))
             {
-                MainWindow.isManager = true;
-                ((MainWindow)Application.Current.MainWindow).main_contect.Visibility = Visibility.Visible;
+                Auth auth = new Auth(user_manager.Text, pas_manager.Text,true);
+               // MainWindow.isManager = true;
+               ((MainWindow)Application.Current.MainWindow).main_contect.Visibility = Visibility.Visible;
+                ((MainWindow)Application.Current.MainWindow).RefreshMenu();
                 Close();
             }
             else

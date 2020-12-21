@@ -71,9 +71,9 @@
 
         </Grid>
         <Menu Height="30"  DockPanel.Dock="Top" VerticalAlignment="Top">
-            <MenuItem Header="registration" Click="MenuItem_Click"/>
-            <MenuItem Header="Login" Click="MenuItem_Click"/>
-            <MenuItem Header="logout" Click="logout_menu"/>
+            <MenuItem x:Name="menu_login" Header="Login / registration" Click="Login_Click"/>
+            <MenuItem x:Name="menu_account" Header="account" Click="Account_Click"/>
+            <MenuItem x:Name="menu_logout" Header="logout" Click="logout_menu"/>
             <MenuItem Header="Contact Us">
                 <MenuItem Header="Sending an email"/>
                 <MenuItem Header="Sending WhatsApp"/>

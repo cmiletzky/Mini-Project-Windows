@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace BL.BO
 {
-    class Auth
+     public class Auth
     {
-       public User user;
-        public Auth(string userName, string password)
+       public static User user;
+        public Auth(string userName, string password,bool isMang)
         {
             BusinessLayer businessLayer = new BusinessLayer();
-            if (businessLayer.isUser(userName, password))
+            if (businessLayer.isUserMang(userName, password,true))
             {
-                user = new User(userName, password);
+                user = new User(userName, password ,isMang);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PIGui
+namespace PL
 {
     /// <summary>
-    /// Interaction logic for LineDetailxaml.xaml
+    /// Interaction logic for Account.xaml
     /// </summary>
-    public partial class LineDetail : Window
+    public partial class Account : Window
     {
-        public LineDetail(BO.Line line)
+        public Account()
         {
             InitializeComponent();
-            Title = "line number "+ line.LineNum.ToString();
+            if (Auth.user!=null)
+            {
+                ee.Text = Auth.user.UserName;
+            }
+           
         }
     }
 }

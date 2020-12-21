@@ -1,5 +1,7 @@
-﻿using BlApi;
+﻿using BL.BO;
+using BlApi;
 using PIGui;
+using PL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,16 @@ namespace PIGui
         public MainWindow()
         {
             InitializeComponent();
-            if (isManager != true)
+            Auth.user = new BO.User();
+            
+            RefreshMenu();
+            //if (Auth.user.UserName==null)
+            //{
+            //    EnterWin enterWin = new EnterWin();
+            //    enterWin.ShowDialog();
+            //}
+
+            if (Auth.user.Admin==false|| Auth.user == null)
             {
                 main_contect.Visibility = Visibility.Hidden;
             }
@@ -46,7 +57,7 @@ namespace PIGui
             line_list.ItemsSource = bl.presentAllLines();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
             EnterWin enterWin = new EnterWin();
             enterWin.ShowDialog();
@@ -95,16 +106,46 @@ namespace PIGui
 
         private void logout_menu(object sender, RoutedEventArgs e)
         {
-            isManager = false;
+            Auth.user = null;
             main_contect.Visibility = Visibility.Hidden;
+            RefreshMenu();
+
+
+            // main_contect.Visibility = Visibility.Hidden;
         }
 
         
 
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BO.Bus busToDetail = (BO.Bus)bus_list.SelectedItem;
-            LineDetail detailDialog = new LineDetail(busToDetail);
+            BO.Line lineToDetail = (BO.Line)line_list.SelectedItem;
+            LineDetail detailDialog = new LineDetail(lineToDetail);
+            detailDialog.Show();
+        }
+
+        private void Account_Click(object sender, RoutedEventArgs e)
+        {
+            Account account = new Account();
+            account.Show();
+        }
+
+    
+
+       public  void RefreshMenu()
+        {
+            if (Auth.user == null||Auth.user.UserName == null)
+            {
+                menu_account.Visibility = Visibility.Collapsed;
+                menu_logout.Visibility = Visibility.Collapsed;
+                menu_login.Visibility = Visibility.Visible; 
+            }
+            else
+            {
+                menu_account.Visibility = Visibility.Visible;
+                menu_logout.Visibility = Visibility.Visible;
+                menu_login.Visibility = Visibility.Collapsed;
+            }
+            
             
         }
     }

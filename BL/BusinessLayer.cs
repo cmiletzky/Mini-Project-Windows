@@ -72,41 +72,12 @@ namespace BL
             // if all the condition is ok take drive and update the right fildes
             else
             {
-
-                Random k = new Random();
-                double trip_time = double.Parse(kM) / k.Next(20, 50);
-                Thread t3 = new Thread(
-                    () =>
-                    {
-
-                        bus.InDriving = true;
-
-
-                        bus.SeePro = "Visible";
-                        bus.Color = "#00FFFF";
-                        bus.Regull = 0;
-                        //Action action1 = () => ((MainWindow)Application.Current.MainWindow).bus_list.Items.Refresh();
-                        //Dispatcher.BeginInvoke(action1);
-                        for (int i = 0; i < 100; i++)
-                        {
-                            bus.refull += 1;
-
-                            Thread.Sleep((int)trip_time * 6000 / 100);
-                            //Action action2 = () => ((MainWindow)Application.Current.MainWindow).bus_list.Items.Refresh();
-                            //Dispatcher.BeginInvoke(action2);
-                        }
-                        bus.Color = "";
-                        bus.InDriving = false;
-                        bus.SeePro = "Hidden";
-                        //MessageBox.Show("bus number " + busToDriv.Id + " finish his trip");
-                    }
-                    );
-                t3.Start();
+              //  Random k = new Random();
+               // double trip_time = double.Parse(kM) / k.Next(20, 50);
+                bus.InDriving = true;
                 bus.Km += int.Parse(kM);
                 bus.LsaatTreastKm += int.Parse(kM);
                 bus.Gas -= int.Parse(kM);
-                //((MainWindow)Application.Current.MainWindow).bus_list.Items.Refresh();
-                //Close();
                 return true;
             }
 
@@ -144,9 +115,9 @@ namespace BL
             return true;
         }
 
-        public bool isUser(string userName, string password)
+        public bool isUserMang(string userName, string password ,bool isMang)
         {
-            return dal.dalIsUser(userName, password);
+            return dal.dalIsUser(userName, password,isMang);
         }
 
        public IEnumerable<Station> presentAllStation()

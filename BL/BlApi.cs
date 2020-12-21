@@ -17,7 +17,7 @@ namespace BlApi
         bool canDrive(BO.Bus bus, ref string mes, string kM);
         bool Refuell(BO.Bus bus, ref string mes);
 
-        bool isUser(string userName, string password);
+        bool isUserMang(string userName, string password, bool isMang);
     }
     public static class BlFactory
     {

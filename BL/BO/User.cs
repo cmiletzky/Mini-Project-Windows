@@ -16,7 +16,7 @@ namespace BO
         public string Password { get => password; set => password = value; }
         public bool Admin { get => admin; set => admin = value; }
 
-        public User(string userName,string password,bool admin = false)
+        public User(string userName = null,string password=null ,bool admin = false)
         {
             UserName = userName;
             Password = password;
