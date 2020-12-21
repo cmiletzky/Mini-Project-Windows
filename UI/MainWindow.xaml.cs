@@ -92,6 +92,12 @@ namespace PIGui
             BO.Station busToDetail = (BO.Station)stops_list.Items[stops_list.SelectedIndex];
             code_stop.Text = busToDetail.Code.ToString();
         }
+
+        private void logout_menu(object sender, RoutedEventArgs e)
+        {
+            isManager = false;
+            main_contect.Visibility = Visibility.Hidden;
+        }
     }
 }
 
