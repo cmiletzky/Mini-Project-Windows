@@ -103,8 +103,9 @@ namespace PIGui
 
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            LineDetail
-
+            BO.Bus busToDetail = (BO.Bus)bus_list.SelectedItem;
+            LineDetail detailDialog = new LineDetail(busToDetail);
+            
         }
     }
 }

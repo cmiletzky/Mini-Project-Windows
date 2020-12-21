@@ -12,16 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL
+namespace PIGui
 {
     /// <summary>
     /// Interaction logic for LineDetailxaml.xaml
     /// </summary>
     public partial class LineDetail : Window
     {
-        public LineDetail()
+        public LineDetail(BO.Line line)
         {
             InitializeComponent();
+
+
+
         }
     }
 }
