@@ -35,7 +35,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </TabItem>
-                <TabItem Header="Lines    " FontSize="18" >
+                <TabItem Header="Lines    " FontSize="18" MouseDoubleClick="Lines_MouseDoubleClick" >
                     <ListBox   x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
 
                         <ListBox.ItemTemplate>

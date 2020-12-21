@@ -98,6 +98,14 @@ namespace PIGui
             isManager = false;
             main_contect.Visibility = Visibility.Hidden;
         }
+
+        
+
+        private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            LineDetail
+
+        }
     }
 }
 
