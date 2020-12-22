@@ -64,6 +64,9 @@
     <Compile Include="LineDetail.xaml.cs">
       <DependentUpon>LineDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewBus.xaml.cs">
+      <DependentUpon>NewBus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StartTrip.xaml.cs">
       <DependentUpon>StartTrip.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewBus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StartTrip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

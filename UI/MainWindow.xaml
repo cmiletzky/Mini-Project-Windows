@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL.UserControls"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        Title="Main" Height="450" Width="800">
+        Title="Main" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>
@@ -17,11 +17,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            <local:MainMangCont Grid.Column="0" x:Name="manager_cont" />
+            <local:MainMangCont Grid.Column="0" x:Name="manager_cont" Margin="15" />
             
         </Grid>
         <Menu Height="30"  DockPanel.Dock="Top" VerticalAlignment="Top">
-            <MenuItem x:Name="menu_login" Header="Login / registration" Click="Login_Click"/>
+            <MenuItem x:Name="menu_login" Header="Login / registration" Click="Login_Click">
+               
+            </MenuItem>
             <MenuItem x:Name="menu_account" Header="account" Click="Account_Click"/>
             <MenuItem x:Name="menu_logout" Header="logout" Click="logout_menu"/>
             <MenuItem Header="Contact Us">

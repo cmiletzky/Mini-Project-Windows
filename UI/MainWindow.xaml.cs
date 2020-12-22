@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -40,6 +41,7 @@ namespace PL
             if (Auth.user.Admin == false || Auth.user == null)
             {
                 manager_cont.Visibility = Visibility.Hidden;
+             
             }
             else
             {
@@ -59,7 +61,7 @@ namespace PL
         private void logout_menu(object sender, RoutedEventArgs e)
         {
             Auth.user = null;
-            main_contect.Visibility = Visibility.Collapsed;
+            manager_cont.Visibility = Visibility.Collapsed;
             RefreshMenu();
 
 
@@ -87,6 +89,11 @@ namespace PL
             }
 
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

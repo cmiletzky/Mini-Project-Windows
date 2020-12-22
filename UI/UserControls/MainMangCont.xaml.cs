@@ -71,14 +71,24 @@ namespace PL.UserControls
         private void bus_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.Bus busToDetail = (BO.Bus)bus_list.SelectedItem;
-            BusDetails detailDialog = new BusDetails(busToDetail);
-            detailDialog.Show();
+            if (busToDetail!=null)
+            {
+                BusDetails detailDialog = new BusDetails(busToDetail);
+                detailDialog.Show();
+            }
+          
         }
 
         private void stops_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             BO.Station busToDetail = (BO.Station)stops_list.Items[stops_list.SelectedIndex];
             code_stop.Text = busToDetail.Code.ToString();
+        }
+
+        private void add_bus_Click(object sender, RoutedEventArgs e)
+        {
+            NewBus newBus = new NewBus();
+            newBus.Show();
         }
     }
 }
