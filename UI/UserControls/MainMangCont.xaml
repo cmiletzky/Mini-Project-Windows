@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="PL.UserControls.MainMangCont"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TabControl Grid.Column="0">
+            <TabItem Header="Buses    " FontSize="18">
+                <ListBox  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" MouseDoubleClick="bus_list_MouseDoubleClick" >
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="#FF351A1A" HorizontalAlignment="Center" Margin="1,0" Padding="3,0,0,0">
+                                <Grid>
+                                    <TextBlock x:Name="bus_id" Text="{Binding Id}" Background="{x:Null}"></TextBlock>
+                                    <Button  Click="Start_driving" FontSize="16" Padding="5" Margin="100,7,7,7" Width="100" Content="Start driving" IsEnabled="true" Background="#FFE0F7BA" BorderBrush="#FF268651" Foreground="#FF268651" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <Button x:Name="refule"   Padding="5" Margin="210,7,7,7" Width="100" Content="refueling" IsEnabled="True" Click="Refueling" BorderBrush="#FF268651" Foreground="#FF268651" Background="#FFE0F7BA" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            <TabItem Header="Lines    " FontSize="18" MouseDoubleClick="Lines_MouseDoubleClick" >
+                <ListBox   x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3"  >
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="line_id" Text="{Binding LineNum}" Background="{x:Null}"></TextBlock>
+
+                        </DataTemplate>
+
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            <TabItem Header="Stations    " FontSize="18">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox Grid.Column="0"   x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stops_list_SelectionChanged" >
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="bus_id" Text="{Binding Code}" Background="{x:Null}"></TextBlock>
+                            </DataTemplate>
+
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock x:Name="code_stop" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

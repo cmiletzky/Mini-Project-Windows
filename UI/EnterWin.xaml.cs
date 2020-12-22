@@ -15,7 +15,7 @@ using BO;
 using BlApi;
 using BL.BO;
 
-namespace PIGui
+namespace PL
 {
     /// <summary>
     /// Interaction logic for EnterWin.xaml
@@ -34,8 +34,7 @@ namespace PIGui
             if (bl.isUserMang(user_manager.Text, pas_manager.Text,true))
             {
                 Auth auth = new Auth(user_manager.Text, pas_manager.Text,true);
-               // MainWindow.isManager = true;
-               ((MainWindow)Application.Current.MainWindow).main_contect.Visibility = Visibility.Visible;
+               ((MainWindow)Application.Current.MainWindow).manager_cont.Visibility = Visibility.Visible;
                 ((MainWindow)Application.Current.MainWindow).RefreshMenu();
                 Close();
             }
