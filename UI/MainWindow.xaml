@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            <local:MainMangCont Grid.Column="0" x:Name="manager_cont" Visibility="Collapsed"/>
+            <local:MainMangCont Grid.Column="0" x:Name="manager_cont" />
             
         </Grid>
         <Menu Height="30"  DockPanel.Dock="Top" VerticalAlignment="Top">
@@ -28,7 +28,7 @@
                 <MenuItem Header="Sending an email"/>
                 <MenuItem Header="Sending WhatsApp"/>
             </MenuItem>
-            <DocumentViewer/>
+           
         </Menu>
 
     </Grid>
