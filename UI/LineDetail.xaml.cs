@@ -22,7 +22,9 @@ namespace PL
         public LineDetail(BO.Line line)
         {
             InitializeComponent();
-            Title = "line number "+ line.LineNum.ToString();
+            Title = "line number " + line.LineNum.ToString();
+
+
         }
     }
 }

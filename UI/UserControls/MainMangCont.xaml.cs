@@ -32,8 +32,12 @@ namespace PL.UserControls
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.Line lineToDetail = (BO.Line)line_list.SelectedItem;
-            LineDetail detailDialog = new LineDetail(lineToDetail);
-            detailDialog.Show();
+            if (lineToDetail!=null)
+            {
+                LineDetail detailDialog = new LineDetail(lineToDetail);
+                detailDialog.Show();
+            }
+          
         }
 
         private void Start_driving(object sender, RoutedEventArgs e)
