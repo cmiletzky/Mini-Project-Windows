@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,7 @@ namespace PL.UserControls
         private void Start_driving(object sender, RoutedEventArgs e)
         {
             Button cmd = (Button)sender;
-            BO.Bus busToTrip = (BO.Bus)cmd.DataContext;
+            Bus busToTrip = (Bus)cmd.DataContext;
 
 
             canDrive = MainWindow.bl.canDrive(busToTrip, ref MainWindow.arrMes);
@@ -65,7 +66,7 @@ namespace PL.UserControls
         private void Refueling(object sender, RoutedEventArgs e)
         {
             Button cmd = (Button)sender;
-            BO.Bus busToRrfuell = (BO.Bus)cmd.DataContext;
+            Bus busToRrfuell = (Bus)cmd.DataContext;
             if (MainWindow.bl.Refuell(busToRrfuell, ref MainWindow.arrMes) == false)
             {
                 MessageBox.Show(MainWindow.arrMes);
@@ -74,7 +75,7 @@ namespace PL.UserControls
 
         private void bus_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BO.Bus busToDetail = (BO.Bus)bus_list.SelectedItem;
+            Bus busToDetail = (Bus)bus_list.SelectedItem;
             if (busToDetail != null)
             {
                 BusDetails detailDialog = new BusDetails(busToDetail);
@@ -103,8 +104,10 @@ namespace PL.UserControls
         private void remove_bus_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            BO.Bus busToRemove = (BO.Bus)bus_list.Items[bus_list.SelectedIndex];
-           // MainWindow.bl.RemoveBus(busToRemove);
+            Bus busToRemove = (Bus)bus_list.Items[bus_list.SelectedIndex];
+            MainWindow.bl.RemoveBus(busToRemove);
+            bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
+            bus_list.Items.Refresh();
         }
     }
 }

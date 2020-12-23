@@ -24,7 +24,7 @@ namespace DaLApi
          Bus getBus(string id);
          IEnumerable<Bus> getAllBuses(bool run);
          void updateBus(Bus bustoUpdate);
-         void Delete(Bus bustoDelete);
+         void DeleteBus(string BusId);
          Bus isBus(Bus x);
         #endregion
 

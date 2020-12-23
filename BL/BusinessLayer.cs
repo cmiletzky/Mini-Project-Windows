@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using BlApi;
 using DaLApi;
 using BO;
-
+using BL.BO;
 
 namespace BL
 {
@@ -21,12 +21,22 @@ namespace BL
             foreach (var item in dal.getAllBuses(run))
             {
                 string a = item.Id.Replace("-", "");
-                allBuses.Add(new Bus(a, item.StartDate));
+                if (item.IsActive!=false)
+                {
+                    Bus bus = new Bus(a, item.StartDate);
+                    bus.IsActive = item.IsActive;
+                    allBuses.Add(bus);
+                }
+                
             }
             allBuses[0].InDriving = true;
             return allBuses;
         }
 
+       public void RemoveBus(Bus busToRemove)
+        {
+            dal.DeleteBus(busToRemove.Id);
+        }
         public void AddBus(string busNam, DateTime? startDate)
         {
             if (dal.BusAlreadyExists(busNam))

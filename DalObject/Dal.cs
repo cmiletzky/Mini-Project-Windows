@@ -51,15 +51,15 @@ namespace Dal
             DsBuses.buslist[busID] = bustoUpdate;
 
         }
-        void IDAL.Delete(Bus bustoDelete)
+        void IDAL.DeleteBus(string busId)
         {
-            int busID = DsBuses.buslist.FindIndex(x => x.Id == bustoDelete.Id);
+            int busID = DsBuses.buslist.FindIndex(x => x.Id == busId);
             DsBuses.buslist[busID].IsActive = false;
         }
 
         IEnumerable<Bus> IDAL.getAllBuses(bool run)
         {
-            if (run=true)
+            if (run==true)
             {
                 DsBuses.intialbus();
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,8 @@ namespace PL
     /// </summary>
     public partial class StartTrip : Window
     {
-        BO.Bus busToTrip;
-        public StartTrip(BO.Bus busTo, Button cmd)
+        Bus busToTrip;
+        public StartTrip(Bus busTo, Button cmd)
         {
             InitializeComponent();
             busToTrip = busTo;

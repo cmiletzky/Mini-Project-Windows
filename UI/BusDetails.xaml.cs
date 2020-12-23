@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace PL
     /// </summary>
     public partial class BusDetails : Window
     {
-        public BusDetails(BO.Bus bus)
+        public BusDetails(Bus bus)
         {
           //  BO.Bus busIndexSelcted = ((MainWindow)Application.Current.MainWindow).bus_list[((MainWindow)Application.Current.MainWindow).bus_list.SelectedIndex];
             InitializeComponent();

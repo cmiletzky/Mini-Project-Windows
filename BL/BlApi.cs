@@ -5,18 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 using BL;
+using BL.BO;
 
 namespace BlApi
 {
     public interface IBL
     {
+        void RemoveBus(Bus busToRemove);
         void AddBus(string busNam, DateTime? startDate);
-        IEnumerable<BO.Bus> presentAllBus(bool run);
+        IEnumerable<Bus> presentAllBus(bool run);
         IEnumerable<BO.Station> presentAllStation();
         IEnumerable<BO.Line> presentAllLines();
-        bool canDrive(BO.Bus bus, ref string mes);
-        bool canDrive(BO.Bus bus, ref string mes, string kM);
-        bool Refuell(BO.Bus bus, ref string mes);
+        bool canDrive(Bus bus, ref string mes);
+        bool canDrive(Bus bus, ref string mes, string kM);
+        bool Refuell(Bus bus, ref string mes);
 
         bool isUserMang(string userName, string password, bool isMang);
     }

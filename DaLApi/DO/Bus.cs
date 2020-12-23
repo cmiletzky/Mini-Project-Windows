@@ -23,9 +23,10 @@ namespace DO
         public string see_pro = "Hidden";
         int time;
         bool isActive = true;
-        public bool IsActive { get; set; }
+
 
         //function get & set
+        public bool IsActive { get {return isActive; } set { isActive = value; } }
         public int Time { get { return time; } set { time = value; } }
         public string SeePro { get { return see_pro; } set { see_pro = value; } }
         public double Regull { get { return refull; } set { refull = value; } }
