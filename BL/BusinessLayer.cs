@@ -14,11 +14,11 @@ namespace BL
     class BusinessLayer : IBL
     {
         public static IDAL dal = DalFactory.GetDal();
-        public IEnumerable<Bus> presentAllBus()
+        public IEnumerable<Bus> presentAllBus(bool run)
         {
 
             List<Bus> allBuses = new List<Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
-            foreach (var item in dal.getAllBuses())
+            foreach (var item in dal.getAllBuses(run))
             {
                 string a = item.Id.Replace("-", "");
                 allBuses.Add(new Bus(a, item.StartDate));
@@ -27,6 +27,18 @@ namespace BL
             return allBuses;
         }
 
+        public void AddBus(string busNam, DateTime? startDate)
+        {
+            if (dal.BusAlreadyExists(busNam))
+            {
+                throw new Exception("The bus already exists in the system");
+            }
+            else
+            {
+                dal.addBus(busNam, startDate);
+            }
+            
+        }
         public bool canDrive(Bus bus, ref string mes)
         {
             if (bus.InTreamant)

@@ -24,9 +24,22 @@ namespace Dal
         public static DalObject Instance { get { return instance; } }
 
         #region Bus
-        void IDAL.addBus(Bus busToAdd)
+
+       public bool BusAlreadyExists(string busNam)
         {
-            DsBuses.buslist.Add(busToAdd);
+            foreach (var item in DsBuses.buslist)
+            {
+               string a= item.Id.Replace("-", "");
+                if (a==busNam)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        void IDAL.addBus(string busNam, DateTime? startDate)
+        {
+            DsBuses.buslist.Add(new Bus(busNam,startDate));
         }
         Bus IDAL.getBus(string id)
         {
@@ -44,9 +57,13 @@ namespace Dal
             DsBuses.buslist[busID].IsActive = false;
         }
 
-        IEnumerable<Bus> IDAL.getAllBuses()
+        IEnumerable<Bus> IDAL.getAllBuses(bool run)
         {
-            DsBuses.intialbus();
+            if (run=true)
+            {
+                DsBuses.intialbus();
+            }
+            
             return DsBuses.buslist.Clone();
         }
 

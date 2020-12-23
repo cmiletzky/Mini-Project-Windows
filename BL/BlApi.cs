@@ -10,7 +10,8 @@ namespace BlApi
 {
     public interface IBL
     {
-        IEnumerable<BO.Bus> presentAllBus();
+        void AddBus(string busNam, DateTime? startDate);
+        IEnumerable<BO.Bus> presentAllBus(bool run);
         IEnumerable<BO.Station> presentAllStation();
         IEnumerable<BO.Line> presentAllLines();
         bool canDrive(BO.Bus bus, ref string mes);

@@ -18,9 +18,11 @@ namespace DaLApi
         #endregion
 
         #region Bus
-        void addBus(Bus busToAdd);
+
+        bool BusAlreadyExists(string busNam);
+        void addBus(string busNam,DateTime? startDate);
          Bus getBus(string id);
-         IEnumerable<Bus> getAllBuses();
+         IEnumerable<Bus> getAllBuses(bool run);
          void updateBus(Bus bustoUpdate);
          void Delete(Bus bustoDelete);
          Bus isBus(Bus x);

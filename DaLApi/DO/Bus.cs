@@ -10,7 +10,7 @@ namespace DO
     {
 
         private string id;
-        private DateTime start_date;
+        private DateTime? start_date;
         private int km = 0;
         private int last_treat_km;
         private int gas = 0;
@@ -31,7 +31,7 @@ namespace DO
         public double Regull { get { return refull; } set { refull = value; } }
         public string Color { get { return color; } set { color = value; } }
         public string Id { get { return id; } set { id = value; } }
-        public DateTime StartDate { get { return start_date; } set { start_date = value; } }
+        public DateTime? StartDate { get { return start_date; } set { start_date = value; } }
         public int Km { get { return km; } set { km = value; } }
         public int LsaatTreastKm { get { return last_treat_km; } set { last_treat_km = value; } }
         public int Gas { get { return gas; } set { gas = value; } }
@@ -43,7 +43,7 @@ namespace DO
 
 
         //constractor
-        public Bus(string id, DateTime start_date)
+        public Bus(string id, DateTime? start_date)
         {
             this.id = print_car_number(id);
             this.start_date = start_date;

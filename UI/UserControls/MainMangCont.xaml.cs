@@ -24,11 +24,12 @@ namespace PL.UserControls
         public MainMangCont()
         {
             InitializeComponent();
-            bus_list.ItemsSource = MainWindow.bl.presentAllBus();
+            
+            bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
             stops_list.ItemsSource = MainWindow.bl.presentAllStation();
             line_list.ItemsSource = MainWindow.bl.presentAllLines();
         }
-
+    
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.Line lineToDetail = (BO.Line)line_list.SelectedItem;

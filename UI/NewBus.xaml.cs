@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,7 +50,26 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          //  MainWindow.bl.AddBus(new_bus_id.Text,date_start.SelectedDate);
+            try
+            {
+                MainWindow.bl.AddBus(new_bus_id.Text, date_start.SelectedDate);
+
+                
+                //foreach (UserControl window in Application.Current.Windows)
+                //{
+                //    if (window.GetType() == typeof(MainMangCont))
+                //    {
+                //        (window as MainMangCont).bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
+                //    }
+                //}
+                MessageBox.Show("The bus was successfully added 🤗🤗", "successfully", MessageBoxButton.OK);
+                Close();
+            }
+            catch (Exception mes)
+            {
+                MessageBox.Show(mes.Message);
+            }
+          
         }
     }
 }
