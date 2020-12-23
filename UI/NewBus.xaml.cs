@@ -21,9 +21,11 @@ namespace PL
     /// </summary>
     public partial class NewBus : Window
     {
-        public NewBus()
+        ListBox list;
+        public NewBus(ref ListBox listBox)
         {
             InitializeComponent();
+            list = listBox;
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -53,15 +55,7 @@ namespace PL
             try
             {
                 MainWindow.bl.AddBus(new_bus_id.Text, date_start.SelectedDate);
-
-                
-                //foreach (UserControl window in Application.Current.Windows)
-                //{
-                //    if (window.GetType() == typeof(MainMangCont))
-                //    {
-                //        (window as MainMangCont).bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
-                //    }
-                //}
+                list.ItemsSource = MainWindow.bl.presentAllBus(false);
                 MessageBox.Show("The bus was successfully added 🤗🤗", "successfully", MessageBoxButton.OK);
                 Close();
             }

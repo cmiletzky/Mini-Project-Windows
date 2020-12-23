@@ -30,12 +30,16 @@
 
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Grid Grid.Column="3">
+                    <Grid Grid.Column="1">
+                        <Button x:Name="remove_bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="39,353,176.333,30.333" Click="remove_bus_Click" VerticalAlignment="Center" Content="Remove bus"/>
+                        <Button x:Name="update_bus" Content="Update bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="160,353,61.333,30.333" Click="update_bus_Click" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.271,0.533"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
                         <Button x:Name="add_bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="0,10,-0.333,373.333" Click="add_bus_Click">
                             <TextBlock Text="Add new bus" TextAlignment="Center"/>
                         </Button>
                     </Grid>
-                  </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="Lines    " FontSize="18" MouseDoubleClick="Lines_MouseDoubleClick" >
                 <Grid>

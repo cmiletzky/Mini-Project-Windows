@@ -73,6 +73,7 @@ namespace PL
             Account account = new Account();
             account.Show();
         }
+
         public void RefreshMenu()
         {
             if (Auth.user == null || Auth.user.UserName == null)
@@ -93,7 +94,7 @@ namespace PL
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            new EnterWin().ShowDialog();
         }
     }
 }

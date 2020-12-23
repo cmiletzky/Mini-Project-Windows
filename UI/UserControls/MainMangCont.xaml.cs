@@ -21,24 +21,27 @@ namespace PL.UserControls
     public partial class MainMangCont : UserControl
     {
         public static bool canDrive = false;
+
         public MainMangCont()
         {
-            InitializeComponent();
             
+            InitializeComponent();
+
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
             stops_list.ItemsSource = MainWindow.bl.presentAllStation();
             line_list.ItemsSource = MainWindow.bl.presentAllLines();
         }
-    
+
+       
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.Line lineToDetail = (BO.Line)line_list.SelectedItem;
-            if (lineToDetail!=null)
+            if (lineToDetail != null)
             {
                 LineDetail detailDialog = new LineDetail(lineToDetail);
                 detailDialog.Show();
             }
-          
+
         }
 
         private void Start_driving(object sender, RoutedEventArgs e)
@@ -72,12 +75,12 @@ namespace PL.UserControls
         private void bus_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.Bus busToDetail = (BO.Bus)bus_list.SelectedItem;
-            if (busToDetail!=null)
+            if (busToDetail != null)
             {
                 BusDetails detailDialog = new BusDetails(busToDetail);
                 detailDialog.Show();
             }
-          
+
         }
 
         private void stops_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -88,8 +91,20 @@ namespace PL.UserControls
 
         private void add_bus_Click(object sender, RoutedEventArgs e)
         {
-            NewBus newBus = new NewBus();
+            NewBus newBus = new NewBus(ref bus_list);
             newBus.Show();
+        }
+
+        private void update_bus_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void remove_bus_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            BO.Bus busToRemove = (BO.Bus)bus_list.Items[bus_list.SelectedIndex];
+           // MainWindow.bl.RemoveBus(busToRemove);
         }
     }
 }
