@@ -105,7 +105,10 @@ namespace PL.UserControls
 
         private void remove_bus_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (bus_list.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the bus you want to remove");
+            }else if(MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Bus busToRemove = (Bus)bus_list.Items[bus_list.SelectedIndex];
                 MainWindow.bl.RemoveBus(busToRemove);
