@@ -1,4 +1,5 @@
 ﻿using BL.BO;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,21 +23,22 @@ namespace PL.UserControls
     public partial class MainMangCont : UserControl
     {
         public static bool canDrive = false;
-
+      
         public MainMangCont()
         {
             
             InitializeComponent();
-
+            
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
             stops_list.ItemsSource = MainWindow.bl.presentAllStation();
             line_list.ItemsSource = MainWindow.bl.presentAllLines();
+            
         }
 
        
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BO.Line lineToDetail = (BO.Line)line_list.SelectedItem;
+            BO.LineBus lineToDetail = (BO.LineBus)line_list.SelectedItem;
             if (lineToDetail != null)
             {
                 LineDetail detailDialog = new LineDetail(lineToDetail);
@@ -103,11 +105,22 @@ namespace PL.UserControls
 
         private void remove_bus_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            Bus busToRemove = (Bus)bus_list.Items[bus_list.SelectedIndex];
-            MainWindow.bl.RemoveBus(busToRemove);
-            bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
-            bus_list.Items.Refresh();
+            if(MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Bus busToRemove = (Bus)bus_list.Items[bus_list.SelectedIndex];
+                MainWindow.bl.RemoveBus(busToRemove);
+                bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
+                //bus_list.Items.Refresh();
+            }
+           
+        }
+
+        private void line_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+         
+            LineBus n = (LineBus)line_list.Items[line_list.SelectedIndex];
+            stop_of_line.ItemsSource = n.StationList;
+            stop_of_line.DisplayMemberPath = "Id";
         }
     }
 }

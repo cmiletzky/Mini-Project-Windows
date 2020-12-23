@@ -8,7 +8,6 @@ namespace DO
 {
    public class Bus
     {
-
         private string id;
         private DateTime? start_date;
         private int km = 0;

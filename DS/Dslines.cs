@@ -11,7 +11,7 @@ namespace DS
    public class Dslines
     {
        public static Random ran = new Random(DateTime.Now.Millisecond);
-      public static  List<DO.Line> lines = new List<DO.Line>();
+      public static  List<DO.LineBus> lines = new List<DO.LineBus>();
 
 
        public static void intializeLines()
@@ -19,7 +19,7 @@ namespace DS
             for (int i = 0; i < 10; i++)
             {
                 List<int> list = initializeStops();
-                lines.Add(new Line(ran.Next(1,300), ran.Next(1,6), list[0], list[9], list));
+                lines.Add(new LineBus(ran.Next(1,300), ran.Next(1,6), list[0], list[9], list));
             }
         }
 

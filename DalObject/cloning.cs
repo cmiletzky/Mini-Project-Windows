@@ -30,9 +30,9 @@ namespace Dal
             }
             return target;
         } 
-        internal static List<Line> Clone(this List<Line> original)
+        internal static List<LineBus> Clone(this List<LineBus> original)
         {
-            List<Line> target = new List<Line>();
+            List<LineBus> target = new List<LineBus>();
             foreach (var item in original)
             {
                 target.Add(item);

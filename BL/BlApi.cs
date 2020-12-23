@@ -15,7 +15,7 @@ namespace BlApi
         void AddBus(string busNam, DateTime? startDate);
         IEnumerable<Bus> presentAllBus(bool run);
         IEnumerable<BO.Station> presentAllStation();
-        IEnumerable<BO.Line> presentAllLines();
+        IEnumerable<BO.LineBus> presentAllLines();
         bool canDrive(Bus bus, ref string mes);
         bool canDrive(Bus bus, ref string mes, string kM);
         bool Refuell(Bus bus, ref string mes);

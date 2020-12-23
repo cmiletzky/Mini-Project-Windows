@@ -37,7 +37,7 @@ namespace DaLApi
         #endregion
 
         #region Line
-        IEnumerable<Line> getLins();
+        IEnumerable<LineBus> getLins();
         #endregion
 
        

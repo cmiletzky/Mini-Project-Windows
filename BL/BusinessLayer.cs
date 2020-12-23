@@ -153,18 +153,18 @@ namespace BL
             }
             return list;
         }
-       public IEnumerable<Line> presentAllLines()
+       public IEnumerable<LineBus> presentAllLines()
         {
-            List<Line> lines = new List<Line>();
+            List<LineBus> lines = new List<LineBus>();
             foreach (var item in dal.getLins())
             {
                 //TODO לטפל באיתחול אזור
-                lines.Add(new Line(item.LineNum,1, item.FirstStation, item.LastStation,initializeStops(item)));
+                lines.Add(new LineBus(item.LineNum,1, item.FirstStation, item.LastStation,initializeStops(item)));
             }
             return lines;
         }
 
-         public  List<StopOfLine> initializeStops(DO.Line item) 
+         public  List<StopOfLine> initializeStops(DO.LineBus item) 
         {
             List<StopOfLine> list = new List<StopOfLine>();
             for (int i = 0; i < 10; i++)

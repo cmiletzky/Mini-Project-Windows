@@ -12,7 +12,7 @@ namespace BO
     {
         General = 1, North = 2, South = 3, Center = 4, Jerusalem = 5
     }
-    public class Line
+    public class LineBus
     {
         int id;
         int lineNum;
@@ -30,7 +30,7 @@ namespace BO
         internal Areas Area { get => area; set => area = value; }
         public List<StopOfLine> StationList { get => stationList; set => stationList = value; }
 
-        public Line(int lineNum, int area, int firstStation, int lastStation, List<StopOfLine> stationList)
+        public LineBus(int lineNum, int area, int firstStation, int lastStation, List<StopOfLine> stationList)
         {
             this.id = configNum.LineId++;
             this.lineNum = lineNum;

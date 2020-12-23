@@ -19,7 +19,7 @@ namespace PL
     /// </summary>
     public partial class LineDetail : Window
     {
-        public LineDetail(BO.Line line)
+        public LineDetail(BO.LineBus line)
         {
             InitializeComponent();
             Title = "line number " + line.LineNum.ToString();

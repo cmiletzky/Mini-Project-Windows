@@ -114,7 +114,7 @@ namespace Dal
             return DsStations.stations.Clone();
         }
 
-        public  IEnumerable<Line> getLins()
+        public  IEnumerable<LineBus> getLins()
         {
             Dslines.intializeLines();
             return Dslines.lines.Clone();
