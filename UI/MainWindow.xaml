@@ -16,8 +16,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Frame x:Name="Main" NavigationUIVisibility="Hidden"></Frame>
             
-            <local:MainMangCont Grid.Column="0" x:Name="manager_cont" Margin="15" />
             
         </Grid>
         <Menu Height="30"  DockPanel.Dock="Top" VerticalAlignment="Top">

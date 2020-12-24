@@ -15,27 +15,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PL.UserControls
+namespace PL
 {
     /// <summary>
     /// Interaction logic for MainMangCont.xaml
     /// </summary>
-    public partial class MainMangCont : UserControl
+    public partial class MainMangCont : Page
     {
         public static bool canDrive = false;
-      
+
         public MainMangCont()
         {
-            
+
             InitializeComponent();
-            
+
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
             stops_list.ItemsSource = MainWindow.bl.presentAllStation();
             line_list.ItemsSource = MainWindow.bl.presentAllLines();
-            
+
         }
 
-       
+
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.LineBus lineToDetail = (BO.LineBus)line_list.SelectedItem;
@@ -100,7 +100,16 @@ namespace PL.UserControls
 
         private void update_bus_Click(object sender, RoutedEventArgs e)
         {
-          
+            if (bus_list.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the bus you want to update");
+            }
+            else 
+            {
+                Bus busToUpdate = (Bus)bus_list.Items[bus_list.SelectedIndex];
+                new UpdateBus(busToUpdate).Show();
+                //bus_list.Items.Refresh();
+            }
         }
 
         private void remove_bus_Click(object sender, RoutedEventArgs e)
@@ -108,19 +117,20 @@ namespace PL.UserControls
             if (bus_list.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select the bus you want to remove");
-            }else if(MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            }
+            else if (MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Bus busToRemove = (Bus)bus_list.Items[bus_list.SelectedIndex];
                 MainWindow.bl.RemoveBus(busToRemove);
                 bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
                 //bus_list.Items.Refresh();
             }
-           
+
         }
 
         private void line_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-         
+
             LineBus n = (LineBus)line_list.Items[line_list.SelectedIndex];
             stop_of_line.ItemsSource = n.StationList;
             stop_of_line.DisplayMemberPath = "Id";

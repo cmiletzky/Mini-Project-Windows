@@ -27,6 +27,7 @@ namespace PL
     public partial class MainWindow : Window
     {
         public static IBL bl;
+        public static bool isRun = true;
         public static string arrMes = "";
         public static bool canDrive = false;
        
@@ -38,15 +39,15 @@ namespace PL
             Auth.user = new BO.User();
             RefreshMenu();
 
-            if (Auth.user.Admin == false || Auth.user == null)
-            {
-                manager_cont.Visibility = Visibility.Hidden;
+            //if (Auth.user.Admin == false || Auth.user == null)
+            //{
+            //    manager_cont.Visibility = Visibility.Hidden;
              
-            }
-            else
-            {
-                manager_cont.Visibility = Visibility.Collapsed;
-            }
+            //}
+            //else
+            //{
+            //    manager_cont.Visibility = Visibility.Collapsed;
+            //}
             
         }
 
@@ -61,7 +62,7 @@ namespace PL
         private void logout_menu(object sender, RoutedEventArgs e)
         {
             Auth.user = null;
-            manager_cont.Visibility = Visibility.Collapsed;
+            Main.Visibility = Visibility.Collapsed;
             RefreshMenu();
 
 

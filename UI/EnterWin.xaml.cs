@@ -34,8 +34,13 @@ namespace PL
             if (bl.isUserMang(user_manager.Text, pas_manager.Text,true))
             {
                 Auth auth = new Auth(user_manager.Text, pas_manager.Text,true);
-               ((MainWindow)Application.Current.MainWindow).manager_cont.Visibility = Visibility.Visible;
+                if (MainWindow.isRun==true)
+                {
+                    ((MainWindow)Application.Current.MainWindow).Main.Content = new MainMangCont();
+                }
+                ((MainWindow)Application.Current.MainWindow).Main.Visibility = Visibility.Visible;
                 ((MainWindow)Application.Current.MainWindow).RefreshMenu();
+                MainWindow.isRun = false;
                 Close();
             }
             else
