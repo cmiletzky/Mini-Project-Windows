@@ -17,19 +17,12 @@ namespace DO
         private bool inTreatment = false;
         private bool inRefule = false;
         private bool inDriving = false;
-        public double refull = 0;
-        public string color = "";
-        public string see_pro = "Hidden";
-        int time;
         bool isActive = true;
 
 
         //function get & set
         public bool IsActive { get {return isActive; } set { isActive = value; } }
-        public int Time { get { return time; } set { time = value; } }
-        public string SeePro { get { return see_pro; } set { see_pro = value; } }
-        public double Regull { get { return refull; } set { refull = value; } }
-        public string Color { get { return color; } set { color = value; } }
+       
         public string Id { get { return id; } set { id = value; } }
         public DateTime? StartDate { get { return start_date; } set { start_date = value; } }
         public int Km { get { return km; } set { km = value; } }

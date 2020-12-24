@@ -25,7 +25,7 @@ namespace DS
         {
             for (int i = 0; i < 10; i++)
             {
-                //TODO לבדוק אתחול תאריך
+                
                 buslist.Add(new Bus(r.Next(1000000, 99999999).ToString(),RandomDay()));
                 buslist[i].Km = r.Next(20000, 40000);
                 buslist[i].LsaatTreastKm = r.Next(0, 10000);
