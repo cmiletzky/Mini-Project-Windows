@@ -84,8 +84,10 @@
                     <TextBlock x:Name="code_stop" Grid.Column="1"/>
                     <TextBlock x:Name="name_stop" Grid.Column="1"/>
                     <TextBlock x:Name="location_stop" Grid.Column="1"/>
-                    <Button x:Name="manage_station" Content="Manage station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="manage_station_click"/>
-                   
+                    <Button x:Name="Add_station" Content="Add station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="Add_station_click"/>
+                    <Button x:Name="remoove_station" Content="Remoove station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="remoove_station_click"/>
+                    <Button x:Name="update_station" Content="Update station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="update_station_click"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

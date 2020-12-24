@@ -138,10 +138,20 @@ namespace PL
             stop_of_line.DisplayMemberPath = "Id";
         }
 
-        private void manage_station_click(object sender, RoutedEventArgs e)
+        private void Add_station_click(object sender, RoutedEventArgs e)
         {
-            ManageStattionWin manastat = new ManageStattionWin(ref  stops_list);
-            manastat.Show();
+            AddStationWin addStationWin = new AddStationWin(ref stops_list);
+            addStationWin.Show();
+        }
+
+        private void remoove_station_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void update_station_click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for ManageStattionWin.xaml
+    /// Interaction logic for UpdateStationWin.xaml
     /// </summary>
-    public partial class ManageStattionWin : Window
+    public partial class UpdateStationWin : Window
     {
-        public ManageStattionWin(ref ListBox list)
+        public UpdateStationWin()
         {
-            ListBox listOfLine = list;
             InitializeComponent();
-        }
-
-        private void add_station_click(object sender, RoutedEventArgs e)
-        {
-
-
         }
     }
 }
