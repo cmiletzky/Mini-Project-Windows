@@ -83,11 +83,9 @@
                     </ListBox>
                     <TextBlock x:Name="code_stop" Grid.Column="1"/>
                     <TextBlock x:Name="name_stop" Grid.Column="1"/>
-                    <TextBlock x:Name="location_stop" Grid.Column="1"><InlineUIContainer>
-                            <Button Content="Add new station" Click="add_new_station" Width="75"/>
-                        </InlineUIContainer><InlineUIContainer>
-                            <Button Content="Update station" Click="update_station" Width="75"/>
-                        </InlineUIContainer></TextBlock>
+                    <TextBlock x:Name="location_stop" Grid.Column="1"/>
+                    <Button x:Name="manage_station" Content="Manage station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="manage_station_click"/>
+                   
                 </Grid>
             </TabItem>
         </TabControl>

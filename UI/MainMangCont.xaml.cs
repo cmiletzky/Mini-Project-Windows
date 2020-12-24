@@ -137,5 +137,11 @@ namespace PL
             stop_of_line.ItemsSource = n.StationList;
             stop_of_line.DisplayMemberPath = "Id";
         }
+
+        private void manage_station_click(object sender, RoutedEventArgs e)
+        {
+            ManageStattionWin manastat = new ManageStattionWin(ref  stops_list);
+            manastat.Show();
+        }
     }
 }
