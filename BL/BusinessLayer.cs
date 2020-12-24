@@ -32,21 +32,38 @@ namespace BL
            // allBuses[0].InDriving = true;
             return allBuses;
         }
-
+        void IBL.updateBus(Bus busToUpdate)
+        {
+            string a = busToUpdate.Id.Replace("-", "");
+            DO.Bus bus = new DO.Bus(a, busToUpdate.StartDate);
+            bus.Km = busToUpdate.Km;
+            bus.LsaatTreastKm =busToUpdate.LsaatTreastKm;
+            bus.Gas = busToUpdate.Gas;
+            bus.LastTreatDate = busToUpdate.LastTreatDate;
+            dal.updateBus(bus);
+        }
        public void RemoveBus(Bus busToRemove)
         {
             dal.DeleteBus(busToRemove.Id);
         }
         public void AddBus(string busNam, DateTime? startDate)
         {
-            if (dal.BusAlreadyExists(busNam))
+
+            switch (dal.BusAlreadyExists(busNam))
             {
-                throw new Exception("The bus already exists in the system");
+                case 0:
+                 throw new Exception("The bus already exists in the system");
+                   
+                case 1:
+                    dal.addBus(busNam, startDate);
+                    break;
+                case 2:
+                    dal.activeBus(busNam);
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                dal.addBus(busNam, startDate);
-            }
+         
             
         }
         public bool canDrive(Bus bus, ref string mes)

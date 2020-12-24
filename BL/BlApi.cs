@@ -12,6 +12,7 @@ namespace BlApi
     public interface IBL
     {
         void RemoveBus(Bus busToRemove);
+        void updateBus(Bus busToUpdate);
         void AddBus(string busNam, DateTime? startDate);
         IEnumerable<Bus> presentAllBus(bool run);
         IEnumerable<BO.Station> presentAllStation();

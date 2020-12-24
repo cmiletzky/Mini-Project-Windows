@@ -13,7 +13,7 @@ namespace BL.BO
         private int km = 0;
         private int last_treat_km;
         private int gas = 0;
-        private DateTime last_treat_date = DateTime.Now;
+        private DateTime? last_treat_date = DateTime.Now;
         private bool inTreatment = false;
         private bool inRefule = false;
         private bool inDriving = false;
@@ -34,7 +34,7 @@ namespace BL.BO
         public int Km { get { return km; } set { km = value; } }
         public int LsaatTreastKm { get { return last_treat_km; } set { last_treat_km = value; } }
         public int Gas { get { return gas; } set { gas = value; } }
-        public DateTime LastTreatDate { get { return last_treat_date; } set { last_treat_date = value; } }
+        public DateTime? LastTreatDate { get { return last_treat_date; } set { last_treat_date = value; } }
         public bool InTreamant { get { return inTreatment; } set { inTreatment = value; } }
         public bool InRefule { get { return inRefule; } set { inRefule = value; } }
         public bool InDriving { get { return inDriving; } set { inDriving = value; } }
@@ -65,6 +65,11 @@ namespace BL.BO
             }
         }
 
-
+        //public static DO.Bus operator +(DO.Bus a,BO.Bus b)
+        //{
+        //    a.Id = b.Id;
+        //    a.StartDate = b.StartDate;
+        //    return a;
+        //}
     }
 }

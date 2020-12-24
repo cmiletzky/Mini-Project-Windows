@@ -107,7 +107,7 @@ namespace PL
             else 
             {
                 Bus busToUpdate = (Bus)bus_list.Items[bus_list.SelectedIndex];
-                new UpdateBus(busToUpdate).Show();
+                new UpdateBus(busToUpdate, ref bus_list).Show();
                 //bus_list.Items.Refresh();
             }
         }
@@ -118,12 +118,14 @@ namespace PL
             {
                 MessageBox.Show("Please select the bus you want to remove");
             }
-            else if (MessageBox.Show("Are you sure you want to delete the bus?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            else 
             {
                 Bus busToRemove = (Bus)bus_list.Items[bus_list.SelectedIndex];
-                MainWindow.bl.RemoveBus(busToRemove);
-                bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
-                //bus_list.Items.Refresh();
+                if (MessageBox.Show("Are you sure you want to delete the bus "+busToRemove.Id+ " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    MainWindow.bl.RemoveBus(busToRemove);
+                    bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
+                }
             }
 
         }

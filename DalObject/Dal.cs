@@ -25,21 +25,29 @@ namespace Dal
 
         #region Bus
 
-       public bool BusAlreadyExists(string busNam)
+       public int BusAlreadyExists(string busNam)
         {
             foreach (var item in DsBuses.buslist)
             {
                string a= item.Id.Replace("-", "");
                 if (a==busNam)
                 {
-                    return true;
+                    if (item.IsActive==false)
+                    {
+                        return 2;
+                    }
+                    return 0;
                 }
             }
-            return false;
+            return 1;
         }
         void IDAL.addBus(string busNam, DateTime? startDate)
         {
             DsBuses.buslist.Add(new Bus(busNam,startDate));
+        }
+        void IDAL.activeBus(string busNum)
+        {
+            DsBuses.buslist[DsBuses.buslist.FindIndex(x => x.Id == busNum)].IsActive = true;
         }
         Bus IDAL.getBus(string id)
         {
@@ -47,8 +55,8 @@ namespace Dal
         }
         void IDAL.updateBus(Bus bustoUpdate)
         {
-            int busID = DsBuses.buslist.FindIndex(x => x.Id == bustoUpdate.Id);
-            DsBuses.buslist[busID] = bustoUpdate;
+        //    int busID = DsBuses.buslist.FindIndex(x => x.Id == bustoUpdate.Id);
+            DsBuses.buslist[0] = bustoUpdate;
 
         }
         void IDAL.DeleteBus(string busId)
