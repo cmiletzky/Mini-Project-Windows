@@ -21,9 +21,11 @@ namespace PL
     public partial class UpdateBus : Window
     {
         ListBox listBox;
+        Bus bus;
         public UpdateBus(Bus bus, ref ListBox list)
         {
             InitializeComponent();
+            this.bus = bus;
             listBox = list;
             Title = "Update "+bus.Id;
             I_D.Text = bus.Id;
@@ -36,7 +38,7 @@ namespace PL
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            string a = I_D.Text.Replace("-", "");
+            string a = I_D.Text.Replace("-","");
             Bus busTo = new Bus(a, start_date.SelectedDate);
             busTo.Km =int.Parse(KM.Text);
             busTo.LsaatTreastKm = int.Parse(last_treat_km.Text);
@@ -44,6 +46,17 @@ namespace PL
             busTo.LastTreatDate = last_treat_date.SelectedDate;
             MainWindow.bl.updateBus(busTo);
             listBox.ItemsSource = MainWindow.bl.presentAllBus(false);
+            Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            I_D.Text = bus.Id;
+            start_date.Text = bus.StartDate.ToString();
+            KM.Text = bus.Km.ToString();
+            last_treat_km.Text = bus.LsaatTreastKm.ToString();
+            gas.Text = bus.Gas.ToString();
+            last_treat_date.Text = bus.LastTreatDate.ToString();
         }
     }
 }

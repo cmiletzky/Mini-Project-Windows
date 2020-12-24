@@ -10,16 +10,17 @@ namespace Dal
 {
     static class cloning
     {
-        internal static IEnumerable<Bus> Clone(this IEnumerable<Bus> original)
-        {
-            List<Bus> target = new List<Bus>();
-            foreach (var item in original)
-            {
-                string a = item.Id.Replace("-","");
-                target.Add(item);
-            }
-            return (IEnumerable<Bus>)target;
-        } 
+       
+        //internal static IEnumerable<Bus> Clone(this IEnumerable<Bus> original)
+        //{
+        //    List<Bus> target = new List<Bus>();
+        //    foreach (var item in original)
+        //    {
+        //        string a = item.Id.Replace("-","");
+        //        target.Add(item);
+        //    }
+        //    return (IEnumerable<Bus>)target;
+        //} 
         
         internal static IEnumerable<Station> Clone(this IEnumerable<Station> original)
         {

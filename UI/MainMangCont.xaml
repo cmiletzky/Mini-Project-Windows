@@ -34,7 +34,7 @@
                     </ListBox>
                     <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0">
                         <Grid >
-
+                            <TextBlock Text="Gas stutas"/>
                             <Button x:Name="remove_bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="39,353,176.333,30.333" Click="remove_bus_Click" VerticalAlignment="Center" Content="Remove bus" Padding="3,1" HorizontalAlignment="Center"/>
                             <Button x:Name="update_bus" Content="Update bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="160,353,61.333,30.333" Click="update_bus_Click" VerticalAlignment="Center" RenderTransformOrigin="0.271,0.533" Padding="3,1" HorizontalAlignment="Center"/>
                         </Grid>

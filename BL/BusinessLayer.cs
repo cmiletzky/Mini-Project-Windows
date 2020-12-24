@@ -25,6 +25,11 @@ namespace BL
                 {
                     Bus bus = new Bus(a, item.StartDate);
                     bus.IsActive = item.IsActive;
+                    bus.LastTreatDate = item.LastTreatDate;
+                    bus.LsaatTreastKm = item.LsaatTreastKm;
+                    bus.Gas = item.Gas;
+                    bus.Km = item.Km;
+                    bus.StartDate = item.StartDate;
                     allBuses.Add(bus);
                 }
                 
