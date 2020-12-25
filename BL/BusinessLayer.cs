@@ -168,20 +168,24 @@ namespace BL
         {
          
             List<Station> list = new List<Station>();
-            foreach (var item in dal.getStations())
+            foreach (var item in dal.getStations(true))
             {
                 list.Add(new Station(item.Code, item.Name, item.Longtitude,item.Latitude));
               
             }
             return list;
         }
-       public IEnumerable<LineBus> presentAllLines()
+       public IEnumerable<LineBus> presentAllLines(bool run)
         {
             List<LineBus> lines = new List<LineBus>();
-            foreach (var item in dal.getLins())
+            foreach (var item in dal.getLins(run))
             {
-                //TODO לטפל באיתחול אזור
-                lines.Add(new LineBus(item.LineNum,1, item.FirstStation, item.LastStation,initializeStopsLine(item)));
+                if (item.IsActive!=false)
+                {
+                    //TODO לטפל באיתחול אזור
+                    lines.Add(new LineBus(item.LineNum, 1, item.FirstStation, item.LastStation, initializeStopsLine(item)));
+                }
+
             }
             return lines;
         }
@@ -191,10 +195,22 @@ namespace BL
             List<StopOfLine> list = new List<StopOfLine>();
             for (int i = 0; i < 10; i++)
             {
-               // List<int> gg = from item in dal.getStations() where item.Code == j[i] select item.Code;
-                list.Add(new StopOfLine(item.Id, item.StationList[i], i)); ;
+                StopOfLine stop = new StopOfLine(item.LineNum, item.StationList[i], i);
+                foreach (var st in dal.getStations(false))
+                {
+                    if (st.Code==stop.Id)
+                    {
+                        stop.Stop = new Station(st.Code, st.Name, st.Longtitude, st.Latitude); ;
+                    }
+                }
+                list.Add(stop); 
             }
             return list;
+        }
+
+        void IBL.RemoveLine(LineBus lineBus)
+        {
+            dal.RemoveLine(lineBus.LineNum);
         }
     }
 }

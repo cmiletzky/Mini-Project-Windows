@@ -116,18 +116,31 @@ namespace Dal
         }
         #endregion
 
-       public IEnumerable<Station> getStations()
+       public IEnumerable<Station> getStations(bool run)
         {
-            DsStations.initializedStation();
+            if (run==true)
+            {
+                DsStations.initializedStation();
+            }
             return DsStations.stations.Clone();
         }
 
-        public  IEnumerable<LineBus> getLins()
+        public  IEnumerable<LineBus> getLins(bool run)
         {
-            Dslines.intializeLines();
+            if (run == true)
+            {
+                Dslines.intializeLines();
+            }
             return Dslines.lines.Clone();
         }
 
-      
+        void IDAL.RemoveLine(int lineNum)
+        {
+            int lineID = Dslines.lines.FindIndex(x => x.LineNum == lineNum);
+            Dslines.lines[lineID].IsActive = false;
+        }
+
+
+
     }
 }

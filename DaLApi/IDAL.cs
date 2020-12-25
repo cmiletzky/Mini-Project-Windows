@@ -14,7 +14,7 @@ namespace DaLApi
   public  interface IDAL
     {
         #region station
-        IEnumerable<Station> getStations();
+        IEnumerable<Station> getStations(bool run);
         #endregion
 
         #region Bus
@@ -38,7 +38,8 @@ namespace DaLApi
         #endregion
 
         #region Line
-        IEnumerable<LineBus> getLins();
+        void RemoveLine(int lineNum);
+        IEnumerable<LineBus> getLins(bool run);
         #endregion
 
        

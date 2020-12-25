@@ -15,6 +15,7 @@ namespace DO
     public class LineBus
     {
         int id;
+        bool isActive = true;
         int lineNum;
         Areas area;
         int firstStation;
@@ -27,8 +28,9 @@ namespace DO
         public int LineNum { get => lineNum; set => lineNum = value; }
         public int FirstStation { get => firstStation; set => firstStation = value; }
         public int LastStation { get => lastStation; set => lastStation = value; }
-        internal Areas Area { get => area; set => area = value; }
+        public Areas Area { get => area; set => area = value; }
         public List<int> StationList { get => stationList; set => stationList = value; }
+        public bool IsActive { get => isActive; set => isActive = value; }
 
         public LineBus(int lineNum, int area, int firstStation, int lastStation, List<int> stationList)
         {

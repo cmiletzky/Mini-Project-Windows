@@ -31,7 +31,7 @@ namespace PL
 
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
             stops_list.ItemsSource = MainWindow.bl.presentAllStation();
-            line_list.ItemsSource = MainWindow.bl.presentAllLines();
+            line_list.ItemsSource = MainWindow.bl.presentAllLines(true);
 
         }
 
@@ -132,10 +132,55 @@ namespace PL
 
         private void line_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (line_list.SelectedIndex!=-1)
+            {
+                LineBus n = (LineBus)line_list.Items[line_list.SelectedIndex];
+                list_stop_of_line.ItemsSource = n.StationList;
+                
+            }
+            else
+            {
+                list_stop_of_line.ItemsSource = null;
+            }
+          
+        }
 
-            LineBus n = (LineBus)line_list.Items[line_list.SelectedIndex];
-            stop_of_line.ItemsSource = n.StationList;
-            stop_of_line.DisplayMemberPath = "Id";
+        private void add_new_station(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void update_station(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void add_line_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void update_line_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void remove_line_Click(object sender, RoutedEventArgs e)
+        {
+            if (line_list.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the line you want to remove");
+            }
+            else
+            {
+                LineBus lineToRemove = (LineBus)line_list.SelectedValue;
+                if (MessageBox.Show("Are you sure you want to delete the line " + lineToRemove.LineNum + " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+
+                    MainWindow.bl.RemoveLine(lineToRemove);
+                    line_list.ItemsSource = MainWindow.bl.presentAllLines(false);
+                }
+            }
         }
     }
 }

@@ -10,14 +10,17 @@ namespace BO
     {
         int ofLine;
         int id;
+        Station stop;
         int statIndex;
 
         public int OfLine { get => ofLine; set => ofLine = value; }
         public int Id { get => id; set => id = value; }
         public int StatIndex { get => statIndex; set => statIndex = value; }
+        public Station Stop { get => stop; set => stop = value; }
 
         public StopOfLine(int ofLine ,int id, int statIndex)
         {
+            
             this.ofLine= ofLine;
             this.id= id;
             this.statIndex= statIndex;

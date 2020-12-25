@@ -11,12 +11,13 @@ namespace BlApi
 {
     public interface IBL
     {
+        void RemoveLine(BO.LineBus lineBus);
         void RemoveBus(Bus busToRemove);
         void updateBus(Bus busToUpdate);
         void AddBus(string busNam, DateTime? startDate);
         IEnumerable<Bus> presentAllBus(bool run);
         IEnumerable<BO.Station> presentAllStation();
-        IEnumerable<BO.LineBus> presentAllLines();
+        IEnumerable<BO.LineBus> presentAllLines(bool run);
         bool canDrive(Bus bus, ref string mes);
         bool canDrive(Bus bus, ref string mes, string kM);
         bool Refuell(Bus bus, ref string mes);

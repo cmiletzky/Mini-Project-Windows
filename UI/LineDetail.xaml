@@ -7,6 +7,43 @@
         mc:Ignorable="d"
         Title="" Height="450" Width="800">
     <Grid>
-        
+        <Border BorderBrush="#FF3DE54B" BorderThickness="5" UseLayoutRounding="False">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="75*"/>
+
+                </Grid.ColumnDefinitions>
+                <Label Name="line_num" Grid.Column="1" Grid.Row="0" Content=""  Width="203" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontFamily="Tahoma"/>
+                <Label Name="line_area" Grid.Column="1" Grid.Row="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <ListBox x:Name="list_stop_of_line" Grid.Column="1"  Grid.Row="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock x:Name="stop_name" Text="{Binding Stop.Name}" Background="{x:Null}"></TextBlock>
+                                <Grid>
+                                    <Label Content="מספר התחנה" Foreground="Red" Margin="38,0,0,0"/>
+                                    <TextBlock x:Name="stop_id" Text="{Binding Id}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+                <Label Content="Line number:   " Grid.Column="0"  VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Right" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="Area:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="Line stops:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma" Margin="0,9.667,0.333,220.667" Height="43"/>
+
+            </Grid>
+        </Border>
     </Grid>
 </Window>

@@ -27,7 +27,7 @@ namespace BO
         public int LineNum { get => lineNum; set => lineNum = value; }
         public int FirstStation { get => firstStation; set => firstStation = value; }
         public int LastStation { get => lastStation; set => lastStation = value; }
-        internal Areas Area { get => area; set => area = value; }
+        public Areas Area { get => area; set => area = value; }
         public List<StopOfLine> StationList { get => stationList; set => stationList = value; }
 
         public LineBus(int lineNum, int area, int firstStation, int lastStation, List<StopOfLine> stationList)
