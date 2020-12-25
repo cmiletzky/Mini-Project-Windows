@@ -13,12 +13,14 @@
             <TabItem Header="Buses    " FontSize="18">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="30*"/>
-
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="21*"/>
+                        <ColumnDefinition Width="28*"/>
+                        <ColumnDefinition Width="261*"/>
+                        <ColumnDefinition Width="318*"/>
+                        <ColumnDefinition Width="159*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox Grid.Column="0"  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" MouseDoubleClick="bus_list_MouseDoubleClick"   >
+                    <ListBox  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" MouseDoubleClick="bus_list_MouseDoubleClick" Grid.ColumnSpan="5" Margin="0,0,317.2,-0.4" >
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -33,14 +35,14 @@
 
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0" Margin="0.4,0,0.2,-0.4">
+                    <Border Grid.Column="4" BorderBrush="#FF317D16" BorderThickness="0,0,4,0" Margin="0.4,0,0.2,-0.4">
                         <Grid >
                             <TextBlock Text="Gas stutas"/>
                             <Button x:Name="remove_bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="39,353,176.333,30.333" Click="remove_bus_Click" VerticalAlignment="Center" Content="Remove bus" Padding="3,1" HorizontalAlignment="Center"/>
                             <Button x:Name="update_bus" Content="Update bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="160,353,61.333,30.333" Click="update_bus_Click" VerticalAlignment="Center" RenderTransformOrigin="0.271,0.533" Padding="3,1" HorizontalAlignment="Center"/>
                         </Grid>
                     </Border>
-                    <Grid Grid.Column="2" Margin="6.8,7,7.4,6.6">
+                    <Grid Grid.Column="5" Margin="6.8,7,7.4,6.6">
                         <Button x:Name="add_bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="0,10,-0.333,373.333" Click="add_bus_Click">
                             <TextBlock Text="Add new bus" TextAlignment="Center"/>
                         </Button>
@@ -50,9 +52,8 @@
             <TabItem Header="Lines    " FontSize="18" >
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="75*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged"  >
                         <ListBox.ItemTemplate>
@@ -61,49 +62,17 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
-                    <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0" Margin="0.4,0,0.2,-0.4">
-                        <Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="80*"/>
-                                <RowDefinition Height="20*"/>
-                            </Grid.RowDefinitions>
-                                <ListBox x:Name="list_stop_of_line" Grid.Row="0">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <TextBlock x:Name="stop_name" Text="{Binding Stop.Name}" Background="{x:Null}"></TextBlock>
-                                            <Grid>
-                                                <Label Content="מספר התחנה" Foreground="Red" Margin="60,0,0,0"/>
-                                                <TextBlock x:Name="stop_id" Text="{Binding Id}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
-                                            </Grid>
-                                        </StackPanel>
-                                    </DataTemplate>
-
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                            <Grid Grid.Row="1">
-                            <Button x:Name="remove_line" MinHeight="10"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30"  Click="remove_line_Click" VerticalAlignment="Center" Content="Remove line" Padding="3,1" HorizontalAlignment="Center" Margin="50,26,157.667,26.667"/>
-                                <Button x:Name="update_line" MinHeight="10" Content="Update line"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30"  Click="update_line_Click" VerticalAlignment="Center" RenderTransformOrigin="0.271,0.533" Padding="3,1" HorizontalAlignment="Center" Margin="182,26,30.667,26.667"/>
-                            </Grid>
-                        </Grid>
-                    </Border>
-                    <Grid Grid.Column="2" Margin="6.8,7,7.4,6.6">
-                        <Button x:Name="add_line"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="0,10,-0.333,373.333" Click="add_line_Click">
-                            <TextBlock Text="Add new line" TextAlignment="Center"/>
-                        </Button>
-                    </Grid>
+                    <ListBox x:Name="stop_of_line" Grid.Column="1"></ListBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Stations    " FontSize="18">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="113*"/>
-                        <ColumnDefinition Width="89*"/>
-                        <ColumnDefinition Width="251*"/>
-                        <ColumnDefinition Width="340*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="75*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox Grid.Column="0"   x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stops_list_SelectionChanged" Margin="0,0,0.333,0.333" >
+                    <ListBox Grid.Column="0"   x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stops_list_SelectionChanged" >
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -112,13 +81,13 @@
 
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <TextBlock x:Name="code_stop" Grid.ColumnSpan="3" Margin="113,0,0.333,-0.667"/>
-                    <TextBlock x:Name="name_stop" Grid.ColumnSpan="3" Margin="113,0,0.333,-0.667"/>
-                    <TextBlock x:Name="location_stop" Grid.ColumnSpan="3" Margin="113,0,0.333,-0.667"><InlineUIContainer>
-                            <Button Content="Add new station" Click="add_new_station" Width="75"/>
-                        </InlineUIContainer><InlineUIContainer>
-                            <Button Content="Update station" Click="update_station" Width="75"/>
-                        </InlineUIContainer></TextBlock>
+                    <TextBlock x:Name="code_stop" Grid.Column="1"/>
+                    <TextBlock x:Name="name_stop" Grid.Column="1"/>
+                    <TextBlock x:Name="location_stop" Grid.Column="1"/>
+                    <Button x:Name="Add_station" Content="Add station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="Add_station_click"/>
+                    <Button x:Name="remoove_station" Content="Remoove station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="remoove_station_click"/>
+                    <Button x:Name="update_station" Content="Update station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="update_station_click"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

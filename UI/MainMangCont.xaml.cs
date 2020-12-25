@@ -182,5 +182,21 @@ namespace PL
                 }
             }
         }
+
+        private void Add_station_click(object sender, RoutedEventArgs e)
+        {
+            AddStationWin addStationWin = new AddStationWin(ref stops_list);
+            addStationWin.Show();
+        }
+
+        private void remoove_station_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void update_station_click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
