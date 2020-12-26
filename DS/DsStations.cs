@@ -71,7 +71,8 @@ namespace DS
              Random r = new Random(DateTime.Now.Millisecond);
             for (int i = 1; i < 51; i++)
             {
-               stations.Add( new Station(r.Next(100000,999999), stationListNames[i], (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+                Station stationToAdd = new Station(r.Next(100000, 999999), stationListNames[i], (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3));
+               stations.Add(stationToAdd);
                
             }
         }

@@ -13,8 +13,10 @@ namespace DaLApi
 {
   public  interface IDAL
     {
-        #region station
+       
         IEnumerable<Station> getStations(bool run);
+        #region station
+        void addStation(int code, string name, int longtitude, int latitude);
         #endregion
 
         #region Bus

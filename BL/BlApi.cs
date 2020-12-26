@@ -18,6 +18,7 @@ namespace BlApi
         IEnumerable<Bus> presentAllBus(bool run);
         IEnumerable<BO.Station> presentAllStation();
         IEnumerable<BO.LineBus> presentAllLines(bool run);
+        void AddStation(string name, string code, string longtitude, string latitude);
         bool canDrive(Bus bus, ref string mes);
         bool canDrive(Bus bus, ref string mes, string kM);
         bool Refuell(Bus bus, ref string mes);

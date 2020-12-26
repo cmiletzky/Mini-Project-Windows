@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DaLApi;
 using DS;
 using DO;
-
+using System.Data;
 
 namespace Dal
 {
@@ -140,7 +140,36 @@ namespace Dal
             Dslines.lines[lineID].IsActive = false;
         }
 
+        public void addStation(int code, string name, int longtitude, int latitude)
+        {
+            Station newStation;
+            try
+            {
+                Station check = DsStations.stations.Find(x => x.Code == code);
+                if (check!=null && check.IsActive == true)
+                {
+                    throw new DuplicateNameException();
+                }
+                else if (check.IsActive==false)
+                {
+                    check.IsActive = true;
+                    check.Latitude = latitude;
+                    check.Longtitude = longtitude;
+                    check.Name = name;
+                }
+                else
+                {
+                    newStation = new Station(code, name, longtitude, latitude);
+                    DsStations.stations.Add(newStation);
+                }
 
 
+            }
+            catch (DuplicateNameException)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ using BlApi;
 using DaLApi;
 using BO;
 using BL.BO;
+using System.Data;
 
 namespace BL
 {
@@ -211,6 +212,20 @@ namespace BL
         void IBL.RemoveLine(LineBus lineBus)
         {
             dal.RemoveLine(lineBus.LineNum);
+        }
+
+        void IBL.AddStation( string code, string name, string longtitude, string latitude)
+        {
+            
+            try
+            {
+                dal.addStation(int.Parse(code), name, int.Parse(longtitude), int.Parse(latitude));
+            }
+            catch (DuplicateNameException)
+            {
+
+                throw;
+            }
         }
     }
 }
