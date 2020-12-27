@@ -8,36 +8,21 @@ using DO;
 
 namespace DS
 {
-   public class Dslines
+    public class Dslines
     {
-       public static Random ran = new Random(DateTime.Now.Millisecond);
-      public static  List<DO.LineBus> lines = new List<DO.LineBus>();
-
-
-       public static void intializeLines()
+        public static List<DO.LineBus> lines = new List<DO.LineBus>();
+        public Dslines()
         {
-            //lines.Add(new LineBus(400,2))
-            for (int i = 0; i < 10; i++)
-            {
-                List<int> list = initializeStops();
-                lines.Add(new LineBus(ran.Next(1,300), ran.Next(1,6), list[0], list[9], list));
-            }
-        }
-
-       public static List<int> initializeStops() 
-        {
-            List<int> list = new List<int>();
-            for (int i = 0; i < 10; i++)
-            {
-                int stop = DsStations.stations[ran.Next(0, 50)].Code;
-                while(list.FindIndex(x=>x==stop)!=-1)
-                 {
-                     stop = DsStations.stations[ran.Next(0, 50)].Code;
-                }
-                list.Add(stop);
-
-            }
-            return list;
+            lines.Add(new LineBus(212, Areas.Jerusalem, 863578, 113224));
+            lines.Add(new LineBus(22, Areas.South, 449800, 090805));
+            lines.Add(new LineBus(356, Areas.General, 772410, 111332));
+            lines.Add(new LineBus(236, Areas.Center, 789004, 777786));
+            lines.Add(new LineBus(112, Areas.Jerusalem, 555665, 110433));
+            lines.Add(new LineBus(907, Areas.Jerusalem, 109623, 129563));
+            lines.Add(new LineBus(34, Areas.North, 109623, 334096));
+            lines.Add(new LineBus(280, Areas.South, 567223, 456788));
+            lines.Add(new LineBus(142, Areas.Center, 289990, 334096));
+            lines.Add(new LineBus(480, Areas.General, 000333, 444098));
         }
 
     }
