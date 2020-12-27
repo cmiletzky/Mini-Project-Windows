@@ -1,5 +1,6 @@
 ﻿using BL.BO;
 using BO;
+using PL.line;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -162,7 +163,16 @@ namespace PL
 
         private void update_line_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            if (line_list.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the line you want to remove");
+            }
+            else
+            {
+                LineBus lineToUpdate = (LineBus)line_list.SelectedValue;
+                new UpdateLine(lineToUpdate).ShowDialog();
+            }
         }
 
         private void remove_line_Click(object sender, RoutedEventArgs e)

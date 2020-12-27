@@ -12,20 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL
+namespace PL.line
 {
     /// <summary>
-    /// Interaction logic for AddStationWin.xaml
+    /// Interaction logic for UpdateLine.xaml
     /// </summary>
-    public partial class AddStationWin : Window
+    public partial class UpdateLine : Window
     {
-        public AddStationWin(ref ListBox stopList)
+     
+        public UpdateLine(BO.LineBus line)
         {
-            ListBox list = stopList;
             InitializeComponent();
-            
+            string[] area = { "General", "North", "South", "Center", "Jerusalem" };
+            Title = "line number " + line.LineNum.ToString();
+            line_num.Text = line.LineNum.ToString();
+            line_area.ItemsSource = area;
+            list_stop_of_line.ItemsSource = line.StationList;
         }
-       
-       // MainWindow.bl.AddStation(new_stat_name.Text, new_stat_code.Text, new_stat_longtitude.Text, new_stat_latitude.Text);    
     }
 }

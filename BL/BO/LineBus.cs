@@ -8,7 +8,7 @@ using DO;
 
 namespace BO
 {
-    public enum Areas                                                  // definde enum for area value
+    public  enum Areas                                                  // definde enum for area value
     {
         General = 1, North = 2, South = 3, Center = 4, Jerusalem = 5
     }

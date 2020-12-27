@@ -13,11 +13,13 @@ namespace DO
         string name;
         int longtitude;
         int latitude;
+        bool isActive = true;
 
         public int Latitude { get => latitude; set => latitude = value; }
         public int Longtitude { get => longtitude; set => longtitude = value; }
         public string Name { get => name; set => name = value; }
         public int Code { get => code; set => code = value; }
+        public bool IsActive { get => isActive; set => isActive = value; }
 
         public Station(int code, string name, int longtitude, int latitude)
         {
