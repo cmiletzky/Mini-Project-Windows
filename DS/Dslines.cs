@@ -16,6 +16,7 @@ namespace DS
 
        public static void intializeLines()
         {
+            //lines.Add(new LineBus(400,2))
             for (int i = 0; i < 10; i++)
             {
                 List<int> list = initializeStops();

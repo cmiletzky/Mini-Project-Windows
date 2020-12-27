@@ -13,69 +13,63 @@ namespace DS
     
    public class DsStations
     {
-      static public  string[] stationListNames = {  "בי''ס בר לב/בן יהודה",
-                                       "הרצל/צומת בילו",
-                                       "הנחשול/הדייגים",
-                                       " פריד/ששת הימים",
-                                       ".מרכזית לוד/הורדה",
-                                       "חנה אברך/וולקני",
-                                       "ל/משה שרת",
-                                       "/אלי כהן",
-                                       "ויצמן/הבנים",
-                                       "האירוס/הכלנית",
-                                       "הכלנית/הנרקיס",
-                                       "אלי כהן/לוחמי הגטאות",
-                                       "שבזי/שבת אחים",
-                                       "שבזי/ויצמן",
-                                       "חיים בר לב/שדרות יצחק רבין",
-                                       " לבריאות הנפש לב השרון",
-                                       "מרכז לבריאות הנפש לב השרון",
-                                       "הולצמן/המדע",
-                                       "מחנה צריפין/מועדון",
-                                       "הרצל/גולני",
-                                       "הרותם/הדגניות",
-                                       "הערבה",
-                                       " הגפן/מורד התאנה",
-                                       " הגפן/ההרחבה",
-                                       "  ההרחבה א",
-                                       "ההרחבה ב",
-                                       "ההרחבה/הותיקים",
-                                       "רשות שדות התעופה/העליה",
-                                       "כנף/ברוש",
-                                       "החבורה/דב הוז",
-                                       "בית הלוי ה",
-                                       "הראשונים/כביש 5700",
-                                       " הגאון בן איש חי/צאלון",
-                                       "עוקשי/לוי אשכול",
-                                       "  מנוחה ונחלה/יהודה גורודיסקי",
-                                       "גורודסקי/יחיאל פלדי",
-                                       " מנחם בגין/יעקב חזן",
-                                       "דרך הפארק/הרב נריה",
-                                       "התאנה/הגפן",
-                                       "התאנה/האלון",
-                                       "דרך הפרחים/יסמין",
-                                       "יצחק רבין/פנחס ספיר",
-                                       "מנחם בגין/יצחק רבין",
-                                       "חיים הרצוג/דולב",
-                                       " ספר גוונים/ארז",
-                                       " האילנות/אלון",
-                                       " האילנות/מנחם בגין",
-                                       "העצמאות/וייצמן",
-                                       "העצמאות/וייצמן",
-                                       "העצמאות/וייצמן",
-                                       "וייצמן/מרבד הקסמים"};
        public static List<DO.Station> stations = new List<DO.Station>();
         //Initialize the list of stations with 50 stations
-        public static void initializedStation()
+        public DsStations()
         {
-             Random r = new Random(DateTime.Now.Millisecond);
-            for (int i = 1; i < 51; i++)
-            {
-                Station stationToAdd = new Station(r.Next(100000, 999999), stationListNames[i], (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3));
-               stations.Add(stationToAdd);
-               
-            }
+            Random r = new Random(DateTime.Now.Millisecond);
+            stations.Add(new Station(863578, "וייצמן/מרבד הקסמים", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(457888, "העצמאות/ששת הימים", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(345221, "העצמאות/ראובן", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(789004, "העצמאות/וייצמן", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(388751, "בי''ס בר לב/בן יהודה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(009856, "האילנות/מנחם בגין", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(667302, "האילנות/אלון", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(366792, "ספר גוונים/ארז", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(400897, "חיים הרצוג/דולב", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(113224, "מנחם בגין/יצחק רבין", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(448990, "יצחק רבין/פנחס ספיר", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(333432, "דרך הפרחים/יסמין", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(234350, "התאנה/האלון", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(837027, "התאנה/הגפן", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(449800, "דרך הפארק/הרב נריה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(277628, "מנחם בגין/יעקב חזן", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(465033, "גורודסקי/יחיאל פלדי", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(676429, "מנוחה ונחלה/יהודה גורודיסקי", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(090805, "עוקשי/לוי אשכול", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(245559, "הגאון בן איש חי/צאלון", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(111332, "הראשונים/כביש 5700", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(777786, "בית הלוי ה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(440000, "החבורה/דב הוז", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(335875, "כנף/ברוש", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(444098, "רשות שדות התעופה/העליה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(772410, "ההרחבה/הותיקים", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(334442, "ההרחבה ב", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(109623, "ההרחבה/ א", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(129563, "הגפן/ההרחבה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(123007, "הגפן/מורד התאנה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(444980, "הערבה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(110433, "הרותם/הדגניות", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(334096, "הרצל/גולני", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(229077, "מחנה צריפין/מועדון", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(489276, "הולצמן/המדע", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(289990, "מרכז לבריאות הנפש לב השרון", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(349867, "הגלעד/כרמל", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(555665, "חיים בר לב/שדרות יצחק רבין", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(909087, "שבזי/ויצמן", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(300090, "שבזי/שבת אחים", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(000333, "אלי כהן/לוחמי הגטאות", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(200567, "הכלנית/הנרקיס", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(009999, "האירוס/הכלנית", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(456788, "ויצמן/הבנים", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(232321, "הדס/אלי כהן", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(889209, "ל/משה שרת", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(232846, "חנה אברך/וולקני", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(404687, "מרכזית לוד/הורדה", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(300199, "פריד/ששת הימים", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
+            stations.Add(new Station(567223, "הנחשול/הדייגים", (int)(r.NextDouble() * (33.3 - 31) + 31), (int)(r.NextDouble() * (35.5 - 34.3) + 34.3)));
         }
+       
 
 
 
