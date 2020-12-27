@@ -116,21 +116,21 @@ namespace Dal
         }
         #endregion
 
+
+        IEnumerable<StopOfLine> IDAL.GetStopsOfLine()
+        {
+            new DSstopOfLine();
+            return DSstopOfLine.stopOfLines;
+        }
        public IEnumerable<Station> getStations(bool run)
         {
-            if (run==true)
-            {
-                DsStations.initializedStation();
-            }
+            new DsStations();
             return DsStations.stations.Clone();
         }
 
         public  IEnumerable<LineBus> getLins(bool run)
         {
-            if (run == true)
-            {
-                Dslines.intializeLines();
-            }
+            new Dslines();
             return Dslines.lines.Clone();
         }
 

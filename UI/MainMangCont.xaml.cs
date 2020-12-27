@@ -136,8 +136,9 @@ namespace PL
             if (line_list.SelectedIndex!=-1)
             {
                 LineBus n = (LineBus)line_list.Items[line_list.SelectedIndex];
-                list_stop_of_line.ItemsSource = n.StationList;
                 
+                list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(n.LineNum);
+
             }
             else
             {
@@ -210,7 +211,7 @@ namespace PL
                 Station stationToRemove = (Station)stops_list.Items[stops_list.SelectedIndex];
                 if (MessageBox.Show("Are you sure you want to delete the bus " + stationToRemove.Code + " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    MainWindow.bl.RemoveStation(stationToRemove);
+                   // MainWindow.bl.RemoveStation(stationToRemove);
                     stops_list.ItemsSource = MainWindow.bl.presentAllStation(false);
                 }
             }

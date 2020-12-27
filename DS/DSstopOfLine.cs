@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DS
 {
     
-    class DSstopOfLine
+  public  class DSstopOfLine
     {
        public static List<StopOfLine> stopOfLines = new List<DO.StopOfLine>();
 

@@ -29,16 +29,16 @@ namespace PL.line
             Title = "line number " + line.LineNum.ToString();
             line_num.Text = line.LineNum.ToString();
             line_area.ItemsSource = area;
-            list_stop_of_line.ItemsSource = line.StationList;
+            list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(line.Id);
         }
 
         private void remove_stop_from_line_Click(object sender, RoutedEventArgs e)
         {
             Button cdn = (Button)sender;
             BO.StopOfLine a = (BO.StopOfLine)cdn.DataContext;
-          int index =  lineTo.StationList.IndexOf(a);
+         // int index =  lineTo.StationList.IndexOf(a);
             //TODO לשלוח את הלוגיקה לביזנס
-            lineTo.StationList.RemoveAt(index);
+         //   lineTo.StationList.RemoveAt(index);
         }
 
         private void add_stop_to_line_Click(object sender, RoutedEventArgs e)

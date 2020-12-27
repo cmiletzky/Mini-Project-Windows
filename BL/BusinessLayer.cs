@@ -16,6 +16,24 @@ namespace BL
     class BusinessLayer : IBL
     {
         public static IDAL dal = DalFactory.GetDal();
+
+        IEnumerable<Station> IBL.presentStopsOfLine(int lineNum)
+        {
+           // List<StopOfLine> stopOfLines = new List<StopOfLine>();
+            var stopOfLines =  dal.GetStopsOfLine().Where(x => x.OfLine == lineNum);
+            var stops = (from item1 in dal.GetStopsOfLine()
+                        from item2 in dal.getStations(false)
+                        where item1.OfLine == lineNum && item1.Id == item2.Code 
+                        select item2).ToList();
+
+            List<Station> listTo = new List<Station>();
+
+            foreach (var item in stops)
+            {
+                listTo.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
+            }
+            return listTo;
+        }
         public IEnumerable<Bus> presentAllBus(bool run)
         {
 
@@ -197,30 +215,30 @@ namespace BL
                 if (item.IsActive!=false)
                 {
                     //TODO לטפל באיתחול אזור
-                    lines.Add(new LineBus(item.LineNum, 1, item.FirstStation, item.LastStation, initializeStopsLine(item)));
+                    lines.Add(new LineBus(item.LineNum, Areas.Jerusalem, item.FirstStation, item.LastStation));
                 }
 
             }
             return lines;
         }
 
-         public ObservableCollection<StopOfLine> initializeStopsLine(DO.LineBus item) 
-        {
-            ObservableCollection<StopOfLine> list = new ObservableCollection<StopOfLine>();
-            for (int i = 0; i < 10; i++)
-            {
-                StopOfLine stop = new StopOfLine(item.LineNum, item.StationList[i], i);
-                foreach (var st in dal.getStations(false))
-                {
-                    if (st.Code==stop.Id)
-                    {
-                        stop.Stop = new Station(st.Code, st.Name, st.Longtitude, st.Latitude); ;
-                    }
-                }
-                list.Add(stop); 
-            }
-            return list;
-        }
+        // public ObservableCollection<StopOfLine> initializeStopsLine(DO.LineBus item) 
+        //{
+        //    ObservableCollection<StopOfLine> list = new ObservableCollection<StopOfLine>();
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        StopOfLine stop = new StopOfLine(item.LineNum, item.StationList[i], i);
+        //        foreach (var st in dal.getStations(false))
+        //        {
+        //            if (st.Code==stop.Id)
+        //            {
+        //                stop.Stop = new Station(st.Code, st.Name, st.Longtitude, st.Latitude); ;
+        //            }
+        //        }
+        //        list.Add(stop); 
+        //    }
+        //    return list;
+        //}
 
         void IBL.RemoveLine(LineBus lineBus)
         {

@@ -20,7 +20,6 @@ namespace BO
         Areas area;
         int firstStation;
         int lastStation;
-        ObservableCollection<StopOfLine> stationList = new ObservableCollection<StopOfLine>();
 
 
 
@@ -29,36 +28,36 @@ namespace BO
         public int FirstStation { get => firstStation; set => firstStation = value; }
         public int LastStation { get => lastStation; set => lastStation = value; }
         public Areas Area { get => area; set => area = value; }
-        public ObservableCollection<StopOfLine> StationList { get => stationList; set => stationList = value; }
+       
 
-        public LineBus(int lineNum, int area, int firstStation, int lastStation, ObservableCollection<StopOfLine> stationList)
+        public LineBus(int lineNum, Areas area, int firstStation, int lastStation)
         {
             this.id = configNum.LineId++;
             this.lineNum = lineNum;
             this.firstStation = firstStation;
             this.lastStation = lastStation;
-            this.stationList = stationList;
-            switch (area)
-            {
-                case 1:
-                    this.area = Areas.Center;
-                    break;
-                case 2:
-                    this.area = Areas.General;
-                    break;
-                case 3:
-                    this.area = Areas.Jerusalem;
-                    break;
-                case 4:
-                    this.area = Areas.North;
-                    break;
-                case 5:
-                    this.area = Areas.South;
-                    break;
-                default:
-                    this.area = Areas.General;
-                    break;
-            }
+            this.area = area;
+            //switch (area)
+            //{
+            //    case 1:
+            //        this.area = Areas.Center;
+            //        break;
+            //    case 2:
+            //        this.area = Areas.General;
+            //        break;
+            //    case 3:
+            //        this.area = Areas.Jerusalem;
+            //        break;
+            //    case 4:
+            //        this.area = Areas.North;
+            //        break;
+            //    case 5:
+            //        this.area = Areas.South;
+            //        break;
+            //    default:
+            //        this.area = Areas.General;
+            //        break;
+            //}
         }
     }
 }

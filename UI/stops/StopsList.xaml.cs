@@ -35,7 +35,7 @@ namespace PL.stops
         private void save_Click(object sender, RoutedEventArgs e)
         {
             BO.Station a = (BO.Station)stop_list.SelectedValue;
-            line.StationList.Add(new BO.StopOfLine(line.Id, a.Code, 0));
+           // line.StationList.Add(new BO.StopOfLine(line.Id, a.Code, 0));
             Close();
         }
     }
