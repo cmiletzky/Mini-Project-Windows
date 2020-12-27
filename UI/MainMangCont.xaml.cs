@@ -31,7 +31,7 @@ namespace PL
             InitializeComponent();
 
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
-            stops_list.ItemsSource = MainWindow.bl.presentAllStation();
+            stops_list.ItemsSource = MainWindow.bl.presentAllStation(true);
             line_list.ItemsSource = MainWindow.bl.presentAllLines(true);
 
         }

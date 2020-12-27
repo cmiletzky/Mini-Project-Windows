@@ -16,7 +16,7 @@ namespace BlApi
         void updateBus(Bus busToUpdate);
         void AddBus(string busNam, DateTime? startDate);
         IEnumerable<Bus> presentAllBus(bool run);
-        IEnumerable<BO.Station> presentAllStation();
+        IEnumerable<BO.Station> presentAllStation(bool run);
         IEnumerable<BO.LineBus> presentAllLines(bool run);
         void AddStation(string name, string code, string longtitude, string latitude);
         bool canDrive(Bus bus, ref string mes);

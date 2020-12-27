@@ -36,7 +36,7 @@ namespace PL.line
         {
             Button cdn = (Button)sender;
             BO.StopOfLine a = (BO.StopOfLine)cdn.DataContext;
-          int index =  lineTo.StationList.FindIndex(x => x.Id == a.Id);
+          int index =  lineTo.StationList.IndexOf(a);
             //TODO לשלוח את הלוגיקה לביזנס
             lineTo.StationList.RemoveAt(index);
         }
@@ -45,7 +45,7 @@ namespace PL.line
         {
             if (MessageBox.Show("התחנה תתווסף בראש הרשימה, כדי להוסיף במיקום אחר יש לבחור את התחנה שלאחריה תתווסף התחנה החדשה","חשוב",MessageBoxButton.OKCancel)==MessageBoxResult.OK)
             {
-                new StopsList(MainWindow.bl.presentAllStation()).ShowDialog();
+                new StopsList(MainWindow.bl.presentAllStation(false),ref lineTo).ShowDialog();
             }
         }
     }

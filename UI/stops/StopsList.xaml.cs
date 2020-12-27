@@ -19,11 +19,24 @@ namespace PL.stops
     /// </summary>
     public partial class StopsList : Window
     {
-        public StopsList(IEnumerable<BO.Station> list)
+         BO.LineBus  line;
+        public StopsList(IEnumerable<BO.Station> list,ref BO.LineBus lineTo)
         {
             InitializeComponent();
             stop_list.ItemsSource = list;
-            stop_list.DisplayMemberPath = "Code";
+            line = lineTo;
+        }
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            BO.Station a = (BO.Station)stop_list.SelectedValue;
+            line.StationList.Add(new BO.StopOfLine(line.Id, a.Code, 0));
+            Close();
         }
     }
 }
