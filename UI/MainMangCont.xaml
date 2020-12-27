@@ -53,7 +53,7 @@
                         <ColumnDefinition Width="20*"/>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="30*"/>
-                       
+
                     </Grid.ColumnDefinitions>
                     <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged" Margin="0,0,50,0.333"  >
                         <ListBox.ItemTemplate>
@@ -99,11 +99,13 @@
             <TabItem Header="Stations    " FontSize="18">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="75*"/>
-                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="341*"/>
+                        <ColumnDefinition Width="340*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox Grid.Column="0"   x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stops_list_SelectionChanged" >
+                    <ListBox Grid.Column="0"   x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stops_list_SelectionChanged" Grid.ColumnSpan="4" Margin="0,0,340.4,-0.4" >
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -112,11 +114,12 @@
 
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <TextBlock x:Name="code_stop" Grid.Column="1"/>
-                    <TextBlock x:Name="name_stop" Grid.Column="1"/>
-                    <TextBlock x:Name="location_stop" Grid.Column="1"/>
-                    <Button x:Name="Add_station" Content="Add station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="Add_station_click"/>
-                    <Button x:Name="remoove_station" Content="Remoove station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="remoove_station_click"/>
+                    <TextBlock x:Name="code_stop" Grid.Column="3" Grid.ColumnSpan="2" Margin="0.4,0,339.4,-0.4"/>
+                    <TextBlock x:Name="name_stop" Grid.Column="3" Grid.ColumnSpan="2" Margin="0.4,0,339.4,-0.4"/>
+                    <TextBlock x:Name="location_stop" Grid.Column="3" Grid.ColumnSpan="2" Margin="0.4,0,339.4,-0.4"/>
+                    <Button x:Name="Add_station" Content="Add station" Grid.Column="3" HorizontalAlignment="Left" Margin="84.4,193,0,0" VerticalAlignment="Top" Width="103" Click="Add_station_click" Height="90"/>
+                    <Button x:Name="remoove_station" Content="Remoove station" Grid.Column="3" HorizontalAlignment="Left" Margin="84.4,95,0,0" VerticalAlignment="Top" Width="174" Click="remoove_station_click" Height="41"/>
+                    <!--<Button x:Name="update_station" Content="Update station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="update_station_click"/>-->
                     <!--<Button x:Name="update_station" Content="Update station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="update_station_click"/>-->
 
                 </Grid>

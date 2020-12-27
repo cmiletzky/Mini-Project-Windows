@@ -16,14 +16,17 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
         <Label Content="name" HorizontalAlignment="Left" Margin="187,41,0,0" VerticalAlignment="Top"/>
         <Label Content="code" HorizontalAlignment="Left" Margin="187,32.4,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Label Content="Longtitude" HorizontalAlignment="Left" Margin="187,39.6,0,0" VerticalAlignment="Top" Grid.Row="2"/>
         <Label Content="Latitude" HorizontalAlignment="Left" Margin="187,40.8,0,0" VerticalAlignment="Top" Grid.Row="3"/>
-        <TextBox x:Name="new_stat_name" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121.2,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="new_stat_code" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121.2,44.4,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-        <TextBox x:Name="new_stat_longtitude" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121.2,34.6,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="2"/>
-        <TextBox x:Name="new_stat_latitude" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121.2,40.8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
+        <TextBox x:Name="new_stat_name" Grid.Column="1"  HorizontalAlignment="Left" Height="23" Margin="121.2,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="new_stat_code" PreviewTextInput="NumberValidationTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121.2,44.4,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="new_stat_longtitude" PreviewTextInput="NumberValidationTextBo" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121.2,34.6,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="2"/>
+        <TextBox x:Name="new_stat_latitude" PreviewTextInput="NumberValidationTextB" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121.2,40.8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Row="3"/>
+        <Button x:Name="add_station_click" Content="Add station"   HorizontalAlignment="Left" Margin="0,0,-0.4,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="84" Width="794" Click="Add_station_click"/>
     </Grid>
 </Window>

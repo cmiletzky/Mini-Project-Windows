@@ -201,7 +201,19 @@ namespace PL
 
         private void remoove_station_click(object sender, RoutedEventArgs e)
         {
-
+            if (stops_list.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select the station you want to remove");
+            }
+            else
+            {
+                Station stationToRemove = (Station)stops_list.Items[stops_list.SelectedIndex];
+                if (MessageBox.Show("Are you sure you want to delete the bus " + stationToRemove.Code + " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    MainWindow.bl.RemoveStation(stationToRemove);
+                    stops_list.ItemsSource = MainWindow.bl.presentAllStation(false);
+                }
+            }
         }
 
         private void update_station_click(object sender, RoutedEventArgs e)
