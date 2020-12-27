@@ -29,12 +29,15 @@
                 <ListBox x:Name="list_stop_of_line" Grid.Column="1"  Grid.Row="2">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
                                 <TextBlock x:Name="stop_name" Text="{Binding Stop.Name}" Background="{x:Null}"></TextBlock>
                                 <Grid>
                                     <Label Content="מספר התחנה" Foreground="Red" Margin="38,0,0,0"/>
                                     <TextBlock x:Name="stop_id" Text="{Binding Id}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
                                 </Grid>
+                                </StackPanel>
+                                <Button x:Name="remove_stop_from_line" Content="הסר תחנה" Margin="10,0,0,0" Height="20" Click="remove_stop_from_line_Click"/>
                             </StackPanel>
                         </DataTemplate>
 
@@ -45,6 +48,7 @@
                 <Label Content="Line number:   " Grid.Column="0"  VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Right" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Area:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Line stops:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma" Margin="0,9.667,0.333,220.667" Height="43"/>
+                <Button Content="הוסף תחנה" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" x:Name="add_stop_to_line" Click="add_stop_to_line_Click"/>
 
             </Grid>
         </Border>
