@@ -9,6 +9,7 @@ using DaLApi;
 using BO;
 using BL.BO;
 using System.Data;
+using System.Collections.ObjectModel;
 
 namespace BL
 {
@@ -165,15 +166,27 @@ namespace BL
             return dal.dalIsUser(userName, password,isMang);
         }
 
-       public IEnumerable<Station> presentAllStation()
+       public IEnumerable<Station> presentAllStation(bool run)
         {
          
             List<Station> list = new List<Station>();
-            foreach (var item in dal.getStations(true))
+            if (run==true)
             {
-                list.Add(new Station(item.Code, item.Name, item.Longtitude,item.Latitude));
-              
+                foreach (var item in dal.getStations(run))
+                {
+                    list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
+
+                }
             }
+            else
+            {
+                foreach (var item in dal.getStations(run))
+                {
+                    list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
+
+                }
+            }
+          
             return list;
         }
        public IEnumerable<LineBus> presentAllLines(bool run)
@@ -191,9 +204,9 @@ namespace BL
             return lines;
         }
 
-         public  List<StopOfLine> initializeStopsLine(DO.LineBus item) 
+         public ObservableCollection<StopOfLine> initializeStopsLine(DO.LineBus item) 
         {
-            List<StopOfLine> list = new List<StopOfLine>();
+            ObservableCollection<StopOfLine> list = new ObservableCollection<StopOfLine>();
             for (int i = 0; i < 10; i++)
             {
                 StopOfLine stop = new StopOfLine(item.LineNum, item.StationList[i], i);

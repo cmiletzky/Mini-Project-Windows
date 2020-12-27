@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using DO;
 
 namespace BO
 {
-    public enum Areas                                                  // definde enum for area value
+    public  enum Areas                                                  // definde enum for area value
     {
         General = 1, North = 2, South = 3, Center = 4, Jerusalem = 5
     }
@@ -19,7 +20,7 @@ namespace BO
         Areas area;
         int firstStation;
         int lastStation;
-        List<StopOfLine> stationList = new List<StopOfLine>();
+        ObservableCollection<StopOfLine> stationList = new ObservableCollection<StopOfLine>();
 
 
 
@@ -28,9 +29,9 @@ namespace BO
         public int FirstStation { get => firstStation; set => firstStation = value; }
         public int LastStation { get => lastStation; set => lastStation = value; }
         public Areas Area { get => area; set => area = value; }
-        public List<StopOfLine> StationList { get => stationList; set => stationList = value; }
+        public ObservableCollection<StopOfLine> StationList { get => stationList; set => stationList = value; }
 
-        public LineBus(int lineNum, int area, int firstStation, int lastStation, List<StopOfLine> stationList)
+        public LineBus(int lineNum, int area, int firstStation, int lastStation, ObservableCollection<StopOfLine> stationList)
         {
             this.id = configNum.LineId++;
             this.lineNum = lineNum;

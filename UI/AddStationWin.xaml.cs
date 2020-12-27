@@ -23,8 +23,9 @@ namespace PL
         {
             ListBox list = stopList;
             InitializeComponent();
+            
         }
-
-        MainWindow.bl.AddStation(new_stat_name.Text, new_stat_code.Text, new_stat_longtitude.Text, new_stat_latitude.Text);    
+       
+       // MainWindow.bl.AddStation(new_stat_name.Text, new_stat_code.Text, new_stat_longtitude.Text, new_stat_latitude.Text);    
     }
 }

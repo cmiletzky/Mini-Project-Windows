@@ -67,6 +67,9 @@
     <Compile Include="LineDetail.xaml.cs">
       <DependentUpon>LineDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="line\UpdateLine.xaml.cs">
+      <DependentUpon>UpdateLine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainMangCont.xaml.cs">
       <DependentUpon>MainMangCont.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,9 @@
     </Compile>
     <Compile Include="StartTrip.xaml.cs">
       <DependentUpon>StartTrip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="stops\StopsList.xaml.cs">
+      <DependentUpon>StopsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateBus.xaml.cs">
       <DependentUpon>UpdateBus.xaml</DependentUpon>
@@ -105,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LineDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="line\UpdateLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartTrip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="stops\StopsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
