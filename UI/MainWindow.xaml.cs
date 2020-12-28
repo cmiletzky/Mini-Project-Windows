@@ -35,6 +35,7 @@ namespace PL
         {
            
             bl = BlFactory.GetBl();
+            bl.InitializeData();
             InitializeComponent();
             Auth.user = new BO.User();
             RefreshMenu();

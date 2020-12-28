@@ -11,6 +11,7 @@ namespace BlApi
 {
     public interface IBL
     {
+        void InitializeData();
         IEnumerable<BO.Station> presentStopsOfLine(int lineNum);
         void RemoveLine(BO.LineBus lineBus);
         void RemoveBus(Bus busToRemove);

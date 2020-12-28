@@ -16,6 +16,10 @@ namespace BL
     class BusinessLayer : IBL
     {
         public static IDAL dal = DalFactory.GetDal();
+        void IBL.InitializeData()
+        {
+            dal.InitializeData();
+        }
 
         IEnumerable<Station> IBL.presentStopsOfLine(int lineNum)
         {

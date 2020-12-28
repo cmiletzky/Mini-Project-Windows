@@ -17,11 +17,20 @@ namespace Dal
          
         }
         private DalObject() {
-         
+
            
-           
+
+
         }
         public static DalObject Instance { get { return instance; } }
+        void IDAL.InitializeData()
+        {
+            new DsUsers();
+            new DsBuses();
+            new DsStations();
+            new DSstopOfLine();
+            new Dslines();
+        }
 
         #region Bus
 
@@ -119,18 +128,18 @@ namespace Dal
 
         IEnumerable<StopOfLine> IDAL.GetStopsOfLine()
         {
-            new DSstopOfLine();
+            
             return DSstopOfLine.stopOfLines;
         }
        public IEnumerable<Station> getStations(bool run)
         {
-            new DsStations();
+            
             return DsStations.stations.Clone();
         }
 
         public  IEnumerable<LineBus> getLins(bool run)
         {
-            new Dslines();
+            
             return Dslines.lines.Clone();
         }
 

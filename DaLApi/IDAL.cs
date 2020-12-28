@@ -13,7 +13,7 @@ namespace DaLApi
 {
   public  interface IDAL
     {
-       
+        void InitializeData();
         IEnumerable<Station> getStations(bool run);
         #region station
         void addStation(int code, string name, int longtitude, int latitude);
@@ -99,8 +99,7 @@ namespace DaLApi
                 throw new DalConfigException($"class{dalPkg} is not a singelton", ex);
 
             }
-
-
+            
         }
     }
 }
