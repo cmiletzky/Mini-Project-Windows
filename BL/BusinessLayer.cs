@@ -219,6 +219,7 @@ namespace BL
        public IEnumerable<LineBus> presentAllLines(bool run)
         {
             List<LineBus> lines = new List<LineBus>();
+
             foreach (var item in dal.getLins(run))
             {
                 if (item.IsActive!=false)
