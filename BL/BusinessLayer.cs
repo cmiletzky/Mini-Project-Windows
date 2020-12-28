@@ -237,9 +237,9 @@ namespace BL
                     }
                 }
 
-                item.AdjacentStatisions = from aa in dal.getAdjacentStatisions()
-                                          from bb in item.Stops
-                                          where aa.Station_1  && 
+                //item.AdjacentStatisions = from aa in dal.getAdjacentStatisions()
+                //                          from bb in item.Stops
+                //                          where aa.Station_1  && 
 
             }
             return lines;
