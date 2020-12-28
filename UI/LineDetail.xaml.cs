@@ -25,7 +25,8 @@ namespace PL
             Title = "line number " + line.LineNum.ToString();
             line_num.Content = line.LineNum;
             line_area.Content = line.Area;
-            list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(line.Id);
+            list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(line.LineNum);
+
             
 
 

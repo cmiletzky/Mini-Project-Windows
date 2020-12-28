@@ -14,6 +14,7 @@ namespace BlApi
         void InitializeData();
         IEnumerable<BO.Station> presentStopsOfLine(int lineNum);
         void RemoveLine(BO.LineBus lineBus);
+        void RemoveStopFromLine(int lineNum, int stopCode);
         void RemoveBus(Bus busToRemove);
         void updateBus(Bus busToUpdate);
         void AddBus(string busNam, DateTime? startDate);
@@ -21,7 +22,7 @@ namespace BlApi
         IEnumerable<BO.Station> presentAllStation(bool run);
         IEnumerable<BO.LineBus> presentAllLines(bool run);
         void AddStation(string name, string code, string longtitude, string latitude);
-       // void RemoveStation(BO.Station stationToRemove);
+        // void RemoveStation(BO.Station stationToRemove);
         bool canDrive(Bus bus, ref string mes);
         bool canDrive(Bus bus, ref string mes, string kM);
         bool Refuell(Bus bus, ref string mes);

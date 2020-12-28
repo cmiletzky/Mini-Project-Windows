@@ -20,11 +20,16 @@ namespace BL
         {
             dal.InitializeData();
         }
-
+        void IBL.RemoveStopFromLine(int lineNum, int stopCode)
+        {
+            var stopTo = from item in dal.GetStopsOfLine()
+                                where item.OfLine == lineNum && item.Id == stopCode
+                                select item;
+            DO.StopOfLine a = stopTo.First();
+            dal.RemoveStopLine(a);
+        }
         IEnumerable<Station> IBL.presentStopsOfLine(int lineNum)
         {
-           // List<StopOfLine> stopOfLines = new List<StopOfLine>();
-            var stopOfLines =  dal.GetStopsOfLine().Where(x => x.OfLine == lineNum);
             var stops = (from item1 in dal.GetStopsOfLine()
                         from item2 in dal.getStations(false)
                         where item1.OfLine == lineNum && item1.Id == item2.Code 

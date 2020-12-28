@@ -125,7 +125,11 @@ namespace Dal
         }
         #endregion
 
-
+        void IDAL.RemoveStopLine(StopOfLine stop)
+        {
+            int index = DSstopOfLine.stopOfLines.FindIndex(x => x.Id == stop.Id && x.OfLine == stop.OfLine);
+            DSstopOfLine.stopOfLines.RemoveAt(index);
+        }
         IEnumerable<StopOfLine> IDAL.GetStopsOfLine()
         {
             
