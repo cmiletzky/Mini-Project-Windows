@@ -23,17 +23,17 @@ namespace BL
         void IBL.RemoveStopFromLine(int lineNum, int stopCode)
         {
             var stopTo = from item in dal.GetStopsOfLine()
-                                where item.OfLine == lineNum && item.Id == stopCode
-                                select item;
+                         where item.OfLine == lineNum && item.Id == stopCode
+                         select item;
             DO.StopOfLine a = stopTo.First();
             dal.RemoveStopLine(a);
         }
         IEnumerable<Station> IBL.presentStopsOfLine(int lineNum)
         {
             var stops = (from item1 in dal.GetStopsOfLine()
-                        from item2 in dal.getStations(false)
-                        where item1.OfLine == lineNum && item1.Id == item2.Code 
-                        select item2).ToList();
+                         from item2 in dal.getStations(false)
+                         where item1.OfLine == lineNum && item1.Id == item2.Code
+                         select item2).ToList();
 
             List<Station> listTo = new List<Station>();
 
@@ -50,7 +50,7 @@ namespace BL
             foreach (var item in dal.getAllBuses(run))
             {
                 string a = item.Id.Replace("-", "");
-                if (item.IsActive!=false)
+                if (item.IsActive != false)
                 {
                     Bus bus = new Bus(a, item.StartDate);
                     bus.IsActive = item.IsActive;
@@ -61,9 +61,9 @@ namespace BL
                     bus.StartDate = item.StartDate;
                     allBuses.Add(bus);
                 }
-                
+
             }
-           // allBuses[0].InDriving = true;
+            // allBuses[0].InDriving = true;
             return allBuses;
         }
         void IBL.updateBus(Bus busToUpdate)
@@ -71,12 +71,12 @@ namespace BL
             string a = busToUpdate.Id.Replace("-", "");
             DO.Bus bus = new DO.Bus(a, busToUpdate.StartDate);
             bus.Km = busToUpdate.Km;
-            bus.LsaatTreastKm =busToUpdate.LsaatTreastKm;
+            bus.LsaatTreastKm = busToUpdate.LsaatTreastKm;
             bus.Gas = busToUpdate.Gas;
             bus.LastTreatDate = busToUpdate.LastTreatDate;
             dal.updateBus(bus);
         }
-       public void RemoveBus(Bus busToRemove)
+        public void RemoveBus(Bus busToRemove)
         {
             dal.DeleteBus(busToRemove.Id);
         }
@@ -86,8 +86,8 @@ namespace BL
             switch (dal.BusAlreadyExists(busNam))
             {
                 case 0:
-                 throw new Exception("The bus already exists in the system");
-                   
+                    throw new Exception("The bus already exists in the system");
+
                 case 1:
                     dal.addBus(busNam, startDate);
                     break;
@@ -97,8 +97,8 @@ namespace BL
                 default:
                     break;
             }
-         
-            
+
+
         }
         public bool canDrive(Bus bus, ref string mes)
         {
@@ -145,8 +145,8 @@ namespace BL
             // if all the condition is ok take drive and update the right fildes
             else
             {
-              //  Random k = new Random();
-               // double trip_time = double.Parse(kM) / k.Next(20, 50);
+                //  Random k = new Random();
+                // double trip_time = double.Parse(kM) / k.Next(20, 50);
                 bus.InDriving = true;
                 bus.Km += int.Parse(kM);
                 bus.LsaatTreastKm += int.Parse(kM);
@@ -188,16 +188,16 @@ namespace BL
             return true;
         }
 
-        public bool isUserMang(string userName, string password ,bool isMang)
+        public bool isUserMang(string userName, string password, bool isMang)
         {
-            return dal.dalIsUser(userName, password,isMang);
+            return dal.dalIsUser(userName, password, isMang);
         }
 
-       public IEnumerable<Station> presentAllStation(bool run)
+        public IEnumerable<Station> presentAllStation(bool run)
         {
-         
+
             List<Station> list = new List<Station>();
-            if (run==true)
+            if (run == true)
             {
                 foreach (var item in dal.getStations(run))
                 {
@@ -213,38 +213,35 @@ namespace BL
 
                 }
             }
-          
+
             return list;
         }
-       public IEnumerable<LineBus> presentAllLines(bool run)
+        public IEnumerable<LineBus> presentAllLines(bool run)
         {
             var lines = from item in dal.getLins(true)
-                        where item.IsActive==true
-                        select (new LineBus(item.LineNum,GetAreas(item.Area),item.FirstStation,item.LastStation)) ;
+                        where item.IsActive == true
+                        select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation));
 
             foreach (var item in lines)
             {
                 item.Stops = from item1 in dal.GetStopsOfLine()
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
-                             select (new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude));
+                             select (new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude));
 
-                for (int i = 0; i < item.Stops.Count(); i++)
+                for (int i = 1; i < item.Stops.Count(); i++)
                 {
-                    if (true)
-                    {
-                        //TODO dfvgrefdbfgbrgwefwrf
-                    }
+                    item.Stops.ElementAt(i).PriviosStop = item.Stops.ElementAt(i - 1);
                 }
 
-                //item.AdjacentStatisions = from aa in dal.getAdjacentStatisions()
-                //                          from bb in item.Stops
-                //                          where aa.Station_1  && 
+                item.AdjacentStatisions = from bb in item.Stops
+                                          from aa in dal.getAdjacentStatisions(aa => aa.Station_1 == bb.PriviosStop.Code && aa.Station_2 == bb.Code)
+                                          select aa;
 
             }
             return lines;
         }
-         Areas GetAreas(DO.Areas a)
+        Areas GetAreas(DO.Areas a)
         {
             switch (a)
             {
@@ -291,9 +288,9 @@ namespace BL
             dal.RemoveLine(lineBus.LineNum);
         }
 
-        void IBL.AddStation( string code, string name, string longtitude, string latitude)
+        void IBL.AddStation(string code, string name, string longtitude, string latitude)
         {
-            
+
             try
             {
                 dal.addStation(int.Parse(code), name, int.Parse(longtitude), int.Parse(latitude));

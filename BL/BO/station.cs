@@ -13,6 +13,7 @@ namespace BO
         string name;
         int longtitude;
         int latitude;
+        Station priviosStop;
         private int distanceFromPrivios;            // distance from the privios bus stop
         private int timeFromPrivios;
 
@@ -22,6 +23,7 @@ namespace BO
         public int Code { get => code; set => code = value; }
         public int DistanceFromPrivios { get => distanceFromPrivios; set => distanceFromPrivios = value; }
         public int TimeFromPrivios { get => timeFromPrivios; set => timeFromPrivios = value; }
+        public Station PriviosStop { get => priviosStop; set => priviosStop = value; }
 
         public Station(int code, string name, int longtitude, int latitude)
         {

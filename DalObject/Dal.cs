@@ -125,9 +125,11 @@ namespace Dal
         }
         #endregion
 
-        IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions()
+        IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions(Predicate<AdjacentStatision> predicate)
         {
-            return DsAdjacentStatision.adjacentStatisions;
+            return from item in DsAdjacentStatision.adjacentStatisions
+                   where predicate(item)
+                   select item;
         }
         void IDAL.RemoveStopLine(StopOfLine stop)
         {
