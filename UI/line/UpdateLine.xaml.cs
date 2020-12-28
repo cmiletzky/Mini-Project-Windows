@@ -29,13 +29,14 @@ namespace PL.line
             Title = "line number " + line.LineNum.ToString();
             line_num.Text = line.LineNum.ToString();
             line_area.ItemsSource = area;
-            list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(line.LineNum);
+            list_stop_of_line.ItemsSource = line.Stops;
         }
 
         private void remove_stop_from_line_Click(object sender, RoutedEventArgs e)
         {
             Button cdn = (Button)sender;
             BO.Station a = (BO.Station)cdn.DataContext;
+            //TODO לטפל בהסרה נכונה
             MainWindow.bl.RemoveStopFromLine(lineTo.LineNum, a.Code);
             list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(lineTo.LineNum);
 

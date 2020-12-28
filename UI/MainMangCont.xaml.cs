@@ -135,9 +135,9 @@ namespace PL
         {
             if (line_list.SelectedIndex!=-1)
             {
-                LineBus n = (LineBus)line_list.Items[line_list.SelectedIndex];
+                LineBus line = (LineBus)line_list.Items[line_list.SelectedIndex];
 
-                list_stop_of_line.ItemsSource = n.Stops;
+                list_stop_of_line.ItemsSource = line.Stops;
 
             }
             else
