@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DS
 {
-    class DsAdjacentStatision
+   public class DsAdjacentStatision
     {
-        List<AdjacentStatision> adjacentStatisions = new List<AdjacentStatision>();
+      public static  List<AdjacentStatision> adjacentStatisions = new List<AdjacentStatision>();
 
         public DsAdjacentStatision()
         {

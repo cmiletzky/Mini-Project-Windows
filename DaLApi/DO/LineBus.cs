@@ -17,11 +17,10 @@ namespace DO
         int id;
         bool isActive = true;
         int lineNum;
-        IEnumerable<Station> stops = new List<Station>();
+       
         Areas area;
         int firstStation;
         int lastStation;
-        IEnumerable<AdjacentStatision> adjacentStatisions = new List<AdjacentStatision>();
 
 
 
@@ -33,8 +32,6 @@ namespace DO
         public int LastStation { get => lastStation; set => lastStation = value; }
         public Areas Area { get => area; set => area = value; }
         public bool IsActive { get => isActive; set => isActive = value; }
-        public IEnumerable<Station> Stops { get => stops; set => stops = value; }
-        public IEnumerable<AdjacentStatision> AdjacentStatisions { get => adjacentStatisions; set => adjacentStatisions = value; }
 
         public LineBus(int lineNum, Areas area, int firstStation, int lastStation)
         {

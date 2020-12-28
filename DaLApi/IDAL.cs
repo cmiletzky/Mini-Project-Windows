@@ -40,6 +40,7 @@ namespace DaLApi
         #endregion
 
         #region Line
+        IEnumerable<AdjacentStatision> getAdjacentStatisions();
         void RemoveStopLine(StopOfLine stop);
         IEnumerable<StopOfLine> GetStopsOfLine();
         void RemoveLine(int lineNum);

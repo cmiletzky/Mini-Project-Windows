@@ -218,20 +218,56 @@ namespace BL
         }
        public IEnumerable<LineBus> presentAllLines(bool run)
         {
-            List<LineBus> lines = new List<LineBus>();
+            var lines = from item in dal.getLins(true)
+                        where item.IsActive==true
+                        select (new LineBus(item.LineNum,GetAreas(item.Area),item.FirstStation,item.LastStation)) ;
 
-            foreach (var item in dal.getLins(run))
+            foreach (var item in lines)
             {
-                if (item.IsActive!=false)
+                item.Stops = from item1 in dal.GetStopsOfLine()
+                             from item2 in dal.getStations(false)
+                             where item1.OfLine == item.LineNum && item1.Id == item2.Code
+                             select (new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude));
+
+                for (int i = 0; i < item.Stops.Count(); i++)
                 {
-                    //TODO לטפל באיתחול אזור
-                    lines.Add(new LineBus(item.LineNum, Areas.Jerusalem, item.FirstStation, item.LastStation));
+                    if (true)
+                    {
+                        //TODO dfvgrefdbfgbrgwefwrf
+                    }
                 }
+
+                item.AdjacentStatisions = from aa in dal.getAdjacentStatisions()
+                                          from bb in item.Stops
+                                          where aa.Station_1  && 
 
             }
             return lines;
         }
-
+         Areas GetAreas(DO.Areas a)
+        {
+            switch (a)
+            {
+                case DO.Areas.General:
+                    return Areas.General;
+                    break;
+                case DO.Areas.North:
+                    return Areas.North;
+                    break;
+                case DO.Areas.South:
+                    return Areas.South;
+                    break;
+                case DO.Areas.Center:
+                    return Areas.Center;
+                    break;
+                case DO.Areas.Jerusalem:
+                    return Areas.Jerusalem;
+                    break;
+                default:
+                    return Areas.General;
+                    break;
+            }
+        }
         // public ObservableCollection<StopOfLine> initializeStopsLine(DO.LineBus item) 
         //{
         //    ObservableCollection<StopOfLine> list = new ObservableCollection<StopOfLine>();

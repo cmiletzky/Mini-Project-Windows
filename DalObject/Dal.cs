@@ -125,6 +125,10 @@ namespace Dal
         }
         #endregion
 
+        IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions()
+        {
+            return DsAdjacentStatision.adjacentStatisions;
+        }
         void IDAL.RemoveStopLine(StopOfLine stop)
         {
             int index = DSstopOfLine.stopOfLines.FindIndex(x => x.Id == stop.Id && x.OfLine == stop.OfLine);

@@ -9,7 +9,7 @@ using DO;
 
 namespace BO
 {
-    public  enum Areas                                                  // definde enum for area value
+    public enum Areas                                                  // definde enum for area value
     {
         General = 1, North = 2, South = 3, Center = 4, Jerusalem = 5
     }
@@ -17,6 +17,9 @@ namespace BO
     {
         int id;
         int lineNum;
+        IEnumerable<Station> stops = new List<Station>();
+        IEnumerable<AdjacentStatision> adjacentStatisions = new List<AdjacentStatision>();
+
         Areas area;
         int firstStation;
         int lastStation;
@@ -28,7 +31,10 @@ namespace BO
         public int FirstStation { get => firstStation; set => firstStation = value; }
         public int LastStation { get => lastStation; set => lastStation = value; }
         public Areas Area { get => area; set => area = value; }
-       
+        public IEnumerable<Station> Stops { get => stops; set => stops = value; }
+        public IEnumerable<AdjacentStatision> AdjacentStatisions { get => adjacentStatisions; set => adjacentStatisions = value; }
+
+
 
         public LineBus(int lineNum, Areas area, int firstStation, int lastStation)
         {
@@ -37,6 +43,8 @@ namespace BO
             this.firstStation = firstStation;
             this.lastStation = lastStation;
             this.area = area;
+           
+
             //switch (area)
             //{
             //    case 1:
