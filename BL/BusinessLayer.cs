@@ -224,19 +224,19 @@ namespace BL
 
             foreach (var item in lines)
             {
-                item.Stops = from item1 in dal.GetStopsOfLine()
+                item.Stops = (from item1 in dal.GetStopsOfLine()
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
-                             select (new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude));
+                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude)).ToList();
 
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {
                     item.Stops.ElementAt(i).PriviosStop = item.Stops.ElementAt(i - 1);
                 }
 
-                item.AdjacentStatisions = from bb in item.Stops
-                                          from aa in dal.getAdjacentStatisions(aa => aa.Station_1 == bb.PriviosStop.Code && aa.Station_2 == bb.Code)
-                                          select aa;
+                item.AdjacentStatisions = (from bb in item.Stops
+                                          from aa in dal.getAdjacentStatisions(x => x.Station_1 == bb.PriviosStop.Code && x.Station_2 == bb.Code)
+                                          select aa).ToList();
 
             }
             return lines;
