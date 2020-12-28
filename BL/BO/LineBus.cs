@@ -18,7 +18,7 @@ namespace BO
         int id;
         int lineNum;
         IEnumerable<Station> stops = new List<Station>();
-        IEnumerable<AdjacentStatision> adjacentStatisions = new List<AdjacentStatision>();
+        List<AdjacentStatision> adjacentStatisions = new List<AdjacentStatision>();
 
         Areas area;
         int firstStation;
@@ -32,7 +32,7 @@ namespace BO
         public int LastStation { get => lastStation; set => lastStation = value; }
         public Areas Area { get => area; set => area = value; }
         public IEnumerable<Station> Stops { get => stops; set => stops = value; }
-        public IEnumerable<AdjacentStatision> AdjacentStatisions { get => adjacentStatisions; set => adjacentStatisions = value; }
+        public List<AdjacentStatision> AdjacentStatisions { get => adjacentStatisions; set => adjacentStatisions = value; }
 
 
 

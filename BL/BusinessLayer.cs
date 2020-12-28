@@ -218,26 +218,37 @@ namespace BL
         }
         public IEnumerable<LineBus> presentAllLines(bool run)
         {
-            var lines = from item in dal.getLins(true)
+            var lines = (from item in dal.getLins(true)
                         where item.IsActive == true
-                        select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation));
+                        select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation))).ToList();
 
             foreach (var item in lines)
             {
                 item.Stops = (from item1 in dal.GetStopsOfLine()
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
-                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude)).ToList();
+                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude)).ToList<Station>();
 
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {
                     item.Stops.ElementAt(i).PriviosStop = item.Stops.ElementAt(i - 1);
                 }
-
+                item.Stops.ElementAt(0).PriviosStop = item.Stops.ElementAt(item.Stops.Count()-1);
                 item.AdjacentStatisions = (from bb in item.Stops
-                                          from aa in dal.getAdjacentStatisions(x => x.Station_1 == bb.PriviosStop.Code && x.Station_2 == bb.Code)
-                                          select aa).ToList();
+                                           from aa in dal.getAdjacentStatisions()
+                                           where aa.Station_1== bb.PriviosStop.Code && aa.Station_2== bb.Code
+                                           select aa).ToList<DO.AdjacentStatision>();
 
+                for (int i = 1; i < item.Stops.Count(); i++)
+                {
+                    item.Stops.ElementAt(i).TimeFromPrivios = (from ee in item.AdjacentStatisions
+                                                              where ee.Station_2 == item.Stops.ElementAt(i).Code
+                                                              select ee.Time).First();
+
+                    item.Stops.ElementAt(i).DistanceFromPrivios = (from ee in item.AdjacentStatisions
+                                                               where ee.Station_2 == item.Stops.ElementAt(i).Code
+                                                               select ee.Distance).First();
+                }
             }
             return lines;
         }

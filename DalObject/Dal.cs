@@ -30,6 +30,7 @@ namespace Dal
             new DsStations();
             new DSstopOfLine();
             new Dslines();
+            new DsAdjacentStatision();
         }
 
         #region Bus
@@ -125,11 +126,12 @@ namespace Dal
         }
         #endregion
 
-        IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions(Predicate<AdjacentStatision> predicate)
+        IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions(/*Predicate<AdjacentStatision> predicate*/)
         {
-            return from item in DsAdjacentStatision.adjacentStatisions
-                   where predicate(item)
-                   select item;
+            var d = (from item9 in DsAdjacentStatision.adjacentStatisions
+                 // where predicate(item9)
+                 select item9).ToList();
+            return d;
         }
         void IDAL.RemoveStopLine(StopOfLine stop)
         {
