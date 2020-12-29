@@ -247,7 +247,7 @@ namespace BL
                 item.Stops = (from item1 in dal.GetStopsOfLine()
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
-                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).ToList<Station>().OrderBy(x=>x.IndexInLine);
+                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).OrderBy(x => x.IndexInLine).ToList<Station>();
 
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {
@@ -261,12 +261,12 @@ namespace BL
 
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {
-                    item.Stops.ElementAt(i).TimeFromPrivios = (from ee in item.AdjacentStatisions
-                                                              where ee.Station_2 == item.Stops.ElementAt(i).Code
+                    item.Stops[i].TimeFromPrivios = (from ee in item.AdjacentStatisions
+                                                              where ee.Station_2 == item.Stops[i].Code
                                                               select ee.Time).First();
 
-                    item.Stops.ElementAt(i).DistanceFromPrivios = (from ee in item.AdjacentStatisions
-                                                               where ee.Station_2 == item.Stops.ElementAt(i).Code
+                    item.Stops[i].DistanceFromPrivios = (from ee in item.AdjacentStatisions
+                                                               where ee.Station_2 == item.Stops[i].Code
                                                                select ee.Distance).First();
                 }
             }
