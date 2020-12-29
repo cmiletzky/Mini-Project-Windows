@@ -19,7 +19,7 @@ namespace PL.line
     /// </summary>
     public partial class GetDataStopsForFirst : Window
     {
-        public GetDataStopsForFirst()
+        public GetDataStopsForFirst(BO.Station firsStop,BO.Station newStop)
         {
             InitializeComponent();
         }

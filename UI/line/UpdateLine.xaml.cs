@@ -53,7 +53,7 @@ namespace PL.line
         {
             if (MessageBox.Show("התחנה תתווסף בראש הרשימה, כדי להוסיף במיקום אחר יש לבחור את התחנה שלאחריה תתווסף התחנה החדשה","חשוב",MessageBoxButton.OKCancel)==MessageBoxResult.OK)
             {
-                new StopsList(MainWindow.bl.presentAllStation(false),ref lineTo,ref listStop, (BO.Station)list_stop_of_line.SelectedValue).ShowDialog();
+                new StopsList(MainWindow.bl.presentAllStation(false),ref lineTo,ref listStop, (BO.Station)list_stop_of_line.SelectedValue, (BO.Station)list_stop_of_line.Items[0]).ShowDialog();
             }
         }
 

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PL.line"
         mc:Ignorable="d"
         WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Title="GetDataStops" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>

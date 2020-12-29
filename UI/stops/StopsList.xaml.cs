@@ -24,12 +24,13 @@ namespace PL.stops
         BO.Station preStop;
         BO.Station firstStop;
         ListBox listStopOfLine;
-        public StopsList(IEnumerable<BO.Station> list,ref BO.LineBus lineTo, ref ListBox listStopOfLine, BO.Station preStop)
+        public StopsList(IEnumerable<BO.Station> list,ref BO.LineBus lineTo, ref ListBox listStopOfLine, BO.Station preStop, BO.Station firstStop)
         {
             InitializeComponent();
             stop_list.ItemsSource = list;
             line = lineTo;
             this.preStop = preStop;
+            this.firstStop = firstStop;
             this.listStopOfLine = listStopOfLine;
         }
 
@@ -60,7 +61,7 @@ namespace PL.stops
                     MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, preStop.IndexInLine);
                     Close();
                 }
-               else if (preStop == null && MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)
+               else if (preStop == null && MainWindow.bl.CheckAdjacentStatision(firstStop.Code, newStop.Code) == false)
                 {
                     new GetDataStopsForFirst(firstStop, newStop).ShowDialog();
                     MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, 0);
