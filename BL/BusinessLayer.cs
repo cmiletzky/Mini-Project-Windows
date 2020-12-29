@@ -20,13 +20,25 @@ namespace BL
         {
             dal.InitializeData();
         }
+        void IBL.AddStopLine(int stopNum, int lineNum)
+        {
+            if (dal.GetStopsOfLine().Any(x=>x.OfLine==lineNum&&x.Id==stopNum))
+            {
+                throw new Exception("התחנה כבר קיימת בקו");
+            }
+            else
+            {
+                dal.AddStopOfLine(stopNum,lineNum);
+            }
+        }
         void IBL.RemoveStopFromLine(int lineNum, int stopCode)
         {
-            var stopTo = from item in dal.GetStopsOfLine()
+            //TODO לטפל ברשימה ריקה(למנוע כפתור)
+            var stopTo = (from item in dal.GetStopsOfLine()
                          where item.OfLine == lineNum && item.Id == stopCode
-                         select item;
-            DO.StopOfLine a = stopTo.First();
-            dal.RemoveStopLine(a);
+                         select item).ToList().First();
+       
+            dal.RemoveStopLine(stopTo);
         }
         IEnumerable<Station> IBL.presentStopsOfLine(int lineNum)
         {

@@ -36,7 +36,7 @@ namespace PL
 
         }
 
-
+  
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.LineBus lineToDetail = (BO.LineBus)line_list.SelectedItem;
@@ -172,7 +172,7 @@ namespace PL
             else
             {
                 LineBus lineToUpdate = (LineBus)line_list.SelectedValue;
-                new UpdateLine(lineToUpdate).ShowDialog();
+                new UpdateLine(lineToUpdate, ref line_list).ShowDialog();
             }
         }
 

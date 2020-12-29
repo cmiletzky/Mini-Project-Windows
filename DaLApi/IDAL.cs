@@ -11,7 +11,7 @@ using DO;
 
 namespace DaLApi
 {
-  public  interface IDAL
+    public interface IDAL
     {
         void InitializeData();
         IEnumerable<Station> getStations(bool run);
@@ -22,13 +22,13 @@ namespace DaLApi
         #region Bus
 
         int BusAlreadyExists(string busNam);
-        void addBus(string busNam,DateTime? startDate);
-         Bus getBus(string id);
-         IEnumerable<Bus> getAllBuses(bool run);
-         void updateBus(Bus bustoUpdate);
-         void DeleteBus(string BusId);
+        void addBus(string busNam, DateTime? startDate);
+        Bus getBus(string id);
+        IEnumerable<Bus> getAllBuses(bool run);
+        void updateBus(Bus bustoUpdate);
+        void DeleteBus(string BusId);
         void activeBus(string busNum);
-         Bus isBus(Bus x);
+        Bus isBus(Bus x);
         #endregion
 
         #region User
@@ -40,6 +40,7 @@ namespace DaLApi
         #endregion
 
         #region Line
+        void AddStopOfLine(int stopNum, int lineNum);
         IEnumerable<AdjacentStatision> getAdjacentStatisions(/*Predicate<AdjacentStatision> predicate*/);
         void RemoveStopLine(StopOfLine stop);
         IEnumerable<StopOfLine> GetStopsOfLine();
@@ -47,7 +48,7 @@ namespace DaLApi
         IEnumerable<LineBus> getLins(bool run);
         #endregion
 
-       
+
     }
     static class DalConfig
     {
@@ -79,8 +80,9 @@ namespace DaLApi
 
             try { Assembly.Load(dalPkg); }
 
-            catch (Exception ex) { 
-               throw new DalConfigException($" faild loading{dalPkg}.dll", ex);
+            catch (Exception ex)
+            {
+                throw new DalConfigException($" faild loading{dalPkg}.dll", ex);
                 //throw new DalConfigException(" faild loading.dll");
             }
 
@@ -100,7 +102,7 @@ namespace DaLApi
                 throw new DalConfigException($"class{dalPkg} is not a singelton", ex);
 
             }
-            
+
         }
     }
 }

@@ -133,6 +133,11 @@ namespace Dal
                  select item9).ToList();
             return d;
         }
+        void IDAL.AddStopOfLine(int stopNum, int lineNum)
+        {
+            int indexOfLast = DS.DSstopOfLine.stopOfLines.FindLast(x => x.OfLine == lineNum).StatIndex;
+            DS.DSstopOfLine.stopOfLines.Add(new StopOfLine(lineNum, stopNum, indexOfLast + 1));
+        }
         void IDAL.RemoveStopLine(StopOfLine stop)
         {
             int index = DSstopOfLine.stopOfLines.FindIndex(x => x.Id == stop.Id && x.OfLine == stop.OfLine);
