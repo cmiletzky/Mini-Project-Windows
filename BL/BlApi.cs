@@ -30,6 +30,7 @@ namespace BlApi
         bool Refuell(Bus bus, ref string mes);
 
         bool isUserMang(string userName, string password, bool isMang);
+        void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);
     }
     public static class BlFactory
     {

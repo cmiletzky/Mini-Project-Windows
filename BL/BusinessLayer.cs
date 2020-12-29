@@ -20,6 +20,10 @@ namespace BL
         {
             dal.InitializeData();
         }
+        void IBL.AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time)
+        {
+
+        }
         bool IBL.CheckAdjacentStatision(int stop1, int stop2)
         {
             return dal.CheckAdjacentStatision(stop1,stop2);

@@ -126,6 +126,7 @@ namespace Dal
         }
         #endregion
 
+
         IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions(/*Predicate<AdjacentStatision> predicate*/)
         {
             var d = (from item9 in DsAdjacentStatision.adjacentStatisions

@@ -40,7 +40,8 @@ namespace PL.line
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, time.Text);
+            TimeSpan time = new TimeSpan(int.Parse(time_h.Text), int.Parse(time_m.Text), int.Parse(time_s.Text));
+            MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, time);
             Close();
         }
     }
