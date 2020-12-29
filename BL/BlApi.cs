@@ -12,9 +12,10 @@ namespace BlApi
     public interface IBL
     {
         void InitializeData();
+        bool CheckAdjacentStatision(int stop1 , int stop2);
         IEnumerable<BO.Station> presentStopsOfLine(int lineNum);
         void RemoveLine(BO.LineBus lineBus);
-        void AddStopLine(int stopNum, int lineNum);
+        void AddStopLine(int stopNum, int lineNum, int after);
         void RemoveStopFromLine(int lineNum, int stopCode);
         void RemoveBus(Bus busToRemove);
         void updateBus(Bus busToUpdate);

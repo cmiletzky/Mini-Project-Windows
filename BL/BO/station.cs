@@ -11,6 +11,7 @@ namespace BO
 
         int code;
         string name;
+        int indexInLine;
         int longtitude;
         int latitude;
         Station priviosStop;
@@ -24,13 +25,23 @@ namespace BO
         public double DistanceFromPrivios { get => distanceFromPrivios; set => distanceFromPrivios = value; }
         public TimeSpan TimeFromPrivios { get => timeFromPrivios; set => timeFromPrivios = value; }
         public Station PriviosStop { get => priviosStop; set => priviosStop = value; }
+        public int IndexInLine { get => indexInLine; set => indexInLine = value; }
 
-        public Station(int code, string name, int longtitude, int latitude)
+        public Station(int code, string name, int longtitude, int latitude,int index)
         {
             this.code = code;
             this.name = name;
             this.longtitude = longtitude;
             this.latitude = latitude;
+            this.indexInLine = index;
+           
+        }    public Station(int code, string name, int longtitude, int latitude)
+        {
+            this.code = code;
+            this.name = name;
+            this.longtitude = longtitude;
+            this.latitude = latitude;
+          
            
         }
     }

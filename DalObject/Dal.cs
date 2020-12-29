@@ -133,10 +133,22 @@ namespace Dal
                  select item9).ToList();
             return d;
         }
-        void IDAL.AddStopOfLine(int stopNum, int lineNum)
+
+        bool IDAL.CheckAdjacentStatision(int stop1, int stop2)
         {
-            int indexOfLast = DS.DSstopOfLine.stopOfLines.FindLast(x => x.OfLine == lineNum).StatIndex;
-            DS.DSstopOfLine.stopOfLines.Add(new StopOfLine(lineNum, stopNum, indexOfLast + 1));
+            return DsAdjacentStatision.adjacentStatisions.Any(x => x.Station_1 == stop1 && x.Station_2 == stop2);
+        }
+        void IDAL.AddStopOfLine(int stopNum, int lineNum, int after)
+        {
+            //מקדם את האינדקס של שאר התחנות
+            foreach (var item in DSstopOfLine.stopOfLines)
+            {
+                if (item.OfLine == lineNum && item.StatIndex>=after)
+                {
+                    item.StatIndex++;
+                }
+            }
+            DS.DSstopOfLine.stopOfLines.Add(new StopOfLine(lineNum, stopNum, after));
         }
         void IDAL.RemoveStopLine(StopOfLine stop)
         {

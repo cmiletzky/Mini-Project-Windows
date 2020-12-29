@@ -20,7 +20,11 @@ namespace BL
         {
             dal.InitializeData();
         }
-        void IBL.AddStopLine(int stopNum, int lineNum)
+        bool IBL.CheckAdjacentStatision(int stop1, int stop2)
+        {
+            return dal.CheckAdjacentStatision(stop1,stop2);
+        }
+        void IBL.AddStopLine(int stopNum, int lineNum, int after)
         {
             if (dal.GetStopsOfLine().Any(x=>x.OfLine==lineNum&&x.Id==stopNum))
             {
@@ -28,7 +32,7 @@ namespace BL
             }
             else
             {
-                dal.AddStopOfLine(stopNum,lineNum);
+                dal.AddStopOfLine(stopNum,lineNum,after);
             }
         }
         void IBL.RemoveStopFromLine(int lineNum, int stopCode)
@@ -239,7 +243,7 @@ namespace BL
                 item.Stops = (from item1 in dal.GetStopsOfLine()
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
-                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude)).ToList<Station>();
+                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).ToList<Station>();
 
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {

@@ -26,5 +26,6 @@
             <Button x:Name="save" Content="שמירה" Margin="0,0,10,0" FontSize="18" Click="save_Click"/>
             <Button x:Name="cancel" Content="ביטול" Click="cancel_Click" FontSize="18"/>
         </StackPanel>
+        <Button Content="הוסף את התחנה שנבחרה" x:Name="add_stop_to_line" HorizontalAlignment="Left" Margin="520,30.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="188" Height="48" Click="add_stop_to_line_Click"/>
     </Grid>
 </Window>
