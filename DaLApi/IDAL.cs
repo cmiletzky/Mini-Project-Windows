@@ -23,6 +23,7 @@ namespace DaLApi
 
         int BusAlreadyExists(string busNam);
         void addBus(string busNam, DateTime? startDate);
+        void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);
         Bus getBus(string id);
         IEnumerable<Bus> getAllBuses(bool run);
         void updateBus(Bus bustoUpdate);

@@ -126,7 +126,10 @@ namespace Dal
         }
         #endregion
 
-
+        void IDAL.AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time)
+        {
+            DsAdjacentStatision.adjacentStatisions.Add(new AdjacentStatision(stop1, stop2, double.Parse(distnase), time));
+        }
         IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions(/*Predicate<AdjacentStatision> predicate*/)
         {
             var d = (from item9 in DsAdjacentStatision.adjacentStatisions

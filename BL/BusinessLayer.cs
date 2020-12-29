@@ -22,7 +22,7 @@ namespace BL
         }
         void IBL.AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time)
         {
-
+            dal.AddAdjacentStatision(stop1, stop2, distnase, time);
         }
         bool IBL.CheckAdjacentStatision(int stop1, int stop2)
         {
@@ -247,7 +247,7 @@ namespace BL
                 item.Stops = (from item1 in dal.GetStopsOfLine()
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
-                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).ToList<Station>();
+                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).ToList<Station>().OrderBy(x=>x.IndexInLine);
 
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {
