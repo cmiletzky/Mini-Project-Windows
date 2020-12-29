@@ -19,9 +19,13 @@ namespace PL.line
     /// </summary>
     public partial class GetDataStops : Window
     {
+        BO.Station preStop;
+        BO.Station newStop;
         public GetDataStops(BO.Station preStop , BO.Station newStop)
         {
             InitializeComponent();
+            this.preStop = preStop;
+            this.newStop = newStop;
             name_of_pre.Text = preStop.Name;
             num_of_pre.Text = preStop.Code.ToString();
 
@@ -31,12 +35,13 @@ namespace PL.line
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, time.Text);
+            Close();
         }
     }
 }
