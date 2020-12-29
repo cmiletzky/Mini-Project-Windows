@@ -58,7 +58,7 @@ namespace PL.stops
                 if ( preStop != null&&MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)
                 {
                     new GetDataStops(preStop, newStop).ShowDialog();
-                    MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, preStop.IndexInLine);
+                    MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, preStop.IndexInLine+1);
                     Close();
                 }
                else if (preStop == null && MainWindow.bl.CheckAdjacentStatision(firstStop.Code, newStop.Code) == false)
