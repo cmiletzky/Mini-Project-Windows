@@ -38,8 +38,12 @@ namespace PL.stops
 
         public StopsList(ref BO.LineBus lineTo, BO.Station firstStop)
         {
+            InitializeComponent();
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation(false);
             line = lineTo;
             this.firstStop = firstStop;
+            this.preStop = null;
+                
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
@@ -60,7 +64,7 @@ namespace PL.stops
             BO.Station newStop = (BO.Station)stop_list.SelectedValue;
             try
             {
-
+                MainWindow.bl.CheckStopIsInLine(newStop.Code, line.LineNum);
 
                 //TODO לבדוק תחנות עוקובת 
                 if ( preStop != null&&MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)

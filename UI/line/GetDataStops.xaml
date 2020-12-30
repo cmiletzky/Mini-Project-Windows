@@ -39,6 +39,7 @@
                         <TextBlock x:Name="num_of_new"/>
                     </StackPanel>
                 </Border>
+                <StackPanel x:Name="data_pre">
                 <Grid Margin="20,5" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30*"/>
@@ -63,6 +64,7 @@
                         </StackPanel>
                     </Border>
                 </Grid>
+                </StackPanel>
             </StackPanel>
 
 

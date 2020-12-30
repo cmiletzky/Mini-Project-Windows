@@ -40,11 +40,13 @@ namespace PL.line
 
         public GetDataStops(BO.Station firstStop,BO.Station newStop)
         {
+            InitializeComponent();
             this.newStop = newStop;
-            this.newStop = firstStop;
-          //  pre.IsEnabled = false;
+            this.nextStop = firstStop;
+            pre.Visibility = Visibility.Collapsed;
             name_of_new.Text = newStop.Name;
             num_of_new.Text = newStop.Code.ToString();
+            data_pre.Visibility = Visibility.Hidden;
 
             name_of_next.Text = firstStop.Name;
             num_of_next.Text = firstStop.Code.ToString();
@@ -56,10 +58,20 @@ namespace PL.line
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan timeNew = new TimeSpan(int.Parse(time_h.Text), int.Parse(time_m.Text), int.Parse(time_s.Text));
-            TimeSpan timeNext = new TimeSpan(int.Parse(time_h_next.Text), int.Parse(time_m_next.Text), int.Parse(time_s_next.Text));
-            MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, timeNew);
-            MainWindow.bl.AddAdjacentStatision(newStop.Code, nextStop.Code, dis_next.Text, timeNext);
+            if (preStop == null)
+            {
+                TimeSpan timeNext1 = new TimeSpan(int.Parse(time_h_next.Text), int.Parse(time_m_next.Text), int.Parse(time_s_next.Text));
+                MainWindow.bl.AddAdjacentStatision(newStop.Code, nextStop.Code, dis_next.Text, timeNext1);
+
+            }
+            else
+            {
+                TimeSpan timeNew = new TimeSpan(int.Parse(time_h.Text), int.Parse(time_m.Text), int.Parse(time_s.Text));
+                TimeSpan timeNext = new TimeSpan(int.Parse(time_h_next.Text), int.Parse(time_m_next.Text), int.Parse(time_s_next.Text));
+                MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, timeNew);
+                MainWindow.bl.AddAdjacentStatision(newStop.Code, nextStop.Code, dis_next.Text, timeNext);
+            }
+
             Close();
         }
     }

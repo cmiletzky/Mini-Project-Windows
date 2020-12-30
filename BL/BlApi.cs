@@ -16,6 +16,7 @@ namespace BlApi
         IEnumerable<BO.Station> presentStopsOfLine(int lineNum);
         void RemoveLine(BO.LineBus lineBus);
         void AddStopLine(int stopNum, int lineNum, int after);
+        void CheckStopIsInLine(int stopNum, int lineNum);
         void RemoveStopFromLine(int lineNum, int stopCode);
         void RemoveBus(Bus busToRemove);
         void updateBus(Bus busToUpdate);

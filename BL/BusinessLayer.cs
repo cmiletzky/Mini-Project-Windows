@@ -28,16 +28,18 @@ namespace BL
         {
             return dal.CheckAdjacentStatision(stop1,stop2);
         }
-        void IBL.AddStopLine(int stopNum, int lineNum, int after)
+
+        void IBL.CheckStopIsInLine(int stopNum, int lineNum)
         {
-            if (dal.GetStopsOfLine().Any(x=>x.OfLine==lineNum&&x.Id==stopNum))
+            if (dal.GetStopsOfLine().Any(x => x.OfLine == lineNum && x.Id == stopNum))
             {
                 throw new Exception("התחנה כבר קיימת בקו");
             }
-            else
-            {
+        }
+
+        void IBL.AddStopLine(int stopNum, int lineNum, int after)
+        {
                 dal.AddStopOfLine(stopNum,lineNum,after);
-            }
         }
         void IBL.RemoveStopFromLine(int lineNum, int stopCode)
         {
