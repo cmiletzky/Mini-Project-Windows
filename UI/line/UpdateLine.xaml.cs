@@ -28,10 +28,11 @@ namespace PL.line
             lineTo = line;
             listLine = listBox;
 
-            string[] area = { "General", "North", "South", "Center", "Jerusalem" };
+            List<string> area = new List<string> { "General", "North", "South", "Center", "Jerusalem" };
             Title = "line number " + line.LineNum.ToString();
             line_num.Text = line.LineNum.ToString();
             line_area.ItemsSource = area;
+            line_area.SelectedIndex = area.IndexOf(lineTo.Area.ToString());
             list_stop_of_line.ItemsSource = line.Stops;
             
         }

@@ -16,10 +16,12 @@
         <ListBox x:Name="stop_list" Grid.Row="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Code}"/>
-                        <TextBlock Text="{Binding Name}"/>
+                    <Border BorderBrush="Brown" BorderThickness="0,0,0,2">
+                    <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}" Margin="10,5" TextAlignment="Right" FontSize="18" Foreground="DarkOliveGreen"/>
+                            <TextBlock Text="{Binding Code}" Margin="10,5" TextAlignment="Right"  FontSize="18" Foreground="Red"/>
                     </StackPanel>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

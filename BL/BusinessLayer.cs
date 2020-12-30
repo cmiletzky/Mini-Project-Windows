@@ -24,6 +24,10 @@ namespace BL
         {
             dal.AddAdjacentStatision(stop1, stop2, distnase, time);
         }
+        void IBL.EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time)
+        {
+            dal.EditAdjacentStatision(stop1, stop2, dis, time);
+        }
         bool IBL.CheckAdjacentStatision(int stop1, int stop2)
         {
             return dal.CheckAdjacentStatision(stop1,stop2);
@@ -143,7 +147,6 @@ namespace BL
             else
             {
                 return true;
-
             }
         }
 
@@ -267,14 +270,8 @@ namespace BL
                     item.Stops[i].DistanceFromBeginnig = counDis;
                     item.Stops[i].TimeFromPrivios = item.Stops[i].TimeFromBeginnig - item.Stops[i - 1].TimeFromBeginnig;
                     item.Stops[i].DistanceFromPrivios = item.Stops[i].DistanceFromBeginnig - item.Stops[i - 1].DistanceFromBeginnig;
-                    //TODO להסיר
-                   // item.Stops[i].PriviosStop = item.Stops[i-1];
                 }
-               // item.Stops[0].PriviosStop = item.Stops[item.Stops.Count()-1];
-                //item.AdjacentStatisions = (from bb in item.Stops
-                //                           from aa in dal.getAdjacentStatisions()
-                //                           where aa.Station_1== bb.PriviosStop.Code && aa.Station_2== bb.Code
-                //                           select aa).ToList<DO.AdjacentStatision>();
+
 
             }
             return lines;
@@ -285,41 +282,19 @@ namespace BL
             {
                 case DO.Areas.General:
                     return Areas.General;
-                    break;
                 case DO.Areas.North:
                     return Areas.North;
-                    break;
                 case DO.Areas.South:
                     return Areas.South;
-                    break;
                 case DO.Areas.Center:
                     return Areas.Center;
-                    break;
                 case DO.Areas.Jerusalem:
                     return Areas.Jerusalem;
-                    break;
                 default:
                     return Areas.General;
-                    break;
             }
         }
-        // public ObservableCollection<StopOfLine> initializeStopsLine(DO.LineBus item) 
-        //{
-        //    ObservableCollection<StopOfLine> list = new ObservableCollection<StopOfLine>();
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        StopOfLine stop = new StopOfLine(item.LineNum, item.StationList[i], i);
-        //        foreach (var st in dal.getStations(false))
-        //        {
-        //            if (st.Code==stop.Id)
-        //            {
-        //                stop.Stop = new Station(st.Code, st.Name, st.Longtitude, st.Latitude); ;
-        //            }
-        //        }
-        //        list.Add(stop); 
-        //    }
-        //    return list;
-        //}
+
 
         void IBL.RemoveLine(LineBus lineBus)
         {

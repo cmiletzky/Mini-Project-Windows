@@ -19,7 +19,6 @@ namespace BO
         private double distanceFromBeginnig = 0;            // distance from the privios bus stop
         private TimeSpan timeFromPrivios;
         private TimeSpan timeFromBeginnig;
-
         bool isNotFirst = true;
 
         public int Latitude { get => latitude; set => latitude = value; }

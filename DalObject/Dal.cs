@@ -126,6 +126,19 @@ namespace Dal
         }
         #endregion
 
+        void IDAL.EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time) 
+        {
+
+            foreach (var item in DsAdjacentStatision.adjacentStatisions)
+            {
+                if (item.Station_1 == stop1 && item.Station_2 == stop2)
+                {
+                    item.Time = time;
+                    item.Distance = dis;
+                }
+            }
+
+        }
         void IDAL.AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time)
         {
             DsAdjacentStatision.adjacentStatisions.Add(new AdjacentStatision(stop1, stop2, double.Parse(distnase), time));

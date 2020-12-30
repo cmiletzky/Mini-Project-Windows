@@ -17,22 +17,31 @@
 
         <TextBlock Grid.Row="0" Text="ערוך מרחק וזמן בין התחנות" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
         <StackPanel Grid.Row="1" Margin="90,30">
-            <Border BorderThickness="2" Margin="20" BorderBrush="Red">
+            <Border Padding="10" BorderThickness="2" Margin="20" BorderBrush="Red">
                 <StackPanel>
-                    <TextBlock x:Name="name_of_1"/>
-                    <TextBlock x:Name="num_of_1"/>
+                    <TextBlock x:Name="name_of_1" TextAlignment="Right"/>
+                    <TextBlock x:Name="num_of_1" TextAlignment="Right"/>
                 </StackPanel>
             </Border>
-            <TextBlock Text="מרחק" TextAlignment="Center" FontSize="18" />
-            <TextBox VerticalAlignment="Center" Width="100" />
-            <TextBlock Text="זמן" TextAlignment="Center" FontSize="18"/>
-            <TextBox VerticalAlignment="Center" />
-            <Border BorderThickness="2" Margin="20" BorderBrush="Red">
+            <StackPanel Margin="70,0,0,20" Orientation="Horizontal">
+                <TextBox x:Name="dis" VerticalAlignment="Center" Width="120" FontSize="22" HorizontalAlignment="Center" />
+                <TextBlock Margin="10,0,0,0" Text="מרחק" TextAlignment="Center" FontSize="18" />
+            </StackPanel>
+            <StackPanel Margin="70,0,0,0" Orientation="Horizontal">
+                <TextBox x:Name="time" VerticalAlignment="Center" Width="120" FontSize="22" />
+                <TextBlock Margin="10,0,0,0" Text="זמן" TextAlignment="Center" FontSize="18"/>
+            </StackPanel>
+            <Border Padding="10" BorderThickness="2" Margin="20" BorderBrush="Red">
                 <StackPanel>
-                    <TextBlock x:Name="name_of_2"/>
-                    <TextBlock x:Name="num_of_2"/>
+                    <TextBlock x:Name="name_of_2" TextAlignment="Right"/>
+                    <TextBlock x:Name="num_of_2" TextAlignment="Right"/>
                 </StackPanel>
             </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Button x:Name="cancel" Content="ביטול" Width="200" Margin="10" Click="cancel_Click"/>
+            <Button x:Name="save" Content="שמירה" Width="200" Margin="10,0" Click="save_Click"/>
         </StackPanel>
 
 
