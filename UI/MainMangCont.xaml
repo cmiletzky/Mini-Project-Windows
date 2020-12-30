@@ -82,12 +82,12 @@
                                                 <TextBlock x:Name="stop_id" Text="{Binding Code}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
                                             </Grid>
                                             </StackPanel>
-                                            <StackPanel Margin="20,0,0,0">
-                                                <TextBlock Text="מחרחק מתחנה קודמת"/>
-                                                <TextBlock Text="{Binding DistanceFromPrivios}" TextAlignment="Right"/>
+                                            <StackPanel  Margin="20,0,0,0">
+                                                    <TextBlock Text="מחרחק מתחנה קודמת"/>
+                                                    <TextBlock Text="{Binding DistanceFromPrivios}" TextAlignment="Right"/>
                                             </StackPanel>
                                             <StackPanel Margin="20,0,0,0">
-                                                <TextBlock Text="זמן מתחנה קודמת"/>
+                                                    <TextBlock Text="זמן מתחנה קודמת"/>
                                                     <TextBlock Text="{Binding TimeFromPrivios}" TextAlignment="Right"/>
                                             </StackPanel>
 

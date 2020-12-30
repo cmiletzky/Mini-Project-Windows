@@ -250,6 +250,7 @@ namespace BL
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
                              select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).OrderBy(x => x.IndexInLine).ToList<Station>();
+                item.Stops[0].IsNotFirst = false;
                 TimeSpan counTime = new TimeSpan(00, 00, 00);
                 double counDis = 0;
                 for (int i = 1; i < item.Stops.Count(); i++)

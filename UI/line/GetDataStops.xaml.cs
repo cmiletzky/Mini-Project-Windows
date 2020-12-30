@@ -50,6 +50,20 @@ namespace PL.line
 
             name_of_next.Text = firstStop.Name;
             num_of_next.Text = firstStop.Code.ToString();
+        } 
+        public GetDataStops(BO.Station preStop,BO.Station newStop,int a,int b)
+        {
+            InitializeComponent();
+            this.newStop = newStop;
+            this.preStop = preStop;
+            this.nextStop = null;
+            next.Visibility = Visibility.Collapsed;
+            name_of_new.Text = newStop.Name;
+            num_of_new.Text = newStop.Code.ToString();
+          
+
+            name_of_pre.Text = preStop.Name;
+            num_of_pre.Text = preStop.Code.ToString();
         }
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -63,6 +77,11 @@ namespace PL.line
                 TimeSpan timeNext1 = new TimeSpan(int.Parse(time_h_next.Text), int.Parse(time_m_next.Text), int.Parse(time_s_next.Text));
                 MainWindow.bl.AddAdjacentStatision(newStop.Code, nextStop.Code, dis_next.Text, timeNext1);
 
+            }
+            else if (nextStop==null)
+            {
+                TimeSpan timeNext2 = new TimeSpan(int.Parse(time_h.Text), int.Parse(time_m.Text), int.Parse(time_s.Text));
+                MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, timeNext2);
             }
             else
             {

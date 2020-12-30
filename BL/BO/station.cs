@@ -20,6 +20,8 @@ namespace BO
         private TimeSpan timeFromPrivios;
         private TimeSpan timeFromBeginnig;
 
+        bool isNotFirst = true;
+
         public int Latitude { get => latitude; set => latitude = value; }
         public int Longtitude { get => longtitude; set => longtitude = value; }
         public string Name { get => name; set => name = value; }
@@ -30,6 +32,7 @@ namespace BO
         public int IndexInLine { get => indexInLine; set => indexInLine = value; }
         public TimeSpan TimeFromBeginnig { get => timeFromBeginnig; set => timeFromBeginnig = value; }
         public double DistanceFromBeginnig { get => distanceFromBeginnig; set => distanceFromBeginnig = value; }
+        public bool IsNotFirst { get => isNotFirst; set => isNotFirst = value; }
 
         public Station(int code, string name, int longtitude, int latitude,int index)
         {

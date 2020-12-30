@@ -65,10 +65,14 @@
                     </Border>
                 </Grid>
                 </StackPanel>
+                <StackPanel Margin="0,20" Orientation="Horizontal">
+                    <Button Width="70" Margin="20" x:Name="cancel" Content="ביטול" Click="cancel_Click"/>
+                    <Button Width="70" Margin="20"  x:Name="save" Content="שמור" Click="save_Click"/>
+                </StackPanel>
             </StackPanel>
 
 
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" x:Name="next">
                 <TextBlock TextAlignment="Center" FontSize="20" Text="התחנה הבאה"/>
                 <Border BorderThickness="2" Margin="20" BorderBrush="Red">
                     <StackPanel>
@@ -100,10 +104,7 @@
                         </StackPanel>
                     </Border>
                 </Grid>
-                <StackPanel Margin="0,20" Orientation="Horizontal">
-                    <Button Width="70" Margin="20" x:Name="cancel" Content="ביטול" Click="cancel_Click"/>
-                    <Button Width="70" Margin="20"  x:Name="save" Content="שמור" Click="save_Click"/>
-                </StackPanel>
+
 
             </StackPanel>
         </Grid>

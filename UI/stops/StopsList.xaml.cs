@@ -44,6 +44,14 @@ namespace PL.stops
             this.firstStop = firstStop;
             this.preStop = null;
                 
+        } public StopsList(ref BO.LineBus lineTo, BO.Station lastStop,int a)
+        {
+            InitializeComponent();
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation(false);
+            line = lineTo;
+            this.firstStop = null;
+            this.preStop = lastStop;
+                
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
@@ -67,7 +75,7 @@ namespace PL.stops
                 MainWindow.bl.CheckStopIsInLine(newStop.Code, line.LineNum);
 
                 //TODO לבדוק תחנות עוקובת 
-                if ( preStop != null&&MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)
+                if (firstStop!= null&& preStop != null&&MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)
                 {
                     new GetDataStops(preStop, newStop,nextStop).ShowDialog();
                     MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, preStop.IndexInLine+1);
@@ -76,7 +84,12 @@ namespace PL.stops
                else if (preStop == null && MainWindow.bl.CheckAdjacentStatision(firstStop.Code, newStop.Code) == false)
                 {
                     new GetDataStops(firstStop, newStop).ShowDialog();
-                    MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, 0);
+                    MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, 1);
+                }
+                else if (firstStop == null && MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)
+                {
+                    new GetDataStops(preStop, newStop , 1,1).ShowDialog();
+                    MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, preStop.IndexInLine + 1);
                 }
                 else
                 {

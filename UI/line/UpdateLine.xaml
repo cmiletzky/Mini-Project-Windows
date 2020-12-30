@@ -38,7 +38,11 @@
                                     <Label Content="מספר התחנה" Foreground="Red" Margin="38,0,0,0"/>
                                     <TextBlock x:Name="stop_id" Text="{Binding Code}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
                                 </Grid>
+                                    
                                 </StackPanel>
+                                <Button IsEnabled="{Binding IsNotFirst}" x:Name="edit_time_and_dis" Content="ערוך זמן ומרחק" Margin="10,0,0,0" Height="20" Click="edit_time_and_dis_Click"/>
+
+
                                 <Button x:Name="remove_stop_from_line" Content="הסר תחנה" Margin="10,0,0,0" Height="20" Click="remove_stop_from_line_Click"/>
                             </StackPanel>
                         </DataTemplate>

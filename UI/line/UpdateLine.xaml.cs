@@ -33,6 +33,7 @@ namespace PL.line
             line_num.Text = line.LineNum.ToString();
             line_area.ItemsSource = area;
             list_stop_of_line.ItemsSource = line.Stops;
+            
         }
 
         private void remove_stop_from_line_Click(object sender, RoutedEventArgs e)
@@ -51,12 +52,17 @@ namespace PL.line
 
         private void add_stop_to_line_Click(object sender, RoutedEventArgs e)
         {
+
             if (list_stop_of_line.SelectedItems.Count==0)
             {
                 if (MessageBox.Show("התחנה תתווסף בראש הרשימה, כדי להוסיף במיקום אחר יש לבחור את התחנה שלאחריה תתווסף התחנה החדשה", "חשוב", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     new StopsList(ref lineTo, (BO.Station)list_stop_of_line.Items[0]).ShowDialog();
                 }
+            }
+            else if (list_stop_of_line.SelectedIndex == lineTo.Stops.Count()-1)
+            {
+                new StopsList(ref lineTo, (BO.Station)list_stop_of_line.SelectedItem,1).ShowDialog();
             }
             else
             {
@@ -75,6 +81,16 @@ namespace PL.line
 
             BO.Station ee = (BO.Station)list_stop_of_line.SelectedValue;
             add_stop_to_line.Content = "הוסף תחנה אחרי תחנה : " + ee.Name;
+        }
+
+        private void edit_time_and_dis_Click(object sender, RoutedEventArgs e)
+        {
+            Button cmd = (Button)sender;
+            BO.Station stop2 = (BO.Station)cmd.DataContext;
+            BO.Station stop1 = lineTo.Stops[lineTo.Stops.IndexOf(stop2) - 1];
+
+            new EditDataStopOfLine(stop1,stop2).ShowDialog();
+
         }
     }
 }

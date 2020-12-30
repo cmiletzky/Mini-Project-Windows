@@ -67,6 +67,9 @@
     <Compile Include="LineDetail.xaml.cs">
       <DependentUpon>LineDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="line\EditDataStopOfLine.xaml.cs">
+      <DependentUpon>EditDataStopOfLine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="line\GetDataStops.xaml.cs">
       <DependentUpon>GetDataStops.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LineDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="line\EditDataStopOfLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
