@@ -23,15 +23,15 @@ namespace PL.stops
          BO.LineBus  line;
         BO.Station preStop;
         BO.Station firstStop;
-        ListBox listStopOfLine;
-        public StopsList(IEnumerable<BO.Station> list,ref BO.LineBus lineTo, ref ListBox listStopOfLine, BO.Station preStop, BO.Station firstStop)
+       // ListBox listStopOfLine;
+        public StopsList(IEnumerable<BO.Station> list,ref BO.LineBus lineTo, BO.Station preStop, BO.Station firstStop)
         {
             InitializeComponent();
             stop_list.ItemsSource = list;
             line = lineTo;
             this.preStop = preStop;
             this.firstStop = firstStop;
-            this.listStopOfLine = listStopOfLine;
+          //  this.listStopOfLine.ItemsSource = lineTo.Stops;
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
@@ -42,7 +42,7 @@ namespace PL.stops
         private void save_Click(object sender, RoutedEventArgs e)
         {
 
-            listStopOfLine.ItemsSource = MainWindow.bl.presentAllLines(false);
+           // listStopOfLine.ItemsSource = MainWindow.bl.presentAllLines(false);
       
             Close();
         }

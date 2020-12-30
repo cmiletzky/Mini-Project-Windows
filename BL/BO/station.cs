@@ -15,8 +15,10 @@ namespace BO
         int longtitude;
         int latitude;
         Station priviosStop;
-        private double distanceFromPrivios;            // distance from the privios bus stop
+        private double distanceFromPrivios = 0;            // distance from the privios bus stop
+        private double distanceFromBeginnig = 0;            // distance from the privios bus stop
         private TimeSpan timeFromPrivios;
+        private TimeSpan timeFromBeginnig;
 
         public int Latitude { get => latitude; set => latitude = value; }
         public int Longtitude { get => longtitude; set => longtitude = value; }
@@ -26,6 +28,8 @@ namespace BO
         public TimeSpan TimeFromPrivios { get => timeFromPrivios; set => timeFromPrivios = value; }
         public Station PriviosStop { get => priviosStop; set => priviosStop = value; }
         public int IndexInLine { get => indexInLine; set => indexInLine = value; }
+        public TimeSpan TimeFromBeginnig { get => timeFromBeginnig; set => timeFromBeginnig = value; }
+        public double DistanceFromBeginnig { get => distanceFromBeginnig; set => distanceFromBeginnig = value; }
 
         public Station(int code, string name, int longtitude, int latitude,int index)
         {

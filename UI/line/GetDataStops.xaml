@@ -18,9 +18,10 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="1">
+            <StackPanel Grid.Column="2">
                 <TextBlock TextAlignment="Center" FontSize="20" Text="התחנה הקודמת"/>
                 <Border BorderThickness="2" Margin="20" BorderBrush="Red">
                     <StackPanel>
@@ -30,7 +31,7 @@
                 </Border>
             </StackPanel>
 
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="1">
                 <TextBlock TextAlignment="Center" FontSize="20" Text="התחנה החדשה"/>
                 <Border BorderThickness="2" Margin="20" BorderBrush="Red">
                     <StackPanel>
@@ -59,6 +60,41 @@
                             <TextBox BorderThickness="1" x:Name="time_m" Width="30"/>
                             <TextBlock Margin="2,0" Text=":" VerticalAlignment="Center"/>
                         <TextBox BorderThickness="1" x:Name="time_s" Width="30"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </StackPanel>
+
+
+            <StackPanel Grid.Column="0">
+                <TextBlock TextAlignment="Center" FontSize="20" Text="התחנה הבאה"/>
+                <Border BorderThickness="2" Margin="20" BorderBrush="Red">
+                    <StackPanel>
+                        <TextBlock x:Name="name_of_next"/>
+                        <TextBlock x:Name="num_of_next"/>
+                    </StackPanel>
+                </Border>
+                <Grid Margin="20,5" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="20" TextAlignment="Right"  Grid.Column="0" Text="מרחק"/>
+                    <TextBox x:Name="dis_next" Grid.Column="1" Width="200"/>
+                </Grid>
+                <Grid Margin="20,5" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="20" TextAlignment="Right"  Grid.Column="0" Text="זמן"/>
+                    <Border BorderThickness="0" Grid.Column="1" Width="200">
+                        <StackPanel Orientation="Horizontal">
+                        <TextBox BorderThickness="1" x:Name="time_h_next" Width="30"/>
+                            <TextBlock Margin="2,0" Text=":" VerticalAlignment="Center"/>
+                            <TextBox BorderThickness="1" x:Name="time_m_next" Width="30"/>
+                            <TextBlock Margin="2,0" Text=":" VerticalAlignment="Center"/>
+                        <TextBox BorderThickness="1" x:Name="time_s_next" Width="30"/>
                         </StackPanel>
                     </Border>
                 </Grid>

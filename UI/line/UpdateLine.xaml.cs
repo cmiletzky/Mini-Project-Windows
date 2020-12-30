@@ -21,12 +21,12 @@ namespace PL.line
     public partial class UpdateLine : Window
     {
         BO.LineBus lineTo;
-        ListBox listStop;
+        ListBox listLine;
         public UpdateLine(BO.LineBus line,ref ListBox listBox)
         {
             InitializeComponent();
             lineTo = line;
-            listStop = listBox;
+            listLine = listBox;
 
             string[] area = { "General", "North", "South", "Center", "Jerusalem" };
             Title = "line number " + line.LineNum.ToString();
@@ -53,13 +53,13 @@ namespace PL.line
         {
             if (MessageBox.Show("התחנה תתווסף בראש הרשימה, כדי להוסיף במיקום אחר יש לבחור את התחנה שלאחריה תתווסף התחנה החדשה","חשוב",MessageBoxButton.OKCancel)==MessageBoxResult.OK)
             {
-                new StopsList(MainWindow.bl.presentAllStation(false),ref lineTo,ref listStop, (BO.Station)list_stop_of_line.SelectedValue, (BO.Station)list_stop_of_line.Items[0]).ShowDialog();
+                new StopsList(MainWindow.bl.presentAllStation(false),ref lineTo, (BO.Station)list_stop_of_line.SelectedValue, (BO.Station)list_stop_of_line.Items[0]).ShowDialog();
             }
         }
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            listStop.ItemsSource = MainWindow.bl.presentAllLines(false);
+            listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
             Close();
         }
     }

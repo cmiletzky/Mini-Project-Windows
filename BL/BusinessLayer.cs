@@ -248,27 +248,31 @@ namespace BL
                              from item2 in dal.getStations(false)
                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
                              select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).OrderBy(x => x.IndexInLine).ToList<Station>();
-
+                TimeSpan counTime = new TimeSpan(00, 00, 00);
+                double counDis = 0;
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {
-                    item.Stops.ElementAt(i).PriviosStop = item.Stops.ElementAt(i - 1);
+                     counTime += (from rr in dal.getAdjacentStatisions()
+                                                      where rr.Station_2 == item.Stops[i].Code
+                                                      && rr.Station_1 == item.Stops[i - 1].Code
+                                                      select rr.Time).First();
+                    counDis += (from rr in dal.getAdjacentStatisions()
+                                                      where rr.Station_2 == item.Stops[i].Code
+                                                      && rr.Station_1 == item.Stops[i - 1].Code
+                                                      select rr.Distance).First();
+                    item.Stops[i].TimeFromBeginnig = counTime;
+                    item.Stops[i].DistanceFromBeginnig = counDis;
+                    item.Stops[i].TimeFromPrivios = item.Stops[i].TimeFromBeginnig - item.Stops[i - 1].TimeFromBeginnig;
+                    item.Stops[i].DistanceFromPrivios = item.Stops[i].DistanceFromBeginnig - item.Stops[i - 1].DistanceFromBeginnig;
+                    //TODO להסיר
+                   // item.Stops[i].PriviosStop = item.Stops[i-1];
                 }
-                item.Stops.ElementAt(0).PriviosStop = item.Stops.ElementAt(item.Stops.Count()-1);
-                item.AdjacentStatisions = (from bb in item.Stops
-                                           from aa in dal.getAdjacentStatisions()
-                                           where aa.Station_1== bb.PriviosStop.Code && aa.Station_2== bb.Code
-                                           select aa).ToList<DO.AdjacentStatision>();
+               // item.Stops[0].PriviosStop = item.Stops[item.Stops.Count()-1];
+                //item.AdjacentStatisions = (from bb in item.Stops
+                //                           from aa in dal.getAdjacentStatisions()
+                //                           where aa.Station_1== bb.PriviosStop.Code && aa.Station_2== bb.Code
+                //                           select aa).ToList<DO.AdjacentStatision>();
 
-                for (int i = 1; i < item.Stops.Count(); i++)
-                {
-                    item.Stops[i].TimeFromPrivios = (from ee in item.AdjacentStatisions
-                                                              where ee.Station_2 == item.Stops[i].Code
-                                                              select ee.Time).First();
-
-                    item.Stops[i].DistanceFromPrivios = (from ee in item.AdjacentStatisions
-                                                               where ee.Station_2 == item.Stops[i].Code
-                                                               select ee.Distance).First();
-                }
             }
             return lines;
         }
