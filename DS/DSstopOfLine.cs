@@ -94,7 +94,7 @@ namespace DS
             stopOfLines.Add(new StopOfLine(280, 567223, 1));
             stopOfLines.Add(new StopOfLine(280, 863578, 2));
             stopOfLines.Add(new StopOfLine(280, 129563, 3));
-            stopOfLines.Add(new StopOfLine(280, 456788, 4));
+            stopOfLines.Add(new StopOfLine(280, 909087, 4));
             stopOfLines.Add(new StopOfLine(280, 009999, 5));
             stopOfLines.Add(new StopOfLine(280, 456788, 6));
             stopOfLines.Add(new StopOfLine(280, 889209, 7));

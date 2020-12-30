@@ -51,9 +51,16 @@ namespace PL.line
 
         private void add_stop_to_line_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("התחנה תתווסף בראש הרשימה, כדי להוסיף במיקום אחר יש לבחור את התחנה שלאחריה תתווסף התחנה החדשה","חשוב",MessageBoxButton.OKCancel)==MessageBoxResult.OK)
+            if (list_stop_of_line.SelectedItems.Count==0)
             {
-                new StopsList(MainWindow.bl.presentAllStation(false),ref lineTo, (BO.Station)list_stop_of_line.SelectedValue, (BO.Station)list_stop_of_line.Items[0]).ShowDialog();
+                if (MessageBox.Show("התחנה תתווסף בראש הרשימה, כדי להוסיף במיקום אחר יש לבחור את התחנה שלאחריה תתווסף התחנה החדשה", "חשוב", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    new StopsList(ref lineTo, (BO.Station)list_stop_of_line.Items[0]).ShowDialog();
+                }
+            }
+            else
+            {
+                new StopsList(ref lineTo, (BO.Station)list_stop_of_line.SelectedItem, (BO.Station)list_stop_of_line.Items[list_stop_of_line.SelectedIndex+1], (BO.Station)list_stop_of_line.Items[0]).ShowDialog();
             }
         }
 
@@ -61,6 +68,13 @@ namespace PL.line
         {
             listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
             Close();
+        }
+
+        private void list_stop_of_line_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            BO.Station ee = (BO.Station)list_stop_of_line.SelectedValue;
+            add_stop_to_line.Content = "הוסף תחנה אחרי תחנה : " + ee.Name;
         }
     }
 }

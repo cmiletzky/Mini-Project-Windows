@@ -51,8 +51,8 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="10*"/>
 
                     </Grid.ColumnDefinitions>
                     <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged" Margin="0,0,50,0.333"  >
@@ -74,7 +74,8 @@
                                     <DataTemplate>
                                         <Border BorderThickness="0,0,0,2" BorderBrush="Blue">
                                         <StackPanel Orientation="Horizontal">
-                                        <StackPanel>
+                                                <TextBlock Text="{Binding IndexInLine}" Margin="10,0,10,0" FontSize="36" FontFamily="Arse" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                <StackPanel>
                                             <TextBlock x:Name="stop_name" Text="{Binding Name}" Background="{x:Null}"></TextBlock>
                                             <Grid>
                                                 <Label Content="מספר התחנה" Foreground="Red" Margin="60,0,0,0"/>

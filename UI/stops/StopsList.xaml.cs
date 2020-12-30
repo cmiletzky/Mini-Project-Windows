@@ -22,16 +22,24 @@ namespace PL.stops
     {
          BO.LineBus  line;
         BO.Station preStop;
+        BO.Station nextStop;
         BO.Station firstStop;
        // ListBox listStopOfLine;
-        public StopsList(IEnumerable<BO.Station> list,ref BO.LineBus lineTo, BO.Station preStop, BO.Station firstStop)
+        public StopsList(ref BO.LineBus lineTo, BO.Station preStop,BO.Station nextStop, BO.Station firstStop)
         {
             InitializeComponent();
-            stop_list.ItemsSource = list;
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation(false);
             line = lineTo;
             this.preStop = preStop;
+            this.nextStop = nextStop;
             this.firstStop = firstStop;
           //  this.listStopOfLine.ItemsSource = lineTo.Stops;
+        }
+
+        public StopsList(ref BO.LineBus lineTo, BO.Station firstStop)
+        {
+            line = lineTo;
+            this.firstStop = firstStop;
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
@@ -57,13 +65,13 @@ namespace PL.stops
                 //TODO לבדוק תחנות עוקובת 
                 if ( preStop != null&&MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)
                 {
-                    new GetDataStops(preStop, newStop).ShowDialog();
+                    new GetDataStops(preStop, newStop,nextStop).ShowDialog();
                     MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, preStop.IndexInLine+1);
                     Close();
                 }
                else if (preStop == null && MainWindow.bl.CheckAdjacentStatision(firstStop.Code, newStop.Code) == false)
                 {
-                    new GetDataStopsForFirst(firstStop, newStop).ShowDialog();
+                    new GetDataStops(firstStop, newStop).ShowDialog();
                     MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, 0);
                 }
                 else

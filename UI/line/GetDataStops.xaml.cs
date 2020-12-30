@@ -21,18 +21,34 @@ namespace PL.line
     {
         BO.Station preStop;
         BO.Station newStop;
-        public GetDataStops(BO.Station preStop , BO.Station newStop)
+        BO.Station nextStop;
+        public GetDataStops(BO.Station preStop , BO.Station newStop, BO.Station nextStop)
         {
             InitializeComponent();
             this.preStop = preStop;
             this.newStop = newStop;
+            this.nextStop = nextStop;
             name_of_pre.Text = preStop.Name;
             num_of_pre.Text = preStop.Code.ToString();
 
             name_of_new.Text = newStop.Name;
             num_of_new.Text = newStop.Code.ToString();
+            
+            name_of_next.Text = nextStop.Name;
+            num_of_next.Text = nextStop.Code.ToString();
         }
 
+        public GetDataStops(BO.Station firstStop,BO.Station newStop)
+        {
+            this.newStop = newStop;
+            this.newStop = firstStop;
+          //  pre.IsEnabled = false;
+            name_of_new.Text = newStop.Name;
+            num_of_new.Text = newStop.Code.ToString();
+
+            name_of_next.Text = firstStop.Name;
+            num_of_next.Text = firstStop.Code.ToString();
+        }
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -40,8 +56,10 @@ namespace PL.line
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            TimeSpan time = new TimeSpan(int.Parse(time_h.Text), int.Parse(time_m.Text), int.Parse(time_s.Text));
-            MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, time);
+            TimeSpan timeNew = new TimeSpan(int.Parse(time_h.Text), int.Parse(time_m.Text), int.Parse(time_s.Text));
+            TimeSpan timeNext = new TimeSpan(int.Parse(time_h_next.Text), int.Parse(time_m_next.Text), int.Parse(time_s_next.Text));
+            MainWindow.bl.AddAdjacentStatision(preStop.Code, newStop.Code, dis.Text, timeNew);
+            MainWindow.bl.AddAdjacentStatision(newStop.Code, nextStop.Code, dis_next.Text, timeNext);
             Close();
         }
     }

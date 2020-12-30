@@ -21,7 +21,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="2">
+            <StackPanel Grid.Column="2" x:Name="pre">
                 <TextBlock TextAlignment="Center" FontSize="20" Text="התחנה הקודמת"/>
                 <Border BorderThickness="2" Margin="20" BorderBrush="Red">
                     <StackPanel>

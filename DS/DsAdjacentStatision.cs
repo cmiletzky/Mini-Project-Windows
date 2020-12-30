@@ -85,8 +85,8 @@ namespace DS
 
             adjacentStatisions.Add(new AdjacentStatision(567223, 863578, 4.0, TimeSpan.FromMinutes(3)));
             adjacentStatisions.Add(new AdjacentStatision(863578, 129563, 4.1, TimeSpan.FromMinutes(3.1)));
-            adjacentStatisions.Add(new AdjacentStatision(129563, 456788, 4.2, TimeSpan.FromMinutes(3.2)));
-            adjacentStatisions.Add(new AdjacentStatision(456788, 009999, 4.3, TimeSpan.FromMinutes(3.3)));
+            adjacentStatisions.Add(new AdjacentStatision(129563, 909087, 4.2, TimeSpan.FromMinutes(3.2)));
+            adjacentStatisions.Add(new AdjacentStatision(909087, 009999, 4.3, TimeSpan.FromMinutes(3.3)));
             adjacentStatisions.Add(new AdjacentStatision(009999, 456788, 4.4, TimeSpan.FromMinutes(3.4)));
             adjacentStatisions.Add(new AdjacentStatision(456788, 889209, 4.5, TimeSpan.FromMinutes(3.5)));
             adjacentStatisions.Add(new AdjacentStatision(889209, 300199, 4.6, TimeSpan.FromMinutes(3.6)));

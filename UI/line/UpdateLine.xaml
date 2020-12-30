@@ -28,7 +28,7 @@
                 <ComboBox Name="line_area" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma">
                    
                 </ComboBox>
-                <ListBox x:Name="list_stop_of_line" Grid.Column="1"  Grid.Row="2">
+                <ListBox x:Name="list_stop_of_line" Grid.Column="1"  Grid.Row="2" SelectionChanged="list_stop_of_line_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -50,7 +50,7 @@
                 <Label Content="Line number:   " Grid.Column="0"  VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Right" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Area:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Line stops:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma" Margin="0,9.667,0.333,220.667" Height="43"/>
-                <Button Content="הוסף תחנה" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" x:Name="add_stop_to_line" Click="add_stop_to_line_Click"/>
+                <Button Content="הוסף תחנה" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="277" x:Name="add_stop_to_line" Click="add_stop_to_line_Click"/>
                 <Button Content="סגור ושמור" x:Name="save" HorizontalAlignment="Left" Margin="50,10.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="save_Click"/>
 
             </Grid>
