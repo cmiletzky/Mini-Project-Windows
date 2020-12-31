@@ -43,6 +43,7 @@ namespace DaLApi
         #region Line
         bool CheckAdjacentStatision(int stop1, int stop2);
         void EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time);
+        void EditLine(int oldLineNum,int lineNum, string area);
         void AddStopOfLine(int stopNum, int lineNum,int after);
         IEnumerable<AdjacentStatision> getAdjacentStatisions(/*Predicate<AdjacentStatision> predicate*/);
         void RemoveStopLine(StopOfLine stop);

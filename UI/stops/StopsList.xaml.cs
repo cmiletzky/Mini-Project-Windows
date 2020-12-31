@@ -75,7 +75,7 @@ namespace PL.stops
                 MainWindow.bl.CheckStopIsInLine(newStop.Code, line.LineNum);
 
                 //TODO לבדוק תחנות עוקובת 
-                if (firstStop!= null&& preStop != null&&MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false)
+                if (firstStop!= null&& preStop != null/*&&MainWindow.bl.CheckAdjacentStatision(preStop.Code, newStop.Code) == false*/)
                 {
                     new GetDataStops(preStop, newStop,nextStop).ShowDialog();
                     MainWindow.bl.AddStopLine(newStop.Code, line.LineNum, preStop.IndexInLine+1);

@@ -33,6 +33,7 @@ namespace BlApi
         bool isUserMang(string userName, string password, bool isMang);
         void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);
         void EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time);
+        void EditLine(int oldLineNum,int lineNum, string area);
     }
     public static class BlFactory
     {

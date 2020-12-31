@@ -21,12 +21,14 @@ namespace PL.line
     public partial class UpdateLine : Window
     {
         BO.LineBus lineTo;
+        int oldLineNum;
         ListBox listLine;
         public UpdateLine(BO.LineBus line,ref ListBox listBox)
         {
             InitializeComponent();
             lineTo = line;
             listLine = listBox;
+            oldLineNum = line.LineNum;
 
             List<string> area = new List<string> { "General", "North", "South", "Center", "Jerusalem" };
             Title = "line number " + line.LineNum.ToString();
@@ -41,8 +43,20 @@ namespace PL.line
         {
             Button cdn = (Button)sender;
             BO.Station a = (BO.Station)cdn.DataContext;
-           
-            
+
+            if (list_stop_of_line.Items.IndexOf(a)!=0&& list_stop_of_line.Items.IndexOf(a)!= list_stop_of_line.Items.Count-1 )
+            {
+                BO.Station befor = (BO.Station)list_stop_of_line.Items[list_stop_of_line.Items.IndexOf(a) - 1];
+                BO.Station aftet = (BO.Station)list_stop_of_line.Items[list_stop_of_line.Items.IndexOf(a) + 1];
+                if (MainWindow.bl.CheckAdjacentStatision(befor.Code, aftet.Code) == false)
+                {
+                    MainWindow.bl.AddAdjacentStatision(befor.Code, aftet.Code, (aftet.DistanceFromPrivios + a.DistanceFromPrivios).ToString(), aftet.TimeFromPrivios + a.TimeFromPrivios);
+                }
+            }
+
+
+
+
             MainWindow.bl.RemoveStopFromLine(lineTo.LineNum, a.Code);
             list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(lineTo.LineNum);
 
@@ -73,6 +87,7 @@ namespace PL.line
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.bl.EditLine(oldLineNum,int.Parse(line_num.Text),line_area.SelectedItem.ToString());
             listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
             Close();
         }
@@ -86,11 +101,19 @@ namespace PL.line
 
         private void edit_time_and_dis_Click(object sender, RoutedEventArgs e)
         {
-            Button cmd = (Button)sender;
-            BO.Station stop2 = (BO.Station)cmd.DataContext;
-            BO.Station stop1 = lineTo.Stops[lineTo.Stops.IndexOf(stop2) - 1];
+            try
+            {
+                Button cmd = (Button)sender;
+                BO.Station stop2 = (BO.Station)cmd.DataContext;
+                BO.Station stop1 = lineTo.Stops[lineTo.Stops.IndexOf(stop2) - 1];
 
-            new EditDataStopOfLine(stop1,stop2).ShowDialog();
+                new EditDataStopOfLine(stop1, stop2).ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("יש לשמור ולהכנס שוב");
+            }
+
 
         }
     }

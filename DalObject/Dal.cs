@@ -171,6 +171,14 @@ namespace Dal
         {
             int index = DSstopOfLine.stopOfLines.FindIndex(x => x.Id == stop.Id && x.OfLine == stop.OfLine);
             DSstopOfLine.stopOfLines.RemoveAt(index);
+
+            foreach (var item in DSstopOfLine.stopOfLines)
+            {
+                if (item.OfLine == stop.OfLine && item.StatIndex>stop.StatIndex)
+                {
+                    item.StatIndex--;
+                }
+            }
         }
         IEnumerable<StopOfLine> IDAL.GetStopsOfLine()
         {
@@ -189,6 +197,44 @@ namespace Dal
             return Dslines.lines.Clone();
         }
 
+        void IDAL.EditLine(int oldLineNum, int lineNum, string area)
+        {
+            foreach (var item in Dslines.lines)
+            {
+                if (item.LineNum== oldLineNum)
+                {
+                    item.LineNum = lineNum;
+                    item.Area = GetAreas(area);
+                }
+            }
+
+            foreach (var item in DSstopOfLine.stopOfLines)
+            {
+                if (item.OfLine == oldLineNum)
+                {
+                    item.OfLine = lineNum;
+                }
+            }
+        }
+
+        Areas GetAreas(string a)
+        {
+            switch (a)
+            {
+                case "General":
+                    return Areas.General;
+                case "North":
+                    return Areas.North;
+                case "South":
+                    return Areas.South;
+                case "Center":
+                    return Areas.Center;
+                case "Jerusalem":
+                    return Areas.Jerusalem;
+                default:
+                    return Areas.General;
+            }
+        }
         void IDAL.RemoveLine(int lineNum)
         {
             int lineID = Dslines.lines.FindIndex(x => x.LineNum == lineNum);

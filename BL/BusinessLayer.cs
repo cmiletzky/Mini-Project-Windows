@@ -41,6 +41,11 @@ namespace BL
             }
         }
 
+        void IBL.EditLine(int oldLineNum,int lineNum, string area)
+        {
+            dal.EditLine(oldLineNum,lineNum, area);
+        }
+
         void IBL.AddStopLine(int stopNum, int lineNum, int after)
         {
                 dal.AddStopOfLine(stopNum,lineNum,after);
