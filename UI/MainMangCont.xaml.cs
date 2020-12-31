@@ -203,6 +203,15 @@ namespace PL
         {
 
         }
+
+        private void stop_lime_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BO.Station a = (BO.Station)stop_lime_list.SelectedValue;
+            stop_num.Text = a.Code.ToString();
+            stop_name.Text = a.Name;
+            stop_lo.Text = a.Longtitude.ToString();
+            stop_la.Text = a.Latitude.ToString();
+        }
     }
 
  }
