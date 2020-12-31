@@ -41,28 +41,28 @@ namespace PL.line
 
         private void remove_stop_from_line_Click(object sender, RoutedEventArgs e)
         {
-            Button cdn = (Button)sender;
-            BO.Station a = (BO.Station)cdn.DataContext;
-
-            if (list_stop_of_line.Items.IndexOf(a)!=0&& list_stop_of_line.Items.IndexOf(a)!= list_stop_of_line.Items.Count-1 )
+            if (list_stop_of_line.Items.Count==2)
             {
-                BO.Station befor = (BO.Station)list_stop_of_line.Items[list_stop_of_line.Items.IndexOf(a) - 1];
-                BO.Station aftet = (BO.Station)list_stop_of_line.Items[list_stop_of_line.Items.IndexOf(a) + 1];
-                if (MainWindow.bl.CheckAdjacentStatision(befor.Code, aftet.Code) == false)
-                {
-                    MainWindow.bl.AddAdjacentStatision(befor.Code, aftet.Code, (aftet.DistanceFromPrivios + a.DistanceFromPrivios).ToString(), aftet.TimeFromPrivios + a.TimeFromPrivios);
-                }
+                MessageBox.Show("לא ניתן להחזיק פחות מ 2 תחנות בקו");
             }
+            else
+            {
+                Button cdn = (Button)sender;
+                BO.Station a = (BO.Station)cdn.DataContext;
 
-
-
-
-            MainWindow.bl.RemoveStopFromLine(lineTo.LineNum, a.Code);
-            list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(lineTo.LineNum);
-
-            // int index =  lineTo.StationList.IndexOf(a);
-            //TODO לשלוח את הלוגיקה לביזנס
-            //   lineTo.StationList.RemoveAt(index);
+                if (list_stop_of_line.Items.IndexOf(a) != 0 && list_stop_of_line.Items.IndexOf(a) != list_stop_of_line.Items.Count - 1)
+                {
+                    BO.Station befor = (BO.Station)list_stop_of_line.Items[list_stop_of_line.Items.IndexOf(a) - 1];
+                    BO.Station aftet = (BO.Station)list_stop_of_line.Items[list_stop_of_line.Items.IndexOf(a) + 1];
+                    if (MainWindow.bl.CheckAdjacentStatision(befor.Code, aftet.Code) == false)
+                    {
+                        MainWindow.bl.AddAdjacentStatision(befor.Code, aftet.Code, (aftet.DistanceFromPrivios + a.DistanceFromPrivios).ToString(), aftet.TimeFromPrivios + a.TimeFromPrivios);
+                    }
+                }
+                MainWindow.bl.RemoveStopFromLine(lineTo.LineNum, a.Code);
+                list_stop_of_line.ItemsSource = MainWindow.bl.presentStopsOfLine(lineTo.LineNum);
+            }
+          
         }
 
         private void add_stop_to_line_Click(object sender, RoutedEventArgs e)

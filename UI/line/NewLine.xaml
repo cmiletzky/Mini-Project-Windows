@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,30,0,2">
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"  Margin="0,20,0,0">
-                <TextBox x:Name="line_num" Width="200" FontSize="20"/>
+                <TextBox MaxLength="3" x:Name="line_num" Width="200" FontSize="20" PreviewTextInput="line_num_PreviewTextInput" TextChanged="line_num_TextChanged"/>
                 <TextBlock Text="מספר הקו" FontSize="18" Margin="10,0,0,0"/>
             </StackPanel>
 
