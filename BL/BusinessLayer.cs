@@ -20,19 +20,43 @@ namespace BL
         {
             dal.InitializeData();
         }
-        void IBL.AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time)
-        {
-            dal.AddAdjacentStatision(stop1, stop2, distnase, time);
-        }
-        void IBL.EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time)
-        {
-            dal.EditAdjacentStatision(stop1, stop2, dis, time);
-        }
-        bool IBL.CheckAdjacentStatision(int stop1, int stop2)
-        {
-            return dal.CheckAdjacentStatision(stop1,stop2);
-        }
 
+        #region line
+        public IEnumerable<LineBus> presentAllLines(bool run)
+        {
+            var lines = (from item in dal.getLins(true)
+                         where item.IsActive == true
+                         select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation))).ToList();
+
+            foreach (var item in lines)
+            {
+                item.Stops = (from item1 in dal.GetStopsOfLine()
+                              from item2 in dal.getStations(false)
+                              where item1.OfLine == item.LineNum && item1.Id == item2.Code
+                              select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude, item1.StatIndex)).OrderBy(x => x.IndexInLine).ToList<Station>();
+                item.Stops[0].IsNotFirst = false;
+                TimeSpan counTime = new TimeSpan(00, 00, 00);
+                double counDis = 0;
+                for (int i = 1; i < item.Stops.Count(); i++)
+                {
+                    counTime += (from rr in dal.getAdjacentStatisions()
+                                 where rr.Station_2 == item.Stops[i].Code
+                                 && rr.Station_1 == item.Stops[i - 1].Code
+                                 select rr.Time).First();
+                    counDis += (from rr in dal.getAdjacentStatisions()
+                                where rr.Station_2 == item.Stops[i].Code
+                                && rr.Station_1 == item.Stops[i - 1].Code
+                                select rr.Distance).First();
+                    item.Stops[i].TimeFromBeginnig = counTime;
+                    item.Stops[i].DistanceFromBeginnig = counDis;
+                    item.Stops[i].TimeFromPrivios = item.Stops[i].TimeFromBeginnig - item.Stops[i - 1].TimeFromBeginnig;
+                    item.Stops[i].DistanceFromPrivios = item.Stops[i].DistanceFromBeginnig - item.Stops[i - 1].DistanceFromBeginnig;
+                }
+
+
+            }
+            return lines;
+        }
         void IBL.CheckStopIsInLine(int stopNum, int lineNum)
         {
             if (dal.GetStopsOfLine().Any(x => x.OfLine == lineNum && x.Id == stopNum))
@@ -41,22 +65,22 @@ namespace BL
             }
         }
 
-        void IBL.EditLine(int oldLineNum,int lineNum, string area)
+        void IBL.EditLine(int oldLineNum, int lineNum, string area)
         {
-            dal.EditLine(oldLineNum,lineNum, area);
+            dal.EditLine(oldLineNum, lineNum, area);
         }
 
         void IBL.AddStopLine(int stopNum, int lineNum, int after)
         {
-                dal.AddStopOfLine(stopNum,lineNum,after);
+            dal.AddStopOfLine(stopNum, lineNum, after);
         }
         void IBL.RemoveStopFromLine(int lineNum, int stopCode)
         {
             //TODO לטפל ברשימה ריקה(למנוע כפתור)
             var stopTo = (from item in dal.GetStopsOfLine()
-                         where item.OfLine == lineNum && item.Id == stopCode
-                         select item).ToList().First();
-       
+                          where item.OfLine == lineNum && item.Id == stopCode
+                          select item).ToList().First();
+
             dal.RemoveStopLine(stopTo);
         }
         IEnumerable<Station> IBL.presentStopsOfLine(int lineNum)
@@ -74,6 +98,33 @@ namespace BL
             }
             return listTo;
         }
+
+        void IBL.RemoveLine(LineBus lineBus)
+        {
+            dal.RemoveLine(lineBus.LineNum);
+        }
+
+        Areas GetAreas(DO.Areas a)
+        {
+            switch (a)
+            {
+                case DO.Areas.General:
+                    return Areas.General;
+                case DO.Areas.North:
+                    return Areas.North;
+                case DO.Areas.South:
+                    return Areas.South;
+                case DO.Areas.Center:
+                    return Areas.Center;
+                case DO.Areas.Jerusalem:
+                    return Areas.Jerusalem;
+                default:
+                    return Areas.General;
+            }
+        }
+        #endregion
+
+        #region bus
         public IEnumerable<Bus> presentAllBus(bool run)
         {
 
@@ -218,11 +269,9 @@ namespace BL
             return true;
         }
 
-        public bool isUserMang(string userName, string password, bool isMang)
-        {
-            return dal.dalIsUser(userName, password, isMang);
-        }
+        #endregion
 
+        #region Station
         public IEnumerable<Station> presentAllStation(bool run)
         {
 
@@ -246,66 +295,6 @@ namespace BL
 
             return list;
         }
-        public IEnumerable<LineBus> presentAllLines(bool run)
-        {
-            var lines = (from item in dal.getLins(true)
-                        where item.IsActive == true
-                        select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation))).ToList();
-
-            foreach (var item in lines)
-            {
-                item.Stops = (from item1 in dal.GetStopsOfLine()
-                             from item2 in dal.getStations(false)
-                             where item1.OfLine == item.LineNum && item1.Id == item2.Code
-                             select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude ,item1.StatIndex)).OrderBy(x => x.IndexInLine).ToList<Station>();
-                item.Stops[0].IsNotFirst = false;
-                TimeSpan counTime = new TimeSpan(00, 00, 00);
-                double counDis = 0;
-                for (int i = 1; i < item.Stops.Count(); i++)
-                {
-                     counTime += (from rr in dal.getAdjacentStatisions()
-                                                      where rr.Station_2 == item.Stops[i].Code
-                                                      && rr.Station_1 == item.Stops[i - 1].Code
-                                                      select rr.Time).First();
-                    counDis += (from rr in dal.getAdjacentStatisions()
-                                                      where rr.Station_2 == item.Stops[i].Code
-                                                      && rr.Station_1 == item.Stops[i - 1].Code
-                                                      select rr.Distance).First();
-                    item.Stops[i].TimeFromBeginnig = counTime;
-                    item.Stops[i].DistanceFromBeginnig = counDis;
-                    item.Stops[i].TimeFromPrivios = item.Stops[i].TimeFromBeginnig - item.Stops[i - 1].TimeFromBeginnig;
-                    item.Stops[i].DistanceFromPrivios = item.Stops[i].DistanceFromBeginnig - item.Stops[i - 1].DistanceFromBeginnig;
-                }
-
-
-            }
-            return lines;
-        }
-        Areas GetAreas(DO.Areas a)
-        {
-            switch (a)
-            {
-                case DO.Areas.General:
-                    return Areas.General;
-                case DO.Areas.North:
-                    return Areas.North;
-                case DO.Areas.South:
-                    return Areas.South;
-                case DO.Areas.Center:
-                    return Areas.Center;
-                case DO.Areas.Jerusalem:
-                    return Areas.Jerusalem;
-                default:
-                    return Areas.General;
-            }
-        }
-
-
-        void IBL.RemoveLine(LineBus lineBus)
-        {
-            dal.RemoveLine(lineBus.LineNum);
-        }
-
         void IBL.AddStation(string code, string name, string longtitude, string latitude)
         {
 
@@ -319,5 +308,34 @@ namespace BL
                 throw;
             }
         }
+
+
+
+        #endregion
+
+        #region AdjacentStatision
+        void IBL.AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time)
+        {
+            dal.AddAdjacentStatision(stop1, stop2, distnase, time);
+        }
+        void IBL.EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time)
+        {
+            dal.EditAdjacentStatision(stop1, stop2, dis, time);
+        }
+        bool IBL.CheckAdjacentStatision(int stop1, int stop2)
+        {
+            return dal.CheckAdjacentStatision(stop1, stop2);
+        }
+        #endregion
+
+        #region User
+     public   bool isUserMang(string userName, string password, bool isMang)
+        {
+            return dal.dalIsUser(userName, password, isMang);
+        }
+        #endregion
     }
 }
+
+
+       

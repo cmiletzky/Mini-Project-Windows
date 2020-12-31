@@ -73,6 +73,9 @@
     <Compile Include="line\GetDataStops.xaml.cs">
       <DependentUpon>GetDataStops.xaml</DependentUpon>
     </Compile>
+    <Compile Include="line\NewLine.xaml.cs">
+      <DependentUpon>NewLine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="line\UpdateLine.xaml.cs">
       <DependentUpon>UpdateLine.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="line\GetDataStops.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="line\NewLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,6 +219,8 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bus\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

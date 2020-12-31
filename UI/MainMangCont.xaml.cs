@@ -159,7 +159,7 @@ namespace PL
 
         private void add_line_Click(object sender, RoutedEventArgs e)
         {
-
+            new NewLine().ShowDialog();
         }
 
         private void update_line_Click(object sender, RoutedEventArgs e)
@@ -221,5 +221,7 @@ namespace PL
         {
 
         }
+
+
     }
 }

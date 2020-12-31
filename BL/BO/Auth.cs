@@ -12,8 +12,9 @@ namespace BL.BO
        public static User user;
         public Auth(string userName, string password,bool isMang)
         {
+ 
             BusinessLayer businessLayer = new BusinessLayer();
-            if (businessLayer.isUserMang(userName, password,true))
+            if (businessLayer.isUserMang(userName, password, true))
             {
                 user = new User(userName, password ,isMang);
             }
