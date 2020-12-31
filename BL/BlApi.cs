@@ -14,6 +14,7 @@ namespace BlApi
         void InitializeData();
         bool CheckAdjacentStatision(int stop1 , int stop2);
         IEnumerable<BO.Station> presentStopsOfLine(int lineNum);
+        IEnumerable<BO.Station> presentStopsLine();
         void RemoveLine(BO.LineBus lineBus);
         void AddStopLine(int stopNum, int lineNum, int after);
         void CheckStopIsInLine(int stopNum, int lineNum);

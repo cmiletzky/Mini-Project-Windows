@@ -10,6 +10,7 @@ namespace BO
     {
 
         int code;
+        int ofLine;
         string name;
         int indexInLine;
         int longtitude;
@@ -32,6 +33,7 @@ namespace BO
         public TimeSpan TimeFromBeginnig { get => timeFromBeginnig; set => timeFromBeginnig = value; }
         public double DistanceFromBeginnig { get => distanceFromBeginnig; set => distanceFromBeginnig = value; }
         public bool IsNotFirst { get => isNotFirst; set => isNotFirst = value; }
+        public int OfLine { get => ofLine; set => ofLine = value; }
 
         public Station(int code, string name, int longtitude, int latitude,int index)
         {
@@ -40,8 +42,18 @@ namespace BO
             this.longtitude = longtitude;
             this.latitude = latitude;
             this.indexInLine = index;
-           
-        }    public Station(int code, string name, int longtitude, int latitude)
+        }      
+        
+        public Station(int code, string name, int longtitude, int latitude,int ofline,int a)
+        {
+            this.code = code;
+            this.name = name;
+            this.longtitude = longtitude;
+            this.latitude = latitude;
+            this.ofLine = ofline;
+        }    
+        
+        public Station(int code, string name, int longtitude, int latitude)
         {
             this.code = code;
             this.name = name;

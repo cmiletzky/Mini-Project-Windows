@@ -33,6 +33,7 @@ namespace PL
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
             stop_list.ItemsSource = MainWindow.bl.presentAllStation(true);
             line_list.ItemsSource = MainWindow.bl.presentAllLines(true);
+            stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
 
         }
 
@@ -188,6 +189,20 @@ namespace PL
             }
         }
 
+        private void remove_stop_line_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void update_stop_line_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void add_stop_line_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
  }

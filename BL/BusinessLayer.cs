@@ -120,6 +120,13 @@ namespace BL
                 listTo.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
             }
             return listTo;
+        } 
+        IEnumerable<Station> IBL.presentStopsLine()
+        {
+            return (from item2 in dal.getStations(false)
+                    from item1 in dal.GetStopsOfLine()
+                    where (item1.Id == item2.Code)
+                    select new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude,item1.OfLine,1)).ToList();   
         }
 
         void IBL.RemoveLine(LineBus lineBus)

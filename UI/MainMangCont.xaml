@@ -9,8 +9,14 @@
       Title="MainMangCont">
 
     <Grid>
-        <TabControl Grid.Column="0">
-            <TabItem Header="Buses    " FontSize="18">
+        <TabControl Grid.Column="0" TabStripPlacement="Left" Padding="10,5,5,5" Background="White" BorderThickness="0,1,1,1" BorderBrush="Black">
+            <TabItem  Header="אוטובוסים" FontSize="18" Width="200" Height="100" >
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFD9F1DA" Offset="0"/>
+                        <GradientStop Color="#FFEEFFEE" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
@@ -42,7 +48,13 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Lines    " FontSize="18" >
+            <TabItem Header="קווים" FontSize="18"  Width="200" Height="100" >
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFD9F1DA" Offset="0"/>
+                        <GradientStop Color="#FFEEFFEE" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
@@ -124,9 +136,63 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
+
+
+            <TabItem Header="תחנות קו" FontSize="18" Width="200" Height="100">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFD9F1DA" Offset="0"/>
+                        <GradientStop Color="#FFEEFFEE" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox SelectedIndex="0" Grid.Column="0"  x:FieldModifier="public" x:Name="stop_lime_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" ScrollViewer.CanContentScroll="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <StackPanel>
+                                        <TextBlock FontSize="20" Foreground="Blue" Text="{Binding Code}"/>
+                                        <TextBlock Text="{Binding Name}" FontSize="16" Foreground="Red"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0"  >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="0">
+                                <TextBlock Text="פרטי התחנה" FontSize="25"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                    <StackPanel Grid.Column="2" Margin="6.333,7,7.333,6.333">
+                        <Button Margin="0,10,0,0" x:Name="remove_stop_line"  Content="מחיקת תחנת קו" Click="remove_stop_line_Click" />
+                        <Button Margin="0,10,0,0" x:Name="update_stop_line" Content="עדכון תחנת קו" Click="update_stop_line_Click"    />
+                        <Button Margin="0,10,0,0" x:Name="add_stop_line" Content="הוספת תחנת קו חדשה" FontSize="18" Click="add_stop_line_Click" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
             
-            
-            <TabItem Header="Stations    " FontSize="18">
+            <TabItem Header="תחנות" FontSize="18" Width="200" Height="100">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFD9F1DA" Offset="0"/>
+                        <GradientStop Color="#FFEEFFEE" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
