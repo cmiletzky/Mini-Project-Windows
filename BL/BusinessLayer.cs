@@ -22,7 +22,25 @@ namespace BL
         }
 
         #region line
-        public IEnumerable<LineBus> presentAllLines(bool run)
+        void IBL.AddLine(int newLineNum, string area, int firstStop, int lastStop)
+        {
+            if (dal.getLins(false).Any(x => x.LineNum == newLineNum))
+            {
+                throw new Exception("מספר הקו כבר קיים");
+            }
+
+           
+
+            dal.AddLine(newLineNum,area,firstStop,lastStop);
+            dal.AddAdjacentStatision(firstStop, lastStop,"0", new TimeSpan());
+            dal.AddStopOfLine(firstStop, newLineNum, 1);
+            dal.AddStopOfLine(lastStop, newLineNum, 2);
+
+        }
+
+
+
+        IEnumerable<LineBus> IBL.presentAllLines(bool run)
         {
             var lines = (from item in dal.getLins(true)
                          where item.IsActive == true
@@ -67,6 +85,11 @@ namespace BL
 
         void IBL.EditLine(int oldLineNum, int lineNum, string area)
         {
+            if (dal.getLins(false).Any(x => x.LineNum == lineNum && oldLineNum!= lineNum))
+            {
+                throw new Exception("מספר הקו כבר קיים");
+            }
+       
             dal.EditLine(oldLineNum, lineNum, area);
         }
 

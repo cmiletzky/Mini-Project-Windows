@@ -87,8 +87,16 @@ namespace PL.line
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.bl.EditLine(oldLineNum,int.Parse(line_num.Text),line_area.SelectedItem.ToString());
-            listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
+            try
+            {
+                MainWindow.bl.EditLine(oldLineNum, int.Parse(line_num.Text), line_area.SelectedItem.ToString());
+                listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
+            }
+            catch (Exception d)
+            {
+                MessageBox.Show(d.Message);
+            }
+
             Close();
         }
 

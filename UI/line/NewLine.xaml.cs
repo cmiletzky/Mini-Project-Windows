@@ -19,9 +19,17 @@ namespace PL.line
     /// </summary>
     public partial class NewLine : Window
     {
-        public NewLine()
+        int stop1;
+        int stop2;
+        ListBox listLine;
+        public NewLine(ref ListBox list)
         {
+            List<string> area = new List<string> { "General", "North", "South", "Center", "Jerusalem" };
             InitializeComponent();
+            listLine = list;
+            first_stop.ItemsSource = MainWindow.bl.presentAllStation(false);
+            last_stop.ItemsSource = MainWindow.bl.presentAllStation(false);
+            area_list.ItemsSource = area;
         }
 
         private void con_Click(object sender, RoutedEventArgs e)
@@ -31,7 +39,45 @@ namespace PL.line
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-           
+            BO.Station first = (BO.Station)first_stop.SelectedValue;
+            BO.Station last = (BO.Station)last_stop.SelectedValue;
+            stop1 = first.Code;
+            stop2 = last.Code;
+            try
+            {
+                if (first_stop.SelectedIndex==-1||last_stop.SelectedIndex==-1||area_list.SelectedIndex==-1||line_num.Text=="")
+                {
+                    throw new Exception("חובה למלא את כל השדות");
+                }
+                MainWindow.bl.AddLine(int.Parse(line_num.Text), area_list.SelectedItem.ToString(),stop1,stop2);
+                listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
+                Close();
+
+            }
+            catch (Exception d)
+            {
+
+                MessageBox.Show(d.Message);
+            }
         }
-    }
+
+        private void first_stop_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (first_stop.SelectedIndex == last_stop.SelectedIndex)
+            {
+                MessageBox.Show("יש לבחור תחנה שונה מתחנת הסיום");
+                first_stop.SelectedIndex = -1;
+            }
+
+        }
+
+        private void last_stop_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (last_stop.SelectedIndex == first_stop.SelectedIndex)
+            {
+                MessageBox.Show("יש לבחור תחנה שונה מתחנת ההתחלה");
+                last_stop.SelectedIndex = -1;
+            }
+        }
+        }
 }

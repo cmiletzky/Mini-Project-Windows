@@ -23,6 +23,7 @@ namespace BlApi
         void AddBus(string busNam, DateTime? startDate);
         IEnumerable<Bus> presentAllBus(bool run);
         IEnumerable<BO.Station> presentAllStation(bool run);
+        void AddLine(int newLineNum, string area,int firstStop,int lastStop);
         IEnumerable<BO.LineBus> presentAllLines(bool run);
         void AddStation(string name, string code, string longtitude, string latitude);
         // void RemoveStation(BO.Station stationToRemove);

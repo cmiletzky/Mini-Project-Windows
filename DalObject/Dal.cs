@@ -126,6 +126,11 @@ namespace Dal
         }
         #endregion
 
+        void IDAL.AddLine(int newLineNum, string area, int firstStop, int lastStop)
+        {
+            Dslines.lines.Add(new LineBus(newLineNum, GetAreas(area), firstStop, lastStop));
+        }
+
         void IDAL.EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time) 
         {
 

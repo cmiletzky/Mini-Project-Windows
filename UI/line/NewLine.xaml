@@ -7,22 +7,50 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="NewLine" Height="300" Width="400">
+        Title="NewLine" Height="320" Width="500">
     <Border BorderBrush="DarkGreen" BorderThickness="2">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Margin="0,30">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal"  Margin="0,20,0,0">
+        <StackPanel HorizontalAlignment="Center" Margin="0,30,0,2">
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"  Margin="0,20,0,0">
                 <TextBox x:Name="line_num" Width="200" FontSize="20"/>
                 <TextBlock Text="מספר הקו" FontSize="18" Margin="10,0,0,0"/>
             </StackPanel>
 
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,20,0,0">
-                <ComboBox x:Name="area" Width="200" FontSize="20"/>
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,20,0,0">
+                <ComboBox x:Name="area_list" Width="200" FontSize="20"/>
                 <TextBlock Text="בחר איזור" FontSize="18" Padding="10,0,0,0"/>
             </StackPanel>
-            <Button x:Name="con" Content="ביטול" Width="150" Margin="0,20,0,0" Click="con_Click"/>
-            <Button x:Name="save" Content="שמירה" Width="150" Margin="0,20,0,0" Click="save_Click"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <ComboBox x:Name="first_stop" Width="250" FontSize="16" SelectionChanged="first_stop_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" Margin="10,0"/>
+                                    <TextBlock Text="{Binding Code}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Text="תחנה ראשונה" FontSize="18" Padding="10,0,0,0"/>
+                </StackPanel>    
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <ComboBox x:Name="last_stop" Width="250" FontSize="16" SelectionChanged="last_stop_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" Margin="10,0"/>
+                                    <TextBlock Text="{Binding Code}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Text="תחנה אחרונה" FontSize="18" Padding="10,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="con" Content="ביטול" Width="100" Margin="0,20,10,0" Click="con_Click" />
+            <Button x:Name="save" Content="שמירה" Width="100" Margin="0,20,0,0" Click="save_Click"/>
+                </StackPanel>
+            </StackPanel>
     </Grid>
     </Border>
 </Window>
