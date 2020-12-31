@@ -13,10 +13,9 @@
             <TabItem Header="Buses    " FontSize="18">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="20*"/>
-
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox Grid.Column="0"  x:FieldModifier="public" x:Name="bus_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" MouseDoubleClick="bus_list_MouseDoubleClick" >
 
@@ -34,31 +33,32 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0">
-                        <Grid >
-                            <TextBlock Text="Gas stutas"/>
-                            <Button x:Name="remove_bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="39,353,176.333,30.333" Click="remove_bus_Click" VerticalAlignment="Center" Content="Remove bus" Padding="3,1" HorizontalAlignment="Center"/>
-                            <Button x:Name="update_bus" Content="Update bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="160,353,61.333,30.333" Click="update_bus_Click" VerticalAlignment="Center" RenderTransformOrigin="0.271,0.533" Padding="3,1" HorizontalAlignment="Center"/>
-                        </Grid>
+
                     </Border>
-                    <Grid Grid.Column="2" Margin="6.8,7,7.4,6.6">
-                        <Button x:Name="add_bus"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30" Margin="0,10,-0.333,373.333" Click="add_bus_Click">
-                            <TextBlock Text="Add new bus" TextAlignment="Center"/>
-                        </Button>
-                    </Grid>
+                    <StackPanel Grid.Column="2" Margin="6.333,7,7.333,6.333">
+                        <Button Margin="0,10,0,0" x:Name="remove_bus" Click="remove_bus_Click"  Content="מחיקת אוטובוס" />
+                        <Button Margin="0,10,0,0" x:Name="update_bus" Content="עדכון אוטובוס"   Click="update_bus_Click"   />
+                        <Button Margin="0,10,0,0" x:Name="add_bus" Content="הוסף אוטובוס חדש" FontSize="18" Click="add_bus_Click"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="Lines    " FontSize="18" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="70*"/>
-                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
 
                     </Grid.ColumnDefinitions>
-                    <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged" Margin="0,0,50,0.333"  >
+                    <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged"  >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock  x:Name="line_id" Text="{Binding LineNum}" />
+                                <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <StackPanel>
+                                <TextBlock FontSize="20" x:Name="line_id" Text="{Binding LineNum}" />
+                                <TextBlock FontSize="14" Foreground="Purple"  x:Name="line_area" Text="{Binding Area}" />
+                                </StackPanel>
+                                </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -66,8 +66,8 @@
                     <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0"  >
                         <Grid >
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="80*"/>
-                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="*"/>
+                               
                             </Grid.RowDefinitions>
                             <ListBox x:Name="list_stop_of_line" Grid.Row="0">
                                 <ListBox.ItemTemplate>
@@ -82,6 +82,8 @@
                                                         <TextBlock x:Name="stop_id" Text="{Binding Code}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
                                                     </Grid>
                                                 </StackPanel>
+                                                <Border>
+                                                    <StackPanel Orientation="Horizontal">
                                                 <StackPanel  Margin="20,0,0,0">
                                                     <TextBlock Text="מחרחק מתחנה קודמת"/>
                                                     <TextBlock Text="{Binding DistanceFromPrivios}" TextAlignment="Right"/>
@@ -90,49 +92,70 @@
                                                     <TextBlock Text="זמן מתחנה קודמת"/>
                                                     <TextBlock Text="{Binding TimeFromPrivios}" TextAlignment="Right"/>
                                                 </StackPanel>
+                                                    </StackPanel>
+                                                </Border>
 
+                                                <Border>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel  Margin="20,0,0,0">
+                                                    <TextBlock Text="מחרחק מההתחלה"/>
+                                                    <TextBlock Text="{Binding DistanceFromBeginnig}" TextAlignment="Right"/>
+                                                </StackPanel>
+                                                <StackPanel Margin="20,0,0,0">
+                                                    <TextBlock Text="זמן מההתחלה"/>
+                                                    <TextBlock Text="{Binding TimeFromBeginnig}" TextAlignment="Right"/>
+                                                </StackPanel>
+                                                    </StackPanel>
+                                                </Border>
                                             </StackPanel>
                                         </Border>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
                             <Grid Grid.Row="1">
-                                <Button x:Name="remove_line" MinHeight="10"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30"  Click="remove_line_Click" VerticalAlignment="Center" Content="Remove line" Padding="3,1" HorizontalAlignment="Center" Margin="50,26,157.667,26.667"/>
-                                <Button x:Name="update_line" MinHeight="10" Content="Update line"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="30"  Click="update_line_Click" VerticalAlignment="Center" RenderTransformOrigin="0.271,0.533" Padding="3,1" HorizontalAlignment="Center" Margin="182,26,30.667,26.667"/>
+
                             </Grid>
                         </Grid>
                     </Border>
                     <StackPanel Grid.Column="2" Margin="6.333,7,7.333,6.333">
-                        <Button x:Name="add_line" Content="הוסף קו חדש" FontSize="18" Click="add_line_Click"/>
+                        <Button Margin="0,10,0,0" x:Name="remove_line" Click="remove_line_Click"  Content="מחיקת קו" />
+                        <Button Margin="0,10,0,0" x:Name="update_line" Content="עדכון קו"   Click="update_line_Click"   />
+                        <Button Margin="0,10,0,0" x:Name="add_line" Content="הוסף קו חדש" FontSize="18" Click="add_line_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
+            
+            
             <TabItem Header="Stations    " FontSize="18">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6*"/>
-                        <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="78*"/>
-                        <ColumnDefinition Width="341*"/>
-                        <ColumnDefinition Width="340*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox Grid.Column="0"   x:FieldModifier="public" x:Name="stops_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stops_list_SelectionChanged" Grid.ColumnSpan="4" Margin="0,0,340.4,-0.4" >
-
+                    <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="stop_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged"  >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="stop_id" Text="{Binding Code}" Background="{x:Null}"></TextBlock>
+                                <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <StackPanel>
+                                        <TextBlock FontSize="20" x:Name="stop_id" Text="{Binding Code}" />
+                                    </StackPanel>
+                                </Border>
                             </DataTemplate>
-
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <TextBlock x:Name="code_stop" Grid.Column="3" Grid.ColumnSpan="2" Margin="0.4,0,339.4,-0.4"/>
-                    <TextBlock x:Name="name_stop" Grid.Column="3" Grid.ColumnSpan="2" Margin="0.4,0,339.4,-0.4"/>
-                    <TextBlock x:Name="location_stop" Grid.Column="3" Grid.ColumnSpan="2" Margin="0.4,0,339.4,-0.4"/>
-                    <Button x:Name="Add_station" Content="Add station" Grid.Column="3" HorizontalAlignment="Left" Margin="84.4,193,0,0" VerticalAlignment="Top" Width="103" Click="Add_station_click" Height="90"/>
-                    <Button x:Name="remoove_station" Content="Remoove station" Grid.Column="3" HorizontalAlignment="Left" Margin="84.4,95,0,0" VerticalAlignment="Top" Width="174" Click="remoove_station_click" Height="41"/>
-                    <!--<Button x:Name="update_station" Content="Update station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="update_station_click"/>-->
-                    <!--<Button x:Name="update_station" Content="Update station" Grid.Column="1" HorizontalAlignment="Left" Margin="84.4,109,0,0" VerticalAlignment="Top" Width="75" Click="update_station_click"/>-->
 
+                    <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0"  >
+                        <Grid >
+
+
+                        </Grid>
+                    </Border>
+                    <StackPanel Grid.Column="2" Margin="6.333,7,7.333,6.333">
+                        <Button Margin="0,10,0,0" x:Name="remove_stop"  Content="מחיקת תחנה" />
+                        <Button Margin="0,10,0,0" x:Name="update_stop" Content="עדכון תחנה"    />
+                        <Button Margin="0,10,0,0" x:Name="add_stop" Content="הוספת תחנה חדשה" FontSize="18" />
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>

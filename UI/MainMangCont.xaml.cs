@@ -31,12 +31,12 @@ namespace PL
             InitializeComponent();
 
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
-            stops_list.ItemsSource = MainWindow.bl.presentAllStation(true);
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation(true);
             line_list.ItemsSource = MainWindow.bl.presentAllLines(true);
 
         }
 
-  
+
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.LineBus lineToDetail = (BO.LineBus)line_list.SelectedItem;
@@ -87,12 +87,6 @@ namespace PL
 
         }
 
-        private void stops_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            BO.Station busToDetail = (BO.Station)stops_list.Items[stops_list.SelectedIndex];
-            code_stop.Text = busToDetail.Code.ToString();
-        }
-
         private void add_bus_Click(object sender, RoutedEventArgs e)
         {
             NewBus newBus = new NewBus(ref bus_list);
@@ -105,7 +99,7 @@ namespace PL
             {
                 MessageBox.Show("Please select the bus you want to update");
             }
-            else 
+            else
             {
                 Bus busToUpdate = (Bus)bus_list.Items[bus_list.SelectedIndex];
                 new UpdateBus(busToUpdate, ref bus_list).Show();
@@ -119,10 +113,10 @@ namespace PL
             {
                 MessageBox.Show("Please select the bus you want to remove");
             }
-            else 
+            else
             {
                 Bus busToRemove = (Bus)bus_list.Items[bus_list.SelectedIndex];
-                if (MessageBox.Show("Are you sure you want to delete the bus "+busToRemove.Id+ " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete the bus " + busToRemove.Id + " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     MainWindow.bl.RemoveBus(busToRemove);
                     bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
@@ -133,7 +127,7 @@ namespace PL
 
         private void line_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (line_list.SelectedIndex!=-1)
+            if (line_list.SelectedIndex != -1)
             {
                 LineBus line = (LineBus)line_list.Items[line_list.SelectedIndex];
 
@@ -144,7 +138,7 @@ namespace PL
             {
                 list_stop_of_line.ItemsSource = null;
             }
-          
+
         }
 
         private void add_new_station(object sender, RoutedEventArgs e)
@@ -164,7 +158,7 @@ namespace PL
 
         private void update_line_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (line_list.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select the line you want to remove");
@@ -194,34 +188,10 @@ namespace PL
             }
         }
 
-        private void Add_station_click(object sender, RoutedEventArgs e)
-        {
-            AddStationWin addStationWin = new AddStationWin(ref stops_list);
-            addStationWin.Show();
-        }
-
-        private void remoove_station_click(object sender, RoutedEventArgs e)
-        {
-            if (stops_list.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select the station you want to remove");
-            }
-            else
-            {
-                Station stationToRemove = (Station)stops_list.Items[stops_list.SelectedIndex];
-                if (MessageBox.Show("Are you sure you want to delete the bus " + stationToRemove.Code + " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                {
-                   // MainWindow.bl.RemoveStation(stationToRemove);
-                    stops_list.ItemsSource = MainWindow.bl.presentAllStation(false);
-                }
-            }
-        }
-
-        private void update_station_click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
     }
-}
+
+ }
+   
+
+
+

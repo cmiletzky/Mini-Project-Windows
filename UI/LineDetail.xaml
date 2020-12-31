@@ -26,12 +26,39 @@
                 <ListBox x:Name="list_stop_of_line" Grid.Column="1"  Grid.Row="2">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
                                 <TextBlock x:Name="stop_name" Text="{Binding Name}" Background="{x:Null}"></TextBlock>
                                 <Grid>
                                     <Label Content="מספר התחנה" Foreground="Red" Margin="38,0,0,0"/>
                                     <TextBlock x:Name="stop_id" Text="{Binding Code}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
                                 </Grid>
+                                </StackPanel>
+                                <Border>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel  Margin="20,0,0,0">
+                                            <TextBlock Text="מחרחק מתחנה קודמת"/>
+                                            <TextBlock Text="{Binding DistanceFromPrivios}" TextAlignment="Right"/>
+                                        </StackPanel>
+                                        <StackPanel Margin="20,0,0,0">
+                                            <TextBlock Text="זמן מתחנה קודמת"/>
+                                            <TextBlock Text="{Binding TimeFromPrivios}" TextAlignment="Right"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel  Margin="20,0,0,0">
+                                            <TextBlock Text="מחרחק מההתחלה"/>
+                                            <TextBlock Text="{Binding DistanceFromBeginnig}" TextAlignment="Right"/>
+                                        </StackPanel>
+                                        <StackPanel Margin="20,0,0,0">
+                                            <TextBlock Text="זמן מההתחלה"/>
+                                            <TextBlock Text="{Binding TimeFromBeginnig}" TextAlignment="Right"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
                             </StackPanel>
                         </DataTemplate>
 
