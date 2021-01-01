@@ -20,18 +20,29 @@
             
             
         </Grid>
-        <Menu Height="30"  DockPanel.Dock="Top" VerticalAlignment="Top">
-            <MenuItem x:Name="menu_login" Header="Login / registration" Click="Login_Click">
-               
-            </MenuItem>
-            <MenuItem x:Name="menu_account" Header="account" Click="Account_Click"/>
-            <MenuItem x:Name="menu_logout" Header="logout" Click="logout_menu"/>
-            <MenuItem Header="Contact Us">
-                <MenuItem Header="Sending an email"/>
-                <MenuItem Header="Sending WhatsApp"/>
-            </MenuItem>
-           
-        </Menu>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="LightSalmon">
+                <Menu Background="LightSalmon" HorizontalAlignment="Right" Padding="5,3" Height="40" DockPanel.Dock="Top" VerticalAlignment="Top">
+                <MenuItem FontSize="17" x:Name="menu_login" Header="הרשמה / התחברות" Click="Login_Click">
+
+                </MenuItem>
+                <MenuItem FontSize="17" x:Name="menu_account" Header="חשבון" Click="Account_Click"/>
+                <MenuItem FontSize="17" x:Name="menu_logout" Header="יציאה" Click="logout_menu"/>
+                <MenuItem FontSize="17" Header="צור קשר">
+                    <MenuItem FontSize="16" Header="Sending an email"/>
+                    <MenuItem FontSize="16" Header="Sending WhatsApp"/>
+                </MenuItem>
+
+            </Menu>
+            </Border>
+        </Grid>
+      
 
     </Grid>
 </Window>

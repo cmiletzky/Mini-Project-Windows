@@ -210,7 +210,27 @@
                             <Border Margin="10" Padding="5" Grid.Row="1" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
                                          <TextBlock TextAlignment="Right" Text="תחנות עוקובת" FontSize="25"/>
-                                 </StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" HorizontalAlignment="Right">
+                                            <TextBlock Text="אחרי"/>
+                                            <ListBox x:Name="stops_befor">
+                                                
+                                            </ListBox>
+                                        </StackPanel>
+                                        
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                            <TextBlock Text="לפני"/>
+                                            <ListBox x:Name="stops_after">
+
+                                            </ListBox>
+                                        </StackPanel>
+                                    </Grid>
+                                 </StackPanel> 
+
                              </Border>
 
                             <Border Margin="10" Padding="5"  Grid.Row="2" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
