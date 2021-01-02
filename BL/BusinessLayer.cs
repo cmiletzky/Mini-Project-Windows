@@ -123,10 +123,11 @@ namespace BL
         } 
         IEnumerable<Station> IBL.presentStopsLine()
         {
-            return (from item2 in dal.getStations(false)
+            var a =  (from item2 in dal.getStations(false)
                     from item1 in dal.GetStopsOfLine()
-                    where (item1.Id == item2.Code)
-                    select new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude,item1.OfLine,1)).ToList();   
+                    where (item1.Id == item2.Code) 
+                    select new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude,item1.OfLine,1)).ToList().Distinct();
+            return a.GroupBy(x => x.Code).Select(t => t.FirstOrDefault());
         }
 
         void IBL.RemoveLine(LineBus lineBus)

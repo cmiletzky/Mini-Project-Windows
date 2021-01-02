@@ -244,6 +244,14 @@ namespace Dal
         {
             int lineID = Dslines.lines.FindIndex(x => x.LineNum == lineNum);
             Dslines.lines[lineID].IsActive = false;
+
+            for (int i = 0; i < DSstopOfLine.stopOfLines.Count(); i++)
+            {
+                if (DSstopOfLine.stopOfLines[i].OfLine == lineNum)
+                {
+                    DSstopOfLine.stopOfLines.RemoveAt(i);
+                }
+            }
         }
 
         public void addStation(int code, string name, int longtitude, int latitude)

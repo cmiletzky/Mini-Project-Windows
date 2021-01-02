@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.stops"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="עריכת תחנות עוקבות" Height="230" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>

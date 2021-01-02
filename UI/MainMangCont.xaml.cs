@@ -185,7 +185,10 @@ namespace PL
                 {
 
                     MainWindow.bl.RemoveLine(lineToRemove);
+                    //TODOלטפל בעת מחיקת קו למחוק תחנות קו 
+                    stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
                     line_list.ItemsSource = MainWindow.bl.presentAllLines(false);
+                  
                 }
             }
         }
