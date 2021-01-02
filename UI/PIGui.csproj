@@ -91,6 +91,9 @@
     <Compile Include="StartTrip.xaml.cs">
       <DependentUpon>StartTrip.xaml</DependentUpon>
     </Compile>
+    <Compile Include="stops\EditAdjacentStatision.xaml.cs">
+      <DependentUpon>EditAdjacentStatision.xaml</DependentUpon>
+    </Compile>
     <Compile Include="stops\StopsList.xaml.cs">
       <DependentUpon>StopsList.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartTrip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="stops\EditAdjacentStatision.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

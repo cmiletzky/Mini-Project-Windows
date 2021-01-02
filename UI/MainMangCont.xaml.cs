@@ -1,6 +1,7 @@
 ﻿using BL.BO;
 using BO;
 using PL.line;
+using PL.stops;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -206,14 +207,18 @@ namespace PL
 
         private void stop_lime_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BO.Station a = (BO.Station)stop_lime_list.SelectedValue;
-            stop_num.Text = a.Code.ToString();
-            stop_name.Text = a.Name;
-            stop_lo.Text = a.Longtitude.ToString();
-            stop_la.Text = a.Latitude.ToString();
+            if (stop_lime_list.SelectedIndex!=-1)
+            {
+                BO.Station a = (BO.Station)stop_lime_list.SelectedValue;
+                stop_num.Text = a.Code.ToString();
+                stop_name.Text = a.Name;
+                stop_lo.Text = a.Longtitude.ToString();
+                stop_la.Text = a.Latitude.ToString();
 
-            stops_before.ItemsSource = MainWindow.bl.GetAdjacentStatisionBefore(a.Code);
-            stops_after.ItemsSource = MainWindow.bl.GetAdjacentStatisionAfter(a.Code);
+                stops_before.ItemsSource = MainWindow.bl.GetAdjacentStatisionBefore(a.Code);
+                stops_after.ItemsSource = MainWindow.bl.GetAdjacentStatisionAfter(a.Code);
+
+            }
 
         }
 
@@ -224,6 +229,17 @@ namespace PL
         private void stops_after_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void edit_a_s_Click(object sender, RoutedEventArgs e)
+        {
+            Button cdn = (Button)sender;
+            AdjacentStatision adjacentStatision = (AdjacentStatision)cdn.DataContext;
+            new EditAdjacentStatision(adjacentStatision, int.Parse(stop_num.Text)).ShowDialog();
+            stop_lime_list.SelectedIndex = -1;
+            stops_before.ItemsSource = null;
+            stops_after.ItemsSource = null;
+                
         }
     }
 

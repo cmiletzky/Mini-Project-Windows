@@ -217,12 +217,12 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" HorizontalAlignment="Right">
                                             <TextBlock Text="אחרי"/>
-                                            <ListBox ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="stops_after" SelectionChanged="stops_after_SelectionChanged">
+                                            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="stops_after" SelectionChanged="stops_after_SelectionChanged">
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button Content="עריכה" Margin="10,0" BorderThickness="1" Background=""/>
+                                                                <Button Content="עריכה" Click="edit_a_s_Click" Margin="10,0" BorderThickness="1" Background="White" FontSize="8"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
                                                                     <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
@@ -254,7 +254,7 @@
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button Content="עריכה" Margin="10,0"/>
+                                                                <Button x:Name="edit_a_s" Content="עריכה" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Click="edit_a_s_Click"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
                                                                     <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
