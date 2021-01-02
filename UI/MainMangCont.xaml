@@ -221,10 +221,26 @@
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-                                                            <StackPanel>
-                                                                <TextBlock FontSize="16" Foreground="Blue" Text="{Binding Code}"/>
-                                                                <TextBlock Text="{Binding Name}" FontSize="12" Foreground="Red"/>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Button Content="עריכה" Margin="10,0" BorderThickness="1" Background=""/>
+                                                                <StackPanel Margin="10,0">
+                                                                    <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
+                                                                    <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
+                                                                </StackPanel>
+
+                                                                <StackPanel Margin="10,0">
+                                                                    <TextBlock Text="זמן" FontSize="16" Foreground="Blue"/>
+                                                                    <TextBlock Text="{Binding Time}" FontSize="12" Foreground="Red"/>
+                                                                </StackPanel>
+
+                                                                <StackPanel>
+                                                                    <TextBlock FontSize="16" Foreground="Blue" Text="{Binding StationNum2}"/>
+                                                                    <TextBlock Text="{Binding StationName2}" FontSize="12" Foreground="Red"/>
+                                                                </StackPanel>
+
+     
                                                             </StackPanel>
+                                                      
                                                         </Border>
                                                     </DataTemplate>
                                                 </ListBox.ItemTemplate>
@@ -237,10 +253,22 @@
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-                                                            <StackPanel>
-                                                                <TextBlock FontSize="16" Foreground="Blue" Text="{Binding Code}"/>
-                                                                <TextBlock Text="{Binding Name}" FontSize="12" Foreground="Red"/>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Button Content="עריכה" Margin="10,0"/>
+                                                                <StackPanel Margin="10,0">
+                                                                    <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
+                                                                    <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
+                                                                </StackPanel>
+
+                                                                <StackPanel Margin="10,0">
+                                                                    <TextBlock Text="זמן" FontSize="16" Foreground="Blue"/>
+                                                                    <TextBlock Text="{Binding Time}" FontSize="12" Foreground="Red"/>
+                                                                </StackPanel>
+                                                                <StackPanel>
+                                                                <TextBlock FontSize="16" Foreground="Blue" Text="{Binding StationNum1}"/>
+                                                                <TextBlock Text="{Binding StationName1}" FontSize="12" Foreground="Red"/>
                                                             </StackPanel>
+                                                                </StackPanel>
                                                         </Border>
                                                     </DataTemplate>
                                                 </ListBox.ItemTemplate>

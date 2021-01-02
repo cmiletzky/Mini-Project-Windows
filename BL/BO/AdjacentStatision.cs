@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    class AdjacentStatision
+  public  class AdjacentStatision
     {
         int stationNum1;
         int stationNum2;
@@ -25,8 +25,8 @@ namespace BO
             this.time = time;
         }
 
-        public int Station_1 { get => stationNum1; set => stationNum1 = value; }
-        public int Station_2 { get => stationNum2; set => stationNum2 = value; }
+        public int StationNum1 { get => stationNum1; set => stationNum1 = value; }
+        public int StationNum2 { get => stationNum2; set => stationNum2 = value; }
         public double Distance { get => distance; set => distance = value; }
         public TimeSpan Time { get => time; set => time = value; }
         public string StationName1 { get => stationName1; set => stationName1 = value; }
