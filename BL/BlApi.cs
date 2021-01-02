@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,8 @@ namespace BlApi
         void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);
         void EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time);
         void EditLine(int oldLineNum,int lineNum, string area);
+        List<BO.AdjacentStatision> GetAdjacentStatisionBefore(int code);
+        List<BO.AdjacentStatision> GetAdjacentStatisionAfter(int code);
     }
     public static class BlFactory
     {

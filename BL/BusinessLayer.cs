@@ -302,6 +302,27 @@ namespace BL
         #endregion
 
         #region Station
+
+        List<AdjacentStatision> IBL.GetAdjacentStatisionBefore(int code)
+        {
+            var list = (from AD in dal.getAdjacentStatisions()
+                     from stop1 in dal.getStations(false)
+                     from stop2 in dal.getStations(false)
+                     where AD.Station_2 == code && stop1.Code == AD.Station_1 && stop2.Code == AD.Station_2
+                     select new AdjacentStatision(AD.Station_1,AD.Station_2,stop1.Name,stop2.Name,AD.Distance,AD.Time)).ToList();
+
+            return list;
+        }
+        List<AdjacentStatision> IBL.GetAdjacentStatisionAfter(int code)
+        {
+            var list = (from AD in dal.getAdjacentStatisions()
+                        from stop1 in dal.getStations(false)
+                        from stop2 in dal.getStations(false)
+                        where AD.Station_1 == code && stop1.Code == AD.Station_1 && stop2.Code == AD.Station_2
+                        select new AdjacentStatision(AD.Station_1, AD.Station_2, stop1.Name, stop2.Name, AD.Distance, AD.Time)).ToList();
+
+            return list;
+        }
         public IEnumerable<Station> presentAllStation(bool run)
         {
 

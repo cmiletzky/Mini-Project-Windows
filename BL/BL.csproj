@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BO\AdjacentStatision.cs" />
     <Compile Include="BO\Auth.cs" />
     <Compile Include="BO\Bus.cs" />
     <Compile Include="BO\LineBus.cs" />

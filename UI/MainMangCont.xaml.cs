@@ -211,6 +211,19 @@ namespace PL
             stop_name.Text = a.Name;
             stop_lo.Text = a.Longtitude.ToString();
             stop_la.Text = a.Latitude.ToString();
+
+            stops_before.ItemsSource = MainWindow.bl.GetAdjacentStatisionBefore(a.Code);
+            stops_after.ItemsSource = MainWindow.bl.GetAdjacentStatisionAfter(a.Code);
+
+        }
+
+        private void stops_before_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
+        private void stops_after_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 
