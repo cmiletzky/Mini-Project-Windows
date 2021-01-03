@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="Map" Height="450" Width="800">
     <Grid>
-        <WebBrowser x:Name="wbMaps" />
+        <WebBrowser x:Name="wbMaps"  LoadCompleted="Browser_OnLoadCompleted"/>
     </Grid>
 </Window>
