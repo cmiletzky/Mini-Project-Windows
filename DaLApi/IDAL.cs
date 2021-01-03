@@ -42,12 +42,14 @@ namespace DaLApi
         #endregion
 
         #region Line
+
+        void RemoveStopLine(int code);
         bool CheckAdjacentStatision(int stop1, int stop2);
         void EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time);
         void EditLine(int oldLineNum,int lineNum, string area);
         void AddStopOfLine(int stopNum, int lineNum,int after);
         IEnumerable<AdjacentStatision> getAdjacentStatisions(/*Predicate<AdjacentStatision> predicate*/);
-        void RemoveStopLine(StopOfLine stop);
+        void RemoveStopFromLine(StopOfLine stop);
         IEnumerable<StopOfLine> GetStopsOfLine();
         void RemoveLine(int lineNum);
         IEnumerable<LineBus> getLins(bool run);

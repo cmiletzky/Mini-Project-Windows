@@ -172,7 +172,18 @@ namespace Dal
             }
             DS.DSstopOfLine.stopOfLines.Add(new StopOfLine(lineNum, stopNum, after));
         }
-        void IDAL.RemoveStopLine(StopOfLine stop)
+        void IDAL.RemoveStopLine(int code)
+        {
+            for (int i = 0;i < DSstopOfLine.stopOfLines.Count();i++)
+            {
+                if (DSstopOfLine.stopOfLines[i].Id == code)
+                {
+                    DSstopOfLine.stopOfLines.RemoveAt(i);
+
+                }
+            }
+        }
+        void IDAL.RemoveStopFromLine(StopOfLine stop)
         {
             int index = DSstopOfLine.stopOfLines.FindIndex(x => x.Id == stop.Id && x.OfLine == stop.OfLine);
             DSstopOfLine.stopOfLines.RemoveAt(index);

@@ -195,6 +195,13 @@ namespace PL
 
         private void remove_stop_line_Click(object sender, RoutedEventArgs e)
         {
+            BO.Station a = (BO.Station)stop_lime_list.SelectedValue;
+
+            MainWindow.bl.RemoveStopLine(a.Code);
+            stop_lime_list.SelectedItem = -1;
+            stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
+            //TODO לאחר הסרה תחנת קו לטפל בטעינה של הקווים מחדש. הוא זורק שגיאה
+            
 
         }
 
@@ -242,6 +249,12 @@ namespace PL
         private void lines_in_stop_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
            new LineDetail( MainWindow.bl.presentLine((int)lines_in_stop.SelectedItem)).ShowDialog();
+        }
+
+        private void map_Click(object sender, RoutedEventArgs e)
+        {
+            string address = "https://www.google.com/maps/search/?api=1&query="+ stop_la.Text +","+ stop_lo.Text;
+            new Map(address).ShowDialog();
         }
     }
 

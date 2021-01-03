@@ -179,8 +179,8 @@
                         <Grid >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20*"/>
-                                <RowDefinition Height="50*"/>
-                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="60*"/>
+                                <RowDefinition Height="20*"/>
                             </Grid.RowDefinitions>
 
                             <Border Margin="10" Padding="5" Grid.Row="0" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
@@ -191,26 +191,26 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="stop_num"/>
-                                                <TextBlock Text=":מספר" Margin="10,0" TextAlignment="Right"/>
-
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <TextBlock x:Name="stop_num" Foreground="Red"/>
+                                                <TextBlock Text=":מספר" Margin="15,0" TextAlignment="Right" FontWeight="Bold"/>
                                             </StackPanel>   
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="stop_name"/>
-                                                <TextBlock Text=":שם" Margin="10,0"  TextAlignment="Right"/>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <TextBlock x:Name="stop_name" Foreground="Blue"/>
+                                                <TextBlock Text=":שם" Margin="15,0" FontWeight="Bold"  TextAlignment="Right"/>
                                             </StackPanel>
                                         </StackPanel> 
                                         
                                         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="stop_la"/>
-                                                <TextBlock Text="קו אורך"/>
+                                                <TextBlock x:Name="stop_la" Foreground="Firebrick"/>
+                                                <TextBlock Text=":קו אורך" FontWeight="Bold" Margin="15,0"/>
 
                                             </StackPanel>   
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="stop_lo"/>
-                                                <TextBlock Text="קו רוחב"/>
+                                                <TextBlock x:Name="stop_lo" Foreground="Firebrick"/>
+                                                <TextBlock Text=":קו רוחב" FontWeight="Bold" Margin="15,0"/>
+                                                <Button Content="צפה במפה" x:Name="map" Click="map_Click"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </Grid>
@@ -219,7 +219,7 @@
 
                             <Border AllowDrop="True" Margin="10" Padding="5" Grid.Row="1" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel AllowDrop="True" Orientation="Vertical">
-                                         <TextBlock TextAlignment="Right" Text="תחנות עוקובת" FontSize="25"/>
+                                         <TextBlock Foreground="LightSeaGreen" TextAlignment="Right" Text="תחנות עוקובת" FontSize="25"/>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -232,7 +232,7 @@
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button Content="עריכה" Click="edit_a_s_Click" Margin="10,0" BorderThickness="1" Background="White" FontSize="8"/>
+                                                                <Button Content="עריכה" Click="edit_a_s_Click" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Height="20"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
                                                                     <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
@@ -264,7 +264,7 @@
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button x:Name="edit_a_s" Content="עריכה" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Click="edit_a_s_Click"/>
+                                                                <Button x:Name="edit_a_s" Content="עריכה" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Click="edit_a_s_Click" Height="20"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
                                                                     <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
@@ -291,7 +291,7 @@
 
                             <Border Margin="10" Padding="5"  Grid.Row="2" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
-                                <TextBlock TextAlignment="Right" Text="קווים העוברים בתחנה" FontSize="25"/>
+                                    <TextBlock Foreground="LightSeaGreen" TextAlignment="Right" Text="קווים העוברים בתחנה" FontSize="25"/>
                                     <ListView  x:Name="lines_in_stop" MouseDoubleClick="lines_in_stop_MouseDoubleClick">
                                         <ListView.ItemsPanel >
                                             <ItemsPanelTemplate >

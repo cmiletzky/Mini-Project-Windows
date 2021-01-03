@@ -13,8 +13,8 @@ namespace BO
         int ofLine;
         string name;
         int indexInLine;
-        int longtitude;
-        int latitude;
+        double longtitude;
+        double latitude;
         Station priviosStop;
         private double distanceFromPrivios = 0;            // distance from the privios bus stop
         private double distanceFromBeginnig = 0;            // distance from the privios bus stop
@@ -22,8 +22,8 @@ namespace BO
         private TimeSpan timeFromBeginnig;
         bool isNotFirst = true;
 
-        public int Latitude { get => latitude; set => latitude = value; }
-        public int Longtitude { get => longtitude; set => longtitude = value; }
+        public double Latitude { get => latitude; set => latitude = value; }
+        public double Longtitude { get => longtitude; set => longtitude = value; }
         public string Name { get => name; set => name = value; }
         public int Code { get => code; set => code = value; }
         public double DistanceFromPrivios { get => distanceFromPrivios; set => distanceFromPrivios = value; }
@@ -35,7 +35,7 @@ namespace BO
         public bool IsNotFirst { get => isNotFirst; set => isNotFirst = value; }
         public int OfLine { get => ofLine; set => ofLine = value; }
 
-        public Station(int code, string name, int longtitude, int latitude,int index)
+        public Station(int code, string name, double longtitude, double latitude,int index)
         {
             this.code = code;
             this.name = name;
@@ -44,7 +44,7 @@ namespace BO
             this.indexInLine = index;
         }      
         
-        public Station(int code, string name, int longtitude, int latitude,int ofline,int a)
+        public Station(int code, string name, double longtitude, double latitude,int ofline,int a)
         {
             this.code = code;
             this.name = name;
@@ -53,7 +53,7 @@ namespace BO
             this.ofLine = ofline;
         }    
         
-        public Station(int code, string name, int longtitude, int latitude)
+        public Station(int code, string name, double longtitude, double latitude)
         {
             this.code = code;
             this.name = name;

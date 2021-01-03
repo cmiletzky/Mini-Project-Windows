@@ -23,6 +23,10 @@ namespace BL
 
         #region line
 
+        void IBL.RemoveStopLine(int code)
+        {
+            dal.RemoveStopLine(code);
+        }
         LineBus IBL.presentLine(int lineNum)
         {
             return (from line in dal.getLins(false)
@@ -111,7 +115,7 @@ namespace BL
                           where item.OfLine == lineNum && item.Id == stopCode
                           select item).ToList().First();
 
-            dal.RemoveStopLine(stopTo);
+            dal.RemoveStopFromLine(stopTo);
         }
         List<Station> IBL.presentStopsOfLine(int lineNum)
         {
@@ -133,7 +137,12 @@ namespace BL
             var a =  (from item2 in dal.getStations(false)
                     from item1 in dal.GetStopsOfLine()
                     where (item1.Id == item2.Code) 
-                    select new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude,item1.OfLine,1)).ToList().Distinct();
+                    select new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude,item1.OfLine,1)).ToList();
+            a.First().Latitude = 32.98117;
+            a.First().Longtitude = 35.44093;
+
+            a.ElementAt(13).Latitude = 31.51506 ;
+            a.ElementAt(13).Longtitude = 34.43994 ;
             return a.GroupBy(x => x.Code).Select(t => t.FirstOrDefault());
         }
 

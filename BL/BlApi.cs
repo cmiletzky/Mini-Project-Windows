@@ -41,6 +41,7 @@ namespace BlApi
         List<BO.AdjacentStatision> GetAdjacentStatisionAfter(int code);
         IEnumerable<int> GetLinsInStop(int code);
         BO.LineBus presentLine(int lineNum);
+        void RemoveStopLine(int code);
     }
     public static class BlFactory
     {
