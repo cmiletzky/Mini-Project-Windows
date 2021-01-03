@@ -14,7 +14,7 @@ namespace BlApi
     {
         void InitializeData();
         bool CheckAdjacentStatision(int stop1 , int stop2);
-        IEnumerable<BO.Station> presentStopsOfLine(int lineNum);
+        List<BO.Station> presentStopsOfLine(int lineNum);
         IEnumerable<BO.Station> presentStopsLine();
         void RemoveLine(BO.LineBus lineBus);
         void AddStopLine(int stopNum, int lineNum, int after);
@@ -39,6 +39,8 @@ namespace BlApi
         void EditLine(int oldLineNum,int lineNum, string area);
         List<BO.AdjacentStatision> GetAdjacentStatisionBefore(int code);
         List<BO.AdjacentStatision> GetAdjacentStatisionAfter(int code);
+        IEnumerable<int> GetLinsInStop(int code);
+        BO.LineBus presentLine(int lineNum);
     }
     public static class BlFactory
     {

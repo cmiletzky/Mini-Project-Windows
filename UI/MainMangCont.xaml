@@ -81,7 +81,18 @@
                                 <RowDefinition Height="*"/>
                                
                             </Grid.RowDefinitions>
-                            <ListBox x:Name="list_stop_of_line" Grid.Row="0">
+                            <DataGrid IsReadOnly="True" x:Name="list_stop_of_line" FlowDirection="RightToLeft">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="" Binding="{Binding IndexInLine}" FontSize="25"/>
+                                    <DataGridTextColumn Header="מספר" Binding="{Binding Code}" Foreground="Blue"/>
+                                    <DataGridTextColumn Header="שם" Binding="{Binding Name}" Foreground="Red"/>
+                                    <DataGridTextColumn Header="מרחק" Binding="{Binding DistanceFromPrivios}"/>
+                                    <DataGridTextColumn Header="זמן" Binding="{Binding TimeFromPrivios}"/>
+                                    <DataGridTextColumn Header="מרחק מהתחלה" Binding="{Binding DistanceFromBeginnig}"/>
+                                    <DataGridTextColumn Header="זמן מהתחלה" Binding="{Binding TimeFromBeginnig}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <!--<ListBox Height="2" x:Name="list_stop_of_line" Grid.Row="0">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Border BorderThickness="0,0,0,2" BorderBrush="Blue">
@@ -123,7 +134,7 @@
                                         </Border>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
-                            </ListBox>
+                            </ListBox>-->
                             <Grid Grid.Row="1">
 
                             </Grid>
@@ -167,14 +178,13 @@
                     <Border AllowDrop="True" Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0"  >
                         <Grid >
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="25*"/>
+                                <RowDefinition Height="20*"/>
                                 <RowDefinition Height="50*"/>
-                                <RowDefinition Height="25*"/>
+                                <RowDefinition Height="30*"/>
                             </Grid.RowDefinitions>
 
                             <Border Margin="10" Padding="5" Grid.Row="0" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
-                                <TextBlock TextAlignment="Right" Text="פרטי התחנה" FontSize="25"/>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -217,7 +227,7 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" HorizontalAlignment="Right">
                                             <TextBlock Text="אחרי"/>
-                                            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="stops_after" SelectionChanged="stops_after_SelectionChanged">
+                                            <ListBox  ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="stops_after" >
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
@@ -249,7 +259,7 @@
                                         
                                         <StackPanel Grid.Column="1" HorizontalAlignment="Right">
                                             <TextBlock Text="לפני"/>
-                                            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="stops_before" SelectionChanged="stops_before_SelectionChanged" ScrollViewer.CanContentScroll="True">
+                                            <ListBox ScrollViewer.VerticalScrollBarVisibility="Visible" x:Name="stops_before"  ScrollViewer.CanContentScroll="True">
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
@@ -282,6 +292,13 @@
                             <Border Margin="10" Padding="5"  Grid.Row="2" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
                                 <TextBlock TextAlignment="Right" Text="קווים העוברים בתחנה" FontSize="25"/>
+                                    <ListView  x:Name="lines_in_stop" MouseDoubleClick="lines_in_stop_MouseDoubleClick">
+                                        <ListView.ItemsPanel >
+                                            <ItemsPanelTemplate >
+                                                <WrapPanel Orientation="Horizontal" Width="250" HorizontalAlignment="Right"  ></WrapPanel>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                    </ListView>
                             </StackPanel>
                     </Border>
 

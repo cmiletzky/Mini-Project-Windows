@@ -22,6 +22,13 @@ namespace BL
         }
 
         #region line
+
+        LineBus IBL.presentLine(int lineNum)
+        {
+            return (from line in dal.getLins(false)
+                   where line.LineNum == lineNum
+                   select new LineBus(line.LineNum,GetAreas(line.Area),line.FirstStation,line.LastStation)).First();
+        }
         void IBL.AddLine(int newLineNum, string area, int firstStop, int lastStop)
         {
             if (dal.getLins(false).Any(x => x.LineNum == newLineNum))
@@ -106,7 +113,7 @@ namespace BL
 
             dal.RemoveStopLine(stopTo);
         }
-        IEnumerable<Station> IBL.presentStopsOfLine(int lineNum)
+        List<Station> IBL.presentStopsOfLine(int lineNum)
         {
             var stops = (from item1 in dal.GetStopsOfLine()
                          from item2 in dal.getStations(false)
@@ -304,6 +311,12 @@ namespace BL
 
         #region Station
 
+        IEnumerable<int> IBL.GetLinsInStop(int code)
+        {
+            return (from line in dal.GetStopsOfLine()
+                    where line.Id == code
+                    select line.OfLine).ToList().Distinct();
+        }
         List<AdjacentStatision> IBL.GetAdjacentStatisionBefore(int code)
         {
             var list = (from AD in dal.getAdjacentStatisions()

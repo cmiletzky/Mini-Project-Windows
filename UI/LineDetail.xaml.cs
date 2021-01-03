@@ -22,6 +22,7 @@ namespace PL
         public LineDetail(BO.LineBus line)
         {
             InitializeComponent();
+            line.Stops = MainWindow.bl.presentStopsOfLine(line.LineNum);
             Title = "line number " + line.LineNum.ToString();
             line_num.Content = line.LineNum;
             line_area.Content = line.Area;

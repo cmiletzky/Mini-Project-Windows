@@ -132,8 +132,8 @@ namespace PL
             if (line_list.SelectedIndex != -1)
             {
                 LineBus line = (LineBus)line_list.Items[line_list.SelectedIndex];
-
                 list_stop_of_line.ItemsSource = line.Stops;
+               // list_stop_of_line.ItemsSource = line.Stops;
 
             }
             else
@@ -221,18 +221,12 @@ namespace PL
                 stops_before.ItemsSource = MainWindow.bl.GetAdjacentStatisionBefore(a.Code);
                 stops_after.ItemsSource = MainWindow.bl.GetAdjacentStatisionAfter(a.Code);
 
+                lines_in_stop.ItemsSource = MainWindow.bl.GetLinsInStop(a.Code);
+
             }
 
         }
 
-        private void stops_before_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-
-        private void stops_after_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void edit_a_s_Click(object sender, RoutedEventArgs e)
         {
@@ -243,6 +237,11 @@ namespace PL
             stops_before.ItemsSource = null;
             stops_after.ItemsSource = null;
                 
+        }
+
+        private void lines_in_stop_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+           new LineDetail( MainWindow.bl.presentLine((int)lines_in_stop.SelectedItem)).ShowDialog();
         }
     }
 
