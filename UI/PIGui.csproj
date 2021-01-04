@@ -125,8 +125,14 @@
     <Compile Include="stops\EditAdjacentStatision.xaml.cs">
       <DependentUpon>EditAdjacentStatision.xaml</DependentUpon>
     </Compile>
+    <Compile Include="stops\NewStop.xaml.cs">
+      <DependentUpon>NewStop.xaml</DependentUpon>
+    </Compile>
     <Compile Include="stops\StopsList.xaml.cs">
       <DependentUpon>StopsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="stops\UpdateStop.xaml.cs">
+      <DependentUpon>UpdateStop.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateBus.xaml.cs">
       <DependentUpon>UpdateBus.xaml</DependentUpon>
@@ -212,7 +218,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="stops\NewStop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="stops\StopsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="stops\UpdateStop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,7 +16,7 @@ namespace DaLApi
         void InitializeData();
         IEnumerable<Station> getStations();
         #region station
-        void addStation(int code, string name, int longtitude, int latitude);
+        void addStation(int code, string name, double longtitude, double latitude);
         #endregion
 
         #region Bus
@@ -54,6 +54,7 @@ namespace DaLApi
         void RemoveLine(int lineNum);
         IEnumerable<LineBus> getLins();
         void RemoveStop(int code);
+        void EditStation(int code, string name, double latitude, double longtitude,int oldNum);
         #endregion
 
 

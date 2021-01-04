@@ -1,0 +1,38 @@
+﻿<Window x:Class="PL.stops.UpdateStop"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.stops"
+        mc:Ignorable="d"
+        Title="עדכון תחנה" Height="400" Width="600">
+    <Grid>
+        <StackPanel Margin="30" Orientation="Vertical" VerticalAlignment="Center">
+            <Grid HorizontalAlignment="Center">
+                
+                <StackPanel  Orientation="Vertical" HorizontalAlignment="Right">
+                    <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBox FontSize="20" x:Name="stop_num" Width="200" Foreground="Red"/>
+                        <TextBlock FontSize="20" Text=":מספר" Margin="15,0" TextAlignment="Right" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,10" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBox FontSize="20" x:Name="stop_name" Foreground="Blue" Width="200"/>
+                        <TextBlock FontSize="20" Text=":שם" Margin="15,0" FontWeight="Bold"  TextAlignment="Right"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10" Orientation="Horizontal">
+                        <TextBox FontSize="20" x:Name="stop_la" Foreground="Firebrick" Width="200"/>
+                        <TextBlock FontSize="20" Text=":קו אורך" FontWeight="Bold" Margin="15,0"/>
+
+                    </StackPanel>
+                    <StackPanel Margin="0,10" Orientation="Horizontal">
+                        <TextBox FontSize="20" x:Name="stop_lo" Foreground="Firebrick" Width="200"/>
+                        <TextBlock FontSize="20" Text=":קו רוחב" FontWeight="Bold" Margin="15,0"/>
+                    </StackPanel>
+                </StackPanel>
+                
+            </Grid>
+            <Button x:Name="save" Content="שמירה" Width="120" Margin="0,20" Click="save_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

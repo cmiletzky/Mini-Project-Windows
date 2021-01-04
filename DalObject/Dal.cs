@@ -266,15 +266,19 @@ namespace Dal
             {
                 DSstopOfLine.stopOfLines.RemoveAt(DSstopOfLine.stopOfLines.FindIndex(x => x.Id == code));
                 DsAdjacentStatision.adjacentStatisions.RemoveAt(DsAdjacentStatision.adjacentStatisions.FindIndex(x => x.Station_2 == code || x.Station_2 == code));
-
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception){}
         }
-        public void addStation(int code, string name, int longtitude, int latitude)
+
+        void IDAL.EditStation(int code, string name, double latitude, double longtitude , int oldNum)
         {
-            Station newStation;
+            DsStations.stations[DsStations.stations.FindIndex(x => x.Code == oldNum)] =
+                 new Station(code, name, longtitude, latitude);
+        }
+
+        public void addStation(int code, string name, double longtitude, double latitude)
+        {
+             
             try
             {
                 Station check = DsStations.stations.Find(x => x.Code == code);
@@ -282,7 +286,7 @@ namespace Dal
                 {
                     throw new DuplicateNameException();
                 }
-                else if (check.IsActive==false)
+                else if (check!=null&&check.IsActive==false)
                 {
                     check.IsActive = true;
                     check.Latitude = latitude;
@@ -291,7 +295,7 @@ namespace Dal
                 }
                 else
                 {
-                    newStation = new Station(code, name, longtitude, latitude);
+                    Station newStation = new Station(code, name, longtitude, latitude);
                     DsStations.stations.Add(newStation);
                 }
 

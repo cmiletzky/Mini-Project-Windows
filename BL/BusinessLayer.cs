@@ -382,12 +382,12 @@ namespace BL
 
             return list;
         }
-        void IBL.AddStation(string code, string name, string longtitude, string latitude)
+        void IBL.AddStation(string name, string code, string longtitude, string latitude)
         {
 
             try
             {
-                dal.addStation(int.Parse(code), name, int.Parse(longtitude), int.Parse(latitude));
+                dal.addStation(int.Parse(code), name, double.Parse(longtitude), double.Parse(latitude));
             }
             catch (DuplicateNameException)
             {
@@ -396,7 +396,15 @@ namespace BL
             }
         }
 
+        void IBL.updateStop(Station station , int oldNum)
+        {
+            if (dal.getStations().Any(x => x.Code == station.Code && oldNum != station.Code))
+            {
+                throw new Exception("מספר התחנה כבר קיים");
+            }
 
+            dal.EditStation(station.Code,station.Name,station.Latitude,station.Longtitude , oldNum);
+        }
 
         #endregion
 

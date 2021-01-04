@@ -1,0 +1,33 @@
+﻿<Window x:Class="PL.stops.NewStop"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.stops"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="תחנה חדשה" Height="450" Width="450">
+    <Grid>
+        <Border BorderBrush="Red" BorderThickness="3" Margin="20">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Margin="0,10" Orientation="Horizontal">
+                <TextBox Margin="0,0,10,0" x:Name="num" FontSize="20" Width="100"/>
+            <TextBlock Text="מספר" FontSize="20"/>
+        </StackPanel>
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+            <TextBox Margin="0,0,10,0" x:Name="name" FontSize="20" Width="100"/>
+            <TextBlock Text="שם" FontSize="20"/>
+        </StackPanel>
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <TextBox x:Name="longitude" Margin="0,0,10,0" FontSize="20" Width="100"/>
+            <TextBlock Text="נקודת אורך" FontSize="20"/>
+        </StackPanel>
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <TextBox x:Name="latitude" Margin="0,0,10,0" FontSize="20" Width="100"/>
+            <TextBlock Text="נקודת רוחב" FontSize="20"/>
+        </StackPanel>
+            <Button x:Name="save" Margin="0,10" Content="שמירה" Background="White" BorderBrush="Green" BorderThickness="2" Click="save_Click"/>
+        </StackPanel>
+        </Border>
+    </Grid>
+</Window>

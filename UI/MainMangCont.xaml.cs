@@ -289,12 +289,22 @@ namespace PL
 
         private void update_stop_Click(object sender, RoutedEventArgs e)
         {
+            if (stop_list.SelectedIndex!=-1)
+            {
+                BO.Station a = (BO.Station)stop_list.SelectedItem;
+                new UpdateStop(a).ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("לא נבחרה תחנה");
+            }
 
         }
 
         private void add_stop_Click(object sender, RoutedEventArgs e)
         {
-           // new NewStop() ;
+            new NewStop().ShowDialog() ;
+            InitializeData();
         }
     }
 
