@@ -20,13 +20,12 @@ namespace PL
     /// </summary>
     public partial class UpdateBus : Window
     {
-        ListBox listBox;
+     
         Bus bus;
-        public UpdateBus(Bus bus, ref ListBox list)
+        public UpdateBus(Bus bus)
         {
             InitializeComponent();
             this.bus = bus;
-            listBox = list;
             Title = "Update "+bus.Id;
             I_D.Text = bus.Id;
             start_date.Text = bus.StartDate.ToString();
@@ -45,7 +44,6 @@ namespace PL
             busTo.Gas = int.Parse(gas.Text);
             busTo.LastTreatDate = last_treat_date.SelectedDate;
             MainWindow.bl.updateBus(busTo);
-            listBox.ItemsSource = MainWindow.bl.presentAllBus(false);
             Close();
         }
 

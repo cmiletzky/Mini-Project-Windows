@@ -94,8 +94,9 @@ namespace PL
 
         private void add_bus_Click(object sender, RoutedEventArgs e)
         {
-            NewBus newBus = new NewBus(ref bus_list);
+            NewBus newBus = new NewBus();
             newBus.Show();
+            InitializeData();
         }
 
         private void update_bus_Click(object sender, RoutedEventArgs e)
@@ -107,7 +108,8 @@ namespace PL
             else
             {
                 Bus busToUpdate = (Bus)bus_list.Items[bus_list.SelectedIndex];
-                new UpdateBus(busToUpdate, ref bus_list).Show();
+                new UpdateBus(busToUpdate).Show();
+                InitializeData();
                 //bus_list.Items.Refresh();
             }
         }
