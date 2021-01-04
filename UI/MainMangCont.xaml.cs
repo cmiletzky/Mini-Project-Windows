@@ -30,14 +30,17 @@ namespace PL
         {
 
             InitializeComponent();
+            InitializeData();
 
+
+        }
+        void InitializeData()
+        {
             bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
             stop_list.ItemsSource = MainWindow.bl.presentAllStation(true);
             line_list.ItemsSource = MainWindow.bl.presentAllLines(true);
             stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
-
         }
-
 
         private void Lines_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -207,12 +210,12 @@ namespace PL
 
         private void update_stop_line_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show(" ניתן לעדכן דרך קו מסוים");
         }
 
         private void add_stop_line_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show(" ניתן להוסיף דרך קו מסוים");
         }
 
         private void stop_lime_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -220,10 +223,10 @@ namespace PL
             if (stop_lime_list.SelectedIndex!=-1)
             {
                 BO.Station a = (BO.Station)stop_lime_list.SelectedValue;
-                stop_num.Text = a.Code.ToString();
-                stop_name.Text = a.Name;
-                stop_lo.Text = a.Longtitude.ToString();
-                stop_la.Text = a.Latitude.ToString();
+                stop_line_num.Text = a.Code.ToString();
+                stop_line_name.Text = a.Name;
+                stop_line_lo.Text = a.Longtitude.ToString();
+                stop_line_la.Text = a.Latitude.ToString();
 
                 stops_before.ItemsSource = MainWindow.bl.GetAdjacentStatisionBefore(a.Code);
                 stops_after.ItemsSource = MainWindow.bl.GetAdjacentStatisionAfter(a.Code);
@@ -253,8 +256,45 @@ namespace PL
 
         private void map_Click(object sender, RoutedEventArgs e)
         {
-            string address = "https://www.google.com/maps/search/?api=1&query="+ stop_la.Text +","+ stop_lo.Text;
+            string address = "https://www.google.com/maps/search/?api=1&query="+ stop_line_la.Text +","+ stop_line_lo.Text;
             new Map(address).ShowDialog();
+        }
+
+        private void stop_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (stop_list.SelectedIndex!=-1)
+            {
+                Station stop = (Station)stop_list.SelectedItem;
+                stop_name.Text = stop.Name;
+                stop_num.Text = stop.Code.ToString();
+                stop_la.Text = stop.Latitude.ToString();
+                stop_lo.Text = stop.Longtitude.ToString();
+                Uri uri = new Uri("https://www.google.com/maps/search/?api=1&query=" + stop.Latitude.ToString() + "," + stop.Longtitude.ToString());
+                stop_map.Source = uri;
+            }
+
+        }
+
+        private void remove_stop_Click(object sender, RoutedEventArgs e)
+        {
+            if (stop_list.SelectedIndex!=-1)
+            {
+                BO.Station a = (BO.Station)stop_list.SelectedItem;
+                MainWindow.bl.RemoveStop(a.Code);
+                InitializeData();
+                MessageBox.Show("התחנה נמחקה בהצלחה יש לגשת לקווים ולעדכן מרחקים וזמנים במקומות הרלוונטים");
+
+            }
+        }
+
+        private void update_stop_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void add_stop_Click(object sender, RoutedEventArgs e)
+        {
+           // new NewStop() ;
         }
     }
 

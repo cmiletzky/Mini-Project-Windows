@@ -75,13 +75,8 @@ namespace Dal
             DsBuses.buslist[busID].IsActive = false;
         }
 
-        IEnumerable<Bus> IDAL.getAllBuses(bool run)
+        IEnumerable<Bus> IDAL.getAllBuses()
         {
-            if (run==true)
-            {
-                DsBuses.intialbus();
-            }
-            
             return DsBuses.buslist.Clone();
         }
 
@@ -148,12 +143,11 @@ namespace Dal
         {
             DsAdjacentStatision.adjacentStatisions.Add(new AdjacentStatision(stop1, stop2, double.Parse(distnase), time));
         }
-        IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions(/*Predicate<AdjacentStatision> predicate*/)
+        IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions()
         {
-            var d = (from item9 in DsAdjacentStatision.adjacentStatisions
-                 // where predicate(item9)
-                 select item9).ToList();
-            return d;
+
+            return DsAdjacentStatision.adjacentStatisions.Clone();
+
         }
 
         bool IDAL.CheckAdjacentStatision(int stop1, int stop2)
@@ -198,16 +192,15 @@ namespace Dal
         }
         IEnumerable<StopOfLine> IDAL.GetStopsOfLine()
         {
-            
-            return DSstopOfLine.stopOfLines;
+            return DSstopOfLine.stopOfLines.Clone();
         }
-       public IEnumerable<Station> getStations(bool run)
+       public IEnumerable<Station> getStations()
         {
             
             return DsStations.stations.Clone();
         }
 
-        public  IEnumerable<LineBus> getLins(bool run)
+        public  IEnumerable<LineBus> getLins()
         {
             
             return Dslines.lines.Clone();
@@ -265,6 +258,20 @@ namespace Dal
             }
         }
 
+
+        void IDAL.RemoveStop(int code)
+        {
+            DsStations.stations.RemoveAt(DsStations.stations.FindIndex(x => x.Code == code));
+            try
+            {
+                DSstopOfLine.stopOfLines.RemoveAt(DSstopOfLine.stopOfLines.FindIndex(x => x.Id == code));
+                DsAdjacentStatision.adjacentStatisions.RemoveAt(DsAdjacentStatision.adjacentStatisions.FindIndex(x => x.Station_2 == code || x.Station_2 == code));
+
+            }
+            catch (Exception)
+            {
+            }
+        }
         public void addStation(int code, string name, int longtitude, int latitude)
         {
             Station newStation;

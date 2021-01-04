@@ -42,6 +42,26 @@ namespace Dal
                 target.Add(item);
             }
             return target;
+        }  
+        
+        internal static IEnumerable<StopOfLine> Clone(this IEnumerable<StopOfLine> original)
+        {
+            List<StopOfLine> target = new List<StopOfLine>();
+            foreach (var item in original)
+            {
+                target.Add(item);
+            }
+            return target;
+        }    
+        
+        internal static IEnumerable<AdjacentStatision> Clone(this IEnumerable<AdjacentStatision> original)
+        {
+            List<AdjacentStatision> target = new List<AdjacentStatision>();
+            foreach (var item in original)
+            {
+                target.Add(item);
+            }
+            return target;
         }
         internal static List<LineBus> Clone(this List<LineBus> original)
         {

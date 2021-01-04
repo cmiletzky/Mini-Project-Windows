@@ -42,6 +42,7 @@ namespace BlApi
         IEnumerable<int> GetLinsInStop(int code);
         BO.LineBus presentLine(int lineNum);
         void RemoveStopLine(int code);
+        void RemoveStop(int code);
     }
     public static class BlFactory
     {

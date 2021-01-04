@@ -192,23 +192,23 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <TextBlock x:Name="stop_num" Foreground="Red"/>
+                                                <TextBlock x:Name="stop_line_num" Foreground="Red"/>
                                                 <TextBlock Text=":מספר" Margin="15,0" TextAlignment="Right" FontWeight="Bold"/>
                                             </StackPanel>   
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <TextBlock x:Name="stop_name" Foreground="Blue"/>
+                                                <TextBlock x:Name="stop_line_name" Foreground="Blue"/>
                                                 <TextBlock Text=":שם" Margin="15,0" FontWeight="Bold"  TextAlignment="Right"/>
                                             </StackPanel>
                                         </StackPanel> 
                                         
                                         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="stop_la" Foreground="Firebrick"/>
+                                                <TextBlock x:Name="stop_line_la" Foreground="Firebrick"/>
                                                 <TextBlock Text=":קו אורך" FontWeight="Bold" Margin="15,0"/>
 
                                             </StackPanel>   
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="stop_lo" Foreground="Firebrick"/>
+                                                <TextBlock x:Name="stop_line_lo" Foreground="Firebrick"/>
                                                 <TextBlock Text=":קו רוחב" FontWeight="Bold" Margin="15,0"/>
                                                 <Button Content="צפה במפה" x:Name="map" Click="map_Click"/>
                                             </StackPanel>
@@ -325,12 +325,13 @@
                         <ColumnDefinition Width="60*"/>
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="stop_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged"  >
+                    <ListBox Grid.Column="0"  x:FieldModifier="public" x:Name="stop_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="stop_list_SelectionChanged" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <StackPanel>
                                         <TextBlock FontSize="20" x:Name="stop_id" Text="{Binding Code}" />
+                                        <TextBlock FontSize="12" Foreground="red" x:Name="stop_name" Text="{Binding Name}" />
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
@@ -339,14 +340,50 @@
 
                     <Border Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0"  >
                         <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="70*"/>
+                            </Grid.RowDefinitions>
 
+                            <StackPanel Orientation="Vertical">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <TextBlock x:Name="stop_num" Foreground="Red"/>
+                                            <TextBlock Text=":מספר" Margin="15,0" TextAlignment="Right" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <TextBlock x:Name="stop_name" Foreground="Blue"/>
+                                            <TextBlock Text=":שם" Margin="15,0" FontWeight="Bold"  TextAlignment="Right"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock x:Name="stop_la" Foreground="Firebrick"/>
+                                            <TextBlock Text=":קו אורך" FontWeight="Bold" Margin="15,0"/>
+
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock x:Name="stop_lo" Foreground="Firebrick"/>
+                                            <TextBlock Text=":קו רוחב" FontWeight="Bold" Margin="15,0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+
+                            <WebBrowser Grid.Row="1" x:Name="stop_map" Margin="10" />
 
                         </Grid>
                     </Border>
                     <StackPanel Grid.Column="2" Margin="6.333,7,7.333,6.333">
-                        <Button Margin="0,10,0,0" x:Name="remove_stop"  Content="מחיקת תחנה" />
-                        <Button Margin="0,10,0,0" x:Name="update_stop" Content="עדכון תחנה"    />
-                        <Button Margin="0,10,0,0" x:Name="add_stop" Content="הוספת תחנה חדשה" FontSize="18" />
+                        <Button Margin="0,10,0,0" x:Name="remove_stop"  Content="מחיקת תחנה" Click="remove_stop_Click" />
+                        <Button Margin="0,10,0,0" x:Name="update_stop" Content="עדכון תחנה" Click="update_stop_Click"    />
+                        <Button Margin="0,10,0,0" x:Name="add_stop" Content="הוספת תחנה חדשה" FontSize="18" Click="add_stop_Click" />
                     </StackPanel>
                 </Grid>
             </TabItem>

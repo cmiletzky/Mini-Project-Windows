@@ -14,7 +14,7 @@ namespace DaLApi
     public interface IDAL
     {
         void InitializeData();
-        IEnumerable<Station> getStations(bool run);
+        IEnumerable<Station> getStations();
         #region station
         void addStation(int code, string name, int longtitude, int latitude);
         #endregion
@@ -25,7 +25,7 @@ namespace DaLApi
         void addBus(string busNam, DateTime? startDate);
         void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);
         Bus getBus(string id);
-        IEnumerable<Bus> getAllBuses(bool run);
+        IEnumerable<Bus> getAllBuses();
         void updateBus(Bus bustoUpdate);
         void AddLine(int newLineNum, string area, int firstStop, int lastStop);
         void DeleteBus(string BusId);
@@ -52,7 +52,8 @@ namespace DaLApi
         void RemoveStopFromLine(StopOfLine stop);
         IEnumerable<StopOfLine> GetStopsOfLine();
         void RemoveLine(int lineNum);
-        IEnumerable<LineBus> getLins(bool run);
+        IEnumerable<LineBus> getLins();
+        void RemoveStop(int code);
         #endregion
 
 

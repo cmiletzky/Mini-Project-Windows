@@ -29,13 +29,13 @@ namespace BL
         }
         LineBus IBL.presentLine(int lineNum)
         {
-            return (from line in dal.getLins(false)
+            return (from line in dal.getLins()
                    where line.LineNum == lineNum
                    select new LineBus(line.LineNum,GetAreas(line.Area),line.FirstStation,line.LastStation)).First();
         }
         void IBL.AddLine(int newLineNum, string area, int firstStop, int lastStop)
         {
-            if (dal.getLins(false).Any(x => x.LineNum == newLineNum))
+            if (dal.getLins().Any(x => x.LineNum == newLineNum))
             {
                 throw new Exception("מספר הקו כבר קיים");
             }
@@ -53,14 +53,14 @@ namespace BL
 
         IEnumerable<LineBus> IBL.presentAllLines(bool run)
         {
-            var lines = (from item in dal.getLins(true)
+            var lines = (from item in dal.getLins()
                          where item.IsActive == true
                          select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation))).ToList();
 
             foreach (var item in lines)
             {
                 item.Stops = (from item1 in dal.GetStopsOfLine()
-                              from item2 in dal.getStations(false)
+                              from item2 in dal.getStations()
                               where item1.OfLine == item.LineNum && item1.Id == item2.Code
                               select new Station(item2.Code, item2.Name, item2.Longtitude, item2.Latitude, item1.StatIndex)).OrderBy(x => x.IndexInLine).ToList<Station>();
                 item.Stops[0].IsNotFirst = false;
@@ -68,14 +68,24 @@ namespace BL
                 double counDis = 0;
                 for (int i = 1; i < item.Stops.Count(); i++)
                 {
-                    counTime += (from rr in dal.getAdjacentStatisions()
-                                 where rr.Station_2 == item.Stops[i].Code
-                                 && rr.Station_1 == item.Stops[i - 1].Code
-                                 select rr.Time).First();
-                    counDis += (from rr in dal.getAdjacentStatisions()
-                                where rr.Station_2 == item.Stops[i].Code
-                                && rr.Station_1 == item.Stops[i - 1].Code
-                                select rr.Distance).First();
+                    try
+                    {
+                        counTime += (from rr in dal.getAdjacentStatisions()
+                                     where rr.Station_2 == item.Stops[i].Code
+                                     && rr.Station_1 == item.Stops[i - 1].Code
+                                     select rr.Time).First();
+                        counDis += (from rr in dal.getAdjacentStatisions()
+                                    where rr.Station_2 == item.Stops[i].Code
+                                    && rr.Station_1 == item.Stops[i - 1].Code
+                                    select rr.Distance).First();
+                    }
+                    catch (Exception)
+                    {
+
+                        dal.AddAdjacentStatision(item.Stops[i].Code, item.Stops[i - 1].Code, "0", new TimeSpan(00, 00, 00));
+
+                    }
+
                     item.Stops[i].TimeFromBeginnig = counTime;
                     item.Stops[i].DistanceFromBeginnig = counDis;
                     item.Stops[i].TimeFromPrivios = item.Stops[i].TimeFromBeginnig - item.Stops[i - 1].TimeFromBeginnig;
@@ -96,7 +106,7 @@ namespace BL
 
         void IBL.EditLine(int oldLineNum, int lineNum, string area)
         {
-            if (dal.getLins(false).Any(x => x.LineNum == lineNum && oldLineNum!= lineNum))
+            if (dal.getLins().Any(x => x.LineNum == lineNum && oldLineNum!= lineNum))
             {
                 throw new Exception("מספר הקו כבר קיים");
             }
@@ -120,7 +130,7 @@ namespace BL
         List<Station> IBL.presentStopsOfLine(int lineNum)
         {
             var stops = (from item1 in dal.GetStopsOfLine()
-                         from item2 in dal.getStations(false)
+                         from item2 in dal.getStations()
                          where item1.OfLine == lineNum && item1.Id == item2.Code
                          select item2).ToList();
 
@@ -134,7 +144,7 @@ namespace BL
         } 
         IEnumerable<Station> IBL.presentStopsLine()
         {
-            var a =  (from item2 in dal.getStations(false)
+            var a =  (from item2 in dal.getStations()
                     from item1 in dal.GetStopsOfLine()
                     where (item1.Id == item2.Code) 
                     select new Station(item2.Code,item2.Name,item2.Longtitude,item2.Latitude,item1.OfLine,1)).ToList();
@@ -176,7 +186,7 @@ namespace BL
         {
 
             List<Bus> allBuses = new List<Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
-            foreach (var item in dal.getAllBuses(run))
+            foreach (var item in dal.getAllBuses())
             {
                 string a = item.Id.Replace("-", "");
                 if (item.IsActive != false)
@@ -319,7 +329,10 @@ namespace BL
         #endregion
 
         #region Station
-
+        void IBL.RemoveStop(int code)
+        {
+            dal.RemoveStop(code);
+        }
         IEnumerable<int> IBL.GetLinsInStop(int code)
         {
             return (from line in dal.GetStopsOfLine()
@@ -329,8 +342,8 @@ namespace BL
         List<AdjacentStatision> IBL.GetAdjacentStatisionBefore(int code)
         {
             var list = (from AD in dal.getAdjacentStatisions()
-                     from stop1 in dal.getStations(false)
-                     from stop2 in dal.getStations(false)
+                     from stop1 in dal.getStations()
+                     from stop2 in dal.getStations()
                      where AD.Station_2 == code && stop1.Code == AD.Station_1 && stop2.Code == AD.Station_2
                      select new AdjacentStatision(AD.Station_1,AD.Station_2,stop1.Name,stop2.Name,AD.Distance,AD.Time)).ToList();
 
@@ -339,8 +352,8 @@ namespace BL
         List<AdjacentStatision> IBL.GetAdjacentStatisionAfter(int code)
         {
             var list = (from AD in dal.getAdjacentStatisions()
-                        from stop1 in dal.getStations(false)
-                        from stop2 in dal.getStations(false)
+                        from stop1 in dal.getStations()
+                        from stop2 in dal.getStations()
                         where AD.Station_1 == code && stop1.Code == AD.Station_1 && stop2.Code == AD.Station_2
                         select new AdjacentStatision(AD.Station_1, AD.Station_2, stop1.Name, stop2.Name, AD.Distance, AD.Time)).ToList();
 
@@ -352,7 +365,7 @@ namespace BL
             List<Station> list = new List<Station>();
             if (run == true)
             {
-                foreach (var item in dal.getStations(run))
+                foreach (var item in dal.getStations())
                 {
                     list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
 
@@ -360,7 +373,7 @@ namespace BL
             }
             else
             {
-                foreach (var item in dal.getStations(run))
+                foreach (var item in dal.getStations())
                 {
                     list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
 

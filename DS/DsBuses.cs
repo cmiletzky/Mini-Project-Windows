@@ -12,7 +12,10 @@ namespace DS
         public static List<Bus> buslist = new List<Bus>();// create the list to hold the buss in company
         private static Random gen = new Random();
         static public Random r = new Random(DateTime.Now.Millisecond);
-        
+        public DsBuses()
+        {
+            intialbus();
+        }
       static  DateTime RandomDay()
         {
 
