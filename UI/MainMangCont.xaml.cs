@@ -244,7 +244,7 @@ namespace PL
         {
             Button cdn = (Button)sender;
             AdjacentStatision adjacentStatision = (AdjacentStatision)cdn.DataContext;
-            new EditAdjacentStatision(adjacentStatision, int.Parse(stop_num.Text)).ShowDialog();
+            new EditAdjacentStatision(adjacentStatision, int.Parse(stop_line_num.Text)).ShowDialog();
             stop_lime_list.SelectedIndex = -1;
             stops_before.ItemsSource = null;
             stops_after.ItemsSource = null;
