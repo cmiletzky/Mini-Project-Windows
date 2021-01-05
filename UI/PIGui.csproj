@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bus.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
@@ -277,8 +280,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bus\" />
     <Folder Include="map\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus\אוטובוס.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

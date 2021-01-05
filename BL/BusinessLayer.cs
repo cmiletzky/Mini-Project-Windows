@@ -51,7 +51,7 @@ namespace BL
 
 
 
-        IEnumerable<LineBus> IBL.presentAllLines(bool run)
+        IEnumerable<LineBus> IBL.presentAllLines()
         {
             var lines = (from item in dal.getLins()
                          where item.IsActive == true
@@ -182,7 +182,7 @@ namespace BL
         #endregion
 
         #region bus
-        public IEnumerable<Bus> presentAllBus(bool run)
+        public IEnumerable<Bus> presentAllBus()
         {
 
             List<Bus> allBuses = new List<Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
@@ -359,26 +359,17 @@ namespace BL
 
             return list;
         }
-        public IEnumerable<Station> presentAllStation(bool run)
+        public IEnumerable<Station> presentAllStation()
         {
 
             List<Station> list = new List<Station>();
-            if (run == true)
-            {
+
                 foreach (var item in dal.getStations())
                 {
                     list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
 
                 }
-            }
-            else
-            {
-                foreach (var item in dal.getStations())
-                {
-                    list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
 
-                }
-            }
 
             return list;
         }
@@ -424,7 +415,11 @@ namespace BL
         #endregion
 
         #region User
-     public   bool isUserMang(string userName, string password, bool isMang)
+        void IBL.ChangePass(User user, string newPass)
+        {
+            dal.ChangePass(user.UserName,newPass);
+        }
+        public   bool isUserMang(string userName, string password, bool isMang)
         {
             return dal.dalIsUser(userName, password, isMang);
         }

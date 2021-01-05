@@ -25,9 +25,28 @@ namespace PL
             InitializeComponent();
             if (Auth.user!=null)
             {
-                ee.Text = Auth.user.UserName;
+                name.Text = Auth.user.UserName;
+                if (Auth.user.Admin==true)
+                {
+                    is_mang.Text = "מנהל";
+                }
             }
            
+        }
+
+        private void change_pass_Click(object sender, RoutedEventArgs e)
+        {
+            change.Visibility = Visibility.Visible;
+           
+        }
+
+        private void sava_pass_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO לטפל
+            MainWindow.bl.ChangePass(Auth.user, pass.Text);
+            Auth.user.Password = pass.Text;
+
+            change.Visibility = Visibility.Collapsed;
         }
     }
 }

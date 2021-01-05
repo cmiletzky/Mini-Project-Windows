@@ -28,8 +28,8 @@ namespace PL.line
             List<string> area = new List<string> { "General", "North", "South", "Center", "Jerusalem" };
             InitializeComponent();
             listLine = list;
-            first_stop.ItemsSource = MainWindow.bl.presentAllStation(false);
-            last_stop.ItemsSource = MainWindow.bl.presentAllStation(false);
+            first_stop.ItemsSource = MainWindow.bl.presentAllStation();
+            last_stop.ItemsSource = MainWindow.bl.presentAllStation();
             area_list.ItemsSource = area;
         }
 
@@ -52,7 +52,7 @@ namespace PL.line
                 stop1 = first.Code;
                 stop2 = last.Code;
                 MainWindow.bl.AddLine(int.Parse(line_num.Text), area_list.SelectedItem.ToString(),stop1,stop2);
-                listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
+                listLine.ItemsSource = MainWindow.bl.presentAllLines();
                 Close();
 
             }

@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PL"
       mc:Ignorable="d" 
+      
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainMangCont">
 
@@ -178,8 +179,14 @@
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ComboBox ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.Column="0"  x:FieldModifier="public" VerticalAlignment="Top" x:Name="bus_list" Height="40"   Background="Honeydew"  BorderThickness="3" MouseDoubleClick="bus_list_MouseDoubleClick" >
-
+                    <Border Grid.Column="0" BorderBrush="#FF317D16" BorderThickness="2,2,2,2">
+                            <StackPanel>
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="80*"/>
+                                </Grid.RowDefinitions>
+                                <ComboBox ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.Row="0"  x:FieldModifier="public" VerticalAlignment="Top" x:Name="bus_list" Height="40"   Background="Honeydew"  BorderThickness="3" MouseDoubleClick="bus_list_MouseDoubleClick" SelectionChanged="bus_list_SelectionChanged" >
                         <ComboBox.ItemTemplate>
                             <DataTemplate >
                                 <Grid>
@@ -189,9 +196,65 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <Border Grid.Column="0" BorderBrush="#FF317D16" BorderThickness="2,2,2,2">
+                        <Grid Grid.Row="1" Margin="20,20,20,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                        <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,5">
+                                    <TextBlock x:Name="id" Foreground="Red"/>
+                                    <TextBlock Text="מספר רישוי" Margin="10,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                        <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,10">
+                                            <TextBlock x:Name="start_date" Foreground="Red"/>
+                                    <TextBlock Text="תחילת פעילות" Margin="10,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                        <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,5">
+                                    <TextBlock x:Name="km" Foreground="Red"/>
+                                    <TextBlock Text="קילומטרים" Margin="10,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                        <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,5">
+                                    <TextBlock x:Name="gas" Foreground="Red"/>
+                                    <TextBlock Text="מד דלק" Margin="10,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                        <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,5">
+                                            <TextBlock x:Name="last_treat_km" Foreground="Red"/>
+                                    <TextBlock Text="קילומטרים בטיפול אחרון" Margin="10,0" FontWeight="Bold"/>
+                                </StackPanel>
+                                        <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,5">
+                                            <TextBlock x:Name="last_treat_date" Foreground="Red"/>
+                                    <TextBlock Text="תאריך טיפול אחרון" Margin="10,0" FontWeight="Bold"/>
+                                </StackPanel >
+                                        <TabControl Height="300" Width="300" HorizontalAlignment="Stretch" Margin="10,10,0,0" FlowDirection="RightToLeft">
+                                            <TabItem Header="נסיעות"/>
+                                            <TabItem Header="טיפולים"/>
+                                            <TabItem Header="תאונות"/>
+                                        </TabControl>
+                            </StackPanel>
+                                    <StackPanel Grid.Column="0">
+                                        <Image  Source="bus/אוטובוס.jpg" Width="300" Margin="0,10" />
+                                        <Border Margin="30,0" VerticalAlignment="Bottom"  BorderBrush="Green" BorderThickness="0">
+                                        <StackPanel>
+                                            <Button Content="התחל נסיעה" FontSize="20"
+                                                    Background="White" Foreground="#DB7093" Margin="20,10" BorderBrush="#3CB371" BorderThickness="2"
+                                                    x:Name="start_trip" Click="start_trip_Click"/>
+                                            <Button Content="התחל תידלוק"  FontSize="20"
+                                                    Background="White" Foreground="#DB7093" Margin="20,10" BorderBrush="#3CB371" BorderThickness="2"
+                                                    x:Name="start_refueling" Click="start_refueling_Click"/>
+                                            <Button Content="התחל טיפול"  FontSize="20"
+                                                    Background="White" Foreground="#DB7093" Margin="20,10" BorderBrush="#3CB371" BorderThickness="2"
+                                                    x:Name="start_treatment" Click="start_treatment_Click"/>
+                                        </StackPanel>
+                                    </Border>
+                                    </StackPanel>
+                                </Grid>
 
-                    </Border>
+                               
+                            </Grid>
+                        </StackPanel>
+                        </Border>
+                    
                     <StackPanel Grid.Column="1" Margin="6.333,7,7.333,6.333">
                         <Button Margin="0,10,0,0" x:Name="remove_bus" Click="remove_bus_Click"  Content="מחיקת אוטובוס" />
                         <Button Margin="0,10,0,0" x:Name="update_bus" Content="עדכון אוטובוס"   Click="update_bus_Click"   />

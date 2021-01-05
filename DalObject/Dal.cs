@@ -65,8 +65,7 @@ namespace Dal
         }
         void IDAL.updateBus(Bus bustoUpdate)
         {
-        //    int busID = DsBuses.buslist.FindIndex(x => x.Id == bustoUpdate.Id);
-            DsBuses.buslist[0] = bustoUpdate;
+            DsBuses.buslist[DsBuses.buslist.FindIndex(x=>x.Id==bustoUpdate.Id)] = bustoUpdate;
 
         }
         void IDAL.DeleteBus(string busId)
@@ -306,6 +305,11 @@ namespace Dal
 
                 throw;
             }
+        }
+
+        void IDAL.ChangePass(string userName, string newPass)
+        {
+            DsUsers.Users[DsUsers.Users.FindIndex(x => x.UserName == userName)].Password = newPass;
         }
     }
 }

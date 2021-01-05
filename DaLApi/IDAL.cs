@@ -55,6 +55,7 @@ namespace DaLApi
         IEnumerable<LineBus> getLins();
         void RemoveStop(int code);
         void EditStation(int code, string name, double latitude, double longtitude,int oldNum);
+        void ChangePass(string userName, string newPass);
         #endregion
 
 
