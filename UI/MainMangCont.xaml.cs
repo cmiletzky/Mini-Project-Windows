@@ -53,33 +53,7 @@ namespace PL
 
         }
 
-        private void Start_driving(object sender, RoutedEventArgs e)
-        {
-            Button cmd = (Button)sender;
-            Bus busToTrip = (Bus)cmd.DataContext;
 
-
-            canDrive = MainWindow.bl.canDrive(busToTrip, ref MainWindow.arrMes);
-            if (canDrive)
-            {
-                StartTrip startTrip = new StartTrip(busToTrip, (Button)sender);
-                startTrip.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show(MainWindow.arrMes);
-            }
-        }
-
-        private void Refueling(object sender, RoutedEventArgs e)
-        {
-            Button cmd = (Button)sender;
-            Bus busToRrfuell = (Bus)cmd.DataContext;
-            if (MainWindow.bl.Refuell(busToRrfuell, ref MainWindow.arrMes) == false)
-            {
-                MessageBox.Show(MainWindow.arrMes);
-            }
-        }
 
         private void bus_list_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

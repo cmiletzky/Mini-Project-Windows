@@ -264,22 +264,21 @@ namespace BL
 
 
         }
-        public bool canDrive(Bus bus, ref string mes)
+        public bool canDrive(Bus bus)
         {
             if (bus.InTreamant)
             {
-                mes = "bus " + bus.Id + " busy in treatment";
-                return false;
+                throw new Exception($"האוטובוס {bus.Id}בטיפול לא ניתן להתחיל נסיעה");
             }
             else if (bus.InRefule)
             {
-                mes = "bus " + bus.Id + " busy in refule";
-                return false;
+                throw new Exception($"האוטובוס {bus.Id}בתידלוק לא ניתן להתחיל נסיעה");
+                ;
             }
             else if (bus.InDriving)
             {
-                mes = "bus number " + bus.Id + " in driving now";
-                return false;
+                throw new Exception($"האוטובוס {bus.Id}כבר בנסיעה לא ניתן להתחיל נסיעה");
+                ;
             }
             // if all conditon alow it, sanding the bus
             else
@@ -288,22 +287,19 @@ namespace BL
             }
         }
 
-        public bool canDrive(Bus bus, ref string mes, string kM)
+        public bool canDrive(Bus bus, string kM)
         {
             if (bus.Gas - int.Parse(kM) <= 0)
             {
-                mes = ("there is no enough gas fo driving");
-                return false;
+                throw new DataException ("there is no enough gas fo driving");
             }
             else if (((bus.LsaatTreastKm) + int.Parse(kM)) > 20000)
             {
-                mes = "you need take the bus to treatment, over km treatment";
-                return false;
+                throw new DataException("you need take the bus to treatment, over km treatment");
             }
             else if ((CheckingDate(bus.LastTreatDate.ToString())))
             {
-                mes = "over a year past since the last treatment";
-                return false;
+                throw new DataException("over a year past since the last treatment");
             }
             // if all the condition is ok take drive and update the right fildes
             else
@@ -319,12 +315,11 @@ namespace BL
 
         }
 
-        public bool Refuell(Bus bus, ref string mes)
+        public bool Refuell(Bus bus)
         {
             if (bus.Gas == 1200)
             {
-                mes = "The fuel is already full";
-                return false;
+                throw new DataException("The fuel is already full");
             }
             else
             {
@@ -416,7 +411,7 @@ namespace BL
         {
             if (dal.getStations().Any(x => x.Code == station.Code && oldNum != station.Code))
             {
-                throw new Exception("מספר התחנה כבר קיים");
+                throw new DataException("מספר התחנה כבר קיים");
             }
 
             dal.EditStation(station.Code,station.Name,station.Latitude,station.Longtitude , oldNum);

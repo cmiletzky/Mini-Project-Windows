@@ -54,7 +54,7 @@
                 <Label Content="Line number:   " Grid.Column="0"  VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Right" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Area:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Line stops:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma" Margin="0,9.667,0.333,220.667" Height="43"/>
-                <Button Content="הוסף תחנה" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="277" x:Name="add_stop_to_line" Click="add_stop_to_line_Click"/>
+                <Button Content="הוסף תחנה"  Background="White" Foreground="Green" BorderBrush="GreenYellow" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="400" x:Name="add_stop_to_line" Click="add_stop_to_line_Click"/>
                 <Button Content="סגור ושמור" x:Name="save" HorizontalAlignment="Left" Margin="50,10.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="save_Click"/>
 
             </Grid>

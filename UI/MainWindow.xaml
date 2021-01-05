@@ -39,9 +39,11 @@
                 <MenuItem Padding="10,5" FontSize="17" x:Name="menu_account" Header="חשבון" Click="Account_Click"/>
                     <MenuItem Padding="10,5" FontSize="17" x:Name="menu_logout" Header="יציאה" Click="logout_menu"/>
                     <MenuItem Padding="10,5" FontSize="17" Header="צור קשר">
-                        <MenuItem Padding="10,5" FontSize="16" Header="Sending an email"/>
-                        <MenuItem Padding="10,5" FontSize="16" Header="Sending WhatsApp"/>
-                </MenuItem>
+                        <MenuItem Padding="10,5" FontSize="16" Header="Sending an email">
+                        </MenuItem>
+                        <MenuItem  Padding="10,5" FontSize="16" Header="שליחת ווצאפ"/>
+
+                    </MenuItem>
 
             </Menu>
             </Border>

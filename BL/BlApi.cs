@@ -32,9 +32,9 @@ namespace BlApi
         IEnumerable<BO.LineBus> presentAllLines();
         void AddStation(string name, string code, string longtitude, string latitude);
         // void RemoveStation(BO.Station stationToRemove);
-        bool canDrive(Bus bus, ref string mes);
-        bool canDrive(Bus bus, ref string mes, string kM);
-        bool Refuell(Bus bus, ref string mes);
+        bool canDrive(Bus bus);
+        bool canDrive(Bus bus, string kM);
+        bool Refuell(Bus bus);
 
         bool isUserMang(string userName, string password, bool isMang);
         void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);

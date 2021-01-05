@@ -33,7 +33,7 @@ namespace PL
             if (e.Key == Key.Enter)
             {
                 MainWindow.canDrive = false;
-               MainWindow.canDrive = MainWindow.bl.canDrive(busToTrip, ref MainWindow.arrMes, input_val.Text);
+               MainWindow.canDrive = MainWindow.bl.canDrive(busToTrip,  input_val.Text);
                 if (MainWindow.canDrive)
                 {
                     Close();
