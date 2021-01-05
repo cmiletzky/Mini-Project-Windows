@@ -200,14 +200,22 @@ namespace PL
 
         private void remove_stop_line_Click(object sender, RoutedEventArgs e)
         {
-            BO.Station a = (BO.Station)stop_lime_list.SelectedValue;
+            string y ="" ;
+            for (int i = 0; i < lines_in_stop.Items.Count; i++)
+            {
+                y += lines_in_stop.Items[i].ToString() + " ";
+            }
+            string u = "הסרת התחנה תסיר אותה מן הקווים " + y + "יש ללעדכן זמנים ומרחקים מחדש ";
 
-            MainWindow.bl.RemoveStopLine(a.Code);
-            stop_lime_list.SelectedItem = -1;
-            stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
-            //TODO לאחר הסרה תחנת קו לטפל בטעינה של הקווים מחדש. הוא זורק שגיאה
-            
+            if (MessageBox.Show(u,"חשוב",MessageBoxButton.OKCancel,MessageBoxImage.Information) == MessageBoxResult.OK)
+            {
+                BO.Station a = (BO.Station)stop_lime_list.SelectedValue;
 
+                MainWindow.bl.RemoveStopLine(a.Code);
+                stop_lime_list.SelectedItem = -1;
+                stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
+                //TODO לאחר הסרה תחנת קו לטפל בטעינה של הקווים מחדש. הוא זורק שגיאה
+            }
         }
 
         private void update_stop_line_Click(object sender, RoutedEventArgs e)
