@@ -15,39 +15,24 @@ namespace BL
 {
     class BusinessLayer : IBL
     {
-        public static IDAL dal = DalFactory.GetDal(); // get the dal instance from its factory
+        public static IDAL dal = DalFactory.GetDal();
         void IBL.InitializeData()
         {
             dal.InitializeData();
         }
 
         #region line
-        /// <summary>
-        /// delete stop of line
-        /// </summary>
-        /// <param name="code">num of station to delete </param>
+
         void IBL.RemoveStopLine(int code)
         {
             dal.RemoveStopLine(code);
         }
-        /// <summary>
-        /// present detail of line request
-        /// </summary>
-        /// <param name="lineNum"></param>
-        /// <returns></returns>
         LineBus IBL.presentLine(int lineNum)
         {
             return (from line in dal.getLins()
                    where line.LineNum == lineNum
                    select new LineBus(line.LineNum,GetAreas(line.Area),line.FirstStation,line.LastStation)).First();
         }
-        /// <summary>
-        /// add line to the list of lines in DS
-        /// </summary>
-        /// <param name="newLineNum"></param>
-        /// <param name="area"></param>
-        /// <param name="firstStop"></param>
-        /// <param name="lastStop"></param>
         void IBL.AddLine(int newLineNum, string area, int firstStop, int lastStop)
         {
             if (dal.getLins().Any(x => x.LineNum == newLineNum))
@@ -56,29 +41,22 @@ namespace BL
             }
 
            
-            // add line and in the same time uppdate all relevant lists in data
-            // base with the added information
+
             dal.AddLine(newLineNum,area,firstStop,lastStop);
             dal.AddAdjacentStatision(firstStop, lastStop,"0", new TimeSpan());
             dal.AddStopOfLine(firstStop, newLineNum, 1);
             dal.AddStopOfLine(lastStop, newLineNum, 2);
 
         }
-        /// <summary>
-        /// return enumrerable that used to present all actives lines
-        /// in the DS
-        /// </summary>
-        /// <param name="run"></param>
-        /// <returns></returns>
-        IEnumerable<LineBus> IBL.presentAllLines(bool run)
+
+
+
+        IEnumerable<LineBus> IBL.presentAllLines()
         {
-            // choose just the actives lines
             var lines = (from item in dal.getLins()
                          where item.IsActive == true
                          select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation))).ToList();
-            // from the list that we got we go throuw every line and
-            // and insert to the list iof station of the line, all the matchings stations. 
-            // after that sorted them by index
+
             foreach (var item in lines)
             {
                 item.Stops = (from item1 in dal.GetStopsOfLine()
@@ -92,7 +70,6 @@ namespace BL
                 {
                     try
                     {
-                        //calculate time and distance from begining 
                         counTime += (from rr in dal.getAdjacentStatisions()
                                      where rr.Station_2 == item.Stops[i].Code
                                      && rr.Station_1 == item.Stops[i - 1].Code
@@ -205,7 +182,7 @@ namespace BL
         #endregion
 
         #region bus
-        public IEnumerable<Bus> presentAllBus(bool run)
+        public IEnumerable<Bus> presentAllBus()
         {
 
             List<Bus> allBuses = new List<Bus>();// = dal.getAllBuses() ;//.Where(x => x == x) ; 
@@ -382,26 +359,17 @@ namespace BL
 
             return list;
         }
-        public IEnumerable<Station> presentAllStation(bool run)
+        public IEnumerable<Station> presentAllStation()
         {
 
             List<Station> list = new List<Station>();
-            if (run == true)
-            {
+
                 foreach (var item in dal.getStations())
                 {
                     list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
 
                 }
-            }
-            else
-            {
-                foreach (var item in dal.getStations())
-                {
-                    list.Add(new Station(item.Code, item.Name, item.Longtitude, item.Latitude));
 
-                }
-            }
 
             return list;
         }
@@ -447,7 +415,11 @@ namespace BL
         #endregion
 
         #region User
-     public   bool isUserMang(string userName, string password, bool isMang)
+        void IBL.ChangePass(User user, string newPass)
+        {
+            dal.ChangePass(user.UserName,newPass);
+        }
+        public   bool isUserMang(string userName, string password, bool isMang)
         {
             return dal.dalIsUser(userName, password, isMang);
         }

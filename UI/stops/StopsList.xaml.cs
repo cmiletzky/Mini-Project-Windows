@@ -28,7 +28,7 @@ namespace PL.stops
         public StopsList(ref BO.LineBus lineTo, BO.Station preStop,BO.Station nextStop, BO.Station firstStop)
         {
             InitializeComponent();
-            stop_list.ItemsSource = MainWindow.bl.presentAllStation(false);
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation();
             line = lineTo;
             this.preStop = preStop;
             this.nextStop = nextStop;
@@ -39,7 +39,7 @@ namespace PL.stops
         public StopsList(ref BO.LineBus lineTo, BO.Station firstStop)
         {
             InitializeComponent();
-            stop_list.ItemsSource = MainWindow.bl.presentAllStation(false);
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation();
             line = lineTo;
             this.firstStop = firstStop;
             this.preStop = null;
@@ -47,7 +47,7 @@ namespace PL.stops
         } public StopsList(ref BO.LineBus lineTo, BO.Station lastStop,int a)
         {
             InitializeComponent();
-            stop_list.ItemsSource = MainWindow.bl.presentAllStation(false);
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation();
             line = lineTo;
             this.firstStop = null;
             this.preStop = lastStop;

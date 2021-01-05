@@ -36,9 +36,9 @@ namespace PL
         }
         void InitializeData()
         {
-            bus_list.ItemsSource = MainWindow.bl.presentAllBus(true);
-            stop_list.ItemsSource = MainWindow.bl.presentAllStation(true);
-            line_list.ItemsSource = MainWindow.bl.presentAllLines(true);
+            bus_list.ItemsSource = MainWindow.bl.presentAllBus();
+            stop_list.ItemsSource = MainWindow.bl.presentAllStation();
+            line_list.ItemsSource = MainWindow.bl.presentAllLines();
             stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
         }
 
@@ -107,10 +107,13 @@ namespace PL
             }
             else
             {
-                Bus busToUpdate = (Bus)bus_list.Items[bus_list.SelectedIndex];
-                new UpdateBus(busToUpdate).Show();
+                Bus busToUpdate = (Bus)bus_list.SelectedItem;
+                new UpdateBus(busToUpdate).ShowDialog();
                 InitializeData();
-                //bus_list.Items.Refresh();
+                bus_list.SelectedIndex = -1;
+                
+                
+                //bus_list.Items.Refresh(); 
             }
         }
 
@@ -126,7 +129,7 @@ namespace PL
                 if (MessageBox.Show("Are you sure you want to delete the bus " + busToRemove.Id + " ?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     MainWindow.bl.RemoveBus(busToRemove);
-                    bus_list.ItemsSource = MainWindow.bl.presentAllBus(false);
+                    bus_list.ItemsSource = MainWindow.bl.presentAllBus();
                 }
             }
 
@@ -192,7 +195,7 @@ namespace PL
                     MainWindow.bl.RemoveLine(lineToRemove);
                     //TODOלטפל בעת מחיקת קו למחוק תחנות קו 
                     stop_lime_list.ItemsSource = MainWindow.bl.presentStopsLine();
-                    line_list.ItemsSource = MainWindow.bl.presentAllLines(false);
+                    line_list.ItemsSource = MainWindow.bl.presentAllLines();
                   
                 }
             }
@@ -205,6 +208,7 @@ namespace PL
             {
                 y += lines_in_stop.Items[i].ToString() + " ";
             }
+            
             string u = "הסרת התחנה תסיר אותה מן הקווים " + y + "יש ללעדכן זמנים ומרחקים מחדש ";
 
             if (MessageBox.Show(u,"חשוב",MessageBoxButton.OKCancel,MessageBoxImage.Information) == MessageBoxResult.OK)
@@ -315,6 +319,36 @@ namespace PL
         {
             new NewStop().ShowDialog() ;
             InitializeData();
+        }
+
+        private void bus_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bus_list.SelectedIndex!=-1)
+            {
+                Bus a = (Bus)bus_list.SelectedItem;
+                id.Text = a.Id;
+                start_date.Text = a.StartDate.ToString();
+                gas.Text = a.Gas.ToString();
+                last_treat_date.Text = a.LastTreatDate.ToString();
+                last_treat_km.Text = a.LsaatTreastKm.ToString();
+                km.Text = a.Km.ToString();
+            }
+
+        }
+
+        private void start_trip_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void start_refueling_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void start_treatment_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

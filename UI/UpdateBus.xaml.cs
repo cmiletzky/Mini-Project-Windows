@@ -44,6 +44,7 @@ namespace PL
             busTo.Gas = int.Parse(gas.Text);
             busTo.LastTreatDate = last_treat_date.SelectedDate;
             MainWindow.bl.updateBus(busTo);
+            
             Close();
         }
 

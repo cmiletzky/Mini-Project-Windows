@@ -90,7 +90,7 @@ namespace PL.line
             try
             {
                 MainWindow.bl.EditLine(oldLineNum, int.Parse(line_num.Text), line_area.SelectedItem.ToString());
-                listLine.ItemsSource = MainWindow.bl.presentAllLines(false);
+                listLine.ItemsSource = MainWindow.bl.presentAllLines();
             }
             catch (Exception d)
             {

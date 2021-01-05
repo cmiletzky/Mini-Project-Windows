@@ -24,11 +24,12 @@ namespace BlApi
         void RemoveBus(Bus busToRemove);
         void updateBus(Bus busToUpdate);
         void AddBus(string busNam, DateTime? startDate);
-        IEnumerable<Bus> presentAllBus(bool run);
-        IEnumerable<BO.Station> presentAllStation(bool run);
+        IEnumerable<Bus> presentAllBus();
+        IEnumerable<BO.Station> presentAllStation();
         void AddLine(int newLineNum, string area,int firstStop,int lastStop);
         void updateStop(Station station, int oldNum);
-        IEnumerable<BO.LineBus> presentAllLines(bool run);
+        void ChangePass(User user, string newPass);
+        IEnumerable<BO.LineBus> presentAllLines();
         void AddStation(string name, string code, string longtitude, string latitude);
         // void RemoveStation(BO.Station stationToRemove);
         bool canDrive(Bus bus, ref string mes);
