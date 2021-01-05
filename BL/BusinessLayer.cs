@@ -22,17 +22,32 @@ namespace BL
         }
 
         #region line
-
+        /// <summary>
+        /// delete stop of line
+        /// </summary>
+        /// <param name="code">num of station to delete </param>
         void IBL.RemoveStopLine(int code)
         {
             dal.RemoveStopLine(code);
         }
+        /// <summary>
+        /// present detail of line request
+        /// </summary>
+        /// <param name="lineNum"></param>
+        /// <returns></returns>
         LineBus IBL.presentLine(int lineNum)
         {
             return (from line in dal.getLins()
                    where line.LineNum == lineNum
                    select new LineBus(line.LineNum,GetAreas(line.Area),line.FirstStation,line.LastStation)).First();
         }
+        /// <summary>
+        /// add line to the list of lines in DS
+        /// </summary>
+        /// <param name="newLineNum"></param>
+        /// <param name="area"></param>
+        /// <param name="firstStop"></param>
+        /// <param name="lastStop"></param>
         void IBL.AddLine(int newLineNum, string area, int firstStop, int lastStop)
         {
             if (dal.getLins().Any(x => x.LineNum == newLineNum))
@@ -40,7 +55,8 @@ namespace BL
                 throw new Exception("מספר הקו כבר קיים");
             }
 
-           
+            // add line and in the same time uppdate all relevant lists in data
+            // base with the added information
 
             dal.AddLine(newLineNum,area,firstStop,lastStop);
             dal.AddAdjacentStatision(firstStop, lastStop,"0", new TimeSpan());
@@ -49,14 +65,22 @@ namespace BL
 
         }
 
-
+        /// <summary>
+        /// return enumrerable that used to present all actives lines
+        /// in the DS
+        /// </summary>
+        /// <param name="run"></param>
+        /// <returns></returns>
 
         IEnumerable<LineBus> IBL.presentAllLines()
         {
+            // choose just the actives lines
             var lines = (from item in dal.getLins()
                          where item.IsActive == true
                          select (new LineBus(item.LineNum, GetAreas(item.Area), item.FirstStation, item.LastStation))).ToList();
-
+            // from the list that we got we go throuw every line and
+            // and insert to the list iof station of the line, all the matchings stations. 
+            // after that sorted them by index
             foreach (var item in lines)
             {
                 item.Stops = (from item1 in dal.GetStopsOfLine()
@@ -70,6 +94,7 @@ namespace BL
                 {
                     try
                     {
+                        //calculate time and distance from begining 
                         counTime += (from rr in dal.getAdjacentStatisions()
                                      where rr.Station_2 == item.Stops[i].Code
                                      && rr.Station_1 == item.Stops[i - 1].Code
