@@ -23,6 +23,9 @@ namespace Dal
 
         }
         public static DalObject Instance { get { return instance; } }
+        /// <summary>
+        /// initials all the data base in DS   
+        /// </summary>
         void IDAL.InitializeData()
         {
             new DsUsers();
