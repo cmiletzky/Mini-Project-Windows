@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="עריכת תחנות עוקבות" Height="230" Width="800">
+    <Window.Resources>
+        <Style x:Key="myButtonStyle"
+ TargetType="Button">
+            <Setter Property="FontSize"
+ Value="13" />
+            <Setter Property="FontFamily"
+ Value="Consolas" />
+            <Setter Property="Background"
+ Value="White" />
+            <Setter Property="BorderBrush"
+ Value="Green" />
+            <Setter Property="BorderThickness"
+ Value="1.5" />
+            <Setter Property="Padding"
+ Value="6,5" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -53,7 +71,7 @@
                 </StackPanel>
             </Border>
 
-            <Button x:Name="save" Content="שמירה" Margin="0,20,0,0" Click="save_Click"/>
+            <Button Style="{StaticResource myButtonStyle}" x:Name="save" Content="שמירה" Margin="0,20,0,0" Click="save_Click"/>
         </StackPanel>
         
         

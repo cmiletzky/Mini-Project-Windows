@@ -8,7 +8,24 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="UpdateLine" Height="450" Width="800">
-    
+    <Window.Resources>
+        <Style x:Key="myButtonStyle"
+ TargetType="Button">
+            <Setter Property="FontSize"
+ Value="13" />
+            <Setter Property="FontFamily"
+ Value="Consolas" />
+            <Setter Property="Background"
+ Value="#F0FFF0" />
+            <Setter Property="BorderBrush"
+ Value="Green" />
+            <Setter Property="BorderThickness"
+ Value="1.5" /> 
+            <Setter Property="Padding"
+ Value="6,5" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Border BorderBrush="#FF3DE54B" BorderThickness="5" UseLayoutRounding="False">
             <Grid>
@@ -26,19 +43,19 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Name="line_num" Grid.Column="1" Grid.Row="0"   Width="203" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontFamily="Tahoma"/>
                 <ComboBox Name="line_area" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma">
-                   
+
                 </ComboBox>
                 <ListBox x:Name="list_stop_of_line" Grid.Column="1"  Grid.Row="2" SelectionChanged="list_stop_of_line_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel>
-                                <TextBlock x:Name="stop_name" Text="{Binding Name}" Background="{x:Null}"></TextBlock>
-                                <Grid>
-                                    <Label Content="מספר התחנה" Foreground="Red" Margin="38,0,0,0"/>
-                                    <TextBlock x:Name="stop_id" Text="{Binding Code}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
-                                </Grid>
-                                    
+                                    <TextBlock x:Name="stop_name" Text="{Binding Name}" Background="{x:Null}"></TextBlock>
+                                    <Grid>
+                                        <Label Content="מספר התחנה" Foreground="Red" Margin="38,0,0,0"/>
+                                        <TextBlock x:Name="stop_id" Text="{Binding Code}" Foreground="Green" Margin="0,5,0,0" Background="{x:Null}"></TextBlock>
+                                    </Grid>
+
                                 </StackPanel>
                                 <Button IsEnabled="{Binding IsNotFirst}" x:Name="edit_time_and_dis" Content="ערוך זמן ומרחק" Margin="10,0,0,0" Height="20" Click="edit_time_and_dis_Click"/>
 
@@ -55,7 +72,7 @@
                 <Label Content="Area:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Line stops:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma" Margin="0,9.667,0.333,220.667" Height="43"/>
                 <Button Content="הוסף תחנה"  Background="White" Foreground="Green" BorderBrush="GreenYellow" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="400" x:Name="add_stop_to_line" Click="add_stop_to_line_Click"/>
-                <Button Content="סגור ושמור" x:Name="save" HorizontalAlignment="Left" Margin="50,10.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="save_Click"/>
+                <Button Content="סגור ושמור" x:Name="save" HorizontalAlignment="Left" Margin="50,10.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="save_Click" Style="{StaticResource myButtonStyle}"/>
 
             </Grid>
         </Border>

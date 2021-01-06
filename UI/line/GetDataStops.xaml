@@ -8,6 +8,23 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Title="GetDataStops" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="myButtonStyle"
+ TargetType="Button">
+            <Setter Property="FontSize"
+ Value="13" />
+            <Setter Property="FontFamily"
+ Value="Consolas" />
+            <Setter Property="Background"
+ Value="#F0FFF0" />
+            <Setter Property="BorderBrush"
+ Value="Green" />
+            <Setter Property="BorderThickness"
+ Value="1.5" />
+            <Setter Property="Padding"
+ Value="6,5" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
@@ -66,8 +83,8 @@
                 </Grid>
                 </StackPanel>
                 <StackPanel Margin="0,20" Orientation="Horizontal">
-                    <Button Width="70" Margin="20" x:Name="cancel" Content="ביטול" Click="cancel_Click"/>
-                    <Button Width="70" Margin="20"  x:Name="save" Content="שמור" Click="save_Click"/>
+                    <Button Width="70" Margin="20" x:Name="cancel" Content="ביטול" Click="cancel_Click" Style="{StaticResource myButtonStyle}"/>
+                    <Button Width="70" Margin="20"  x:Name="save" Content="שמור" Click="save_Click" Style="{StaticResource myButtonStyle}"/>
                 </StackPanel>
             </StackPanel>
 

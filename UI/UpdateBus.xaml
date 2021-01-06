@@ -7,6 +7,24 @@
         mc:Ignorable="d"
          WindowStartupLocation="CenterScreen"
         Title="UpdateBus" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="myButtonStyle"
+ TargetType="Button">
+            <Setter Property="FontSize"
+ Value="13" />
+            <Setter Property="FontFamily"
+ Value="Consolas" />
+            <Setter Property="Background"
+ Value="#F0FFF0" />
+            <Setter Property="BorderBrush"
+ Value="Green" />
+            <Setter Property="BorderThickness"
+ Value="1.5" />
+            <Setter Property="Padding"
+ Value="6,5" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Border BorderBrush="#FF3DE54B" BorderThickness="5" UseLayoutRounding="False">
             <Grid>
@@ -26,21 +44,21 @@
                     <ColumnDefinition Width="*"/>
 
                 </Grid.ColumnDefinitions>
-                <TextBox IsEnabled="False" Name="I_D" Grid.Column="1" Grid.Row="0"   Width="203" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="18" FontFamily="Tahoma"/>
-                <DatePicker Name="start_date" Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
-                <TextBox Name="KM" Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
-                <TextBox Name="last_treat_km" Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
-                <TextBox Name="gas" Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
-                <DatePicker Name="last_treat_date" Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <TextBox IsEnabled="False" Name="I_D" Grid.Column="0" Grid.Row="0"   Width="203" VerticalAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" FontSize="18" FontFamily="Tahoma"/>
+                <DatePicker Name="start_date" Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Right"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <TextBox Name="KM" Grid.Column="0" Grid.Row="2"  HorizontalAlignment="Right"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <TextBox Name="last_treat_km" Grid.Column="0" Grid.Row="3"  HorizontalAlignment="Right"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <TextBox Name="gas" Grid.Column="0" Grid.Row="4"  HorizontalAlignment="Right"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
+                <DatePicker Name="last_treat_date" Grid.Column="0" Grid.Row="5"  HorizontalAlignment="Right"  VerticalAlignment="Center" Width="203" FontSize="18" FontFamily="Tahoma"/>
 
-                <Label Content="Lisence number:   " Grid.Column="0"  VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Right" FontSize="18" FontFamily="Tahoma"/>
-                <Label Content="start date:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
-                <Label Content="Kilometra'z:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma"/>
-                <Label Content="Last treat in KM:   " Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3" FontSize="18" FontFamily="Tahoma"/>
-                <Label Content="Gas state:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="4" FontSize="18" FontFamily="Tahoma"/>
-                <Label Content="Last treat date:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="5" FontSize="18" FontFamily="Tahoma"/>
-                <Button x:Name="save" Content="Save" HorizontalAlignment="Right"  Grid.Row="6" Width="75" Margin="0,18.667,3.333,0" Height="21" VerticalAlignment="Top" Click="save_Click"/>
-                <Button Content="Reset" Grid.Column="1" HorizontalAlignment="Left" Margin="70.667,19.667,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                <Label Content="מספר רישוי:   " Grid.Column="1"  VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="עליה לכביש:   " Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="קילומטרים:   " Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="קילומטרים בטיפול האחרון:   " Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="מצב הדלק:   " Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="4" FontSize="18" FontFamily="Tahoma"/>
+                <Label Content="תאריך טיפול אחרון:   " Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Row="5" FontSize="18" FontFamily="Tahoma"/>
+                <Button x:Name="save" Content="שמירה" HorizontalAlignment="Right"  Grid.Row="6" Width="75" Margin="0,17.667,3.333,0"  VerticalAlignment="Top" Click="save_Click" Style="{StaticResource myButtonStyle}"/>
+                <Button Content="איפוס" Grid.Column="1" HorizontalAlignment="Left" Margin="44.667,18.667,0,0" Grid.Row="6" VerticalAlignment="Top" Width="75" Click="Button_Click" Style="{StaticResource myButtonStyle}"/>
 
 
             </Grid>
