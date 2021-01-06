@@ -226,11 +226,22 @@ namespace PL
         }
 
 
-        private void edit_a_s_Click(object sender, RoutedEventArgs e)
+        private void edit_a_s_before_Click(object sender, RoutedEventArgs e)
         {
             Button cdn = (Button)sender;
-            AdjacentStatision adjacentStatision = (AdjacentStatision)cdn.DataContext;
-            new EditAdjacentStatision(adjacentStatision, int.Parse(stop_line_num.Text)).ShowDialog();
+            Station stopBefore = (Station)cdn.DataContext;
+             new EditAdjacentStatision(stopBefore, (Station)stop_lime_list.SelectedItem,0).ShowDialog();
+            stop_lime_list.SelectedIndex = -1;
+            stops_before.ItemsSource = null;
+            stops_after.ItemsSource = null;
+                
+        } 
+        
+        private void edit_a_s_after_Click(object sender, RoutedEventArgs e)
+        {
+            Button cdn = (Button)sender;
+            Station stopAfter = (Station)cdn.DataContext;
+            new EditAdjacentStatision(stopAfter, (Station)stop_lime_list.SelectedItem, 1).ShowDialog();
             stop_lime_list.SelectedIndex = -1;
             stops_before.ItemsSource = null;
             stops_after.ItemsSource = null;

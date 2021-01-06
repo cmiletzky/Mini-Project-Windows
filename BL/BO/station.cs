@@ -34,7 +34,10 @@ namespace BO
         public double DistanceFromBeginnig { get => distanceFromBeginnig; set => distanceFromBeginnig = value; }
         public bool IsNotFirst { get => isNotFirst; set => isNotFirst = value; }
         public int OfLine { get => ofLine; set => ofLine = value; }
+        public Station()
+        {
 
+        }
         public Station(int code, string name, double longtitude, double latitude,int index)
         {
             this.code = code;

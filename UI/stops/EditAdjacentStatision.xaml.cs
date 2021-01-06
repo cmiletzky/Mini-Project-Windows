@@ -20,27 +20,44 @@ namespace PL.stops
     /// </summary>
     public partial class EditAdjacentStatision : Window
     {
-        public EditAdjacentStatision(AdjacentStatision toEdit, int stop)
+       Station stopToEdit;
+         Station stopMain;
+        int situation;
+        public EditAdjacentStatision(Station toEdit,Station main, int Situation)
         {
+            situation = Situation;
+            stopToEdit = toEdit;
+            stopMain = main;
             InitializeComponent();
-            stop1_name.Text = toEdit.StationName1;
-            stop2_name.Text = toEdit.StationName2;
+            stop1_name.Text = StopMain.Name;
+            stop2_name.Text = StopToEdit.Name;
 
-            stop1_num.Text = toEdit.StationNum1.ToString();
-            stop2_num.Text = toEdit.StationNum2.ToString();
+            stop1_num.Text = StopMain.Code.ToString();
+            stop2_num.Text = StopToEdit.Code.ToString();
 
-            dis.Text = toEdit.Distance.ToString();
-            string t = toEdit.Time.ToString().Replace(":", "");
+            dis.Text = StopToEdit.DistanceFromPrivios.ToString();
+            string t = StopToEdit.TimeFromPrivios.ToString().Replace(":", "");
             time_h.Text = t.Substring(0, 2);
             time_m.Text = t.Substring(2, 2);
             time_s.Text = t.Substring(4, 2);
         }
 
+        public Station StopToEdit { get => stopToEdit; set => stopToEdit = value; }
+        public Station StopMain { get => stopMain; set => stopMain = value; }
+
         private void save_Click(object sender, RoutedEventArgs e)
         {
             TimeSpan times = new TimeSpan(int.Parse(time_h.Text), int.Parse(time_m.Text), int.Parse(time_s.Text));
-            MainWindow.bl.EditAdjacentStatision(int.Parse(stop1_num.Text), int.Parse(stop2_num.Text), double.Parse(dis.Text), times);
-          //  MainWindow.bl.GetAdjacentStatisionAfter()
+            if (situation ==0)
+            {
+                MainWindow.bl.EditAdjacentStatision(int.Parse(stop2_num.Text), int.Parse(stop1_num.Text), double.Parse(dis.Text), times);
+            }
+            else
+            {
+                MainWindow.bl.EditAdjacentStatision(int.Parse(stop1_num.Text), int.Parse(stop2_num.Text), double.Parse(dis.Text), times);
+            }
+
+            //  MainWindow.bl.GetAdjacentStatisionAfter()
             Close();
         }
     }

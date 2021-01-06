@@ -451,20 +451,20 @@
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button Content="עריכה" Click="edit_a_s_Click" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Height="20"/>
+                                                                <Button Content="עריכה" Click="edit_a_s_after_Click" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Height="20"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
-                                                                    <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
+                                                                    <TextBlock Text="{Binding DistanceFromPrivios}" FontSize="12" Foreground="Red"/>
                                                                 </StackPanel>
 
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="זמן" FontSize="16" Foreground="Blue"/>
-                                                                    <TextBlock Text="{Binding Time}" FontSize="12" Foreground="Red"/>
+                                                                    <TextBlock Text="{Binding TimeFromPrivios}" FontSize="12" Foreground="Red"/>
                                                                 </StackPanel>
 
                                                                 <StackPanel>
-                                                                    <TextBlock FontSize="16" Foreground="Blue" Text="{Binding StationNum2}"/>
-                                                                    <TextBlock Text="{Binding StationName2}" FontSize="12" Foreground="Red"/>
+                                                                    <TextBlock FontSize="16" Foreground="Blue" Text="{Binding Code}"/>
+                                                                    <TextBlock Text="{Binding Name}" FontSize="12" Foreground="Red"/>
                                                                 </StackPanel>
 
 
@@ -483,19 +483,19 @@
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button x:Name="edit_a_s" Content="עריכה" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Click="edit_a_s_Click" Height="20"/>
+                                                                <Button x:Name="edit_a_s" Content="עריכה" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Click="edit_a_s_before_Click" Height="20"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
-                                                                    <TextBlock Text="{Binding Distance}" FontSize="12" Foreground="Red"/>
+                                                                    <TextBlock Text="{Binding DistanceFromPrivios}" FontSize="12" Foreground="Red"/>
                                                                 </StackPanel>
 
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="זמן" FontSize="16" Foreground="Blue"/>
-                                                                    <TextBlock Text="{Binding Time}" FontSize="12" Foreground="Red"/>
+                                                                    <TextBlock Text="{Binding TimeFromPrivios}" FontSize="12" Foreground="Red"/>
                                                                 </StackPanel>
                                                                 <StackPanel>
-                                                                    <TextBlock FontSize="16" Foreground="Blue" Text="{Binding StationNum1}"/>
-                                                                    <TextBlock Text="{Binding StationName1}" FontSize="12" Foreground="Red"/>
+                                                                    <TextBlock FontSize="16" Foreground="Blue" Text="{Binding Code}"/>
+                                                                    <TextBlock Text="{Binding Name}" FontSize="12" Foreground="Red"/>
                                                                 </StackPanel>
                                                             </StackPanel>
                                                         </Border>

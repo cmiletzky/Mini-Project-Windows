@@ -359,23 +359,27 @@ namespace BL
                     where line.Id == code
                     select line.OfLine).ToList().Distinct();
         }
-        List<AdjacentStatision> IBL.GetAdjacentStatisionBefore(int code)
+        List<Station> IBL.GetAdjacentStatisionBefore(int code)
         {
             var list = (from AD in dal.getAdjacentStatisions()
-                     from stop1 in dal.getStations()
-                     from stop2 in dal.getStations()
-                     where AD.Station_2 == code && stop1.Code == AD.Station_1 && stop2.Code == AD.Station_2
-                     select new AdjacentStatision(AD.Station_1,AD.Station_2,stop1.Name,stop2.Name,AD.Distance,AD.Time)).ToList();
+                        from stop1 in dal.getStations()
+                        from stop2 in dal.getStations()
+                        where AD.Station_2 == code && stop1.Code == AD.Station_1 && stop2.Code == AD.Station_2
+                        //TODO לבטל ישות תחנות כפולות ולקחת רק תחנות
+                       select new Station() {Code = AD.Station_1 , DistanceFromPrivios = AD.Distance,Name = stop1.Name , TimeFromPrivios = AD.Time }).ToList();
+                    // select new AdjacentStatision(AD.Station_1,AD.Station_2,stop1.Name,stop2.Name,AD.Distance,AD.Time)).ToList();
 
             return list;
         }
-        List<AdjacentStatision> IBL.GetAdjacentStatisionAfter(int code)
+        List<Station> IBL.GetAdjacentStatisionAfter(int code)
         {
             var list = (from AD in dal.getAdjacentStatisions()
                         from stop1 in dal.getStations()
                         from stop2 in dal.getStations()
                         where AD.Station_1 == code && stop1.Code == AD.Station_1 && stop2.Code == AD.Station_2
-                        select new AdjacentStatision(AD.Station_1, AD.Station_2, stop1.Name, stop2.Name, AD.Distance, AD.Time)).ToList();
+                        select new Station() { Code = AD.Station_2, DistanceFromPrivios = AD.Distance, Name = stop2.Name, TimeFromPrivios = AD.Time }).ToList();
+
+          //  select new AdjacentStatision(AD.Station_1, AD.Station_2, stop1.Name, stop2.Name, AD.Distance, AD.Time)).ToList();
 
             return list;
         }
