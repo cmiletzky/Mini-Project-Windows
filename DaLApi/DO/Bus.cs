@@ -26,7 +26,7 @@ namespace DO
         public string Id { get { return id; } set { id = value; } }
         public DateTime? StartDate { get { return start_date; } set { start_date = value; } }
         public int Km { get { return km; } set { km = value; } }
-        public int LsaatTreastKm { get { return last_treat_km; } set { last_treat_km = value; } }
+        public int LastTreastKm { get { return last_treat_km; } set { last_treat_km = value; } }
         public int Gas { get { return gas; } set { gas = value; } }
         public DateTime? LastTreatDate { get { return last_treat_date; } set { last_treat_date = value; } }
         public bool InTreamant { get { return inTreatment; } set { inTreatment = value; } }

@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +48,14 @@
       <Project>{7b3e229e-28c3-4e31-bc86-0e5fb940745a}</Project>
       <Name>DaLApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdjacentStatision.xml" />
+    <Content Include="Buses.xml" />
+    <Content Include="Lines.xml" />
+    <Content Include="Stations.xml" />
+    <Content Include="StopsOfLine.xml" />
+    <Content Include="user.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

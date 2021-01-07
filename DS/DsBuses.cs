@@ -31,14 +31,14 @@ namespace DS
                 
                 buslist.Add(new Bus(r.Next(1000000, 99999999).ToString(),RandomDay()));
                 buslist[i].Km = r.Next(20000, 40000);
-                buslist[i].LsaatTreastKm = r.Next(0, 10000);
+                buslist[i].LastTreastKm = r.Next(0, 10000);
                 buslist[i].Gas = 1200;
                 buslist[i].LastTreatDate = new DateTime(2020, 10, 10);
 
             }
             buslist[0].LastTreatDate = new DateTime(2019, 10, 10);
             buslist[0].InDriving = true;
-            buslist[1].LsaatTreastKm = 19990;
+            buslist[1].LastTreastKm = 19990;
             buslist[2].Gas = 50;
 
 

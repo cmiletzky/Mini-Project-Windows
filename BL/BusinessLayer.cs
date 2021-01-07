@@ -219,7 +219,7 @@ namespace BL
                     Bus bus = new Bus(a, item.StartDate);
                     bus.IsActive = item.IsActive;
                     bus.LastTreatDate = item.LastTreatDate;
-                    bus.LsaatTreastKm = item.LsaatTreastKm;
+                    bus.LsaatTreastKm = item.LastTreastKm;
                     bus.Gas = item.Gas;
                     bus.Km = item.Km;
                     bus.StartDate = item.StartDate;
@@ -235,7 +235,7 @@ namespace BL
             string a = busToUpdate.Id.Replace("-", "");
             DO.Bus bus = new DO.Bus(a, busToUpdate.StartDate);
             bus.Km = busToUpdate.Km;
-            bus.LsaatTreastKm = busToUpdate.LsaatTreastKm;
+            bus.LastTreastKm = busToUpdate.LsaatTreastKm;
             bus.Gas = busToUpdate.Gas;
             bus.LastTreatDate = busToUpdate.LastTreatDate;
             dal.updateBus(bus);

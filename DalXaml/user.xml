@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Users>
+  <User>
+    <UserName>a</UserName>
+    <Password>1</Password>
+    <Admin>true</Admin>
+  </User>
+  <User>
+    <UserName>b</UserName>
+    <Password>2</Password>
+    <Admin>false</Admin>
+  </User>
+  <User>
+    <UserName>c</UserName>
+    <Password>3</Password>
+    <Admin>false</Admin>
+  </User>
+  <User>
+    <UserName>d</UserName>
+    <Password>4</Password>
+    <Admin>false</Admin>
+  </User>
+</Users>

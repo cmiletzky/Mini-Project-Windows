@@ -511,13 +511,13 @@
                             <Border Margin="10" Padding="5"  Grid.Row="2" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Foreground="LightSeaGreen" TextAlignment="Right" Text="קווים העוברים בתחנה" FontSize="25"/>
-                                    <ListView  x:Name="lines_in_stop" MouseDoubleClick="lines_in_stop_MouseDoubleClick">
-                                        <ListView.ItemsPanel >
+                                    <ListBox  x:Name="lines_in_stop" MouseDoubleClick="lines_in_stop_MouseDoubleClick">
+                                        <ListBox.ItemsPanel >
                                             <ItemsPanelTemplate >
                                                 <WrapPanel Orientation="Horizontal" Width="250" HorizontalAlignment="Right"  ></WrapPanel>
                                             </ItemsPanelTemplate>
-                                        </ListView.ItemsPanel>
-                                    </ListView>
+                                        </ListBox.ItemsPanel>
+                                    </ListBox>
                                 </StackPanel>
                             </Border>
 
