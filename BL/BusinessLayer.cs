@@ -114,7 +114,7 @@ namespace BL
                     item.Stops[i].TimeFromBeginnig = counTime;
                     item.Stops[i].DistanceFromBeginnig = counDis;
                     item.Stops[i].TimeFromPrivios = item.Stops[i].TimeFromBeginnig - item.Stops[i - 1].TimeFromBeginnig;
-                    item.Stops[i].DistanceFromPrivios = item.Stops[i].DistanceFromBeginnig - item.Stops[i - 1].DistanceFromBeginnig;
+                    item.Stops[i].DistanceFromPrivios = double.Parse(string.Format("{0:0.00}", item.Stops[i].DistanceFromBeginnig - item.Stops[i - 1].DistanceFromBeginnig)); 
                 }
 
 

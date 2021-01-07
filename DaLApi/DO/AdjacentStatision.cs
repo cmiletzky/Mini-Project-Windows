@@ -17,7 +17,7 @@ namespace DO
         {
             this.station_1 = stop1;
             this.station_2 = stop2;
-            this.distance = distance;
+            this.distance = double.Parse(string.Format("{0:0.00}", distance)); ;
             this.time = time;
         }
 
