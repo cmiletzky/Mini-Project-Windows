@@ -443,9 +443,14 @@ namespace BL
         {
             dal.ChangePass(user.UserName,newPass);
         }
-        public   bool isUserMang(string userName, string password, bool isMang)
+      public  bool isUserMang(string userName, string password, bool isMang)
         {
             return dal.dalIsUser(userName, password, isMang);
+        }
+
+        bool IBL.isUser(string userName, string pass)
+        {
+            return dal.dalIsUser(userName, pass, false);
         }
         #endregion
     }

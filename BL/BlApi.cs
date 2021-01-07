@@ -36,12 +36,13 @@ namespace BlApi
         bool canDrive(Bus bus, string kM);
         bool Refuell(Bus bus);
 
-        bool isUserMang(string userName, string password, bool isMang);
+       bool  isUserMang(string userName, string password, bool isMang);
         void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);
         void EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time);
         void EditLine(int oldLineNum,int lineNum, string area);
         List<BO.Station> GetAdjacentStatisionBefore(int code);
         List<BO.Station> GetAdjacentStatisionAfter(int code);
+        bool isUser(string userName, string pass);
         IEnumerable<int> GetLinsInStop(int code);
         BO.LineBus presentLine(int lineNum);
         void RemoveStopLine(int code);

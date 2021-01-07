@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Login / Register" Height="450" Width="800" Background="White" ResizeMode="NoResize">
+        Title="הרשמה / התחברות" Height="450" Width="800" Background="White" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="btn" TargetType="Button">
             <Setter Property="Background" Value="#FAFAD2"/>
@@ -38,25 +38,25 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="1" Grid.Row="0"  Width="5" HorizontalAlignment="Stretch" Background="#FF866464" />
         <Grid Grid.Column="1" Grid.Row="1"  Width="5" HorizontalAlignment="Stretch" Background="#FF866464" />
-        <TextBox Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="192,86,82.4,0"/>
-        <Button x:Name="btn_loginPassenger" Style="{StaticResource btn}" Content="login" HorizontalAlignment="Center"  VerticalAlignment="Center"  Margin="156,131,138.4,7" />
+        <TextBox Text="2" x:Name="passenger_pass" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="192,86,82.4,0"/>
+        <Button x:Name="btn_login_Passenger" Style="{StaticResource btn}" Content="כניסה" HorizontalAlignment="Center"  VerticalAlignment="Center"  Margin="156,131,138.4,7" Click="btn_login_Passenger_Click" />
         <TextBox Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" Margin="192,145,82.4,0"/>
         <TextBox Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" Margin="192,110,82.4,0" SelectionBrush="#FFEE5837"/>
         <TextBox Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" Margin="192,75,82.4,0" SelectionBrush="#FFEE5837"/>
-        <Button x:Name="signup"  Style="{StaticResource btn}" Content="Sign Up" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" Margin="156,195,138.4,27"  />
-        <Button x:Name="login_maneger"  Style="{StaticResource btn}" Content="login" Grid.Column="2" HorizontalAlignment="Left" Margin="153.8,131,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.605,0.603" Click="login_maneger_Click"/>
-        <Label Content="Password Authentication" HorizontalAlignment="Left" Margin="42,150,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Password " HorizontalAlignment="Left" Margin="121,107,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="119,72,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="   New user registration" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="89,16,82.4,0" Width="223"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="123,63,0,0" Grid.Row="0" VerticalAlignment="Top"/>
-        <Label Content="Password " HorizontalAlignment="Left" Margin="125,89,0,0" Grid.Row="0" VerticalAlignment="Top"/>
-        <Label Content="   User login" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="121,4,138.4,0" Width="135"/>
-        <TextBox Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="192,62,82.4,0"/>
-        <Label Content="   Manager login" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="121.8,4,111.6,0" Width="161" Grid.Column="2"/>
+        <Button x:Name="signup"  Style="{StaticResource btn}" Content="הרשמה" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" Margin="156,195,138.4,27"  />
+        <Button x:Name="login_maneger"  Style="{StaticResource btn}" Content="כניסה" Grid.Column="2" HorizontalAlignment="Left" Margin="153.8,131,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.605,0.603" Click="login_maneger_Click"/>
+        <Label Content="אימות סיסמה" HorizontalAlignment="Left" Margin="94,145.333,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="סיסמה " HorizontalAlignment="Left" Margin="121,107,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="שם משתמש" HorizontalAlignment="Left" Margin="95,76.333,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="הרשמת משתמש חדש" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="89,16,82.4,0"/>
+        <Label Content="שם משתשמש" HorizontalAlignment="Left" Margin="95,63,0,0" Grid.Row="0" VerticalAlignment="Top"/>
+        <Label Content="סיסמה " HorizontalAlignment="Left" Margin="125,89,0,0" Grid.Row="0" VerticalAlignment="Top"/>
+        <Label Content="כניסת משתמש" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="121,4,138.4,0" Width="135"/>
+        <TextBox Text="b" x:Name="passenger_user_name" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="192,62,82.4,0"/>
+        <Label Content="כניסת מנהל" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" BorderBrush="#FFED3232" BorderThickness="0,0,0,2" Margin="121.8,4,111.6,0"  Grid.Column="2"/>
         <TextBox x:Name="pas_manager" Text="1" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="137.8,86,136.6,0" Grid.Column="2"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="68.8,68,0,0" Grid.Row="0" VerticalAlignment="Top" Grid.Column="2"/>
-        <Label Content="Password " HorizontalAlignment="Left" Margin="68.8,92,0,0" Grid.Row="0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="שם משתמש" HorizontalAlignment="Left" Margin="43,67,0,0" Grid.Row="0" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="סיסמה " HorizontalAlignment="Left" Margin="68.8,92,0,0" Grid.Row="0" VerticalAlignment="Top" Grid.Column="2"/>
         <TextBox x:Name="user_manager" Text="a" Style="{StaticResource txtb}" HorizontalAlignment="Center" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="0" Margin="137.8,62,136.6,0" Grid.Column="2"/>
 
     </Grid>

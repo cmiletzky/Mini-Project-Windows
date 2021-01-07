@@ -1,4 +1,5 @@
-﻿using BO;
+﻿using BlApi;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace BL.BO
             if (businessLayer.isUserMang(userName, password, true))
             {
                 user = new User(userName, password ,isMang);
+            }
+            else
+            {
+                user = new User(userName, password, false);
+
             }
         }
 
