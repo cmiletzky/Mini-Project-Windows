@@ -7,6 +7,7 @@ using DaLApi;
 using DS;
 using DO;
 using System.Data;
+using System.Xml.Linq;
 
 namespace Dal
 {
@@ -94,6 +95,8 @@ namespace Dal
         #region User
        public bool dalIsUser(string userName, string password, bool isMang)
         {
+
+
             DsUsers.GetUsers();
             int u = DsUsers.Users.FindIndex(x => x.UserName == userName && x.Password == password && x.Admin==isMang);
             if (u == -1)

@@ -50,13 +50,5 @@
       <Name>DaLApi</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="AdjacentStatision.xml" />
-    <Content Include="Buses.xml" />
-    <Content Include="Lines.xml" />
-    <Content Include="Stations.xml" />
-    <Content Include="StopsOfLine.xml" />
-    <Content Include="user.xml" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
