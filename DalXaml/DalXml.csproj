@@ -7,8 +7,8 @@
     <ProjectGuid>{E0339219-14D5-48FB-AACD-604252E7EA97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DalXaml</RootNamespace>
-    <AssemblyName>DalXaml</AssemblyName>
+    <RootNamespace>DalXml</RootNamespace>
+    <AssemblyName>DalXml</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
