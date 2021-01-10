@@ -14,14 +14,13 @@ namespace Dal
     public sealed class DalObject : IDAL
     {
         private static readonly DalObject instance = new DalObject();
-        static DalObject() {
-         
+        static DalObject(){
+        
+        
         }
-        private DalObject() {
-
-           
-
-
+        private DalObject(){
+        
+        
         }
         public static DalObject Instance { get { return instance; } }
         /// <summary>

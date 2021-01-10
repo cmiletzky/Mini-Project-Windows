@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 namespace Dal
 {
-    class DalXml : IDAL
+    public sealed class DalXml : IDAL
     {
 
         private static readonly DalXml instance = new DalXml();
