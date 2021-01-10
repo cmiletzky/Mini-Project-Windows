@@ -83,13 +83,6 @@ namespace Dal
             return DsBuses.buslist.Clone();
         }
 
-        Bus IDAL.isBus(Bus x)
-        {
-            if (x is Bus)
-                return x;
-            return null;
-
-        }
         #endregion
 
         #region User
@@ -231,7 +224,7 @@ namespace Dal
             }
         }
 
-        Areas GetAreas(string a)
+    public static Areas GetAreas(string a)
         {
             switch (a)
             {

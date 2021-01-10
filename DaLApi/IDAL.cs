@@ -30,7 +30,7 @@ namespace DaLApi
         void AddLine(int newLineNum, string area, int firstStop, int lastStop);
         void DeleteBus(string BusId);
         void activeBus(string busNum);
-        Bus isBus(Bus x);
+       
         #endregion
 
         #region User

@@ -19,6 +19,22 @@ namespace Dal
         private DalXml(){}
         public static DalXml Instance { get { return instance; } }
 
+        public static void saveListToXML<T>(List<T> list, string path)
+        {
+            XmlSerializer x = new XmlSerializer(list.GetType());
+            FileStream fs = new FileStream(path, FileMode.Create);
+            x.Serialize(fs, list);
+        }
+
+        public static List<T> loadListFromXML<T>(string path)
+        {
+            List<T> list;
+            XmlSerializer x = new XmlSerializer(typeof(List<T>));
+            FileStream fs = new FileStream(path, FileMode.Open);
+            list = (List<T>)x.Deserialize(fs);
+            return list;
+        }
+
         #region Station
         //טעינת הקובץ
         public static string stationPath = @"Station.xml";
@@ -74,21 +90,7 @@ namespace Dal
 
         #region Buses
 
-        public static void saveListToXML(List<Bus> list, string path)
-        {
-            XmlSerializer x = new XmlSerializer(list.GetType());
-            FileStream fs = new FileStream(path, FileMode.Create);
-            x.Serialize(fs, list);
-        }
 
-        public static List<Bus> loadListBusFromXML(string path)
-        {
-            List<Bus> list;
-            XmlSerializer x = new XmlSerializer(typeof(List<Bus>));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            list = (List<Bus>)x.Deserialize(fs);
-            return list;
-        }
         void IDAL.activeBus(string busNum)
         {
             throw new NotImplementedException();
@@ -96,209 +98,257 @@ namespace Dal
 
         void IDAL.addBus(string busNam, DateTime? startDate)
         {
-            throw new NotImplementedException();
+            List<Bus> buses = new List<Bus>();
+            string path = "Buses.xml";
+            buses = loadListFromXML<Bus>(path);
+            buses.Add(new Bus(busNam, startDate));
+            //לבדוק אם כותה בצורה טובה
+            saveListToXML<Bus>( buses, path);
         }
 
         void IDAL.DeleteBus(string BusId)
         {
-            throw new NotImplementedException();
+            List<Bus> buses = new List<Bus>();
+            string path = "Buses.xml";
+            buses = loadListFromXML<Bus>(path);
+            buses.RemoveAt(buses.FindIndex(x => x.Id == BusId));
+            //לבדוק אם כותה בצורה טובה
+            saveListToXML<Bus>(buses, path);
         }
 
         IEnumerable<Bus> IDAL.getAllBuses()
         {
-            throw new NotImplementedException();
+            List<Bus> buses = new List<Bus>();
+            string path = "Buses.xml";
+            buses = loadListFromXML<Bus>(path);
+            return buses;
         }
 
         int IDAL.BusAlreadyExists(string busNam)
         {
-            throw new NotImplementedException();
+                List<Bus> buses = new List<Bus>();
+                string path = "Buses.xml";
+            buses = loadListFromXML<Bus>(path);
+                if (buses.Any(x=>x.Id==busNam))
+                {
+                    return 0;
+                }
+                else if (buses.Any(x => x.Id == busNam && x.IsActive ==false))
+                {
+                    return 2;
+                }
+                return 1;
         }
 
         Bus IDAL.getBus(string id)
         {
-            throw new NotImplementedException();
+            List<Bus> buses = new List<Bus>();
+            string path = "Buses.xml";
+            buses = loadListFromXML<Bus>(path);
+            return buses.Find(x => x.Id == id);
         }
 
-        Bus IDAL.isBus(Bus x)
-        {
-            throw new NotImplementedException();
-        }
+
 
         void IDAL.updateBus(Bus bustoUpdate)
         {
-            throw new NotImplementedException();
+            List<Bus> buses = new List<Bus>();
+            string path = "Buses.xml";
+            buses = loadListFromXML<Bus>(path);
+            buses[buses.FindIndex(x => x.Id == bustoUpdate.Id)] = bustoUpdate;
         }
         #endregion
 
         #region AdjacentStatision
 
-        public static void saveListToXML(List<AdjacentStatision> list, string path)
-        {
-            XmlSerializer x = new XmlSerializer(list.GetType());
-            FileStream fs = new FileStream(path, FileMode.Create);
-            x.Serialize(fs, list);
-        }
-
-        public static List<AdjacentStatision> loadListAdjacentStatisionFromXML(string path)
-        {
-            List<AdjacentStatision> list;
-            XmlSerializer x = new XmlSerializer(typeof(List<AdjacentStatision>));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            list = (List<AdjacentStatision>)x.Deserialize(fs);
-            return list;
-        }
 
         void IDAL.AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time)
         {
-            throw new NotImplementedException();
+            List<AdjacentStatision> adjacentStatision = new List<AdjacentStatision>();
+            string path = "AdjacentStatision.xml";
+            adjacentStatision = loadListFromXML<AdjacentStatision>(path);
+            adjacentStatision.Add(new AdjacentStatision(stop1,stop2,double.Parse(distnase),time));
+            //לבדוק אם כותה בצורה טובה
+            saveListToXML<AdjacentStatision>(adjacentStatision, path);
         }
 
         bool IDAL.CheckAdjacentStatision(int stop1, int stop2)
         {
-            throw new NotImplementedException();
+            List<AdjacentStatision> adjacentStatision = new List<AdjacentStatision>();
+            string path = "AdjacentStatision.xml";
+            adjacentStatision = loadListFromXML<AdjacentStatision>(path);
+            if (adjacentStatision.Any(x => x.Station_1 == stop1 && x.Station_2 == stop2)) ;
+            {
+                return true;
+            }
         }
 
         void IDAL.EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time)
         {
-            throw new NotImplementedException();
+            List<AdjacentStatision> adjacentStatision = new List<AdjacentStatision>();
+            string path = "AdjacentStatision.xml";
+            adjacentStatision = loadListFromXML<AdjacentStatision>(path);
+            adjacentStatision[adjacentStatision.FindIndex(x => x.Station_1 == stop1 && x.Station_2 == stop2)] = new AdjacentStatision(stop1,stop2,dis,time);
         }
 
         IEnumerable<AdjacentStatision> IDAL.getAdjacentStatisions()
         {
-            throw new NotImplementedException();
+            string path = "AdjacentStatision.xml";
+            return  loadListFromXML<AdjacentStatision>(path);
         }
         #endregion
 
         #region Lins
 
-        public static void saveListToXML(List<LineBus> list, string path)
-        {
-            XmlSerializer x = new XmlSerializer(list.GetType());
-            FileStream fs = new FileStream(path, FileMode.Create);
-            x.Serialize(fs, list);
-        }
-
-        public static List<LineBus> loadListLinsFromXML(string path)
-        {
-            List<LineBus> list;
-            XmlSerializer x = new XmlSerializer(typeof(List<LineBus>));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            list = (List<LineBus>)x.Deserialize(fs);
-            return list;
-        }
-
         void IDAL.AddLine(int newLineNum, string area, int firstStop, int lastStop)
         {
-            throw new NotImplementedException();
+            List<LineBus> lines = new List<LineBus>();
+            string path = "Lines.xml";
+            lines = loadListFromXML<LineBus>(path);
+            lines.Add(new LineBus(newLineNum,GetAreas(area),firstStop,lastStop));
+            //לבדוק אם כותה בצורה טובה
+            saveListToXML<LineBus>(lines, path);
         }
 
         void IDAL.EditLine(int oldLineNum, int lineNum, string area)
         {
-            throw new NotImplementedException();
+            List<LineBus> lines = new List<LineBus>();
+            string path = "Lines.xml";
+            lines = loadListFromXML<LineBus>(path);
+            lines[lines.FindIndex(x => x.Id == oldLineNum)].Id = lineNum;
+            lines[lines.FindIndex(x => x.Id == oldLineNum)].Area = GetAreas(area);
+            //לבדוק אם כותה בצורה טובה
+            saveListToXML<LineBus>(lines, path);
         }
 
         IEnumerable<LineBus> IDAL.getLins()
         {
-            throw new NotImplementedException();
+            string path = "Lines.xml";
+            return loadListFromXML<LineBus>(path);
         }
 
         void IDAL.RemoveLine(int lineNum)
         {
-            throw new NotImplementedException();
+            List<LineBus> lines = new List<LineBus>();
+            string path = "Lines.xml";
+            lines = loadListFromXML<LineBus>(path);
+            lines.RemoveAt(lines.FindIndex(x => x.Id == lineNum));
         }
 
         #endregion
 
         #region Station Of Line
 
-        public static void saveListToXML(List<StopOfLine> list, string path)
-        {
-            XmlSerializer x = new XmlSerializer(list.GetType());
-            FileStream fs = new FileStream(path, FileMode.Create);
-            x.Serialize(fs, list);
-        }
 
-        public static List<StopOfLine> loadListStopOfLineFromXML(string path)
-        {
-            List<StopOfLine> list;
-            XmlSerializer x = new XmlSerializer(typeof(List<StopOfLine>));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            list = (List<StopOfLine>)x.Deserialize(fs);
-            return list;
-        }
         void IDAL.AddStopOfLine(int stopNum, int lineNum, int after)
         {
-            throw new NotImplementedException();
+            List<StopOfLine> stopsOfLine = new List<StopOfLine>();
+            string path = "StopsOfLine.xml";
+            stopsOfLine = loadListFromXML<StopOfLine>(path);
+            stopsOfLine.Add(new StopOfLine(lineNum,stopNum,after));
+            //TODOלבדוק אם כותה בצורה טובה 
+            saveListToXML<StopOfLine>(stopsOfLine, path);
         }
 
         void IDAL.RemoveStopFromLine(StopOfLine stop)
         {
-            throw new NotImplementedException();
+            List<StopOfLine> stopsOfLine = new List<StopOfLine>();
+            string pathStop = "StopsOfLine.xml";
+            stopsOfLine = loadListFromXML<StopOfLine>(pathStop);
+            stopsOfLine.Remove(stop);
+            foreach (var item in stopsOfLine)
+            {
+                if (item.OfLine == stop.OfLine && item.StatIndex > stop.StatIndex)
+                {
+                    item.StatIndex--;
+                }
+            }
+            saveListToXML<StopOfLine>(stopsOfLine, pathStop);
         }
 
         IEnumerable<StopOfLine> IDAL.GetStopsOfLine()
         {
-            throw new NotImplementedException();
+            string path = "StopsOfLine.xml";
+            return loadListFromXML<StopOfLine>(path);
+            
         }
 
         void IDAL.RemoveStopLine(int code)
         {
-            throw new NotImplementedException();
+            List<StopOfLine> stopsOfLine = new List<StopOfLine>();
+            string path = "StopsOfLine.xml";
+            stopsOfLine = loadListFromXML<StopOfLine>(path);
+            for (int i = 0; i < stopsOfLine.Count(); i++)
+            {
+                if (stopsOfLine[i].Id == code)
+                {
+                    stopsOfLine.RemoveAt(i);
+                }
+            }
+            saveListToXML<StopOfLine>(stopsOfLine, path);
         }
         #endregion
 
         #region User
 
-        public static void saveListToXML(List<User> list, string path)
-        {
-            XmlSerializer x = new XmlSerializer(list.GetType());
-            FileStream fs = new FileStream(path, FileMode.Create);
-            x.Serialize(fs, list);
-        }
 
-        public static List<User> loadListUserFromXML(string path)
-        {
-            List<User> list;
-            XmlSerializer x = new XmlSerializer(typeof(List<User>));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            list = (List<User>)x.Deserialize(fs);
-            return list;
-        }
 
         void IDAL.addUser(User user)
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            string path = "user.xml";
+            users = loadListFromXML<User>(path);
+            users.Add(new User(user.UserName,user.Password,user.Admin));
+            //TODOלבדוק אם כותה בצורה טובה 
+            saveListToXML<User>(users, path);
         }
 
         void IDAL.ChangePass(string userName, string newPass)
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            string path = "user.xml";
+            users = loadListFromXML<User>(path);
+            users[users.FindIndex(x => x.UserName == userName)].Password = newPass;
         }
 
         bool IDAL.dalIsUser(string userName, string password, bool isMang)
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            string path = "user.xml";
+            users = loadListFromXML<User>(path);
+            int u = users.FindIndex(x => x.UserName == userName && x.Password == password && x.Admin == isMang);
+            if (u == -1)
+            {
+                return false;
+            }
+            return true;
         }
 
         void IDAL.deliteUser(string userName)
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            string path = "user.xml";
+            users = loadListFromXML<User>(path);
+            users.RemoveAt(users.FindIndex(x => x.UserName == userName));
         }
 
         void IDAL.editUser(User user)
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            string path = "user.xml";
+            users = loadListFromXML<User>(path);
+            users[users.FindIndex(x => x.UserName == user.UserName)] = user;
+            saveListToXML<User>(users, path);
+
         }
 
         List<User> IDAL.getUsers()
         {
-            throw new NotImplementedException();
+            List<User> users = new List<User>();
+            string path = "user.xml";
+            return loadListFromXML<User>(path);
         }
         #endregion
-
-
-
-
 
 
         void IDAL.InitializeData()
@@ -306,6 +356,24 @@ namespace Dal
             throw new NotImplementedException();
         }
 
+        public static Areas GetAreas(string a)
+        {
+            switch (a)
+            {
+                case "General":
+                    return Areas.General;
+                case "North":
+                    return Areas.North;
+                case "South":
+                    return Areas.South;
+                case "Center":
+                    return Areas.Center;
+                case "Jerusalem":
+                    return Areas.Jerusalem;
+                default:
+                    return Areas.General;
+            }
+        }
 
     }
 }
