@@ -13,10 +13,19 @@ namespace Dal
 {
     public sealed class DalXml : IDAL
     {
+        XElement stationRoot;
+        public static string stationPath = @"Stations.xml";
 
-        private static readonly DalXml instance = new DalXml();
-        static DalXml(){}
-        private DalXml(){}
+
+        private static readonly DalXml instance;
+        static DalXml(){
+            instance = new DalXml();
+        }
+        private DalXml(){
+
+             stationRoot = XElement.Load(stationPath);
+
+        }
         public static DalXml Instance { get { return instance; } }
 
         public static void saveListToXML<T>(List<T> list, string path)
@@ -37,8 +46,6 @@ namespace Dal
 
         #region Station
         //טעינת הקובץ
-        public static string stationPath = @"Station.xml";
-        XElement stationRoot = XElement.Load(stationPath);
 
 
 
