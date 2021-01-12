@@ -57,10 +57,10 @@
                                     </Grid>
 
                                 </StackPanel>
-                                <Button IsEnabled="{Binding IsNotFirst}" x:Name="edit_time_and_dis" Content="ערוך זמן ומרחק" Margin="10,0,0,0" Height="20" Click="edit_time_and_dis_Click"/>
+                                <Button IsEnabled="{Binding IsNotFirst}" x:Name="edit_time_and_dis" Content="ערוך זמן ומרחק" Margin="10,0,0,0" Click="edit_time_and_dis_Click"/>
 
 
-                                <Button x:Name="remove_stop_from_line" Content="הסר תחנה" Margin="10,0,0,0" Height="20" Click="remove_stop_from_line_Click"/>
+                                <Button x:Name="remove_stop_from_line" Content="הסר תחנה" Margin="10,0,0,0" Click="remove_stop_from_line_Click"/>
                             </StackPanel>
                         </DataTemplate>
 
@@ -72,7 +72,7 @@
                 <Label Content="Area:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="1" FontSize="18" FontFamily="Tahoma"/>
                 <Label Content="Line stops:   " Grid.Column="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.Row="2" FontSize="18" FontFamily="Tahoma" Margin="0,9.667,0.333,220.667" Height="43"/>
                 <Button Content="הוסף תחנה"  Background="White" Foreground="Green" BorderBrush="GreenYellow" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Margin="9.667,10.333,0,0" Grid.Row="3" VerticalAlignment="Top" Width="400" x:Name="add_stop_to_line" Click="add_stop_to_line_Click"/>
-                <Button Content="סגור ושמור" x:Name="save" HorizontalAlignment="Left" Margin="50,10.4,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Click="save_Click" Style="{StaticResource myButtonStyle}"/>
+                <Button Content="סגור ושמור" x:Name="save" HorizontalAlignment="Left" Margin="50,10.4,0,0" Grid.Row="3" VerticalAlignment="Top" Click="save_Click" Style="{StaticResource myButtonStyle}"/>
 
             </Grid>
         </Border>

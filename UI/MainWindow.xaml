@@ -24,24 +24,24 @@
 
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="70*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
 
-            <Border Height="40" Grid.Row="0" Background="DarkSeaGreen" VerticalAlignment="Center" >
+            <Border Grid.Row="0" Background="DarkSeaGreen" VerticalAlignment="Center" >
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
-                <Menu Background="DarkSeaGreen" VerticalContentAlignment="Center" HorizontalAlignment="Right" Padding="5,3" Height="40" DockPanel.Dock="Top" VerticalAlignment="Top" Foreground="White" FontWeight="Bold">
-                <MenuItem Padding="10,5" FontSize="17" x:Name="menu_login" Header="הרשמה / התחברות" Click="Login_Click">
+                <Menu Background="DarkSeaGreen" VerticalContentAlignment="Center" HorizontalAlignment="Right" Padding="5,0" Height="50" DockPanel.Dock="Top" VerticalAlignment="Top" Foreground="White" FontWeight="Bold">
+                <MenuItem Padding="10,0" FontSize="17" x:Name="menu_login" Header="הרשמה / התחברות" Click="Login_Click">
 
                 </MenuItem>
-                <MenuItem Padding="10,5" FontSize="17" x:Name="menu_account" Header="חשבון" Click="Account_Click"/>
-                    <MenuItem Padding="10,5" FontSize="17" x:Name="menu_logout" Header="יציאה" Click="logout_menu"/>
-                    <MenuItem Padding="10,5" FontSize="17" Header="צור קשר">
-                        <MenuItem Padding="10,5" FontSize="16" Header="Sending an email">
+                <MenuItem Padding="10,0" FontSize="17" x:Name="menu_account" Header="חשבון" Click="Account_Click"/>
+                    <MenuItem Padding="10,0" FontSize="17" x:Name="menu_logout" Header="יציאה" Click="logout_menu"/>
+                    <MenuItem Padding="10,0" FontSize="17" Header="צור קשר">
+                        <MenuItem Padding="10,0" FontSize="16" Header="Sending an email">
                         </MenuItem>
-                        <MenuItem  Padding="10,5" FontSize="16" Header="שליחת ווצאפ"/>
+                        <MenuItem  Padding="10,0" FontSize="16" Header="שליחת ווצאפ"/>
 
                     </MenuItem>
 

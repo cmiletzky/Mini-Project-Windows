@@ -429,7 +429,7 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock x:Name="stop_line_lo" Foreground="Firebrick"/>
                                                 <TextBlock Text=":קו רוחב" FontWeight="Bold" Margin="15,0"/>
-                                                <Button Content="צפה במפה" x:Name="map" Click="map_Click"/>
+                                                <Button Content="מפה" x:Name="map" Click="map_Click"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </Grid>
@@ -451,7 +451,7 @@
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button Content="עריכה" Click="edit_a_s_after_Click" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Height="20"/>
+                                                                <Button Content="עריכה" Click="edit_a_s_after_Click" Margin="10,0" BorderThickness="1" Foreground="SeaGreen" Background="White"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
                                                                     <TextBlock Text="{Binding DistanceFromPrivios}" FontSize="12" Foreground="Red"/>
@@ -483,7 +483,7 @@
                                                     <DataTemplate>
                                                         <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <Button x:Name="edit_a_s" Content="עריכה" Margin="10,0" BorderThickness="1" Background="White" FontSize="8" Click="edit_a_s_before_Click" Height="20"/>
+                                                                <Button x:Name="edit_a_s" Content="עריכה" Margin="10,0" BorderThickness="1" Background="White" Foreground="SeaGreen" Click="edit_a_s_before_Click"/>
                                                                 <StackPanel Margin="10,0">
                                                                     <TextBlock Text="מרחק" FontSize="16" Foreground="Blue"/>
                                                                     <TextBlock Text="{Binding DistanceFromPrivios}" FontSize="12" Foreground="Red"/>

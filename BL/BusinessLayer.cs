@@ -18,7 +18,7 @@ namespace BL
         public static IDAL dal = DalFactory.GetDal();
         void IBL.InitializeData()
         {
-           // dal.InitializeData();
+            dal.InitializeData();
         }
 
         #region line
