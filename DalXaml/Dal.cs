@@ -375,5 +375,9 @@ namespace Dal
             }
         }
 
+        public Bus isBus(Bus x)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
