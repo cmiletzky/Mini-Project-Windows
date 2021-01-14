@@ -2,6 +2,7 @@
 using BlApi;
 using PL;
 using PL;
+using PL.Travel_information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,16 +40,6 @@ namespace PL
             InitializeComponent();
             Auth.user = new BO.User();
             RefreshMenu();
-
-            //if (Auth.user.Admin == false || Auth.user == null)
-            //{
-            //    manager_cont.Visibility = Visibility.Hidden;
-             
-            //}
-            //else
-            //{
-            //    manager_cont.Visibility = Visibility.Collapsed;
-            //}
             
         }
 
@@ -65,9 +56,6 @@ namespace PL
             Auth.user = null;
             Main.Visibility = Visibility.Collapsed;
             RefreshMenu();
-
-
-            // main_contect.Visibility = Visibility.Hidden;
         }
 
         private void Account_Click(object sender, RoutedEventArgs e)
@@ -98,6 +86,8 @@ namespace PL
         {
             new EnterWin().ShowDialog();
         }
+
+
     }
 }
 

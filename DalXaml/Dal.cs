@@ -28,20 +28,40 @@ namespace Dal
         }
         public static DalXml Instance { get { return instance; } }
 
-        public static void saveListToXML<T>(List<T> list, string path)
+        public static void saveListToXML<T>(List<T> list, string filePath)
         {
-            XmlSerializer x = new XmlSerializer(list.GetType());
-            FileStream fs = new FileStream(path, FileMode.Create);
-            x.Serialize(fs, list);
+            try
+            {
+                FileStream file = new FileStream(filePath, FileMode.Create);
+                XmlSerializer x = new XmlSerializer(list.GetType());
+                x.Serialize(file, list);
+                file.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"fail to create xml file: {filePath}");
+            }
         }
-
-        public static List<T> loadListFromXML<T>(string path)
+        public static List<T> loadListFromXML<T>(string filePath)
         {
-            List<T> list;
-            XmlSerializer x = new XmlSerializer(typeof(List<T>));
-            FileStream fs = new FileStream(path, FileMode.Open);
-            list = (List<T>)x.Deserialize(fs);
-            return list;
+            try
+            {
+                if (File.Exists( filePath))
+                {
+                    List<T> list;
+                    XmlSerializer x = new XmlSerializer(typeof(List<T>));
+                    FileStream file = new FileStream( filePath, FileMode.Open);
+                    list = (List<T>)x.Deserialize(file);
+                    file.Close();
+                    return list;
+                }
+                else
+                    return new List<T>();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception( $"fail to load xml file: {filePath}", ex);
+            }
         }
 
         #region Station
@@ -353,7 +373,8 @@ namespace Dal
         {
             List<User> users = new List<User>();
             string path = "user.xml";
-            return loadListFromXML<User>(path);
+            users = loadListFromXML<User>(path);
+            return users;
         }
         #endregion
 

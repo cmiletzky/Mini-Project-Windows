@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using BO;
 using BlApi;
 using BL.BO;
+using PL.Travel_information;
 
 namespace PL
 {
@@ -37,6 +38,7 @@ namespace PL
                 if (MainWindow.isRun == true)
                 {
                     ((MainWindow)Application.Current.MainWindow).Main.Content = new MainMangCont();
+                    ((MainWindow)Application.Current.MainWindow).station_info.Content = new TravelInformation();
                 }
                 ((MainWindow)Application.Current.MainWindow).Main.Visibility = Visibility.Visible;
                 ((MainWindow)Application.Current.MainWindow).RefreshMenu();

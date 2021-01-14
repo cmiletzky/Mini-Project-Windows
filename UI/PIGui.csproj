@@ -158,6 +158,9 @@
     <Compile Include="stops\UpdateStop.xaml.cs">
       <DependentUpon>UpdateStop.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Travel information\TravelInformation.xaml.cs">
+      <DependentUpon>TravelInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateBus.xaml.cs">
       <DependentUpon>UpdateBus.xaml</DependentUpon>
     </Compile>
@@ -251,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="stops\UpdateStop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Travel information\TravelInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

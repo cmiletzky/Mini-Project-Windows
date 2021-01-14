@@ -14,12 +14,18 @@
             <RowDefinition Height="85*"/>
         </Grid.RowDefinitions>
         <Grid x:Name="main_contect" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Frame x:Name="Main" NavigationUIVisibility="Hidden"></Frame>
-            
-            
+            <StackPanel HorizontalAlignment="Stretch">
+            <TabControl HorizontalAlignment="Stretch" BorderThickness="0" >
+                <TabItem Header="מידע" FontSize="20">
+                    <Frame x:Name="Main" NavigationUIVisibility="Hidden" Margin="0,0,0.333,0.333"/>
+                </TabItem>
+                <TabItem Header="מעקב תחנות" FontSize="20">
+                    <Frame x:Name="station_info" NavigationUIVisibility="Hidden" Margin="0,0,0.333,0.333"/>
+                </TabItem>
+            </TabControl>
+            </StackPanel>
+
+
         </Grid>
 
         <Grid Grid.Row="0">
@@ -27,16 +33,16 @@
                 <RowDefinition Height="50*"/>
                 <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
-
+           
             <Border Grid.Row="0" Background="DarkSeaGreen" VerticalAlignment="Center" >
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
                 <Menu Background="DarkSeaGreen" VerticalContentAlignment="Center" HorizontalAlignment="Right" Padding="5,0" Height="50" DockPanel.Dock="Top" VerticalAlignment="Top" Foreground="White" FontWeight="Bold">
-                <MenuItem Padding="10,0" FontSize="17" x:Name="menu_login" Header="הרשמה / התחברות" Click="Login_Click">
+                    <MenuItem Padding="10,0" FontSize="17" x:Name="menu_login" Header="הרשמה / התחברות" Click="Login_Click">
 
-                </MenuItem>
-                <MenuItem Padding="10,0" FontSize="17" x:Name="menu_account" Header="חשבון" Click="Account_Click"/>
+                    </MenuItem>
+                    <MenuItem Padding="10,0" FontSize="17" x:Name="menu_account" Header="חשבון" Click="Account_Click"/>
                     <MenuItem Padding="10,0" FontSize="17" x:Name="menu_logout" Header="יציאה" Click="logout_menu"/>
                     <MenuItem Padding="10,0" FontSize="17" Header="צור קשר">
                         <MenuItem Padding="10,0" FontSize="16" Header="Sending an email">
@@ -45,10 +51,10 @@
 
                     </MenuItem>
 
-            </Menu>
+                </Menu>
             </Border>
         </Grid>
-      
+
 
     </Grid>
 </Window>
