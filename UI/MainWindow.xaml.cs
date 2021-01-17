@@ -54,7 +54,7 @@ namespace PL
         private void logout_menu(object sender, RoutedEventArgs e)
         {
             Auth.user = null;
-            Main.Visibility = Visibility.Collapsed;
+            main_contect.Visibility = Visibility.Collapsed;
             RefreshMenu();
         }
 

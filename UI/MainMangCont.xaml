@@ -437,7 +437,7 @@
                             </Border>
 
                             <Border AllowDrop="True" Margin="10" Padding="5" Grid.Row="1" BorderBrush="Black" BorderThickness="2" CornerRadius="20">
-                                <StackPanel AllowDrop="True" Orientation="Vertical">
+                                <StackPanel AllowDrop="True" Grid.Row="1" Orientation="Vertical">
                                     <TextBlock Foreground="LightSeaGreen" TextAlignment="Right" Text="תחנות עוקובת" FontSize="25"/>
                                     <Grid>
                                         <Grid.ColumnDefinitions>

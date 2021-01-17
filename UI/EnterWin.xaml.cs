@@ -40,7 +40,7 @@ namespace PL
                     ((MainWindow)Application.Current.MainWindow).Main.Content = new MainMangCont();
                     ((MainWindow)Application.Current.MainWindow).station_info.Content = new TravelInformation();
                 }
-                ((MainWindow)Application.Current.MainWindow).Main.Visibility = Visibility.Visible;
+                ((MainWindow)Application.Current.MainWindow).main_contect.Visibility = Visibility.Visible;
                 ((MainWindow)Application.Current.MainWindow).RefreshMenu();
                 MainWindow.isRun = false;
                 Close();

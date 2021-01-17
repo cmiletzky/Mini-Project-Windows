@@ -13,7 +13,7 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="85*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="main_contect" Grid.Row="1">
+        <Grid x:Name="main_contect" Grid.Row="1" Visibility="Collapsed" >
             <StackPanel HorizontalAlignment="Stretch">
             <TabControl HorizontalAlignment="Stretch" BorderThickness="0" >
                 <TabItem Header="מידע" FontSize="20">
