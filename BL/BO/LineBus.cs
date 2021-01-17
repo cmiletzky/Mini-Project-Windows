@@ -23,6 +23,7 @@ namespace BO
         Areas area;
         int firstStation;
         int lastStation;
+        string lastStationName;
 
 
 
@@ -32,9 +33,7 @@ namespace BO
         public int LastStation { get => lastStation; set => lastStation = value; }
         public Areas Area { get => area; set => area = value; }
         public List<Station> Stops { get => stops; set => stops = value; }
-      
-
-
+        public string LastStationName { get => lastStationName; set => lastStationName = value; }
 
         public LineBus(int lineNum, Areas area, int firstStation, int lastStation)
         {

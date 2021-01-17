@@ -43,7 +43,7 @@ namespace BlApi
         List<BO.Station> GetAdjacentStatisionBefore(int code);
         List<BO.Station> GetAdjacentStatisionAfter(int code);
         bool isUser(string userName, string pass);
-        IEnumerable<int> GetLinsInStop(int code);
+        IEnumerable<BO.LineBus> GetLinsInStop(int code);
         BO.LineBus presentLine(int lineNum);
         void RemoveStopLine(int code);
         void RemoveStop(int code);

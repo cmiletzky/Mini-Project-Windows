@@ -25,5 +25,14 @@ namespace PL.Travel_information
             InitializeComponent();
             stop_list.ItemsSource = MainWindow.bl.presentStopsLine();
         }
+
+        private void stop_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BO.Station stop = (BO.Station)stop_list.SelectedValue;
+            stop_num.Text = stop.Code.ToString();
+            stop_name.Text = stop.Name;
+
+            lines_in_stop.ItemsSource = MainWindow.bl.GetLinsInStop(stop.Code);
+        }
     }
 }

@@ -241,6 +241,10 @@ namespace Dal
                     return Areas.General;
             }
         }
+        Station IDAL.getStation(int id)
+        {
+            return DS.DsStations.stations.Find(x => x.Code == id);
+        }
         void IDAL.RemoveLine(int lineNum)
         {
             int lineID = Dslines.lines.FindIndex(x => x.LineNum == lineNum);

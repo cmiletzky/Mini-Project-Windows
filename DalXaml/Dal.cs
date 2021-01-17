@@ -407,5 +407,10 @@ namespace Dal
         {
             throw new NotImplementedException();
         }
+
+        public Station getStation(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

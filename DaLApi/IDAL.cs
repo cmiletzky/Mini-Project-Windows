@@ -56,6 +56,7 @@ namespace DaLApi
         void RemoveStop(int code);
         void EditStation(int code, string name, double latitude, double longtitude,int oldNum);
         void ChangePass(string userName, string newPass);
+        Station getStation(int id);
         #endregion
 
 

@@ -353,11 +353,12 @@ namespace BL
         {
             dal.RemoveStop(code);
         }
-        IEnumerable<int> IBL.GetLinsInStop(int code)
+        IEnumerable<LineBus> IBL.GetLinsInStop(int code)
         {
-            return (from line in dal.GetStopsOfLine()
-                    where line.Id == code
-                    select line.OfLine).ToList().Distinct();
+            return (from stop in dal.GetStopsOfLine()
+                    from line in dal.getLins()
+                    where stop.Id == code && stop.OfLine == line.LineNum
+                    select new LineBus(line.LineNum, GetAreas(line.Area), line.FirstStation, line.LastStation) { LastStationName=dal.getStation(line.LastStation).Name }).ToList().Distinct();
         }
         List<Station> IBL.GetAdjacentStatisionBefore(int code)
         {
