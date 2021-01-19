@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DO
 {
+    /// <summary>
+    /// entity to represent details of a bus station
+    /// </summary>
     public class Station
     {
 
