@@ -9,6 +9,10 @@ using DS;
 
 namespace Dal
 {
+    /// <summary>
+    /// class for holding all the cloning function
+    /// 
+    /// </summary>
     static class cloning
     {
         //internal static T Clone<T>(this T original) where T : new()

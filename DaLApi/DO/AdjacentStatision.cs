@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DO
 {
+    /// <summary>
+    /// entity to represent peer of two station
+    /// </summary>
    public class AdjacentStatision
     {
         int station_1;

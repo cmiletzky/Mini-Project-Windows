@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace DS
 {
-    
+    /// <summary>
+    /// class to store all Stops line in data base
+    /// </summary>
   public  class DSstopOfLine
     {
        public static List<StopOfLine> stopOfLines = new List<DO.StopOfLine>();

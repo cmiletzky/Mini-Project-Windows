@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DaLApi.DO
 {
+    /// <summary>
+    /// class to reserve running numbers
+    /// </summary>
     public class configNum
     {
         static int lineId = 0;

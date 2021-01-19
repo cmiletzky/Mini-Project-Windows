@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-   public class Bus
+    /// <summary>
+    /// entity to represent bus
+    /// </summary>
+    public class Bus
     {
         private string id;
         private DateTime? start_date;

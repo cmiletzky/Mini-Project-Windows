@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DO
 {
+    /// <summary>
+    /// abstruct entity to represent details on specific
+    /// 
+    /// </summary>
     class LineTrip
     {
         int id;

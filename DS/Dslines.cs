@@ -8,6 +8,9 @@ using DO;
 
 namespace DS
 {
+    /// <summary>
+    /// class to store all line's company
+    /// </summary>
     public class Dslines
     {
         public static List<DO.LineBus> lines = new List<DO.LineBus>();

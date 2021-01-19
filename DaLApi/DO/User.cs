@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-   public class User
+    /// <summary>
+    /// entity to represent useres in  system
+    /// </summary>
+    public class User
     {
         string userName;
         string password;

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DO
 {
+    /// <summary>
+    /// entity to represent bus while driving
+    /// </summary>
     class BusOnTrip
     {
         int id;

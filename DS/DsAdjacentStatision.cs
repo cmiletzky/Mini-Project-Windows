@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DS
 {
+    /// <summary>
+    /// class who stor all the recodes of adjacnce station peers of the company
+    /// </summary>
    public class DsAdjacentStatision
     {
       public static  List<AdjacentStatision> adjacentStatisions = new List<AdjacentStatision>();

@@ -13,6 +13,9 @@ namespace DaLApi
 {
     public interface IDAL
     {
+        /// <summary>
+        /// active  data suorce
+        /// </summary>
         void InitializeData();
         IEnumerable<Station> getStations();
         #region station

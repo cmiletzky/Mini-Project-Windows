@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DS
 {
+    /// <summary>
+    /// class to reserve all users
+    /// </summary>
    public class DsUsers
     {
       public static  List<DO.User> Users = new List<DO.User>();

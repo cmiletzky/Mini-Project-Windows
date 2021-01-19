@@ -12,6 +12,10 @@ namespace DO
     {
         General = 1, North = 2, South = 3, Center = 4, Jerusalem = 5
     }
+
+    /// <summary>
+    /// entity to represent bus lin ein spesific area
+    /// </summary>
     public class LineBus
     {
         int id;

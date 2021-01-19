@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DO
 {
+    /// <summary>
+    /// entity to represent line station
+    /// </summary>
     class LineStatision
     {
         int lineId;

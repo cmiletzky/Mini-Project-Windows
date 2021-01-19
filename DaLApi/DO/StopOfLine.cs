@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DO
 {
+    /// <summary>
+    /// entity to represent a station reference to a specific bus
+    /// </summary>
     public class StopOfLine
     {
         int ofLine;

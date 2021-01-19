@@ -7,6 +7,9 @@ using DO;
 
 namespace DS
 {
+    /// <summary>
+    /// intialize and store all the Vehicles in the company
+    /// </summary>
     public class DsBuses
     {
         public static List<Bus> buslist = new List<Bus>();// create the list to hold the buss in company
