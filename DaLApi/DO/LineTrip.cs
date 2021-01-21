@@ -10,7 +10,7 @@ namespace DO
     /// abstruct entity to represent details on specific
     /// 
     /// </summary>
-    class LineTrip
+   public class LineTrip
     {
         int id;
         int lineId;
@@ -18,6 +18,11 @@ namespace DO
         TimeSpan frequecy;
         TimeSpan finishAt;
 
+        public LineTrip(int lineId, TimeSpan startAt)
+        {
+            this.lineId = lineId;
+            this.startAt = startAt;
+        }
         public int Id { get => id; set => id = value; }
         public int LineId { get => lineId; set => lineId = value; }
         public TimeSpan StartAt { get => startAt; set => startAt = value; }

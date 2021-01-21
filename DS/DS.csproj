@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DsAdjacentStatision.cs" />
     <Compile Include="Dslines.cs" />
+    <Compile Include="DsLineTrip.cs" />
     <Compile Include="DSstopOfLine.cs" />
     <Compile Include="DsUsers.cs" />
     <Compile Include="DsBuses.cs" />
