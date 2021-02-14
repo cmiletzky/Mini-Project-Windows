@@ -453,6 +453,11 @@ namespace BL
         {
             return dal.dalIsUser(userName, pass, false);
         }
+
+        public void StartSimulator()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

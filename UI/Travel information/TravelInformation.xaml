@@ -39,12 +39,12 @@
                     <RowDefinition Height="80*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,3,10,3">
-                    <materialDesign:TimePicker  VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+                    <materialDesign:TimePicker  VerticalAlignment="Stretch" HorizontalAlignment="Right" Name="time"/>
                     <StackPanel Width="80" Orientation="Vertical" Margin="10,5">
                         <TextBlock Text="בחר יחס שעון" HorizontalAlignment="Stretch"/>
                         <TextBox HorizontalAlignment="Stretch"/>
                     </StackPanel>
-                    <Button Content="הפעל שעון"/>
+                    <Button x:Name="start_watch" Content="הפעל שעון" Click="start_watch_Click"/>
                 </StackPanel>
 
                 <Border VerticalAlignment="Stretch" Margin="70,0" Background="Yellow" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
