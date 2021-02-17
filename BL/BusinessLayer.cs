@@ -349,6 +349,14 @@ namespace BL
         #endregion
 
         #region Station
+
+        public IEnumerable<BO.DataRealTime> getDataStop(int code, int h, int m)
+        {
+            return from a in dal.getAllTrips()
+                   from b in dal.getLins()
+                   select new BO.DataRealTime();
+                    //  where 
+        }
         void IBL.RemoveStop(int code)
         {
             dal.RemoveStop(code);
@@ -458,6 +466,8 @@ namespace BL
         {
             throw new NotImplementedException();
         }
+
+       
         #endregion
     }
 }

@@ -15,18 +15,20 @@ namespace DO
         int id;
         int lineId;
         TimeSpan startAt;
-        TimeSpan frequecy;
+        int frequecy;
         TimeSpan finishAt;
 
-        public LineTrip(int lineId, TimeSpan startAt)
+        public LineTrip(int lineId, TimeSpan startAt, int frequecy,TimeSpan finis)
         {
             this.lineId = lineId;
             this.startAt = startAt;
+            this.frequecy = frequecy;
+            this.finishAt = finis;
         }
         public int Id { get => id; set => id = value; }
         public int LineId { get => lineId; set => lineId = value; }
         public TimeSpan StartAt { get => startAt; set => startAt = value; }
-        public TimeSpan Frequecy { get => frequecy; set => frequecy = value; }
+        public int Frequecy { get => frequecy; set => frequecy = value; }
         public TimeSpan FinishAt { get => finishAt; set => finishAt = value; }
     }
 }

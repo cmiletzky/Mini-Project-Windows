@@ -412,5 +412,10 @@ namespace Dal
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<LineTrip> getAllTrips()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace Dal
             new DSstopOfLine();
             new Dslines();
             new DsAdjacentStatision();
+            new DsLineTrip();
         }
 
         #region Bus
@@ -425,6 +426,11 @@ namespace Dal
         void IDAL.ChangePass(string userName, string newPass)
         {
             DsUsers.Users[DsUsers.Users.FindIndex(x => x.UserName == userName)].Password = newPass;
+        }
+
+        public IEnumerable<LineTrip> getAllTrips()
+        {
+            return DS.DsLineTrip.lineTrips;
         }
     }
 }

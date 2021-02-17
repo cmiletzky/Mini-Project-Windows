@@ -60,6 +60,7 @@ namespace DaLApi
         void EditStation(int code, string name, double latitude, double longtitude,int oldNum);
         void ChangePass(string userName, string newPass);
         Station getStation(int id);
+        IEnumerable<LineTrip> getAllTrips();
         #endregion
 
 

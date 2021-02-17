@@ -182,7 +182,8 @@ namespace PL
                 string y = "";
                 for (int i = 0; i < lines_in_stop.Items.Count; i++)
                 {
-                    y += lines_in_stop.Items[i].ToString() + " ";
+                    BO.LineBus w = (BO.LineBus)lines_in_stop.Items[i];
+                    y += w.LineNum.ToString() + " ";
                 }
 
                 string u = "הסרת התחנה תסיר אותה מן הקווים " + y + "יש ללעדכן זמנים ומרחקים מחדש ";
@@ -260,7 +261,7 @@ namespace PL
 
         private void lines_in_stop_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-           new LineDetail( MainWindow.bl.presentLine((int)lines_in_stop.SelectedItem)).ShowDialog();
+          // new LineDetail( MainWindow.bl.presentLine((int)lines_in_stop.SelectedItem)).ShowDialog();
         }
 
         private void map_Click(object sender, RoutedEventArgs e)

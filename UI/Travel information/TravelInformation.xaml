@@ -39,11 +39,17 @@
                     <RowDefinition Height="80*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,3,10,3">
-                    <materialDesign:TimePicker  VerticalAlignment="Stretch" HorizontalAlignment="Right" Name="time"/>
-                    <StackPanel Width="80" Orientation="Vertical" Margin="10,5">
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <TextBox BorderThickness="1" x:Name="time_s" Width="30" Text="12"/>
+                        <TextBlock Margin="2,0" Text=":" VerticalAlignment="Center"/>
+                        <TextBox BorderThickness="1" x:Name="time_m" Width="30" Text="12"/>
+                        <TextBlock Margin="2,0" Text=":" VerticalAlignment="Center"/>
+                        <TextBox BorderThickness="1" x:Name="time_h" Width="30" Text="12"/>
+                    </StackPanel>
+                    <!--<StackPanel Width="80" Orientation="Vertical" Margin="10,5">
                         <TextBlock Text="בחר יחס שעון" HorizontalAlignment="Stretch"/>
                         <TextBox HorizontalAlignment="Stretch"/>
-                    </StackPanel>
+                    </StackPanel>-->
                     <Button x:Name="start_watch" Content="הפעל שעון" Click="start_watch_Click"/>
                 </StackPanel>
 
@@ -67,17 +73,17 @@
                                     <TextBlock FontSize="20" Text="מספר:" Margin="10,3"/>
                                     <TextBlock FontSize="20" x:Name="stop_num" Text=""/>
                                 </StackPanel>
-                                
+
                             </StackPanel>
                             <Image Height="200" Width="200" Grid.Column="0" Source="bus-stop.gif" HorizontalAlignment="Stretch" />
                         </Grid>
                         <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1.5">
-                        <Grid  >
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="85*"/>
-                                    <ColumnDefinition Width="15*"/>
-                                </Grid.ColumnDefinitions>
+                            <Grid  >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="85*"/>
+                                        <ColumnDefinition Width="15*"/>
+                                    </Grid.ColumnDefinitions>
                                     <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1.5,0">
                                         <ListView  x:Name="lines_in_stop">
                                             <ListView.ItemTemplate>
@@ -88,23 +94,23 @@
                                                             <ColumnDefinition Width="*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Border Margin="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,0,1.5" FlowDirection="RightToLeft">
-                                                       
-                                                    <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,200,0">
+
+                                                            <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,200,0">
                                                                     <TextBlock x:Name="data_last_stop_in_line_name" Text="{Binding LastStationName}"/>
-                                                            <TextBlock x:Name="data_area_of_line" Text="{Binding LastStation}"/> 
-                                                        </StackPanel>
-                                                        <TextBlock x:Name="line_num" HorizontalAlignment="Left" Text="{Binding LineNum}" FontWeight="Bold" FontSize="30"/>
-                                                    </StackPanel>
-                                                       
-                                                    </Border>
+                                                                    <TextBlock x:Name="data_area_of_line" Text="{Binding LastStation}"/>
+                                                                </StackPanel>
+                                                                <TextBlock x:Name="line_num" HorizontalAlignment="Left" Text="{Binding LineNum}" FontWeight="Bold" FontSize="30"/>
+                                                            </StackPanel>
+
+                                                        </Border>
                                                     </Grid>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
                                     </Border>
+                                </Grid>
                             </Grid>
-                        </Grid>
                         </Border>
                     </Grid>
                 </Border>
@@ -118,26 +124,26 @@
                             <RowDefinition Height="80*"/>
                         </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal" Grid.Row="0">
-                        <Button HorizontalAlignment="Left" x:Name="eye_button"  BorderBrush="{x:Null}"   Height="50" Width="70">
-                            <Viewbox Width="70" Height="50">
-                                <Canvas Width="50" Height="40">
-                                    <Path Fill="White" Data="M16.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" />
-                                </Canvas>
-                            </Viewbox>
-                        </Button>
-                            <TextBlock x:Name="now" Text="20,0"/>
-                            <TextBlock Text="מעודכן לשעה: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                           
+                            <Button HorizontalAlignment="Left" x:Name="refrsh"  BorderBrush="{x:Null}"   Height="50" Width="70" Margin="0,10,0,10.667" Click="refrsh_Click">
+                                <Viewbox Width="70" Height="50">
+                                    <Canvas Width="50" Height="40">
+                                        <Path Fill="White" Data="M16.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" />
+                                    </Canvas>
+                                </Viewbox>
+                            </Button>
+                            <TextBlock FontSize="18" Foreground="Red" x:Name="now"  VerticalAlignment="Center" Margin="15,0,15,0"/>
+                            <TextBlock FontSize="20" FontWeight="Bold" Text=":מעודכן לשעה " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
                         </StackPanel>
 
-                        <DataGrid Grid.Row="1" FlowDirection="RightToLeft">
+                        <DataGrid IsReadOnly="True" Height="200" Grid.Row="1" FlowDirection="RightToLeft" x:Name="real_data">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="מספר"/>
-                                <DataGridTextColumn Header="יעד"/>
-                                <DataGridTextColumn Header="זמן הגעה"/>
+                                <DataGridTextColumn Header="מספר" Binding="{Binding LineNum}"/>
+                                <DataGridTextColumn Header="יעד" Binding="{Binding LastStop}"/>
+                                <DataGridTextColumn Header="זמן הגעה" Binding="{Binding Time}"/>
                             </DataGrid.Columns>
                         </DataGrid>
- 
+
                     </Grid>
                 </Border>
             </Grid>

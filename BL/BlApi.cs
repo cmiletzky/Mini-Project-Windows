@@ -37,7 +37,6 @@ namespace BlApi
         bool Refuell(Bus bus);
 
        bool  isUserMang(string userName, string password, bool isMang);
-        void StartSimulator();
         void AddAdjacentStatision(int stop1, int stop2, string distnase, TimeSpan time);
         void EditAdjacentStatision(int stop1, int stop2, double dis, TimeSpan time);
         void EditLine(int oldLineNum,int lineNum, string area);
@@ -48,6 +47,7 @@ namespace BlApi
         BO.LineBus presentLine(int lineNum);
         void RemoveStopLine(int code);
         void RemoveStop(int code);
+        IEnumerable<BL.BO.DataRealTime> getDataStop(int code,int h,int m);
     }
     public static class BlFactory
     {

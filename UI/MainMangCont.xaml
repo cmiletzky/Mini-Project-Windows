@@ -397,19 +397,20 @@
                     <Border  Grid.Column="1" BorderBrush="#FF317D16" BorderThickness="0,0,4,0"  >
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="20*"/>
-                                <RowDefinition Height="60*"/>
-                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="100*"/>
                             </Grid.RowDefinitions>
 
-                            <Border Margin="10" Grid.Row="0" Padding="5"  BorderBrush="Black" BorderThickness="2" CornerRadius="20">
+                            <Border Margin="10,10,10.333,10.333" Grid.Row="0" Padding="5"  BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="52*"/>
+                                            <ColumnDefinition Width="23*"/>
+                                            <ColumnDefinition Width="29*"/>
                                         </Grid.ColumnDefinitions>
-                                        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right">
+                                        <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,0.334,0">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                                 <TextBlock x:Name="stop_line_num" Foreground="Red"/>
                                                 <TextBlock Text=":מספר" Margin="15,0" TextAlignment="Right" FontWeight="Bold"/>
@@ -436,7 +437,7 @@
                                 </StackPanel>
                             </Border>
 
-                            <Border Margin="10" Grid.Row="1" Padding="5"  BorderBrush="Black" BorderThickness="2" CornerRadius="20">
+                            <Border Margin="10,9.667,10.333,10" Grid.Row="1" Padding="5"  BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Foreground="LightSeaGreen" TextAlignment="Right" Text="תחנות עוקובת" FontSize="25"/>
                                     <Grid>
@@ -508,7 +509,7 @@
 
                             </Border>
 
-                            <Border Margin="10" Grid.Row="2" Padding="5"   BorderBrush="Black" BorderThickness="2" CornerRadius="20">
+                            <Border Margin="10,10,10.333,10.333" Grid.Row="2" Padding="5"   BorderBrush="Black" BorderThickness="2" CornerRadius="20">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Foreground="LightSeaGreen" TextAlignment="Right" Text="קווים העוברים בתחנה" FontSize="25" Height="90" Margin="0,0,0.2,0"/>
                                     <ListBox  x:Name="lines_in_stop" MouseDoubleClick="lines_in_stop_MouseDoubleClick">
@@ -517,6 +518,11 @@
                                                 <WrapPanel Orientation="Horizontal" Width="250" HorizontalAlignment="Right"  />
                                             </ItemsPanelTemplate>
                                         </ListBox.ItemsPanel>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding LineNum}"/>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
                                     </ListBox>
                                 </StackPanel>
                             </Border>
