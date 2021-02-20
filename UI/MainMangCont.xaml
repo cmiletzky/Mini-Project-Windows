@@ -280,7 +280,7 @@
                         <ColumnDefinition Width="20*"/>
 
                     </Grid.ColumnDefinitions>
-                    <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged"  >
+                    <ListBox MouseDoubleClick="Lines_MouseDoubleClick"  Grid.Column="0"  x:FieldModifier="public" x:Name="line_list" VerticalAlignment="Stretch"   Background="Honeydew"  BorderThickness="3" SelectionChanged="line_list_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" AllowDrop="True" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Khaki" Padding="5" BorderThickness="0,0,0,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
