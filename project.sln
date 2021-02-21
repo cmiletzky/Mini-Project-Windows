@@ -15,6 +15,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS", "DS\DS.csproj", "{822B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalObject", "DalObject\DalObject.csproj", "{8C7EA950-8D00-4B01-86E8-F2B808257E71}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4FAA25D-F490-4AA5-8451-303B76943614}"
+	ProjectSection(SolutionItems) = preProject
+		bin\AdjacentStatision.xml = bin\AdjacentStatision.xml
+		bin\Buses.xml = bin\Buses.xml
+		bin\config.xml = bin\config.xml
+		bin\EntityFramework.SqlServer.xml = bin\EntityFramework.SqlServer.xml
+		bin\EntityFramework.xml = bin\EntityFramework.xml
+		bin\Lines.xml = bin\Lines.xml
+		bin\MaterialDesignThemes.Wpf.xml = bin\MaterialDesignThemes.Wpf.xml
+		bin\Newtonsoft.Json.xml = bin\Newtonsoft.Json.xml
+		bin\Stations.xml = bin\Stations.xml
+		bin\StopsOfLine.xml = bin\StopsOfLine.xml
+		bin\user.xml = bin\user.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -381,7 +381,7 @@ namespace Dal
 
         void IDAL.InitializeData()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public static Areas GetAreas(string a)
